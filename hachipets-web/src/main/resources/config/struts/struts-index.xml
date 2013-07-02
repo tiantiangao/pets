@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="index" namespace="/" extends="default">
+    
+        <action name="index" class="com.gtt.bag.web.action.IndexAction">
+            <result name="success" type="freemarker">/WEB-INF/pages/index.ftl</result>
+        </action>
+        
+    </package>
+</struts>
