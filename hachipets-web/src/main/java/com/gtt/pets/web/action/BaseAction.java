@@ -13,7 +13,7 @@
  * accordance with the terms of the license agreement you entered into
  * with dianping.com.
  */
-package com.gtt.bag.web.action;
+package com.gtt.pets.web.action;
 
 import java.util.Map;
 
@@ -23,7 +23,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ParameterAware;
 import org.apache.struts2.interceptor.RequestAware;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.gtt.pets.service.GlobalService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
@@ -36,14 +38,15 @@ import com.opensymphony.xwork2.Preparable;
 public class BaseAction extends ActionSupport implements RequestAware, ParameterAware, Preparable {
 
 	private static final long serialVersionUID = 1L;
-
 	protected Map<String, Object> request;
-
 	protected Map<String, String[]> parameters;
+
+	@Autowired
+	private GlobalService globalService;
 
 	@Override
 	public void prepare() throws Exception {
-		request.put("projectName", "A包包");
+		request.put("projectName", globalService.get("projectName"));
 	}
 
 	@Override

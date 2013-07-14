@@ -13,7 +13,7 @@
  * accordance with the terms of the license agreement you entered into
  * with dianping.com.
  */
-package com.gtt.bag.web.action;
+package com.gtt.pets.web.action;
 
 /**
  * Index Action

@@ -5,7 +5,7 @@
 <struts>
     <package name="index" namespace="/" extends="default">
     
-        <action name="index" class="com.gtt.bag.web.action.IndexAction">
+        <action name="index" class="com.gtt.pets.web.action.IndexAction">
             <result name="success" type="freemarker">/WEB-INF/pages/index.ftl</result>
         </action>
         
