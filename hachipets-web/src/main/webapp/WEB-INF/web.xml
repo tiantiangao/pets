@@ -26,7 +26,7 @@
 
 	<context-param>
 		<param-name>webAppRootKey</param-name>
-		<param-value>bag.root</param-value>
+		<param-value>hachi-pets.root</param-value>
 	</context-param>
 
 	<filter>

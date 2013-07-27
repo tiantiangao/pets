@@ -3,8 +3,8 @@
 <title>首页</title>
 </head>
 <body>
-<div style="height:400px;">
-bag is runing!
+<div class="container text-center" style="height: 200px; padding: 200px;">
+    Hachi宠物网首页
 </div>
 </body>
 </html>
