@@ -15,7 +15,15 @@
         <result property="release" column="release" />
         <result property="addTime" column="addTime" />
     </resultMap>
-    
+
+    <select id="loadById" resultMap="PetsMovieResult" parameterClass="map">
+        <![CDATA[
+		SELECT id, `name`, `desc`, `director`, `actor`, `region`, `length`, `release`, `addTime`
+		FROM Pets_Movie
+		WHERE id = #id#
+        ]]>
+    </select>
+
 	<select id="findMovieList" resultMap="PetsMovieResult" parameterClass="map">
         <![CDATA[
 		SELECT id, `name`, `desc`, `director`, `actor`, `region`, `length`, `release`, `addTime`

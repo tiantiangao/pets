@@ -27,12 +27,22 @@ public class PetsMovieDaoTest extends AbstractTest {
         PageModel model = petsMovieDao.findMovieList("addTime", true, 1, 2);
         notNull(model);
         List<PetsMovie> records = (List<PetsMovie>) model.getRecords();
+        int id = 0;
         if (records != null) {
             for (PetsMovie movie : records) {
-                System.out.println(movie.getId() + " - " + movie.getName() + " - " + movie.getDesc() + " - " + movie.getDirector() + " - " + movie.getActor() + " - " + movie.getRegion() + " - " + movie.getLength()
-                        + " - " + movie.getRelease() + " - " + movie.getAddTime());
+                id = movie.getId();
+                print(movie);
             }
         }
+
+        PetsMovie movie = petsMovieDao.loadById(id);
+        notNull(movie);
+        print(movie);
+    }
+
+    private void print(PetsMovie movie) {
+        System.out.println(movie.getId() + "/" + movie.getName() + "/" + movie.getDesc() + "/" + movie.getDirector() + "/" + movie.getActor() + "/" + movie.getRegion() + "/" + movie.getLength()
+                + "/" + movie.getRelease() + "/" + movie.getAddTime());
     }
 
 }

@@ -15,7 +15,7 @@ public abstract class BaseEntity implements Serializable {
 	/**
 	 * 自增ID
 	 */
-	private long id;
+	private int id;
 	/**
 	 * 添加时间
 	 */
@@ -25,11 +25,11 @@ public abstract class BaseEntity implements Serializable {
 	 */
 	private Date updateTime;
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
