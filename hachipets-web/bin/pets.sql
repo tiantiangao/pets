@@ -11,6 +11,7 @@ CREATE TABLE `Pets_Movie` (
   `id` int(11) NOT NULL auto_increment COMMENT '自增主键',
   `name` varchar(30) default NULL COMMENT '影片名称',
   `desc` varchar(500) default NULL COMMENT '影片描述',
+  `pic` varchar(100) default NULL COMMENT '影片图片地址',
   `director` varchar(50) default NULL COMMENT '影片导演',
   `actor` varchar(100) default NULL COMMENT '影片主演',
   `region` varchar(15) default NULL COMMENT '影片地区',

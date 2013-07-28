@@ -22,6 +22,10 @@ public class PetsMovie extends BaseEntity {
      */
     private String desc;
     /**
+     * 影片图片
+     */
+    private String pic;
+    /**
      * 影片导演
      */
     private String director;
@@ -56,6 +60,14 @@ public class PetsMovie extends BaseEntity {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 
     public String getDirector() {

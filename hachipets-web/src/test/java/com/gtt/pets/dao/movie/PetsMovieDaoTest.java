@@ -41,7 +41,7 @@ public class PetsMovieDaoTest extends AbstractTest {
     }
 
     private void print(PetsMovie movie) {
-        System.out.println(movie.getId() + "/" + movie.getName() + "/" + movie.getDesc() + "/" + movie.getDirector() + "/" + movie.getActor() + "/" + movie.getRegion() + "/" + movie.getLength()
+        System.out.println(movie.getId() + "/" + movie.getName() + "/" + movie.getDesc() + "/" + movie.getPic() + "/" + movie.getDirector() + "/" + movie.getActor() + "/" + movie.getRegion() + "/" + movie.getLength()
                 + "/" + movie.getRelease() + "/" + movie.getAddTime());
     }
 
