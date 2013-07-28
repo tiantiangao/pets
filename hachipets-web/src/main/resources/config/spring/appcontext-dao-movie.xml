@@ -16,4 +16,13 @@
 		</property>
 	</bean>
 
+    <bean id="petsMovieInfoDao" parent="parentDao">
+        <property name="proxyInterfaces" value="com.gtt.pets.dao.movie.PetsMovieInfoDao" />
+        <property name="target">
+            <bean parent="Kenshin.daoRealizeTarget">
+                <constructor-arg value="PetsMovieInfo" />
+            </bean>
+        </property>
+    </bean>
+
 </beans>

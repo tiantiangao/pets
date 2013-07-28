@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="PetsMovieInfo">
+
+    <typeAlias alias="PetsMovieInfo" type="com.gtt.pets.entity.movie.PetsMovieInfo" />
+    
+    <resultMap id="PetsMovieInfoResult" class="PetsMovieInfo">
+        <result property="movieId" column="movieId" />
+        <result property="infoType" column="infoType" />
+        <result property="refer" column="refer" />
+    </resultMap>
+
+    <select id="findListByMovieId" resultMap="PetsMovieInfoResult" parameterClass="map">
+        <![CDATA[
+		SELECT movieId, infoType, refer
+		FROM Pets_Movie_Info
+		WHERE movieId = #movieId#
+        ]]>
+    </select>
+
+</sqlMap>
