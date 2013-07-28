@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="PetsMovie">
+
+    <typeAlias alias="PetsMovie" type="com.gtt.pets.entity.movie.PetsMovie" />
+    
+    <resultMap id="PetsMovieResult" class="PetsMovie">
+        <result property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="desc" column="desc" />
+        <result property="director" column="director" />
+        <result property="actor" column="actor" />
+        <result property="region" column="region" />
+        <result property="length" column="length" />
+        <result property="release" column="release" />
+        <result property="addTime" column="addTime" />
+    </resultMap>
+    
+	<select id="findMovieList" resultMap="PetsMovieResult" parameterClass="map">
+        <![CDATA[
+		SELECT id, `name`, `desc`, `director`, `actor`, `region`, `length`, `release`, `addTime`
+		FROM Pets_Movie
+        ]]>
+        <isNotEmpty property="sort">
+		ORDER BY #sort#
+        <isEqual property="asc" compareValue="true"> asc </isEqual>
+        <isEqual property="asc" compareValue="false"> desc </isEqual>
+        </isNotEmpty>
+	</select>
+
+    <select id="findMovieList_COUNT" resultClass="java.lang.Integer" parameterClass="map">
+        SELECT count(1)
+        FROM Pets_Movie
+    </select>
+
+</sqlMap>
