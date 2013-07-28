@@ -47,7 +47,12 @@ public class BaseAction extends ActionSupport implements RequestAware, Parameter
 	@Override
 	public void prepare() throws Exception {
 		request.put("projectName", globalService.get("projectName"));
+        request.put("channel", "");
 	}
+
+    protected void setChannel(String channel){
+        request.put("channel", channel);
+    }
 
 	@Override
 	public void setRequest(Map<String, Object> request) {

@@ -36,15 +36,15 @@
         <div class="navbar-inner">
             <a class="brand pets-brand" href="#">全部宠物分类</a>
             <ul class="nav pets-nav">
-                <li><a href="#" class="active">首页</a></li>
-                <li><a href="#">宠物百科</a></li>
-                <li><a href="#">宠物新鲜事</a></li>
-                <li><a href="#">宠物秀</a></li>
-                <li><a href="#">宠物转让</a></li>
-                <li><a href="#">宠物医院</a></li>
-                <li><a href="#">宠物美容</a></li>
-                <li><a href="#">宠物影视</a></li>
-                <li><a href="#">宠物社区</a></li>
+                <li><a href="/" <#if channel=="index">class="active"</#if>>首页</a></li>
+                <li><a href="/baike" <#if channel=="baike">class="active"</#if>>宠物百科</a></li>
+                <li><a href="/news" <#if channel=="news">class="active"</#if>>宠物新鲜事</a></li>
+                <li><a href="/show" <#if channel=="show">class="active"</#if>>宠物秀</a></li>
+                <li><a href="/transfer" <#if channel=="transfer">class="active"</#if>>宠物转让</a></li>
+                <li><a href="/hospital" <#if channel=="hospital">class="active"</#if>>宠物医院</a></li>
+                <li><a href="/beauty" <#if channel=="beauty">class="active"</#if>>宠物美容</a></li>
+                <li><a href="/media" <#if channel=="media">class="active"</#if>>宠物影视</a></li>
+                <li><a href="/bbs" <#if channel=="bbs">class="active"</#if>>宠物社区</a></li>
             </ul>
             <form class="navbar-search pull-right">
                 <input type="text" class="search-query" placeholder="搜索">
@@ -57,7 +57,7 @@ ${body}
 <!-- 页脚 -->
 <div class="container">
     <div class="row-fluid text-center">
-        <div class="copyright">©2013-2020 hachipets.com All Rights Reserved. Hachi宠物网 版权所有</div>
+        <div class="copyright">©2013-2023 hachipets.com All Rights Reserved. Hachi宠物网 版权所有</div>
     </div>
 </div>
 </body>

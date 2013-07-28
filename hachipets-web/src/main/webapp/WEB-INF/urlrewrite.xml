@@ -2,9 +2,58 @@
 <!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 2.6//EN"
         "http://tuckey.org/res/dtds/urlrewrite2.6.dtd">
 <urlrewrite>
+    <!-- 首页 -->
 	<rule>
 		<from>^/$</from>
-		<to>/index.action</to>
+		<to>/petsIndexAction.action</to>
 	</rule>
+
+    <!-- 宠物百科 -->
+    <rule>
+        <from>^/baike$</from>
+        <to>/petsBaikeAction.action</to>
+    </rule>
+
+    <!-- 宠物新鲜事 -->
+    <rule>
+        <from>^/news$</from>
+        <to>/petsNewsAction.action</to>
+    </rule>
+
+    <!-- 宠物秀 -->
+    <rule>
+        <from>^/show$</from>
+        <to>/petsShowAction.action</to>
+    </rule>
+
+    <!-- 宠物转让 -->
+    <rule>
+        <from>^/transfer$</from>
+        <to>/petsTransferAction.action</to>
+    </rule>
+
+    <!-- 宠物医院 -->
+    <rule>
+        <from>^/hospital$</from>
+        <to>/petsHospitalAction.action</to>
+    </rule>
+
+    <!-- 宠物美容 -->
+    <rule>
+        <from>^/beauty$</from>
+        <to>/petsBeautyAction.action</to>
+    </rule>
+
+    <!-- 宠物影视 -->
+    <rule>
+        <from>^/media$</from>
+        <to>/petsMediaAction.action</to>
+    </rule>
+
+    <!-- 宠物社区 -->
+    <rule>
+        <from>^/bbs$</from>
+        <to>/petsBBSAction.action</to>
+    </rule>
 </urlrewrite>
   

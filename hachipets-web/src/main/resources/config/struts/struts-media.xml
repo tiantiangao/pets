@@ -3,10 +3,10 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-    <package name="index" namespace="/" extends="default">
+    <package name="media" namespace="/" extends="default">
     
-        <action name="petsIndexAction" class="com.gtt.pets.web.action.index.PetsIndexAction">
-            <result name="success" type="freemarker">/WEB-INF/pages/index/index.ftl</result>
+        <action name="petsMediaAction" class="com.gtt.pets.web.action.media.PetsMediaAction">
+            <result name="success" type="freemarker">/WEB-INF/pages/media/media.ftl</result>
         </action>
         
     </package>

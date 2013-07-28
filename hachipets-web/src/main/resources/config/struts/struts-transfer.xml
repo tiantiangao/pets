@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="transfer" namespace="/" extends="default">
+    
+        <action name="petsTransferAction" class="com.gtt.pets.web.action.transfer.PetsTransferAction">
+            <result name="success" type="freemarker">/WEB-INF/pages/transfer/transfer.ftl</result>
+        </action>
+        
+    </package>
+</struts>

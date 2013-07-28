@@ -1,9 +1,9 @@
 /**
  * Project: bag
- * 
+ *
  * File Created at 2013-6-14
  * $Id$
- * 
+ *
  * Copyright 2010 dianping.com.
  * All rights reserved.
  *
@@ -13,20 +13,23 @@
  * accordance with the terms of the license agreement you entered into
  * with dianping.com.
  */
-package com.gtt.pets.web.action;
+package com.gtt.pets.web.action.bbs;
+
+import com.gtt.pets.constants.ChannelType;
+import com.gtt.pets.web.action.BaseAction;
 
 /**
- * Index Action
- * 
- * @author tiantiangao
+ * 宠物社区
  *
+ * @author tiantiangao
  */
-public class IndexAction extends BaseAction {
 
-	private static final long serialVersionUID = 1L;
+public class PetsBBSAction extends BaseAction {
+    private static final long serialVersionUID = 1L;
 
-	@Override
-	public String execute() throws Exception {
-		return SUCCESS;
-	}
+    @Override
+    public String execute() throws Exception {
+        setChannel(ChannelType.CHANNEL_BBS);
+        return SUCCESS;
+    }
 }
