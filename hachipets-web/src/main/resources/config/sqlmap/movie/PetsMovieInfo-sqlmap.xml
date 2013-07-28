@@ -15,6 +15,7 @@
 		SELECT movieId, infoType, refer
 		FROM Pets_Movie_Info
 		WHERE movieId = #movieId#
+		ORDER BY id
         ]]>
     </select>
 
