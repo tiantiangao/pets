@@ -67,3 +67,105 @@
 .pets-movie-list {
 	margin-top: 10px;
 }
+.pets-movie-list .view-filter {
+    height: 30px;
+}
+.pets-movie-list .view-filter .filter-order {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    color: #999;
+    padding-left: 10px;
+}
+.pets-movie-list .view-filter .filter-order .order{
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    padding: 0 8px;
+    float: left;
+    border-radius: 2px;
+    color: #000000;
+}
+.pets-movie-list .view-filter .filter-order .order:hover{
+    text-decoration: none;
+    background-color: #eee;
+    color: #e12160;
+}
+.pets-movie-list .view-filter .filter-order .slash{
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 6px;
+    float: left;
+    color: #999;
+}
+.pets-movie-list .view-filter .filter-order .active{
+    color: #ffffff;
+    background-color: #3a87ad;
+    font-weight: 700;
+    cursor: default;
+}
+.pets-movie-list .view-filter .filter-order .active:hover{
+    color: #ffffff;
+    background-color: #3a87ad;
+    font-weight: 700;
+    cursor: default;
+}
+.pets-movie-list .view-filter .filter-order em{
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    padding: 0 6px;
+}
+.pets-movie-list .view-filter .filter-view-mode {
+    float: right;
+    height: 30px;
+    line-height: 30px;
+    width: 200px;
+}
+.pets-movie-list .view-filter .filter-view-mode a {
+    display: block;
+    float: right;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    text-decoration: none;
+}
+.pets-movie-list .view-filter .filter-view-mode a:hover {
+    background-color: #eee;
+}
+.pets-movie-list .view-filter .filter-view-mode a:hover > [class^="mode-text"] {
+    color: #e12160;
+}
+.pets-movie-list .view-filter .filter-view-mode .active {
+    background-color: #3a87ad;
+    color: #ffffff;
+    font-weight: 700;
+    cursor: default;
+}
+.pets-movie-list .view-filter .filter-view-mode .active:hover {
+    background-color: #3a87ad;
+    font-weight: 700;
+    cursor: default;
+}
+.pets-movie-list .view-filter .filter-view-mode .active:hover > [class^="mode-text"] {
+    color: #ffffff!important;
+}
+.pets-movie-list .view-filter .filter-view-mode .active  > [class^="icon-"] {
+    background-image: url("../img/glyphicons-halflings-white.png");
+}
+.pets-movie-list .filter-view-mode .mode-text {
+    color: #000000;
+}
+.pets-movie-list .filter-view-mode .mode-pic {
+    background-position: -216px 0;
+}
+.pets-movie-list .filter-view-mode .mode-list {
+    background-position: -264px 0;
+}
+.pets-movie-list .view-filter .filter-view-mode .active .mode-text{
+    color: #ffffff;
+    font-weight: 700;
+}
