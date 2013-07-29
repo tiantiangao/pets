@@ -169,3 +169,44 @@
     color: #ffffff;
     font-weight: 700;
 }
+
+.pets-movie-list .pets-movie-row {
+    margin-top: 10px;
+    padding-top: 5px;
+    margin-left: 10px;
+    border-top: 1px dotted #ccc;
+    float: left;
+}
+.pets-movie-list .pets-movie-row .pets-movie{
+    float: left;
+    padding: 8px;
+    border: 1px solid #fff;
+}
+.pets-movie-list .pets-movie-row .pets-movie:hover{
+    border: 1px solid #18c2c8;
+}
+.pets-movie-list .pets-movie-row .pets-movie a{
+    cursor: pointer;
+}
+.pets-movie-list .pets-movie-row .pets-movie-title{
+    width: 150px;
+    padding: 5px 0;
+}
+.pets-movie-list .pets-movie-row .pets-movie-title a{
+    color: #000000;
+    text-decoration: none;
+}
+.pets-movie-list .pets-movie-row .pets-movie-title a:hover{
+    color: #e12160;
+    text-decoration: underline;
+}
+.pets-movie-list .pets-movie-row .pets-movie-desc{
+    width: 150px;
+    height: 50px;
+    line-height: 18px;
+    font-size: 12px;
+    word-wrap: break-word;
+    word-break: break-all;
+    color: #999;
+    overflow: hidden;
+}

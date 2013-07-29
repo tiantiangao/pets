@@ -55,7 +55,7 @@
 <!-- 主体 -->
 ${body}
 <!-- 页脚 -->
-<div class="container">
+<div class="container pets-footer">
     <div class="row-fluid text-center">
         <div class="copyright">©2013-2023 hachipets.com All Rights Reserved. Hachi宠物网 版权所有</div>
     </div>
