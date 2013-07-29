@@ -47,6 +47,7 @@
 	font-weight: bold;
 	padding: 0px;
 	width: 45px;
+    color: #909090;
 }
 .pets-movie-nav .nav-filter-list .nav-filter .active {
 	background-color: #eee;

@@ -1,3 +1,15 @@
+.navbar .nav > li > a {
+    color: #000!important;
+}
+.navbar .brand {
+    color: #000!important;
+}
+.nav-list > li > a {
+    color: #555555!important;
+}
+.nav-list > li > a:hover {
+    color: #e12160!important;
+}
 .pets-header a{
     color: #61646e!important;
 }
@@ -9,7 +21,7 @@
     color: #999;
 }
 .pets-divider-vertical{
-    padding: 0 5px
+    padding: 0 5px;
     color: #BFBFBF;
 }
 .pets-nav a:hover{
