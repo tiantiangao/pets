@@ -210,3 +210,21 @@
     color: #999;
     overflow: hidden;
 }
+
+.pets-movie-recommend {
+    margin-bottom: 10px;
+    text-align: center;
+}
+.pets-movie-recommend .recommend-movie-title{
+    margin: 5px 0;
+}
+.pets-movie-recommend .recommend-movie-title a{
+    color: #000000;
+    font-weight: 700;
+}
+.pets-movie-recommend .recommend-movie-title a:hover {
+    color: #e12160;
+}
+.pets-movie-recommend .recommend-movie-desc{
+    text-align: left;
+}
