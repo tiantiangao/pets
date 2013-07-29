@@ -1,0 +1,68 @@
+.pets-movie-container {
+	padding: 10px 5px; 
+	border: 1px solid #ddd; 
+	-webkit-border-radius: 4px; 
+	-moz-border-radius: 4px; 
+	border-radius: 4px;
+}
+.pets-movie-nav {
+	padding-left: 20px;
+}
+
+.pets-movie-nav .nav-title {
+	height: 30px;
+	line-height: 30px;
+	overflow: hidden;
+	padding: 5px 0 7px 0;
+	border-bottom: 1px dotted #ddd;
+}
+.pets-movie-nav .nav-title h3 {
+	display: block;
+	margin: 0;
+	padding: 0;
+	color: #e12160;
+	font-weight: 700;
+	float: left;
+	font-size: 14px;
+}
+
+.pets-movie-nav .nav-filter-list .nav-filter {
+	border-bottom: 1px dotted #eee;
+}
+.pets-movie-nav .nav-filter-list .nav-filter ul {
+	margin-top: 10px;
+}
+.pets-movie-nav .nav-filter-list .nav-filter li {
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	padding: 2px 10px;
+}
+.pets-movie-nav .nav-filter-list .nav-filter li:hover{
+	background-color: #eee;
+	cursor: pointer;
+	color: #e12160;
+}
+.pets-movie-nav .nav-filter-list .nav-filter .filter-name{
+	font-weight: bold;
+	padding: 0px;
+	width: 45px;
+}
+.pets-movie-nav .nav-filter-list .nav-filter .active {
+	background-color: #eee;
+	cursor: default;
+	color: #e12160;
+}
+.pets-movie-nav .nav-filter-list .nav-filter .active:hover{
+	cursor: default;
+}
+.pets-movie-nav .nav-filter-list .last {
+	border-bottom: none;
+}
+.pets-movie-nav .nav-filter-list .last ul {
+	margin-bottom: 0px;
+}
+
+.pets-movie-list {
+	margin-top: 10px;
+}
