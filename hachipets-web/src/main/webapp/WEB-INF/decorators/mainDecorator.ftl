@@ -46,9 +46,6 @@
                 <li><a href="/media" <#if channel=="media">class="active"</#if>>宠物影视</a></li>
                 <li><a href="/bbs" <#if channel=="bbs">class="active"</#if>>宠物社区</a></li>
             </ul>
-            <form class="navbar-search pull-right">
-                <input type="text" class="search-query" placeholder="搜索">
-            </form>
         </div>
     </div>
 </div>
