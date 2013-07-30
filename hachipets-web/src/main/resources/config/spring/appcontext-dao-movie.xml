@@ -34,4 +34,13 @@
         </property>
     </bean>
 
+    <bean id="petsMovieHotDao" parent="parentDao">
+        <property name="proxyInterfaces" value="com.gtt.pets.dao.movie.PetsMovieHotDao" />
+        <property name="target">
+            <bean parent="Kenshin.daoRealizeTarget">
+                <constructor-arg value="PetsMovieHot" />
+            </bean>
+        </property>
+    </bean>
+
 </beans>
