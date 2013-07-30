@@ -16,7 +16,7 @@
 
 	<properties>
 		<env>dev</env>
-		<struts.version>2.3.4</struts.version>
+		<struts.version>2.3.15.1</struts.version>
 	</properties>
 
 	<dependencies>
