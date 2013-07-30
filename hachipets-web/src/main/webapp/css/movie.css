@@ -228,3 +228,6 @@
 .pets-movie-recommend .recommend-movie-desc{
     text-align: left;
 }
+.pets-movie-hot {
+    margin: 5px 0 10px 0;
+}
