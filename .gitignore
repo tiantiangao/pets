@@ -1,8 +1,13 @@
 /.settings
-/target
+target/
 /.classpath
 /.project
 .idea/
+.idea/*
 *.iml
 META-INF/
 out/
+.idea
+*.iml
+*.ipr
+*.iws
