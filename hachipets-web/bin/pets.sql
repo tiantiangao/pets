@@ -48,3 +48,11 @@ CREATE TABLE `Pets_Movie_Hot` (
   PRIMARY KEY  (`id`),
   KEY `IX_Hot_MovieID` (`hot`, `movieId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `Pets_Movie_Recommend` (
+  `id` int(11) NOT NULL auto_increment COMMENT '自增主键',
+  `movieId` int(11) NOT NULL COMMENT '宠物电影信息记录ID',
+  `addTime` datetime default NULL COMMENT '推荐日期',
+  PRIMARY KEY  (`id`),
+  KEY `IX_Date_MovieID` (`addTime`, `movieId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
