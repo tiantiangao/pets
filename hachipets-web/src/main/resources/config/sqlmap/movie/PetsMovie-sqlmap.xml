@@ -25,6 +25,17 @@
         ]]>
     </select>
 
+    <select id="findByIdList" resultMap="PetsMovieResult" parameterClass="map">
+        <![CDATA[
+		SELECT id, `name`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `addTime`
+		FROM Pets_Movie
+		WHERE id in
+        ]]>
+        <iterate property="idList" conjunction="," open="(" close=")">
+            #idList[]#
+        </iterate>
+    </select>
+
 	<select id="findMovieList" resultMap="PetsMovieResult" parameterClass="map">
         <![CDATA[
 		SELECT id, `name`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `addTime`

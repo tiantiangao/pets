@@ -6,6 +6,7 @@ import com.gtt.pets.entity.movie.PetsMovie;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,6 +39,19 @@ public class PetsMovieDaoTest extends AbstractTest {
         PetsMovie movie = petsMovieDao.loadById(id);
         notNull(movie);
         print(movie);
+    }
+
+    @Test
+    public void testFindByList(){
+        List<Integer> idList = new ArrayList<Integer>();
+        idList.add(1);
+        idList.add(2);
+        List<PetsMovie> petsMovieList = petsMovieDao.findByIdList(idList);
+        notNull(petsMovieList);
+        for (PetsMovie petsMovie : petsMovieList) {
+            print(petsMovie);
+        }
+
     }
 
     private void print(PetsMovie movie) {
