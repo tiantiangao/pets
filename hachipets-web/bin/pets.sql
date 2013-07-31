@@ -56,3 +56,6 @@ CREATE TABLE `Pets_Movie_Recommend` (
   PRIMARY KEY  (`id`),
   KEY `IX_Date_MovieID` (`addTime`, `movieId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `Pets_Movie_Recommend` (`movieId`, `addTime`)
+  VALUES (1, NOW());
+

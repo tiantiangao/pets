@@ -268,7 +268,7 @@
 <div class="span3">
     <div class="pets-movie-recommend pets-movie-container">
         <ul class="nav nav-list">
-            <li class="nav-header"><h5>宠物电影推荐</h5></li>
+            <li class="nav-header"><h5>优秀宠物电影推荐</h5></li>
             <li>
                 <div class="recommend-movie">
                     <a href="#"><img alt="300x200" style="width: 228px; height: 334;" src="http://pic.qire123.com/myupload/10am30PRC2010-04-10/4bbf7cb63d231.jpg"></a>
