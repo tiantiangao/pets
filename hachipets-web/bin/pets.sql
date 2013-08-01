@@ -17,9 +17,17 @@ CREATE TABLE `Pets_Movie` (
   `region` varchar(15) default NULL COMMENT '影片地区',
   `length` smallint(6) default NULL COMMENT '影片片长',
   `release` datetime default NULL COMMENT '影片上映日期',
+  `year` smallint(6) default NULL COMMENT '影片所属年代',
   `addTime` datetime default NULL COMMENT '记录添加时间',
   PRIMARY KEY  (`id`),
-  KEY `IX_AddTime` (`addTime`)
+  KEY `IX_Name` (`name`),
+  KEY `IX_Release` (`release`),
+  KEY `IX_Region_Name` (`region`,`name`),
+  KEY `IX_Region_Release` (`region`,`release`),
+  KEY `IX_Year_Name` (`year`,`name`),
+  KEY `IX_Year_Release` (`year`,`release`),
+  KEY `IX_Region_Year_Name` (`region`, `year`,`name`),
+  KEY `IX_Region_Year_Release` (`region`, `year`,`release`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 insert into `Pets_Movie` (`id`, `name`, `desc`, `director`, `actor`, `region`, `length`, `release`, `addTime`) values('1','忠犬八公的故事','理察基尔饰演的大学教授帕克在小镇在车站上偶遇一只可怜的小秋田犬，它孤苦无依的身影惹起他的怜 悯，虽然妻子（琼·艾伦饰）极力反对，并想尽办法要把它送走，但看到丈夫和女儿对它无微不至照顾和由衷喜爱，终于决定让它成为家庭一员，帕克为它取名“八公”。','莱塞·霍尔斯道姆','理查·基尔 | 萨拉·罗默尔 | 琼·艾伦','美国','93','2009-12-18 00:00:00','2013-07-28 20:56:05');
 
