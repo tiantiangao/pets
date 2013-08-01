@@ -42,6 +42,14 @@
 		SELECT id, `name`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `year`, `addTime`
 		FROM Pets_Movie
         ]]>
+        <dynamic prepend="where">
+            <isNotEmpty property="region" prepend="and">
+                `region` = #region#
+            </isNotEmpty>
+            <isGreaterThan property="year" compareValue="0" prepend="and">
+                `year` = #year#
+            </isGreaterThan>
+        </dynamic>
         <isNotEmpty property="sort">
 		ORDER BY #sort#
         <isEqual property="asc" compareValue="true"> asc </isEqual>
@@ -52,6 +60,14 @@
     <select id="findMovieList_COUNT" resultClass="java.lang.Integer" parameterClass="map">
         SELECT count(1)
         FROM Pets_Movie
+        <dynamic prepend="where">
+            <isNotEmpty property="region" prepend="and">
+                `region` = #region#
+            </isNotEmpty>
+            <isGreaterThan property="year" compareValue="0" prepend="and">
+                `year` = #year#
+            </isGreaterThan>
+        </dynamic>
     </select>
 
 </sqlMap>
