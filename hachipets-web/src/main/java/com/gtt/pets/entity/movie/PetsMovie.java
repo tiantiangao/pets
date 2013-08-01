@@ -45,6 +45,10 @@ public class PetsMovie extends BaseEntity {
      * 影片上映日期
      */
     private Date release;
+	/**
+	 * 所属年代
+	 */
+	private int year;
 
     public String getName() {
         return name;
@@ -109,4 +113,12 @@ public class PetsMovie extends BaseEntity {
     public void setRelease(Date release) {
         this.release = release;
     }
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
 }

@@ -14,12 +14,13 @@
         <result property="region" column="region" />
         <result property="length" column="length" />
         <result property="release" column="release" />
+        <result property="year" column="year" />
         <result property="addTime" column="addTime" />
     </resultMap>
 
     <select id="loadById" resultMap="PetsMovieResult" parameterClass="map">
         <![CDATA[
-		SELECT id, `name`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `addTime`
+		SELECT id, `name`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `year`, `addTime`
 		FROM Pets_Movie
 		WHERE id = #id#
         ]]>
@@ -27,7 +28,7 @@
 
     <select id="findByIdList" resultMap="PetsMovieResult" parameterClass="map">
         <![CDATA[
-		SELECT id, `name`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `addTime`
+		SELECT id, `name`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `year`, `addTime`
 		FROM Pets_Movie
 		WHERE id in
         ]]>
@@ -38,7 +39,7 @@
 
 	<select id="findMovieList" resultMap="PetsMovieResult" parameterClass="map">
         <![CDATA[
-		SELECT id, `name`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `addTime`
+		SELECT id, `name`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `year`, `addTime`
 		FROM Pets_Movie
         ]]>
         <isNotEmpty property="sort">
