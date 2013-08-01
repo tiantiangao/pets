@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>com.gtt</groupId>
-		<artifactId>kenshin</artifactId>
-		<version>1.0.0</version>
-	</parent>
+    <parent>
+        <groupId>com.gtt</groupId>
+        <artifactId>kenshin</artifactId>
+        <version>1.0.0</version>
+    </parent>
 
-	<groupId>com.gtt</groupId>
-	<artifactId>hachipets-web</artifactId>
-	<version>1.0.0</version>
-	<packaging>war</packaging>
+    <groupId>com.gtt</groupId>
+    <artifactId>hachipets-web</artifactId>
+    <version>1.0.0</version>
+    <packaging>war</packaging>
 
-	<properties>
-		<env>dev</env>
-		<struts.version>2.3.15.1</struts.version>
-	</properties>
+    <properties>
+        <env>dev</env>
+        <struts.version>2.3.15.1</struts.version>
+        <mockito.version>1.8.5</mockito.version>
+        <powermock.version>1.4.10</powermock.version>
+    </properties>
 
-	<dependencies>
+    <dependencies>
 
-		<dependency>
-			<groupId>com.gtt</groupId>
-			<artifactId>kenshin-dao</artifactId>
-			<version>1.0.0</version>
-		</dependency>
+        <dependency>
+            <groupId>com.gtt</groupId>
+            <artifactId>kenshin-dao</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
         <dependency>
             <groupId>com.gtt</groupId>
@@ -33,77 +35,70 @@
             <version>1.0.0</version>
         </dependency>
 
-		<dependency>
-			<groupId>org.apache.struts</groupId>
-			<artifactId>struts2-spring-plugin</artifactId>
-			<version>${struts.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.struts</groupId>
-			<artifactId>struts2-json-plugin</artifactId>
-			<version>${struts.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.tuckey</groupId>
-			<artifactId>urlrewrite</artifactId>
-			<version>3.2.0</version>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.servlet</groupId>
-					<artifactId>servlet-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>ant</groupId>
-					<artifactId>ant</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<dependency>
-			<groupId>opensymphony</groupId>
-			<artifactId>sitemesh</artifactId>
-			<version>2.4.2</version>
-		</dependency>
-
-		<dependency>
-			<groupId>taglibs</groupId>
-			<artifactId>standard</artifactId>
-			<version>1.1.2</version>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.1.2</version>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>2.0</version>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.servlet</groupId>
-					<artifactId>servlet-api</artifactId>
-				</exclusion>
-			</exclusions>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>${servlet.version}</version>
-			<scope>provided</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-spring-plugin</artifactId>
+            <version>${struts.version}</version>
+        </dependency>
 
         <dependency>
-            <groupId>com.gtt</groupId>
-            <artifactId>kenshin-test</artifactId>
-            <version>1.0.0</version>
-            <scope>test</scope>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-json-plugin</artifactId>
+            <version>${struts.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.tuckey</groupId>
+            <artifactId>urlrewrite</artifactId>
+            <version>3.2.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>servlet-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ant</groupId>
+                    <artifactId>ant</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>opensymphony</groupId>
+            <artifactId>sitemesh</artifactId>
+            <version>2.4.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>servlet-api</artifactId>
+                </exclusion>
+            </exclusions>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servlet.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -112,34 +107,60 @@
             <version>2.2.2</version>
         </dependency>
 
+        <!-- Test -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4</artifactId>
+            <version>${powermock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito</artifactId>
+            <version>${powermock.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
-	<build>
-		<filters>
-			<filter>src/main/filters/config-${env}.properties</filter>
-		</filters>
+    <build>
+        <filters>
+            <filter>src/main/filters/config-${env}.properties</filter>
+        </filters>
 
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-		<testResources>
-			<testResource>
-				<directory>src/test/resources</directory>
-				<filtering>true</filtering>
-			</testResource>
-		</testResources>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<argLine>-Dfile.encoding=utf8</argLine>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>-Dfile.encoding=utf8</argLine>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

@@ -1,7 +1,7 @@
 package com.gtt.pets.dao.movie;
 
 import com.gtt.kenshin.dao.model.PageModel;
-import com.gtt.kenshin.test.base.AbstractTest;
+import com.gtt.pets.dao.AbstractTest;
 import com.gtt.pets.entity.movie.PetsMovie;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

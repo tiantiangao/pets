@@ -1,6 +1,9 @@
 package com.gtt.pets.service.impl.media;
 
+import com.gtt.kenshin.cache.CacheKey;
+import com.gtt.kenshin.cache.CacheService;
 import com.gtt.kenshin.dao.model.PageModel;
+import com.gtt.pets.bean.CacheKeyHolder;
 import com.gtt.pets.bean.media.PetsMovieDTO;
 import com.gtt.pets.dao.movie.PetsMovieDao;
 import com.gtt.pets.dao.movie.PetsMovieHotDao;
@@ -32,15 +35,33 @@ public class PetsMediaServiceImpl implements PetsMediaService {
     @Autowired
     private PetsMovieHotDao petsMovieHotDao;
 
+    @Autowired
+    private CacheService cacheService;
+
     @Override
     public PetsMovieDTO loadByMovieID(int movieId) {
         if (movieId < 1) {
             return null;
         }
 
+        // load from cache
+        CacheKey cacheKey = new CacheKey(CacheKeyHolder.MOVIE, movieId);
+        PetsMovieDTO dto = cacheService.get(cacheKey);
+        if (dto != null) {
+            return dto;
+        }
+
+        // no cache, load from db
         PetsMovie petsMovie = petsMovieDao.loadById(movieId);
-        PetsMovieDTO dto = new PetsMovieDTO();
+        if (petsMovie == null) {
+            return null;
+        }
+        dto = new PetsMovieDTO();
         BeanUtils.copyProperties(petsMovie, dto);
+
+        // add cache
+        cacheService.add(cacheKey, dto);
+
         return dto;
     }
 
