@@ -1,9 +1,8 @@
 package com.gtt.pets.dao.movie;
 
+import com.gtt.pets.dao.AbstractTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.gtt.kenshin.test.base.AbstractTest;
 
 /**
  * Created with IntelliJ IDEA. User: gtt Date: 13-7-28 Time: 下午9:30 To change
@@ -11,16 +10,16 @@ import com.gtt.kenshin.test.base.AbstractTest;
  */
 public class PetsMovieRecommendDaoTest extends AbstractTest {
 
-	@Autowired
-	private PetsMovieRecommendDao petsMovieRecommendDao;
+    @Autowired
+    private PetsMovieRecommendDao petsMovieRecommendDao;
 
-	@Test
-	public void test() {
-		notNull(petsMovieRecommendDao);
+    @Test
+    public void test() {
+        notNull(petsMovieRecommendDao);
 
-		Integer movieID = petsMovieRecommendDao.findRecommendMovieID();
-		notNull(movieID);
-		System.out.println(movieID);
-	}
+        Integer movieID = petsMovieRecommendDao.findRecommendMovieID();
+        notNull(movieID);
+        System.out.println(movieID);
+    }
 
 }

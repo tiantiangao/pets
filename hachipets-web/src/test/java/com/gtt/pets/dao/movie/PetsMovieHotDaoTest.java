@@ -1,11 +1,10 @@
 package com.gtt.pets.dao.movie;
 
-import java.util.List;
-
+import com.gtt.pets.dao.AbstractTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.gtt.kenshin.test.base.AbstractTest;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA. User: gtt Date: 13-7-28 Time: 下午9:30 To change

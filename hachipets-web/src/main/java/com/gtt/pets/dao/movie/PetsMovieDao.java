@@ -7,6 +7,8 @@ import com.gtt.kenshin.dao.annotation.DaoParam;
 import com.gtt.kenshin.dao.model.PageModel;
 import com.gtt.pets.entity.movie.PetsMovie;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: gtt
@@ -21,5 +23,8 @@ public interface PetsMovieDao extends GenericDao {
 
     @DaoAction(action = DaoActionType.PAGE)
     PageModel findMovieList(@DaoParam("sort") String sort, @DaoParam("asc") boolean asc, @DaoParam("page") int page, @DaoParam("max") int max);
+
+    @DaoAction(action = DaoActionType.QUERY)
+    List<PetsMovie> findByIdList(@DaoParam("idList") List<Integer> idList);
 
 }

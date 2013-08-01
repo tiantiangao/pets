@@ -1,6 +1,6 @@
 package com.gtt.pets.dao.movie;
 
-import com.gtt.kenshin.test.base.AbstractTest;
+import com.gtt.pets.dao.AbstractTest;
 import com.gtt.pets.entity.movie.PetsMovieInfo;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
