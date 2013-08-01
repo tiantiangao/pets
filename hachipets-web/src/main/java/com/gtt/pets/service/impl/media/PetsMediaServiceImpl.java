@@ -1,5 +1,13 @@
 package com.gtt.pets.service.impl.media;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
 import com.gtt.kenshin.cache.CacheKey;
 import com.gtt.kenshin.cache.CacheService;
 import com.gtt.kenshin.dao.model.PageModel;
@@ -12,13 +20,6 @@ import com.gtt.pets.dao.movie.PetsMovieHotDao;
 import com.gtt.pets.dao.movie.PetsMovieRecommendDao;
 import com.gtt.pets.entity.movie.PetsMovie;
 import com.gtt.pets.service.media.PetsMediaService;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA. User: gtt Date: 13-7-28 Time: 下午3:19 To change
@@ -44,6 +45,7 @@ public class PetsMediaServiceImpl implements PetsMediaService {
 		}
 
 		try {
+
 			// load from cache
 			CacheKey cacheKey = new CacheKey(CacheKeyHolder.MOVIE, movieId);
 			PetsMovieDTO dto = cacheService.get(cacheKey);
@@ -70,12 +72,17 @@ public class PetsMediaServiceImpl implements PetsMediaService {
 
 	@Override
 	public List<PetsMovieDTO> findByMovieIDList(List<Integer> movieIdList) {
-		if (CollectionUtils.isEmpty(movieIdList)) {
+		try {
+			if (CollectionUtils.isEmpty(movieIdList)) {
+				return new ArrayList<PetsMovieDTO>();
+			}
+
+			List<PetsMovie> movieList = petsMovieDao.findByIdList(movieIdList);
+			return toDTOList(movieList);
+		} catch (Exception e) {
+			LOGGER.error("find by movie id list failed", e);
 			return new ArrayList<PetsMovieDTO>();
 		}
-
-		List<PetsMovie> movieList = petsMovieDao.findByIdList(movieIdList);
-		return toDTOList(movieList);
 	}
 
 	@Override
@@ -84,86 +91,112 @@ public class PetsMediaServiceImpl implements PetsMediaService {
 			return new PageModel();
 		}
 
-		PageModel model = petsMovieDao.findMovieList(region, year, sortBy, asc, page, max);
-		if (model == null || CollectionUtils.isEmpty(model.getRecords())) {
+		try {
+
+			PageModel model = petsMovieDao.findMovieList(region, year, sortBy, asc, page, max);
+			if (model == null || CollectionUtils.isEmpty(model.getRecords())) {
+				return new PageModel();
+			}
+
+			List<PetsMovie> records = (List<PetsMovie>) model.getRecords();
+			model.setRecords(toDTOList(records));
+			return model;
+		} catch (Exception e) {
+			LOGGER.error("find movie list failed", e);
 			return new PageModel();
 		}
-
-		List<PetsMovie> records = (List<PetsMovie>) model.getRecords();
-		model.setRecords(toDTOList(records));
-		return model;
 	}
 
 	@Override
 	public List<PetsMovieDTO> findHotMovieList() {
 
-		// load from cache
-		CacheKey hotMovieListCacheKey = new CacheKey(CacheKeyHolder.MOVIE_HOT_LIST);
-		List<PetsMovieDTO> hotMovieList = cacheService.get(hotMovieListCacheKey);
-		if (hotMovieList != null) {
-			return hotMovieList;
-		}
+		try {
 
-		// no cache, load from db
-		List<Integer> hotMovieIDList = petsMovieHotDao.findHotList();
-		if (CollectionUtils.isEmpty(hotMovieIDList)) {
-			hotMovieList = new ArrayList<PetsMovieDTO>();
-		} else {
-			hotMovieList = findByMovieIDList(hotMovieIDList);
-			if (hotMovieList == null) {
-				hotMovieList = new ArrayList<PetsMovieDTO>();
+			// load from cache
+			CacheKey hotMovieListCacheKey = new CacheKey(CacheKeyHolder.MOVIE_HOT_LIST);
+			List<PetsMovieDTO> hotMovieList = cacheService.get(hotMovieListCacheKey);
+			if (hotMovieList != null) {
+				return hotMovieList;
 			}
-		}
 
-		// add cache
-		cacheService.add(hotMovieListCacheKey, hotMovieList);
-		return hotMovieList;
+			// no cache, load from db
+			List<Integer> hotMovieIDList = petsMovieHotDao.findHotList();
+			if (CollectionUtils.isEmpty(hotMovieIDList)) {
+				hotMovieList = new ArrayList<PetsMovieDTO>();
+			} else {
+				hotMovieList = findByMovieIDList(hotMovieIDList);
+				if (hotMovieList == null) {
+					hotMovieList = new ArrayList<PetsMovieDTO>();
+				}
+			}
+
+			// add cache
+			cacheService.add(hotMovieListCacheKey, hotMovieList);
+			return hotMovieList;
+		} catch (Exception e) {
+			LOGGER.error("find hot movie list failed", e);
+			return new ArrayList<PetsMovieDTO>();
+		}
 	}
 
 	@Override
 	public List<PetsMovieDTO> findNewMovieList() {
-		// load from cache
-		CacheKey newMovieListCacheKey = new CacheKey(CacheKeyHolder.MOVIE_NEW_LIST);
-		List<PetsMovieDTO> newMovieList = cacheService.get(newMovieListCacheKey);
-		if (newMovieList != null) {
+
+		try {
+
+			// load from cache
+			CacheKey newMovieListCacheKey = new CacheKey(CacheKeyHolder.MOVIE_NEW_LIST);
+			List<PetsMovieDTO> newMovieList = cacheService.get(newMovieListCacheKey);
+			if (newMovieList != null) {
+				return newMovieList;
+			}
+
+			// no cache, load from db
+			PageModel pageModel = petsMovieDao.findMovieList(null, 0, "release", false, 1, 10);
+			if (pageModel == null || CollectionUtils.isEmpty(pageModel.getRecords())) {
+				newMovieList = new ArrayList<PetsMovieDTO>();
+			} else {
+				List<PetsMovie> records = (List<PetsMovie>) pageModel.getRecords();
+				newMovieList = toDTOList(records);
+			}
+
+			// add cache
+			cacheService.add(newMovieListCacheKey, newMovieList);
+
 			return newMovieList;
+		} catch (Exception e) {
+			LOGGER.error("find new movie list failed", e);
+			return new ArrayList<PetsMovieDTO>();
 		}
-
-		// no cache, load from db
-		PageModel pageModel = petsMovieDao.findMovieList(null, 0, "release", false, 1, 10);
-		if (pageModel == null || CollectionUtils.isEmpty(pageModel.getRecords())) {
-			newMovieList = new ArrayList<PetsMovieDTO>();
-		} else {
-			List<PetsMovie> records = (List<PetsMovie>) pageModel.getRecords();
-			newMovieList = toDTOList(records);
-		}
-
-		// add cache
-		cacheService.add(newMovieListCacheKey, newMovieList);
-
-		return newMovieList;
 	}
 
 	@Override
 	public PetsMovieDTO findRecommendMovie() {
-		// load from cache
-		CacheKey recommendMovieCacheKey = new CacheKey(CacheKeyHolder.MOVIE_RECOMMEND);
-		PetsMovieDTO recommendMovieDTO = cacheService.get(recommendMovieCacheKey);
-		if (recommendMovieDTO != null) {
-			return recommendMovieDTO;
-		}
 
-		// no cache, load from db
-		Integer recommendMovieID = petsMovieRecommendDao.findRecommendMovieID();
-		if (recommendMovieID == null) {
+		try {
+
+			// load from cache
+			CacheKey recommendMovieCacheKey = new CacheKey(CacheKeyHolder.MOVIE_RECOMMEND);
+			PetsMovieDTO recommendMovieDTO = cacheService.get(recommendMovieCacheKey);
+			if (recommendMovieDTO != null) {
+				return recommendMovieDTO;
+			}
+
+			// no cache, load from db
+			Integer recommendMovieID = petsMovieRecommendDao.findRecommendMovieID();
+			if (recommendMovieID == null) {
+				return null;
+			}
+
+			recommendMovieDTO = loadByMovieID(recommendMovieID);
+
+			// add cache
+			cacheService.add(recommendMovieCacheKey, recommendMovieDTO);
+			return recommendMovieDTO;
+		} catch (Exception e) {
+			LOGGER.error("find recommend movie failed", e);
 			return null;
 		}
-
-		recommendMovieDTO = loadByMovieID(recommendMovieID);
-
-		// add cache
-		cacheService.add(recommendMovieCacheKey, recommendMovieDTO);
-		return recommendMovieDTO;
 	}
 
 	/**
