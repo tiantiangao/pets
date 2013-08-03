@@ -85,15 +85,16 @@
     height: 87px;
     border: 1px solid #eee;
     margin-left: 10px;
+    padding: 10px;
 }
 .pets-movie-play .tips {
-    height: 40px;
+    height: 35px;
     line-height: 40px;
-    padding-left: 10px;
-    margin-bottom: 2px;
+    margin-bottom: 15px;
     font-weight: 600;
     font-size: 18px;
     color: #666;
+    border-bottom: 1px dotted #ddd;
 }
 .pets-movie-play .play-list {
     height: 35px;
@@ -107,7 +108,7 @@
     border: 1px solid #eee;
     background-color: #eee;
     padding-left: 20px;
-    margin: 0 10px 0;
+    margin: 0 25px 0 0;
     color: #6FAC6F;
     text-decoration: none;
 }
@@ -149,11 +150,12 @@
     padding: 10px;
 }
 .pets-movie-other .tips {
-     height: 40px;
+     height: 35px;
      line-height: 40px;
-     margin-bottom: 2px;
+     margin-bottom: 15px;
      font-size: 14px;
      color: #666;
+    border-bottom: 1px dotted #ddd;
  }
 .pets-movie-other .other-list {
     height: 260px;
