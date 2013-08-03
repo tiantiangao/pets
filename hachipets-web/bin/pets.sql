@@ -44,7 +44,7 @@ CREATE TABLE `Pets_Movie_Info` (
 CREATE TABLE `Pets_Movie_Play` (
   `id` int(11) NOT NULL auto_increment COMMENT '自增主键',
   `movieId` int(11) NOT NULL COMMENT '宠物电影信息记录ID',
-  `playType` tinyint(4) NOT NULL COMMENT '宠物电影播放网站类型(优酷、土豆、爱奇艺等)',
+  `playType` tinyint(4) NOT NULL COMMENT '宠物电影播放网站类型(1-优酷，2-土豆，3-爱奇艺, 4-腾讯, 5-PPTV, 6-乐视等)',
   `address` varchar(100) NOT NULL COMMENT '宠物电影播放网站关联地址',
   PRIMARY KEY  (`id`),
   KEY `IX_MovieID` (`movieId`)

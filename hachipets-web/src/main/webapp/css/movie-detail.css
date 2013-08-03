@@ -77,4 +77,116 @@
 }
 .pets-movie-info .pets-movie-info-desc {
     line-height: 24px;
+    height: 118px;
+    overflow: hidden;
+}
+
+.pets-movie-play {
+    height: 87px;
+    border: 1px solid #eee;
+    margin-left: 10px;
+}
+.pets-movie-play .tips {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    margin-bottom: 2px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #666;
+}
+.pets-movie-play .play-list {
+    height: 35px;
+}
+.pets-movie-play .play {
+    display: block;
+    float: left;
+    width: 85px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #eee;
+    background-color: #eee;
+    padding-left: 20px;
+    margin: 0 10px 0;
+    color: #6FAC6F;
+    text-decoration: none;
+}
+.pets-movie-play .play:hover {
+    /*background-color: #eee;*/
+    border: 1px solid #e12160;
+    color: #e12160;
+    cursor: pointer;
+}
+.pets-movie-play .play i{
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin: 5px 5px 0 0;
+    background: url("../img/play.gif") no-repeat 7px 0;
+}
+.pets-movie-play .play .youku {
+    background-position: -120px 0;
+}
+.pets-movie-play .play .tudou{
+    background-position: -62px 0;
+}
+.pets-movie-play .play .qq{
+    background-position: -120px -19px;
+}
+.pets-movie-play .play .iqiyi{
+    background-position: -80px 0;
+}
+.pets-movie-play .play .pptv{
+    background-position: -62px -19px;
+}
+.pets-movie-play .play .le{
+    background-position: -80px -20px;
+}
+
+.pets-movie-other {
+    margin: 10px 0 0 10px;
+    border: 1px solid #eee;
+    padding: 10px;
+}
+.pets-movie-other .tips {
+     height: 40px;
+     line-height: 40px;
+     margin-bottom: 2px;
+     font-size: 14px;
+     color: #666;
+ }
+.pets-movie-other .other-list {
+    height: 260px;
+}
+.pets-movie-other .other-movie{
+    width: 160px;
+    height: 265px;
+    overflow: hidden;
+    float: left;
+    margin: 0 14px;
+}
+.pets-movie-other .other-movie img{
+    padding: 3px;
+    border: 1px solid #eee;
+    width: 150px;
+    height: 220px;
+}
+.pets-movie-other .other-movie img:hover{
+    border-color: #18c2c8;
+    cursor: pointer;
+}
+.pets-movie-other .other-movie .name{
+    display: block;
+    width: 160px;
+    height: 25px;
+    line-height: 25px;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 5px;
+    padding: 2px;
+}
+.pets-movie-other .other-movie .name:hover{
+    color: #e12160;
+    text-decoration: underline;
 }
