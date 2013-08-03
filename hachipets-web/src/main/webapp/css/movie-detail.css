@@ -1,0 +1,80 @@
+.pets-movie-container {
+	padding: 10px 5px; 
+	border: 1px solid #ddd; 
+	-webkit-border-radius: 4px; 
+	-moz-border-radius: 4px; 
+	border-radius: 4px;
+}
+.pets-movie-detail {
+    padding: 10px;
+    height: 390px;
+}
+.pets-movie-title {
+    font-weight: 700;
+    font-size: 25px;
+    color: #494949;
+    line-height: 30px;
+    padding: 5px 0 20px;
+}
+.pets-movie-title span {
+    color: #aaa;
+}
+.pets-movie-desc {
+    height: 340px;
+}
+.pets-movie-pic {
+    width: 225px;
+    height: 317px;
+    padding: 5px;
+    border: 1px solid #eee;
+    float: left;
+}
+.pets-movie-info {
+    float: left;
+    padding-left: 15px;
+    width: 890px;
+}
+.pets-movie-info dl {
+    height: 24px;
+    line-height: 24px;
+    color: #666;
+    font-size: 14px;
+    padding: 3px 0;
+    margin: 0;
+}
+.pets-movie-info dt {
+    width: 70px;
+    float: left;
+    color: #888;
+    font-weight: normal;
+    line-height: 24px;
+    float: left;
+}
+.pets-movie-info dd {
+    color: #000;
+    float: left;
+    width: 800px;
+}
+.pets-movie-info dd a {
+    display: block;
+    float: left;
+    text-decoration: none;
+    margin-right: 10px;
+    padding: 2px 5px;
+    color: #000;
+}
+.pets-movie-info dd a.douban {
+    padding-left: 18px;
+    background: url("../img/douban.ico") no-repeat center left;
+}
+.pets-movie-info dd a.mtime{
+    padding-left: 18px;
+    background: url("../img/mtime.ico") no-repeat center left;
+}
+.pets-movie-info dd a:hover {
+    background-color: #eee;
+    color: #e12160;
+}
+.pets-movie-info .pets-movie-info-desc {
+    line-height: 24px;
+}

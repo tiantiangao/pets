@@ -3,6 +3,7 @@
 <head>
     <meta charset='utf-8'>
     <title>${title}-${projectName}</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
     <link href="css/bootstrap.css" rel="stylesheet">
