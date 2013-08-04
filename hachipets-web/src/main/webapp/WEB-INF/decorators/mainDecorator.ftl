@@ -3,11 +3,11 @@
 <head>
     <meta charset='utf-8'>
     <title>${title}-${projectName}</title>
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/header.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/header.css" rel="stylesheet">
     ${head}
 </head>
 <body>
@@ -28,7 +28,7 @@
 </div>
 <div class="container">
     <div class="row-fluid">
-        <img src="img/logo.png">
+        <img src="/img/logo.png">
     </div>
 </div>
 <!-- 导航栏 -->

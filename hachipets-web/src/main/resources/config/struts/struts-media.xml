@@ -8,6 +8,10 @@
         <action name="petsMediaAction" class="com.gtt.pets.web.action.media.PetsMediaAction">
             <result name="success" type="freemarker">/WEB-INF/pages/media/media.ftl</result>
         </action>
-        
+
+        <action name="petsMediaDetailAction" class="com.gtt.pets.web.action.media.PetsMediaDetailAction">
+            <result name="success" type="freemarker">/WEB-INF/pages/media/mediaDetail.ftl</result>
+        </action>
+
     </package>
 </struts>

@@ -49,6 +49,10 @@
         <from>^/media$</from>
         <to>/petsMediaAction.action</to>
     </rule>
+    <rule>
+        <from>^/media/([0-9]+)</from>
+        <to>/petsMediaDetailAction.action?movieId=$1</to>
+    </rule>
 
     <!-- 宠物社区 -->
     <rule>
