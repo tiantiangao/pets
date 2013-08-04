@@ -65,11 +65,11 @@
 }
 .pets-movie-info dd a.douban {
     padding-left: 18px;
-    background: url("../img/douban.ico") no-repeat center left;
+    background: url("../img/douban.png") no-repeat center left;
 }
 .pets-movie-info dd a.mtime{
     padding-left: 18px;
-    background: url("../img/mtime.ico") no-repeat center left;
+    background: url("../img/mtime.jpg") no-repeat center left;
 }
 .pets-movie-info dd a:hover {
     background-color: #eee;

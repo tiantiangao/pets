@@ -38,10 +38,21 @@
                     <dt>片&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;长：</dt>
                     <dd><#if (movie.length)?? && movie.length gt 0>${movie.length}分钟<#else>--</#if></dd>
                 </dl>
+                <#if movieInfoList?? && movieInfoList?size gt 0>
                 <dl>
                     <dt>影片介绍：</dt>
-                    <dd><a href="#" target="_blank" class="douban">豆瓣链接</a> <a href="#" target="_blank" class="mtime">Mtime链接</a></dd>
+                    <dd>
+                        <#list movieInfoList as info>
+                            <#if info.infoType ==1 >
+                                <a href="http://movie.douban.com/subject/${info.refer}" target="_blank" class="douban">豆瓣链接</a>
+                            </#if>
+                            <#if info.infoType ==2 >
+                                <a href="http://movie.mtime.com/${info.refer}" target="_blank" class="mtime">Mtime链接</a>
+                            </#if>
+                        </#list>
+                    </dd>
                 </dl>
+                </#if>
                 <dl>
                     <dt>影片详情：</dt>
                     <dd class="pets-movie-info-desc"><#if (movie.desc)?? && movie.desc!="">${movie.desc}<#else>暂无</#if></dd>

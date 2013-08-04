@@ -1,9 +1,11 @@
 package com.gtt.pets.service.media;
 
-import java.util.List;
-
 import com.gtt.kenshin.dao.model.PageModel;
 import com.gtt.pets.bean.media.PetsMovieDTO;
+import com.gtt.pets.bean.media.PetsMovieInfoDTO;
+import com.gtt.pets.bean.media.PetsMoviePlayDTO;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA. User: gtt Date: 13-7-28 Time: 下午3:19 To change
@@ -11,53 +13,70 @@ import com.gtt.pets.bean.media.PetsMovieDTO;
  */
 public interface PetsMediaService {
 
-	/**
-	 * 根据电影ID查找电影记录
-	 * 
-	 * @param movieId
-	 * @return
-	 */
-	PetsMovieDTO loadByMovieID(int movieId);
+    /**
+     * 根据电影ID查找电影记录
+     *
+     * @param movieId
+     * @return
+     */
+    PetsMovieDTO loadByMovieID(int movieId);
 
-	/**
-	 * 根据电影ID列表查找电影记录
-	 * 
-	 * @param movieIdList
-	 * @return
-	 */
-	List<PetsMovieDTO> findByMovieIDList(List<Integer> movieIdList);
+    /**
+     * 根据电影ID列表查找电影记录
+     *
+     * @param movieIdList
+     * @return
+     */
+    List<PetsMovieDTO> findByMovieIDList(List<Integer> movieIdList);
 
-	/**
-	 * 分页查找电影列表
-	 * 
-	 * @param region
-	 * @param year
-	 * @param sortBy
-	 * @param asc
-	 * @param page
-	 * @param max
-	 * @return
-	 */
-	PageModel findMovieList(String region, int year, String sortBy, boolean asc, int page, int max);
+    /**
+     * 分页查找电影列表
+     *
+     * @param region
+     * @param year
+     * @param sortBy
+     * @param asc
+     * @param page
+     * @param max
+     * @return
+     */
+    PageModel findMovieList(String region, int year, String sortBy, boolean asc, int page, int max);
 
-	/**
-	 * 查找热门电影列表
-	 * 
-	 * @return
-	 */
-	List<PetsMovieDTO> findHotMovieList();
+    /**
+     * 查找热门电影列表
+     *
+     * @return
+     */
+    List<PetsMovieDTO> findHotMovieList();
 
-	/**
-	 * 查找最新电影列表
-	 * 
-	 * @return
-	 */
-	List<PetsMovieDTO> findNewMovieList();
+    /**
+     * 查找最新电影列表
+     *
+     * @return
+     */
+    List<PetsMovieDTO> findNewMovieList();
 
-	/**
-	 * 查找推荐电影
-	 * 
-	 * @return
-	 */
-	PetsMovieDTO findRecommendMovie();
+    /**
+     * 查找推荐电影
+     *
+     * @return
+     */
+    PetsMovieDTO findRecommendMovie();
+
+    /**
+     * 查找指定电影的播放信息
+     *
+     * @param movieId
+     * @return
+     */
+    List<PetsMoviePlayDTO> findMoviePlayList(int movieId);
+
+    /**
+     * 查找指定电影的外部网站介绍信息
+     *
+     * @param movieId
+     * @return
+     */
+    List<PetsMovieInfoDTO> findMovieInfoList(int movieId);
+
 }

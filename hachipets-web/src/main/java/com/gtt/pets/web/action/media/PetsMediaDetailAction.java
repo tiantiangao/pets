@@ -16,10 +16,13 @@
 package com.gtt.pets.web.action.media;
 
 import com.gtt.pets.bean.media.PetsMovieDTO;
+import com.gtt.pets.bean.media.PetsMovieInfoDTO;
 import com.gtt.pets.constants.ChannelType;
 import com.gtt.pets.service.media.PetsMediaService;
 import com.gtt.pets.web.action.BaseAction;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 /**
  * 宠物影视
@@ -40,6 +43,7 @@ public class PetsMediaDetailAction extends BaseAction {
 
     // 输出
     private PetsMovieDTO movie;
+    private List<PetsMovieInfoDTO> movieInfoList;
 
     @Override
     public String execute() throws Exception {
@@ -52,6 +56,7 @@ public class PetsMediaDetailAction extends BaseAction {
         if (movie == null) {
             return MOVIE_LIST;
         }
+        movieInfoList = petsMediaService.findMovieInfoList(movieId);
         return SUCCESS;
     }
 
@@ -61,5 +66,9 @@ public class PetsMediaDetailAction extends BaseAction {
 
     public PetsMovieDTO getMovie() {
         return movie;
+    }
+
+    public List<PetsMovieInfoDTO> getMovieInfoList() {
+        return movieInfoList;
     }
 }
