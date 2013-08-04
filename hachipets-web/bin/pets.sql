@@ -29,8 +29,9 @@ CREATE TABLE `Pets_Movie` (
   KEY `IX_Region_Year_Name` (`region`, `year`,`name`),
   KEY `IX_Region_Year_Release` (`region`, `year`,`release`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-INSERT INTO `Pets_Movie` (`id`, `name`, `desc`, `pic`, `director`, `actor`, `region`, `length`, `release`, `year`, `addTime`)
-VALUES (1, '忠犬八公的故事', '理察基尔饰演的大学教授帕克在小镇在车站上偶遇一只可怜的小秋田犬，它孤苦无依的身影惹起他的怜 悯，虽然妻子（琼·艾伦饰）极力反对，并想尽办法要把它送走，但看到丈夫和女儿对它无微不至照顾和由衷喜爱，终于决定让它成为家庭一员，帕克为它取名“八公”。', NULL, '莱塞·霍尔斯道姆', '理查·基尔 / 萨拉·罗默尔 / 琼·艾伦', '美国', 93, '2009-12-18 00:00:00', 2009, NOW());
+insert into `Pets_Movie` (`id`, `name`, `desc`, `pic`, `director`, `actor`, `region`, `length`, `release`, `year`, `addTime`)
+values('1','忠犬八公的故事','理察基尔饰演的大学教授帕克在小镇在车站上偶遇一只可怜的小秋田犬，它孤苦无依的身影惹起他的怜 悯，虽然妻子（琼·艾伦饰）极力反对，并想尽办法要把它送走，但看到丈夫和女儿对它无微不至照顾和由衷喜爱，终于决定让它成为家庭一员，帕克为它取名“八公”。','http://pic.qire123.com/myupload/10am30PRC2010-04-10/4bbf7cb63d231.jpg','莱塞·霍尔斯道姆','理查·基尔 / 萨拉·罗默尔 / 琼·艾伦','美国','93','2009-12-18 00:00:00','2009','NOW()');
+
 
 CREATE TABLE `Pets_Movie_Info` (
   `id` int(11) NOT NULL auto_increment COMMENT '自增主键',
@@ -40,6 +41,8 @@ CREATE TABLE `Pets_Movie_Info` (
   PRIMARY KEY  (`id`),
   KEY `IX_MovieID` (`movieId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+insert into `Pets_Movie_Info` (`id`, `movieId`, `infoType`, `refer`) values('1','1','1','3011091');
+insert into `Pets_Movie_Info` (`id`, `movieId`, `infoType`, `refer`) values('2','1','2','81377');
 
 CREATE TABLE `Pets_Movie_Play` (
   `id` int(11) NOT NULL auto_increment COMMENT '自增主键',
@@ -49,6 +52,11 @@ CREATE TABLE `Pets_Movie_Play` (
   PRIMARY KEY  (`id`),
   KEY `IX_MovieID` (`movieId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+insert into `Pets_Movie_Play` (`id`, `movieId`, `playType`, `address`) values('1','1','1','http://v.youku.com/v_show/id_XMzA1MTgyNzM2.html');
+insert into `Pets_Movie_Play` (`id`, `movieId`, `playType`, `address`) values('2','1','2','http://www.tudou.com/albumplay/cfsu36drxm0/rhDlp5x-CmU.html');
+insert into `Pets_Movie_Play` (`id`, `movieId`, `playType`, `address`) values('3','1','4','http://v.qq.com/cover/v/vb1t9npga3tha8d.html');
+insert into `Pets_Movie_Play` (`id`, `movieId`, `playType`, `address`) values('4','1','5','http://v.pptv.com/show/hGxT0TmfD02wLpY.html');
+insert into `Pets_Movie_Play` (`id`, `movieId`, `playType`, `address`) values('5','1','6','http://www.letv.com/ptv/pplay/48053/1.html');
 
 CREATE TABLE `Pets_Movie_Hot` (
   `id` int(11) NOT NULL auto_increment COMMENT '自增主键',

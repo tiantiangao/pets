@@ -20,6 +20,10 @@ public class CacheKeyHolder {
      */
     public static final String MOVIE_INFO_LIST = "oMovieInfoList";
     /**
+     * 宠物电影的播放信息缓存
+     */
+    public static final String MOVIE_PLAY_LIST = "oMoviePlayList";
+    /**
      * 热门宠物电影的缓存key
      */
     public static final String MOVIE_HOT_LIST = "oMovieHotList";

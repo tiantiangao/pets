@@ -12,6 +12,7 @@ import com.gtt.pets.bean.media.PetsMoviePlayDTO;
 import com.gtt.pets.dao.movie.*;
 import com.gtt.pets.entity.movie.PetsMovie;
 import com.gtt.pets.entity.movie.PetsMovieInfo;
+import com.gtt.pets.entity.movie.PetsMoviePlay;
 import com.gtt.pets.service.media.PetsMediaService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -197,7 +198,34 @@ public class PetsMediaServiceImpl implements PetsMediaService {
 
     @Override
     public List<PetsMoviePlayDTO> findMoviePlayList(int movieId) {
-        return null;
+        if (movieId < 1) {
+            return new ArrayList<PetsMoviePlayDTO>();
+        }
+
+        try {
+            // load from cache
+            CacheKey moviePlayListCacheKey = new CacheKey(CacheKeyHolder.MOVIE_PLAY_LIST);
+            List<PetsMoviePlayDTO> moviePlayDTOList = cacheService.get(moviePlayListCacheKey);
+            if (moviePlayDTOList != null) {
+                return moviePlayDTOList;
+            }
+
+            // no cache, load from db
+            List<PetsMoviePlay> moviePlayList = petsMoviePlayDao.findListByMovieId(movieId);
+            if (moviePlayList == null || CollectionUtils.isEmpty(moviePlayList)) {
+                moviePlayDTOList = new ArrayList<PetsMoviePlayDTO>();
+            } else {
+                moviePlayDTOList = toPlayDTOList(moviePlayList);
+            }
+
+            // add cache
+            cacheService.add(moviePlayListCacheKey, moviePlayDTOList);
+
+            return moviePlayDTOList;
+        } catch (Exception e) {
+            LOGGER.error("find movie play list failed", e);
+            return new ArrayList<PetsMoviePlayDTO>();
+        }
     }
 
     @Override
@@ -244,6 +272,19 @@ public class PetsMediaServiceImpl implements PetsMediaService {
         return dto;
     }
 
+    /**
+     * 将对象列表转换为DTO列表
+     *
+     * @param records
+     * @return
+     */
+    private List<PetsMovieDTO> toDTOList(List<PetsMovie> records) {
+        List<PetsMovieDTO> result = new ArrayList<PetsMovieDTO>();
+        for (PetsMovie petsMovie : records) {
+            result.add(toDTO(petsMovie));
+        }
+        return result;
+    }
 
     /**
      * 将对象列表转换为DTO列表
@@ -264,13 +305,15 @@ public class PetsMediaServiceImpl implements PetsMediaService {
     /**
      * 将对象列表转换为DTO列表
      *
-     * @param records
+     * @param list
      * @return
      */
-    private List<PetsMovieDTO> toDTOList(List<PetsMovie> records) {
-        List<PetsMovieDTO> result = new ArrayList<PetsMovieDTO>();
-        for (PetsMovie petsMovie : records) {
-            result.add(toDTO(petsMovie));
+    private List<PetsMoviePlayDTO> toPlayDTOList(List<PetsMoviePlay> list) {
+        List<PetsMoviePlayDTO> result = new ArrayList<PetsMoviePlayDTO>();
+        for (PetsMoviePlay moviePlay : list) {
+            PetsMoviePlayDTO dto = new PetsMoviePlayDTO();
+            BeanUtils.copyProperties(moviePlay, dto);
+            result.add(dto);
         }
         return result;
     }

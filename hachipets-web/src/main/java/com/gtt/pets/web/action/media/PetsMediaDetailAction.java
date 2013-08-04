@@ -17,6 +17,7 @@ package com.gtt.pets.web.action.media;
 
 import com.gtt.pets.bean.media.PetsMovieDTO;
 import com.gtt.pets.bean.media.PetsMovieInfoDTO;
+import com.gtt.pets.bean.media.PetsMoviePlayDTO;
 import com.gtt.pets.constants.ChannelType;
 import com.gtt.pets.service.media.PetsMediaService;
 import com.gtt.pets.web.action.BaseAction;
@@ -44,6 +45,7 @@ public class PetsMediaDetailAction extends BaseAction {
     // 输出
     private PetsMovieDTO movie;
     private List<PetsMovieInfoDTO> movieInfoList;
+    private List<PetsMoviePlayDTO> moviePlayList;
 
     @Override
     public String execute() throws Exception {
@@ -57,8 +59,11 @@ public class PetsMediaDetailAction extends BaseAction {
             return MOVIE_LIST;
         }
         movieInfoList = petsMediaService.findMovieInfoList(movieId);
+        moviePlayList = petsMediaService.findMoviePlayList(movieId);
         return SUCCESS;
     }
+
+    // getter and setter
 
     public void setMovieId(int movieId) {
         this.movieId = movieId;
@@ -70,5 +75,9 @@ public class PetsMediaDetailAction extends BaseAction {
 
     public List<PetsMovieInfoDTO> getMovieInfoList() {
         return movieInfoList;
+    }
+
+    public List<PetsMoviePlayDTO> getMoviePlayList() {
+        return moviePlayList;
     }
 }
