@@ -79,4 +79,12 @@ public interface PetsMediaService {
      */
     List<PetsMovieInfoDTO> findMovieInfoList(int movieId);
 
+    /**
+     * 查找相关电影列表
+     *
+     * @param movieId
+     * @return
+     */
+    List<PetsMovieDTO> findRelatedMovieList(int movieId);
+
 }

@@ -260,6 +260,12 @@ public class PetsMediaServiceImpl implements PetsMediaService {
         }
     }
 
+    @Override
+    public List<PetsMovieDTO> findRelatedMovieList(int movieId) {
+        List<PetsMovie> movieList = petsMovieDao.findRandomMovieList(movieId);
+        return toDTOList(movieList);
+    }
+
     /**
      * 将对象转换为DTO
      *

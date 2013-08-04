@@ -70,4 +70,14 @@
         </dynamic>
     </select>
 
+    <select id="findRandomMovieList" resultMap="PetsMovieResult" parameterClass="map">
+        <![CDATA[
+		SELECT id, `name`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `year`, `addTime`
+		FROM Pets_Movie
+		WHERE id!=#id#
+		ORDER BY RAND()
+		LIMIT 6
+        ]]>
+    </select>
+
 </sqlMap>

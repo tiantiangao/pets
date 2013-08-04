@@ -46,6 +46,7 @@ public class PetsMediaDetailAction extends BaseAction {
     private PetsMovieDTO movie;
     private List<PetsMovieInfoDTO> movieInfoList;
     private List<PetsMoviePlayDTO> moviePlayList;
+    private List<PetsMovieDTO> relatedMovieList;
 
     @Override
     public String execute() throws Exception {
@@ -60,6 +61,7 @@ public class PetsMediaDetailAction extends BaseAction {
         }
         movieInfoList = petsMediaService.findMovieInfoList(movieId);
         moviePlayList = petsMediaService.findMoviePlayList(movieId);
+        relatedMovieList = petsMediaService.findRelatedMovieList(movieId);
         return SUCCESS;
     }
 
@@ -79,5 +81,9 @@ public class PetsMediaDetailAction extends BaseAction {
 
     public List<PetsMoviePlayDTO> getMoviePlayList() {
         return moviePlayList;
+    }
+
+    public List<PetsMovieDTO> getRelatedMovieList() {
+        return relatedMovieList;
     }
 }
