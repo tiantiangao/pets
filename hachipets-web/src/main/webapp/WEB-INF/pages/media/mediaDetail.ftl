@@ -1,42 +1,42 @@
 <html>
 <head>
-    <title>宠物影视-忠犬八公的故事</title>
+    <title>${movie.name}-宠物影视</title>
     <link href="/css/movie-detail.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
     <div class="pets-movie-detail">
         <div class="pets-movie-title">
-            忠犬八公的故事<span>(2009)</span>
+            ${movie.name}<#if (movie.year)?? && movie.year gt 0><span>(${movie.year})</span></#if>
         </div>
         <div class="pets-movie-desc">
             <div class="pets-movie-pic">
-                <img width="225" height="300" src="http://pic.qire123.com/myupload/10am30PRC2010-04-10/4bbf7cb63d231.jpg">
+                <img width="225" height="300" src="${(movie.pic)!''}">
             </div>
             <div class="pets-movie-info">
                 <dl>
                     <dt>导&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演：</dt>
-                    <dd>莱塞·霍尔斯道姆</dd>
+                    <dd><#if (movie.director)?? && movie.director!="">${movie.director}<#else>未知</#if></dd>
                 </dl>
                 <dl>
                     <dt>主&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演：</dt>
-                    <dd>理查·基尔 / 萨拉·罗默尔 / 琼·艾伦</dd>
+                    <dd><#if (movie.actor)?? && movie.actor!="">${movie.actor}<#else>未知</#if></dd>
                 </dl>
                 <dl>
                     <dt>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;代：</dt>
-                    <dd>2009</dd>
+                    <dd><#if (movie.year)?? && movie.year gt 0>${movie.year}<#else>--</#if></dd>
                 </dl>
                 <dl>
                     <dt>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：</dt>
-                    <dd>美国</dd>
+                    <dd><#if (movie.region)?? && movie.region!="">${movie.region}<#else>未知</#if></dd>
                 </dl>
                 <dl>
                     <dt>上映日期：</dt>
-                    <dd>2009-12-18</dd>
+                    <dd><#if (movie.release)??>${movie.release?string("yyyy-MM-dd")}<#else>未知</#if></dd>
                 </dl>
                 <dl>
                     <dt>片&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;长：</dt>
-                    <dd>130分钟</dd>
+                    <dd><#if (movie.length)?? && movie.length gt 0>${movie.length}分钟<#else>--</#if></dd>
                 </dl>
                 <dl>
                     <dt>影片介绍：</dt>
@@ -44,7 +44,7 @@
                 </dl>
                 <dl>
                     <dt>影片详情：</dt>
-                    <dd class="pets-movie-info-desc">理察基尔饰演的大学教授帕克在小镇在车站上偶遇一只可怜的小秋田犬，它孤苦无依的身影惹起他的怜 悯，虽然妻子（琼·艾伦饰）极力反对，并想尽办法要把它送走，但看到丈夫和女儿对它无微不至照顾和由衷喜爱，终于决定让它成为家庭一员，帕克为它取名“八公”。</dd>
+                    <dd class="pets-movie-info-desc"><#if (movie.desc)?? && movie.desc!="">${movie.desc}<#else>暂无</#if></dd>
                 </dl>
             </div>
         </div>

@@ -15,8 +15,11 @@
  */
 package com.gtt.pets.web.action.media;
 
+import com.gtt.pets.bean.media.PetsMovieDTO;
 import com.gtt.pets.constants.ChannelType;
+import com.gtt.pets.service.media.PetsMediaService;
 import com.gtt.pets.web.action.BaseAction;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * 宠物影视
@@ -26,10 +29,37 @@ import com.gtt.pets.web.action.BaseAction;
 
 public class PetsMediaDetailAction extends BaseAction {
     private static final long serialVersionUID = 1L;
+    private static final String MOVIE_LIST = "movieList";
+
+    // 输入
+    private int movieId;
+
+    // 依赖服务
+    @Autowired
+    private PetsMediaService petsMediaService;
+
+    // 输出
+    private PetsMovieDTO movie;
 
     @Override
     public String execute() throws Exception {
         setChannel(ChannelType.CHANNEL_MEDIA);
+        if (movieId < 1) {
+            return MOVIE_LIST;
+        }
+
+        movie = petsMediaService.loadByMovieID(movieId);
+        if (movie == null) {
+            return MOVIE_LIST;
+        }
         return SUCCESS;
+    }
+
+    public void setMovieId(int movieId) {
+        this.movieId = movieId;
+    }
+
+    public PetsMovieDTO getMovie() {
+        return movie;
     }
 }

@@ -11,6 +11,7 @@
 
         <action name="petsMediaDetailAction" class="com.gtt.pets.web.action.media.PetsMediaDetailAction">
             <result name="success" type="freemarker">/WEB-INF/pages/media/mediaDetail.ftl</result>
+            <result name="movieList" type="redirect">/media</result>
         </action>
 
     </package>
