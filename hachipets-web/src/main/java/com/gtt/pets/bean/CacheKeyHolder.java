@@ -35,4 +35,12 @@ public class CacheKeyHolder {
      * 推荐宠物电影的缓存key
      */
     public static final String MOVIE_RECOMMEND = "oMovieRecommend";
+    /**
+     * 宠物电影地区列表的缓存key
+     */
+    public static final String MOVIE_REGION_LIST = "oMovieRegionList";
+    /**
+     * 宠物电影年代列表的缓存key
+     */
+    public static final String MOVIE_YEAR_LIST = "oMovieYearList";
 }

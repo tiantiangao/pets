@@ -10,8 +10,8 @@
 }
 
 .pets-movie-nav .nav-title {
-	height: 30px;
-	line-height: 30px;
+	height: 35px;
+	line-height: 35px;
 	overflow: hidden;
 	padding: 5px 0 7px 0;
 	border-bottom: 1px dotted #ddd;
@@ -23,7 +23,7 @@
 	color: #e12160;
 	font-weight: 700;
 	float: left;
-	font-size: 14px;
+	font-size: 16px;
 }
 
 .pets-movie-nav .nav-filter-list .nav-filter {
@@ -38,10 +38,16 @@
 	text-align: center;
 	padding: 2px 10px;
 }
-.pets-movie-nav .nav-filter-list .nav-filter li:hover{
+.pets-movie-nav .nav-filter-list .nav-filter li a {
+    color: #333;
+    text-decoration: none;
+}
+.pets-movie-nav .nav-filter-list .nav-filter li:hover {
 	background-color: #eee;
 	cursor: pointer;
-	color: #e12160;
+}
+.pets-movie-nav .nav-filter-list .nav-filter li:hover > a{
+    color: #e12160;
 }
 .pets-movie-nav .nav-filter-list .nav-filter .filter-name{
 	font-weight: bold;
@@ -54,8 +60,14 @@
 	cursor: default;
 	color: #e12160;
 }
+.pets-movie-nav .nav-filter-list .nav-filter .active a {
+    color: #e12160;
+}
 .pets-movie-nav .nav-filter-list .nav-filter .active:hover{
 	cursor: default;
+}
+.pets-movie-nav .nav-filter-list .nav-filter .active:hover > a{
+    cursor: default;
 }
 .pets-movie-nav .nav-filter-list .last {
 	border-bottom: none;

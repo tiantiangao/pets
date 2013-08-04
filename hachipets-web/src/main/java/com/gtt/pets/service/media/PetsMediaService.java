@@ -87,4 +87,18 @@ public interface PetsMediaService {
      */
     List<PetsMovieDTO> findRelatedMovieList(int movieId);
 
+    /**
+     * 查找电影地区列表
+     *
+     * @return
+     */
+    List<String> findMovieRegionList();
+
+    /**
+     * 查找电影年代列表
+     *
+     * @return
+     */
+    List<Integer> findMovieYearList();
+
 }

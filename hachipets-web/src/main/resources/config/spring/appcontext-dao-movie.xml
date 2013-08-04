@@ -52,4 +52,22 @@
         </property>
     </bean>
 
+    <bean id="petsMovieRegionDao" parent="parentDao">
+        <property name="proxyInterfaces" value="com.gtt.pets.dao.movie.PetsMovieRegionDao" />
+        <property name="target">
+            <bean parent="Kenshin.daoRealizeTarget">
+                <constructor-arg value="PetsMovieRegion" />
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="petsMovieYearDao" parent="parentDao">
+        <property name="proxyInterfaces" value="com.gtt.pets.dao.movie.PetsMovieYearDao" />
+        <property name="target">
+            <bean parent="Kenshin.daoRealizeTarget">
+                <constructor-arg value="PetsMovieYear" />
+            </bean>
+        </property>
+    </bean>
+
 </beans>

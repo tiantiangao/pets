@@ -41,6 +41,10 @@ public class PetsMediaServiceImpl implements PetsMediaService {
     @Autowired
     private PetsMoviePlayDao petsMoviePlayDao;
     @Autowired
+    private PetsMovieRegionDao petsMovieRegionDao;
+    @Autowired
+    private PetsMovieYearDao petsMovieYearDao;
+    @Autowired
     private CacheService cacheService;
 
     @Override
@@ -264,6 +268,56 @@ public class PetsMediaServiceImpl implements PetsMediaService {
     public List<PetsMovieDTO> findRelatedMovieList(int movieId) {
         List<PetsMovie> movieList = petsMovieDao.findRandomMovieList(movieId);
         return toDTOList(movieList);
+    }
+
+    @Override
+    public List<String> findMovieRegionList() {
+        try {
+            // load from cache
+            CacheKey movieRegionListCacheKey = new CacheKey(CacheKeyHolder.MOVIE_REGION_LIST);
+            List<String> movieRegionList = cacheService.get(movieRegionListCacheKey);
+            if (movieRegionList != null) {
+                return movieRegionList;
+            }
+
+            // load from db
+            movieRegionList = petsMovieRegionDao.findMovieRegionList();
+            if (movieRegionList == null || CollectionUtils.isEmpty(movieRegionList)) {
+                movieRegionList = new ArrayList<String>();
+            }
+
+            // add cache
+            cacheService.add(movieRegionListCacheKey, movieRegionList);
+            return movieRegionList;
+        } catch (Exception e) {
+            LOGGER.error("find movie region list failed", e);
+            return new ArrayList<String>();
+        }
+    }
+
+    @Override
+    public List<Integer> findMovieYearList() {
+        try {
+            // load from cache
+            CacheKey movieYearListCacheKey = new CacheKey(CacheKeyHolder.MOVIE_YEAR_LIST);
+            List<Integer> movieYearList = cacheService.get(movieYearListCacheKey);
+            if (movieYearList != null) {
+                return movieYearList;
+            }
+
+            // load from db
+            movieYearList = petsMovieYearDao.findMovieYearList();
+            if (movieYearList == null || CollectionUtils.isEmpty(movieYearList)) {
+                movieYearList = new ArrayList<Integer>();
+            }
+
+            // add cache
+            cacheService.add(movieYearListCacheKey, movieYearList);
+            return movieYearList;
+        } catch (Exception e) {
+            LOGGER.error("find movie year list failed", e);
+            return new ArrayList<Integer>();
+        }
     }
 
     /**
