@@ -9,6 +9,16 @@
     padding: 10px;
     height: 390px;
 }
+.pets-movie-return {
+    float: right;
+    margin: 5px 10px 0 0;
+}
+.pets-movie-return a{
+    text-decoration: none;
+}
+.pets-movie-return a:hover{
+    color: #e12160;
+}
 .pets-movie-title {
     font-weight: 700;
     font-size: 25px;

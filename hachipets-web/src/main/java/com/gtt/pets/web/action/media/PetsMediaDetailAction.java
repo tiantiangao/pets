@@ -21,8 +21,11 @@ import com.gtt.pets.bean.media.PetsMoviePlayDTO;
 import com.gtt.pets.constants.ChannelType;
 import com.gtt.pets.service.media.PetsMediaService;
 import com.gtt.pets.web.action.BaseAction;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -47,6 +50,7 @@ public class PetsMediaDetailAction extends BaseAction {
     private List<PetsMovieInfoDTO> movieInfoList;
     private List<PetsMoviePlayDTO> moviePlayList;
     private List<PetsMovieDTO> relatedMovieList;
+    private boolean canReturnHistory = false;
 
     @Override
     public String execute() throws Exception {
@@ -62,6 +66,17 @@ public class PetsMediaDetailAction extends BaseAction {
         movieInfoList = petsMediaService.findMovieInfoList(movieId);
         moviePlayList = petsMediaService.findMoviePlayList(movieId);
         relatedMovieList = petsMediaService.findRelatedMovieList(movieId);
+
+        // 判断是否需要提供返回上一页按钮
+        HttpServletRequest httpServletRequest = ServletActionContext.getRequest();
+        String referer = httpServletRequest.getHeader("referer");
+        if (StringUtils.isNotBlank(referer)) {
+            String serverName = httpServletRequest.getServerName();
+            if (referer.contains(serverName)) {
+                canReturnHistory = true;
+            }
+        }
+
         return SUCCESS;
     }
 
@@ -85,5 +100,9 @@ public class PetsMediaDetailAction extends BaseAction {
 
     public List<PetsMovieDTO> getRelatedMovieList() {
         return relatedMovieList;
+    }
+
+    public boolean isCanReturnHistory() {
+        return canReturnHistory;
     }
 }
