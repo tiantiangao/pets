@@ -287,7 +287,7 @@
                     </ul>
                 </div>
                 </#if>
-                <#if newMovieList?? && hotMovieList?size gt 0>
+                <#if newMovieList?? && newMovieList?size gt 0>
                 <div class="pets-movie-new pets-movie-container">
                     <ul class="nav nav-list">
                         <li class="nav-header"><h5>最新宠物电影排行</h5></li>
