@@ -67,7 +67,7 @@ public class PetsMediaDetailAction extends BaseAction {
         moviePlayList = petsMediaService.findMoviePlayList(movieId);
         relatedMovieList = petsMediaService.findRelatedMovieList(movieId);
 
-        // 判断是否需要提供返回上一页按钮
+        // 判断返回上一页按钮是否可以使用history.go(-1)
         HttpServletRequest httpServletRequest = ServletActionContext.getRequest();
         String referer = httpServletRequest.getHeader("referer");
         if (StringUtils.isNotBlank(referer)) {
