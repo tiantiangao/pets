@@ -51,9 +51,9 @@
             </isGreaterThan>
         </dynamic>
         <isNotEmpty property="sort">
-		ORDER BY #sort#
-        <isEqual property="asc" compareValue="true"> asc </isEqual>
-        <isEqual property="asc" compareValue="false"> desc </isEqual>
+        ORDER BY `$sort$`
+		<isEqual property="asc" compareValue="true"> asc</isEqual>
+		<isNotEqual property="asc" compareValue="true"> desc</isNotEqual>
         </isNotEmpty>
 	</select>
 

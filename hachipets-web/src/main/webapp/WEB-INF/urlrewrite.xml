@@ -50,6 +50,10 @@
         <to>/petsMediaAction.action</to>
     </rule>
     <rule>
+        <from>^/media/(r(\d{1,}))?(y(\d{1,}))?(o([1|2]))?</from>
+        <to>/petsMediaAction.action?area=$2&amp;year=$4&amp;sortBy=$6</to>
+    </rule>
+    <rule>
         <from>^/media/([0-9]+)</from>
         <to>/petsMediaDetailAction.action?movieId=$1</to>
     </rule>
