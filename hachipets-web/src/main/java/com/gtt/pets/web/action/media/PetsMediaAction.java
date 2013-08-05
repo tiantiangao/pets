@@ -34,7 +34,7 @@ public class PetsMediaAction extends BaseAction {
     private static final int PAGE_SIZE = 20;
 
     // 输入
-    private String area;
+    private int area;
     private int year;
     private int sortBy;
     private int listType;
@@ -54,6 +54,7 @@ public class PetsMediaAction extends BaseAction {
 
     @Override
     public String execute() throws Exception {
+        // prepare page data
         setChannel(ChannelType.CHANNEL_MEDIA);
         regionList = petsMediaService.findMovieRegionList();
         yearList = petsMediaService.findMovieYearList();
@@ -61,14 +62,16 @@ public class PetsMediaAction extends BaseAction {
         hotMovieList = petsMediaService.findHotMovieList();
         newMovieList = petsMediaService.findNewMovieList();
 
-        movieModel = petsMediaService.findMovieList(area, year, sortBy == 1 ? "release" : "name", sortBy == 1 ? false : true, page, PAGE_SIZE);
+
+
+        movieModel = petsMediaService.findMovieList(area+"", year, sortBy == 1 ? "release" : "name", sortBy == 1 ? false : true, page, PAGE_SIZE);
 
         return SUCCESS;
     }
 
     // getter and setter
 
-    public void setArea(String area) {
+    public void setArea(int area) {
         this.area = area;
     }
 
@@ -88,7 +91,7 @@ public class PetsMediaAction extends BaseAction {
         return listType;
     }
 
-    public String getArea() {
+    public int getArea() {
         return area;
     }
 

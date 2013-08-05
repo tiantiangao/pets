@@ -26,6 +26,8 @@ public class PetsMovieRegionDaoTest extends AbstractTest {
         for (String region : regionList) {
             System.out.println(region);
         }
+        String region = petsMovieRegionDao.findMovieRegionById(1);
+        System.out.println(region);
     }
 
 }

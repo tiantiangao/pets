@@ -101,4 +101,6 @@ public interface PetsMediaService {
      */
     List<Integer> findMovieYearList();
 
+    String findMovieRegionByRegionID(int regionId);
+
 }

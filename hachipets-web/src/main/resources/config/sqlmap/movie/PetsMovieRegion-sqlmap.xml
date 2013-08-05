@@ -9,5 +9,13 @@
 		ORDER BY ID
         ]]>
     </select>
+    
+    <select id="findMovieRegionById" resultClass="java.lang.String" parameterClass="map">
+        <![CDATA[
+		SELECT `region`
+		FROM Pets_Movie_Region
+		WHERE ID=#id#
+        ]]>
+    </select>
 
 </sqlMap>

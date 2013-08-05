@@ -296,6 +296,19 @@ public class PetsMediaServiceImpl implements PetsMediaService {
     }
 
     @Override
+    public String findMovieRegionByRegionID(int regionId) {
+        try {
+            // load from cache
+//            cacheService.get(movieRegionCacheKey);
+
+            return petsMovieRegionDao.findMovieRegionById(regionId);
+        } catch (Exception e) {
+            LOGGER.error("find movie region by id", e);
+            return "";
+        }
+    }
+
+    @Override
     public List<Integer> findMovieYearList() {
         try {
             // load from cache

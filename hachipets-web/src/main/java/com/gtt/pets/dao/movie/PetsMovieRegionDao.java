@@ -3,6 +3,7 @@ package com.gtt.pets.dao.movie;
 import com.gtt.kenshin.dao.GenericDao;
 import com.gtt.kenshin.dao.annotation.DaoAction;
 import com.gtt.kenshin.dao.annotation.DaoActionType;
+import com.gtt.kenshin.dao.annotation.DaoParam;
 
 import java.util.List;
 
@@ -15,4 +16,6 @@ public interface PetsMovieRegionDao extends GenericDao {
     @DaoAction(action = DaoActionType.QUERY)
     List<String> findMovieRegionList();
 
+    @DaoAction(action = DaoActionType.LOAD)
+    String findMovieRegionById(@DaoParam("id") int regionId);
 }
