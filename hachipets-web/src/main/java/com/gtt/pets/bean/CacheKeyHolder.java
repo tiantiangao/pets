@@ -40,7 +40,15 @@ public class CacheKeyHolder {
      */
     public static final String MOVIE_REGION_LIST = "oMovieRegionList";
     /**
+     * 宠物电影地区的缓存key
+     */
+    public static final String MOVIE_REGION = "oMovieRegion";
+    /**
      * 宠物电影年代列表的缓存key
      */
     public static final String MOVIE_YEAR_LIST = "oMovieYearList";
+    /**
+     * 宠物电影年代的缓存key
+     */
+    public static final String MOVIE_YEAR = "oMovieYear";
 }

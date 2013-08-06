@@ -17,4 +17,12 @@
         ]]>
     </select>
 
+    <select id="findMovieYearByYearID" resultClass="java.lang.Integer" parameterClass="map">
+        <![CDATA[
+		SELECT `year`
+		FROM Pets_Movie_Year
+		WHERE id=#id#
+        ]]>
+    </select>
+
 </sqlMap>

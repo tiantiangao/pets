@@ -16,18 +16,18 @@
                         <div class="nav-filter">
                             <ul class="inline">
                                 <span class="filter-name">地区：</span>
-                                <li class="active"><a href="">全部</a></li>
-                                <#list regionList as region>
-                                    <li><a href="">${region.region}</a></li>
+                                <li <#if area==0>class="active"</#if>><a href="">全部</a></li>
+                                <#list regionList as regionDTO>
+                                    <li <#if area==regionDTO.id>class="active"</#if>><a href="">${regionDTO.region}</a></li>
                                 </#list>
                             </ul>
                         </div>
                         <div class="nav-filter last">
                             <ul class="inline">
                                 <span class="filter-name">年代：</span>
-                                <li class="active">全部</li>
-                                <#list yearList as year>
-                                    <li><a href=""><#if year.year==1900>其他地区<#else>${year.year}</#if></a></li>
+                                <li <#if year==0>class="active"</#if>>全部</li>
+                                <#list yearList as yearDTO>
+                                    <li <#if year==yearDTO.id>class="active"</#if>><a href=""><#if yearDTO.year==1900>其他地区<#else>${yearDTO.year}</#if></a></li>
                                 </#list>
                             </ul>
                         </div>

@@ -97,12 +97,26 @@ public interface PetsMediaService {
     List<PetsMovieRegionDTO> findMovieRegionList();
 
     /**
+     * 根据地区id查找地区名
+     *
+     * @param regionId
+     * @return
+     */
+    String findMovieRegionByRegionID(int regionId);
+
+    /**
      * 查找电影年代列表
      *
      * @return
      */
     List<PetsMovieYearDTO> findMovieYearList();
 
-    String findMovieRegionByRegionID(int regionId);
+    /**
+     * 根据电影年代id查找年份
+     *
+     * @param yearId
+     * @return
+     */
+    int findMovieYearByYearID(int yearId);
 
 }

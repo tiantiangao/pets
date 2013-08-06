@@ -3,6 +3,7 @@ package com.gtt.pets.dao.movie;
 import com.gtt.kenshin.dao.GenericDao;
 import com.gtt.kenshin.dao.annotation.DaoAction;
 import com.gtt.kenshin.dao.annotation.DaoActionType;
+import com.gtt.kenshin.dao.annotation.DaoParam;
 import com.gtt.pets.entity.movie.PetsMovieYear;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface PetsMovieYearDao extends GenericDao {
     @DaoAction(action = DaoActionType.QUERY)
     List<PetsMovieYear> findMovieYearList();
 
+    @DaoAction(action = DaoActionType.LOAD)
+    Integer findMovieYearByYearID(@DaoParam("id") int yearID);
 }

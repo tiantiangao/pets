@@ -22,6 +22,7 @@ import com.gtt.pets.constants.ChannelType;
 import com.gtt.pets.entity.movie.PetsMovieYearDTO;
 import com.gtt.pets.service.media.PetsMediaService;
 import com.gtt.pets.web.action.BaseAction;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -56,19 +57,49 @@ public class PetsMediaAction extends BaseAction {
 
     @Override
     public String execute() throws Exception {
-        // prepare page data
         setChannel(ChannelType.CHANNEL_MEDIA);
+
+        String region = null;
+        if (area > 0) {
+            region = petsMediaService.findMovieRegionByRegionID(area);
+            if (StringUtils.isBlank(region)) {
+                // 无法识别的地区，默认为全部
+                region = null;
+                area = 0;
+            }
+        } else {
+            area = 0;
+        }
+
+        int yearValue = 0;
+        if (year > 0) {
+            yearValue = petsMediaService.findMovieYearByYearID(this.year);
+            if (yearValue <= 0) {
+                // 无法识别的年代，默认为全部
+                year = 0;
+            }
+        } else {
+            year = 0;
+        }
+
+        if (sortBy != 2) {
+            sortBy = 1;
+        }
+        String sortByValue = sortBy == 1 ? "release" : "name";
+        boolean asc = sortBy == 1 ? false : true;
+
+        movieModel = petsMediaService.findMovieList(region, yearValue, sortByValue, asc, page, PAGE_SIZE);
+
+        preparePageData();
+        return SUCCESS;
+    }
+
+    private void preparePageData() {
         regionList = petsMediaService.findMovieRegionList();
         yearList = petsMediaService.findMovieYearList();
         recommendMovie = petsMediaService.findRecommendMovie();
         hotMovieList = petsMediaService.findHotMovieList();
         newMovieList = petsMediaService.findNewMovieList();
-
-
-
-        movieModel = petsMediaService.findMovieList(area+"", year, sortBy == 1 ? "release" : "name", sortBy == 1 ? false : true, page, PAGE_SIZE);
-
-        return SUCCESS;
     }
 
     // getter and setter

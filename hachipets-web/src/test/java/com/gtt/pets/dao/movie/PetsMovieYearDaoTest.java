@@ -27,6 +27,8 @@ public class PetsMovieYearDaoTest extends AbstractTest {
         for (PetsMovieYear year : yearList) {
             System.out.println(year.getId() + ":" + year.getYear());
         }
+        Integer year = petsMovieYearDao.findMovieYearByYearID(1);
+        System.out.println(year);
     }
 
 }

@@ -13,6 +13,7 @@ import com.gtt.pets.bean.media.PetsMovieRegionDTO;
 import com.gtt.pets.dao.movie.*;
 import com.gtt.pets.entity.movie.*;
 import com.gtt.pets.service.media.PetsMediaService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -300,11 +301,23 @@ public class PetsMediaServiceImpl implements PetsMediaService {
     public String findMovieRegionByRegionID(int regionId) {
         try {
             // load from cache
-//            cacheService.get(movieRegionCacheKey);
+            CacheKey movieRegionCacheKey = new CacheKey(CacheKeyHolder.MOVIE_REGION);
+            String region = cacheService.get(movieRegionCacheKey);
+            if (region != null) {
+                return region;
+            }
 
-            return petsMovieRegionDao.findMovieRegionById(regionId);
+            // load from db
+            region = petsMovieRegionDao.findMovieRegionById(regionId);
+            if (StringUtils.isBlank(region)) {
+                region = "";
+            }
+
+            // add cache
+            cacheService.add(movieRegionCacheKey, region);
+            return region;
         } catch (Exception e) {
-            LOGGER.error("find movie region by id", e);
+            LOGGER.error("find movie region by id failed", e);
             return "";
         }
     }
@@ -333,6 +346,31 @@ public class PetsMediaServiceImpl implements PetsMediaService {
         } catch (Exception e) {
             LOGGER.error("find movie year list failed", e);
             return new ArrayList<PetsMovieYearDTO>();
+        }
+    }
+
+    @Override
+    public int findMovieYearByYearID(int yearId) {
+        try {
+            // load from cache
+            CacheKey movieYearCacheKey = new CacheKey(CacheKeyHolder.MOVIE_YEAR);
+            Integer year = cacheService.get(movieYearCacheKey);
+            if (year != null) {
+                return year;
+            }
+
+            // load from db
+            year = petsMovieYearDao.findMovieYearByYearID(yearId);
+            if (year == null) {
+                year = 0;
+            }
+
+            // add cache
+            cacheService.add(movieYearCacheKey, year);
+            return year;
+        } catch (Exception e) {
+            LOGGER.error("find movie year by id failed", e);
+            return 0;
         }
     }
 
