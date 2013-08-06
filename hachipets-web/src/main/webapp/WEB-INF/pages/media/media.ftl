@@ -16,18 +16,18 @@
                         <div class="nav-filter">
                             <ul class="inline">
                                 <span class="filter-name">地区：</span>
-                                <li <#if area==0>class="active"</#if>><a href="">全部</a></li>
+                                <a href="<@buildUrl toArea=0 />"><li <#if area==0>class="active"</#if>>全部</li></a>
                                 <#list regionList as regionDTO>
-                                    <li <#if area==regionDTO.id>class="active"</#if>><a href="">${regionDTO.region}</a></li>
+                                    <a href="<@buildUrl toArea=regionDTO.id />"><li <#if area==regionDTO.id>class="active"</#if>>${regionDTO.region}</li></a>
                                 </#list>
                             </ul>
                         </div>
                         <div class="nav-filter last">
                             <ul class="inline">
                                 <span class="filter-name">年代：</span>
-                                <li <#if year==0>class="active"</#if>>全部</li>
+                                <li <#if year==0>class="active"</#if>><a href="<@buildUrl toYear=0 />">全部</a></li>
                                 <#list yearList as yearDTO>
-                                    <li <#if year==yearDTO.id>class="active"</#if>><a href=""><#if yearDTO.year==1900>其他地区<#else>${yearDTO.year}</#if></a></li>
+                                    <li <#if year==yearDTO.id>class="active"</#if>><a href="<@buildUrl toYear=yearDTO.id />"><#if yearDTO.year==1900>其他地区<#else>${yearDTO.year}</#if></a></li>
                                 </#list>
                             </ul>
                         </div>
@@ -36,9 +36,9 @@
                 <div class="pets-movie-list pets-movie-container">
                     <div class="view-filter">
                         <div class="filter-order">
-                            <a href="#" class="order<#if sortBy==1> active</#if>"><span>按时间排序</span></a>
+                            <a href="<@buildUrl toSortBy=1 />" class="order<#if sortBy==1> active</#if>"><span>按时间排序</span></a>
                             <span class="slash">|</span>
-                            <a href="#" class="order<#if sortBy==2> active</#if>"><span>按名称排序</span></a>
+                            <a href="<@buildUrl toSortBy=2 />" class="order<#if sortBy==2> active</#if>"><span>按名称排序</span></a>
                         </div>
                         <div class="filter-view-mode">
                             <a href="#">
@@ -127,3 +127,28 @@
 </div>
 </body>
 </html>
+<#macro buildUrl toArea=-1 toYear=-1 toSortBy=-1>
+<#assign url = "/media/">
+<#if toArea!=-1>
+    <#if toArea!=0>
+        <#assign url = url + "r" + toArea>
+    </#if>
+<#elseif area!=0>
+    <#assign url = url + "r" + area>
+</#if>
+<#if toYear!=-1>
+    <#if toYear!=0>
+        <#assign url = url + "y" + toYear>
+    </#if>
+<#elseif year!=0>
+    <#assign url = url + "y" + year>
+</#if>
+<#if toSortBy!=-1>
+    <#if toSortBy==2>
+        <#assign url = url + "o2">
+    </#if>
+<#elseif sortBy==2>
+    <#assign url = url + "o2">
+</#if>
+${url}
+</#macro>
