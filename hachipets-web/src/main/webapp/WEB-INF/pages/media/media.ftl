@@ -25,9 +25,9 @@
                         <div class="nav-filter last">
                             <ul class="inline">
                                 <span class="filter-name">年代：</span>
-                                <li <#if year==0>class="active"</#if>><a href="<@buildUrl toYear=0 />">全部</a></li>
+                                <a href="<@buildUrl toYear=0 />"><li <#if year==0>class="active"</#if>>全部</li></a>
                                 <#list yearList as yearDTO>
-                                    <li <#if year==yearDTO.id>class="active"</#if>><a href="<@buildUrl toYear=yearDTO.id />"><#if yearDTO.year==1900>其他地区<#else>${yearDTO.year}</#if></a></li>
+                                    <a href="<@buildUrl toYear=yearDTO.id />"><li <#if year==yearDTO.id>class="active"</#if>><#if yearDTO.year==1900>其他地区<#else>${yearDTO.year}</#if></li></a>
                                 </#list>
                             </ul>
                         </div>

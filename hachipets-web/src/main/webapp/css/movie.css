@@ -38,7 +38,8 @@
 	text-align: center;
 	padding: 2px 10px;
 }
-.pets-movie-nav .nav-filter-list .nav-filter li a {
+.pets-movie-nav .nav-filter-list .nav-filter a {
+    display: inline-block;
     color: #333;
     text-decoration: none;
 }
@@ -46,7 +47,7 @@
 	background-color: #eee;
 	cursor: pointer;
 }
-.pets-movie-nav .nav-filter-list .nav-filter li:hover > a{
+.pets-movie-nav .nav-filter-list .nav-filter li:hover {
     color: #e12160;
 }
 .pets-movie-nav .nav-filter-list .nav-filter .filter-name{
