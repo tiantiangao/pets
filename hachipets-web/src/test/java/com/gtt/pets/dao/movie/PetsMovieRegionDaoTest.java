@@ -1,6 +1,7 @@
 package com.gtt.pets.dao.movie;
 
 import com.gtt.pets.dao.AbstractTest;
+import com.gtt.pets.entity.movie.PetsMovieRegion;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,10 +22,10 @@ public class PetsMovieRegionDaoTest extends AbstractTest {
     @Test
     public void test() {
         notNull(petsMovieRegionDao);
-        List<String> regionList = petsMovieRegionDao.findMovieRegionList();
+        List<PetsMovieRegion> regionList = petsMovieRegionDao.findMovieRegionList();
         notNull(regionList);
-        for (String region : regionList) {
-            System.out.println(region);
+        for (PetsMovieRegion region : regionList) {
+            System.out.println(region.getId() + ":" + region.getRegion());
         }
         String region = petsMovieRegionDao.findMovieRegionById(1);
         System.out.println(region);

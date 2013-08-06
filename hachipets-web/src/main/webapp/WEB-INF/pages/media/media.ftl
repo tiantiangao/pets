@@ -18,9 +18,8 @@
                                 <span class="filter-name">地区：</span>
                                 <li class="active"><a href="">全部</a></li>
                                 <#list regionList as region>
-                                    <li><a href="">${region}</a></li>
+                                    <li><a href="">${region.region}</a></li>
                                 </#list>
-                                <li><a href="">其他地区</a></li>
                             </ul>
                         </div>
                         <div class="nav-filter last">
@@ -28,9 +27,8 @@
                                 <span class="filter-name">年代：</span>
                                 <li class="active">全部</li>
                                 <#list yearList as year>
-                                    <li><a href="">${year}</a></li>
+                                    <li><a href=""><#if year.year==1900>其他地区<#else>${year.year}</#if></a></li>
                                 </#list>
-                                <li><a href="">其他</a></li>
                             </ul>
                         </div>
                     </div>

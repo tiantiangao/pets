@@ -2,11 +2,18 @@
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="PetsMovieYear">
 
-    <select id="findMovieYearList" resultClass="java.lang.Integer" parameterClass="map">
+    <typeAlias alias="year" type="com.gtt.pets.entity.movie.PetsMovieYear" />
+
+    <resultMap id="yearResult" class="year">
+        <result property="id" column="id" />
+        <result property="year" column="year" />
+    </resultMap>
+
+    <select id="findMovieYearList" resultMap="yearResult" parameterClass="map">
         <![CDATA[
-		SELECT `year`
+		SELECT id, `year`
 		FROM Pets_Movie_Year
-		ORDER BY ID
+		ORDER BY `year` desc
         ]]>
     </select>
 

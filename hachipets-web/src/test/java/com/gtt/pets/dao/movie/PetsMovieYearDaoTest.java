@@ -1,6 +1,7 @@
 package com.gtt.pets.dao.movie;
 
 import com.gtt.pets.dao.AbstractTest;
+import com.gtt.pets.entity.movie.PetsMovieYear;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,10 +22,10 @@ public class PetsMovieYearDaoTest extends AbstractTest {
     @Test
     public void test() {
         notNull(petsMovieYearDao);
-        List<Integer> yearList = petsMovieYearDao.findMovieYearList();
+        List<PetsMovieYear> yearList = petsMovieYearDao.findMovieYearList();
         notNull(yearList);
-        for (Integer region : yearList) {
-            System.out.println(region);
+        for (PetsMovieYear year : yearList) {
+            System.out.println(year.getId() + ":" + year.getYear());
         }
     }
 

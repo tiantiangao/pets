@@ -9,10 +9,9 @@ import com.gtt.pets.bean.CacheKeyHolder;
 import com.gtt.pets.bean.media.PetsMovieDTO;
 import com.gtt.pets.bean.media.PetsMovieInfoDTO;
 import com.gtt.pets.bean.media.PetsMoviePlayDTO;
+import com.gtt.pets.bean.media.PetsMovieRegionDTO;
 import com.gtt.pets.dao.movie.*;
-import com.gtt.pets.entity.movie.PetsMovie;
-import com.gtt.pets.entity.movie.PetsMovieInfo;
-import com.gtt.pets.entity.movie.PetsMoviePlay;
+import com.gtt.pets.entity.movie.*;
 import com.gtt.pets.service.media.PetsMediaService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -216,7 +215,7 @@ public class PetsMediaServiceImpl implements PetsMediaService {
 
             // no cache, load from db
             List<PetsMoviePlay> moviePlayList = petsMoviePlayDao.findListByMovieId(movieId);
-            if (moviePlayList == null || CollectionUtils.isEmpty(moviePlayList)) {
+            if (CollectionUtils.isEmpty(moviePlayList)) {
                 moviePlayDTOList = new ArrayList<PetsMoviePlayDTO>();
             } else {
                 moviePlayDTOList = toPlayDTOList(moviePlayList);
@@ -248,7 +247,7 @@ public class PetsMediaServiceImpl implements PetsMediaService {
 
             // no cache, load from db
             List<PetsMovieInfo> movieInfoList = petsMovieInfoDao.findListByMovieId(movieId);
-            if (movieInfoList == null || CollectionUtils.isEmpty(movieInfoList)) {
+            if (CollectionUtils.isEmpty(movieInfoList)) {
                 movieInfoDTOList = new ArrayList<PetsMovieInfoDTO>();
             } else {
                 movieInfoDTOList = toInfoDTOList(movieInfoList);
@@ -271,27 +270,29 @@ public class PetsMediaServiceImpl implements PetsMediaService {
     }
 
     @Override
-    public List<String> findMovieRegionList() {
+    public List<PetsMovieRegionDTO> findMovieRegionList() {
         try {
             // load from cache
             CacheKey movieRegionListCacheKey = new CacheKey(CacheKeyHolder.MOVIE_REGION_LIST);
-            List<String> movieRegionList = cacheService.get(movieRegionListCacheKey);
-            if (movieRegionList != null) {
-                return movieRegionList;
+            List<PetsMovieRegionDTO> movieRegionDTOList = cacheService.get(movieRegionListCacheKey);
+            if (movieRegionDTOList != null) {
+                return movieRegionDTOList;
             }
 
             // load from db
-            movieRegionList = petsMovieRegionDao.findMovieRegionList();
-            if (movieRegionList == null || CollectionUtils.isEmpty(movieRegionList)) {
-                movieRegionList = new ArrayList<String>();
+            List<PetsMovieRegion> movieRegionList = petsMovieRegionDao.findMovieRegionList();
+            if (CollectionUtils.isEmpty(movieRegionList)) {
+                movieRegionDTOList = new ArrayList<PetsMovieRegionDTO>();
+            } else {
+                movieRegionDTOList = toRegionDTOList(movieRegionList);
             }
 
             // add cache
-            cacheService.add(movieRegionListCacheKey, movieRegionList);
-            return movieRegionList;
+            cacheService.add(movieRegionListCacheKey, movieRegionDTOList);
+            return movieRegionDTOList;
         } catch (Exception e) {
             LOGGER.error("find movie region list failed", e);
-            return new ArrayList<String>();
+            return new ArrayList<PetsMovieRegionDTO>();
         }
     }
 
@@ -309,27 +310,29 @@ public class PetsMediaServiceImpl implements PetsMediaService {
     }
 
     @Override
-    public List<Integer> findMovieYearList() {
+    public List<PetsMovieYearDTO> findMovieYearList() {
         try {
             // load from cache
             CacheKey movieYearListCacheKey = new CacheKey(CacheKeyHolder.MOVIE_YEAR_LIST);
-            List<Integer> movieYearList = cacheService.get(movieYearListCacheKey);
-            if (movieYearList != null) {
-                return movieYearList;
+            List<PetsMovieYearDTO> movieYearDTOList = cacheService.get(movieYearListCacheKey);
+            if (movieYearDTOList != null) {
+                return movieYearDTOList;
             }
 
             // load from db
-            movieYearList = petsMovieYearDao.findMovieYearList();
-            if (movieYearList == null || CollectionUtils.isEmpty(movieYearList)) {
-                movieYearList = new ArrayList<Integer>();
+            List<PetsMovieYear> movieYearList = petsMovieYearDao.findMovieYearList();
+            if (CollectionUtils.isEmpty(movieYearList)) {
+                movieYearDTOList = new ArrayList<PetsMovieYearDTO>();
+            } else {
+                movieYearDTOList = toYearDTOList(movieYearList);
             }
 
             // add cache
-            cacheService.add(movieYearListCacheKey, movieYearList);
-            return movieYearList;
+            cacheService.add(movieYearListCacheKey, movieYearDTOList);
+            return movieYearDTOList;
         } catch (Exception e) {
             LOGGER.error("find movie year list failed", e);
-            return new ArrayList<Integer>();
+            return new ArrayList<PetsMovieYearDTO>();
         }
     }
 
@@ -386,6 +389,38 @@ public class PetsMediaServiceImpl implements PetsMediaService {
         for (PetsMoviePlay moviePlay : list) {
             PetsMoviePlayDTO dto = new PetsMoviePlayDTO();
             BeanUtils.copyProperties(moviePlay, dto);
+            result.add(dto);
+        }
+        return result;
+    }
+
+    /**
+     * 将对象列表转换为DTO列表
+     *
+     * @param movieRegionList
+     * @return
+     */
+    private List<PetsMovieRegionDTO> toRegionDTOList(List<PetsMovieRegion> movieRegionList) {
+        List<PetsMovieRegionDTO> result = new ArrayList<PetsMovieRegionDTO>();
+        for (PetsMovieRegion movieRegion : movieRegionList) {
+            PetsMovieRegionDTO dto = new PetsMovieRegionDTO();
+            BeanUtils.copyProperties(movieRegion, dto);
+            result.add(dto);
+        }
+        return result;
+    }
+
+    /**
+     * 将对象列表转换为DTO列表
+     *
+     * @param movieYearList
+     * @return
+     */
+    private List<PetsMovieYearDTO> toYearDTOList(List<PetsMovieYear> movieYearList) {
+        List<PetsMovieYearDTO> result = new ArrayList<PetsMovieYearDTO>();
+        for (PetsMovieYear movieYear : movieYearList) {
+            PetsMovieYearDTO dto = new PetsMovieYearDTO();
+            BeanUtils.copyProperties(movieYear, dto);
             result.add(dto);
         }
         return result;

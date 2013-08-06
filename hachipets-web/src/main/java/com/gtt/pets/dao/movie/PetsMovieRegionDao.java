@@ -4,6 +4,7 @@ import com.gtt.kenshin.dao.GenericDao;
 import com.gtt.kenshin.dao.annotation.DaoAction;
 import com.gtt.kenshin.dao.annotation.DaoActionType;
 import com.gtt.kenshin.dao.annotation.DaoParam;
+import com.gtt.pets.entity.movie.PetsMovieRegion;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
 public interface PetsMovieRegionDao extends GenericDao {
 
     @DaoAction(action = DaoActionType.QUERY)
-    List<String> findMovieRegionList();
+    List<PetsMovieRegion> findMovieRegionList();
 
     @DaoAction(action = DaoActionType.LOAD)
     String findMovieRegionById(@DaoParam("id") int regionId);

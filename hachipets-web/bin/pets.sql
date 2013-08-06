@@ -44,6 +44,7 @@ insert into `Pets_Movie_Region` (`id`, `region`) values('4','日本');
 insert into `Pets_Movie_Region` (`id`, `region`) values('5','韩国');
 insert into `Pets_Movie_Region` (`id`, `region`) values('6','法国');
 insert into `Pets_Movie_Region` (`id`, `region`) values('7','英国');
+insert into `Pets_Movie_Region` (`id`, `region`) values('8','其他地区');
 
 CREATE TABLE `Pets_Movie_Year` (
   `id` int(11) NOT NULL auto_increment COMMENT '自增主键',
@@ -60,6 +61,8 @@ insert into `Pets_Movie_Year` (`id`, `year`) values('7','2007');
 insert into `Pets_Movie_Year` (`id`, `year`) values('8','2006');
 insert into `Pets_Movie_Year` (`id`, `year`) values('9','2005');
 insert into `Pets_Movie_Year` (`id`, `year`) values('10','2004');
+insert into `Pets_Movie_Year` (`id`, `year`) values('11','2003');
+insert into `Pets_Movie_Year` (`id`, `year`) values('12','1900');
 
 CREATE TABLE `Pets_Movie_Info` (
   `id` int(11) NOT NULL auto_increment COMMENT '自增主键',

@@ -17,7 +17,9 @@ package com.gtt.pets.web.action.media;
 
 import com.gtt.kenshin.dao.model.PageModel;
 import com.gtt.pets.bean.media.PetsMovieDTO;
+import com.gtt.pets.bean.media.PetsMovieRegionDTO;
 import com.gtt.pets.constants.ChannelType;
+import com.gtt.pets.entity.movie.PetsMovieYearDTO;
 import com.gtt.pets.service.media.PetsMediaService;
 import com.gtt.pets.web.action.BaseAction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +47,8 @@ public class PetsMediaAction extends BaseAction {
     private PetsMediaService petsMediaService;
 
     // 输出
-    private List<String> regionList;
-    private List<Integer> yearList;
+    private List<PetsMovieRegionDTO> regionList;
+    private List<PetsMovieYearDTO> yearList;
     private PageModel movieModel;
     private PetsMovieDTO recommendMovie;
     private List<PetsMovieDTO> hotMovieList;
@@ -103,11 +105,11 @@ public class PetsMediaAction extends BaseAction {
         return sortBy;
     }
 
-    public List<String> getRegionList() {
+    public List<PetsMovieRegionDTO> getRegionList() {
         return regionList;
     }
 
-    public List<Integer> getYearList() {
+    public List<PetsMovieYearDTO> getYearList() {
         return yearList;
     }
 

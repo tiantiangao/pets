@@ -4,6 +4,8 @@ import com.gtt.kenshin.dao.model.PageModel;
 import com.gtt.pets.bean.media.PetsMovieDTO;
 import com.gtt.pets.bean.media.PetsMovieInfoDTO;
 import com.gtt.pets.bean.media.PetsMoviePlayDTO;
+import com.gtt.pets.bean.media.PetsMovieRegionDTO;
+import com.gtt.pets.entity.movie.PetsMovieYearDTO;
 
 import java.util.List;
 
@@ -92,14 +94,14 @@ public interface PetsMediaService {
      *
      * @return
      */
-    List<String> findMovieRegionList();
+    List<PetsMovieRegionDTO> findMovieRegionList();
 
     /**
      * 查找电影年代列表
      *
      * @return
      */
-    List<Integer> findMovieYearList();
+    List<PetsMovieYearDTO> findMovieYearList();
 
     String findMovieRegionByRegionID(int regionId);
 

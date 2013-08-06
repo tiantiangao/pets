@@ -14,7 +14,7 @@ public class PetsMoviePlay extends BaseEntity {
     /**
      * 宠物电影ID
      */
-    private long movieId;
+    private int movieId;
     /**
      * 宠物电影播放网站类型<br/>
      * 1-优酷，2-土豆，3-爱奇艺, 4-腾讯, 5-PPTV, 6-乐视
@@ -25,11 +25,11 @@ public class PetsMoviePlay extends BaseEntity {
      */
     private String address;
 
-    public long getMovieId() {
+    public int getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(long movieId) {
+    public void setMovieId(int movieId) {
         this.movieId = movieId;
     }
 

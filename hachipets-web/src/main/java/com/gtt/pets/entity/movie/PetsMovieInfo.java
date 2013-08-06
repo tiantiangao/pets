@@ -14,7 +14,7 @@ public class PetsMovieInfo extends BaseEntity {
     /**
      * 宠物电影ID
      */
-    private long movieId;
+    private int movieId;
     /**
      * 宠物电影信息网站类型<br/>
      * 1-豆瓣，2-MTime时光网
@@ -25,11 +25,11 @@ public class PetsMovieInfo extends BaseEntity {
      */
     private String refer;
 
-    public long getMovieId() {
+    public int getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(long movieId) {
+    public void setMovieId(int movieId) {
         this.movieId = movieId;
     }
 
