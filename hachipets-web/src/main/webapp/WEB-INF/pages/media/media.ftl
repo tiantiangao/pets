@@ -36,9 +36,9 @@
                 <div class="pets-movie-list pets-movie-container">
                     <div class="view-filter">
                         <div class="filter-order">
-                            <a href="#" class="order active"><span>按时间排序</span></a>
+                            <a href="#" class="order<#if sortBy==1> active</#if>"><span>按时间排序</span></a>
                             <span class="slash">|</span>
-                            <a href="#" class="order"><span>按名称排序</span></a>
+                            <a href="#" class="order<#if sortBy==2> active</#if>"><span>按名称排序</span></a>
                         </div>
                         <div class="filter-view-mode">
                             <a href="#">
