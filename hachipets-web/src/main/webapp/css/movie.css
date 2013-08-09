@@ -284,3 +284,14 @@
     margin: 0 5px;
     font-weight: 700;
 }
+
+.pets-movie-list .norecords-container {
+    height: 105px;
+    padding-top: 43px;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+}
+.pets-movie-list .norecords {
+    width: 280px;
+    margin: 0 auto;
+}

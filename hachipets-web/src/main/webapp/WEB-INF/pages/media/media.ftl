@@ -51,7 +51,9 @@
                             </a>
                         </div>
                     </div>
+                    <#assign hasRecords = (movieModel.records)?? && movieModel.records?size gt 0 >
                     <div class="row-fluid">
+                        <#assign hasEnd=false>
 						<#list movieModel.records as movie>
 						<#if movie_index%5==0>
                         <div class="pets-movie-row">
@@ -69,6 +71,10 @@
                         </div>
 						</#if>
 						</#list>
+                        <#if hasRecords && !hasEnd>
+                        </div>
+                        </#if>
+                        <#if hasRecords>
                         <div class="pets-pages">
                             <span class="disable"><< 上一页</span>
                             <a href="#" class="PageLink">1</a>
@@ -77,6 +83,18 @@
                             <a href="#" class="PageLink">...</a>
                             <a href="#" class="NextPage">下一页 >></a>
                         </div>
+                        <#else>
+                        <div class="norecords-container">
+                           <div class="norecords">
+                               抱歉，没有找到满足当前条件的宠物电影。<br/>
+                               建议您：<br/>
+                               <ul>
+                                   <#if area!=0><li>查看其他地区的宠物电影。</li></#if>
+                                   <#if year!=0><li>查看其他年代的宠物电影。</li></#if>
+                               </ul>
+                           </div>
+                        </div>
+                        </#if>
                     </div>
                 </div>
             </div>
