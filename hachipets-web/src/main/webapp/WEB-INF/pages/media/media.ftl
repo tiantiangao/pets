@@ -1,3 +1,4 @@
+<#include "/WEB-INF/pages/util/page.ftl">
 <html>
 <head>
     <title>宠物影视</title>
@@ -16,18 +17,18 @@
                         <div class="nav-filter">
                             <ul class="inline">
                                 <span class="filter-name">地区：</span>
-                                <a href="<@buildUrl toArea=0 />"><li <#if area==0>class="active"</#if>>全部</li></a>
+                                <a href="${buildUrl(0, -1, -1)}"><li <#if area==0>class="active"</#if>>全部</li></a>
                                 <#list regionList as regionDTO>
-                                    <a href="<@buildUrl toArea=regionDTO.id />"><li <#if area==regionDTO.id>class="active"</#if>>${regionDTO.region}</li></a>
+                                    <a href="${buildUrl(regionDTO.id, -1, -1)}"><li <#if area==regionDTO.id>class="active"</#if>>${regionDTO.region}</li></a>
                                 </#list>
                             </ul>
                         </div>
                         <div class="nav-filter last">
                             <ul class="inline">
                                 <span class="filter-name">年代：</span>
-                                <a href="<@buildUrl toYear=0 />"><li <#if year==0>class="active"</#if>>全部</li></a>
+                                <a href="${buildUrl(-1, 0, -1)}"><li <#if year==0>class="active"</#if>>全部</li></a>
                                 <#list yearList as yearDTO>
-                                    <a href="<@buildUrl toYear=yearDTO.id />"><li <#if year==yearDTO.id>class="active"</#if>><#if yearDTO.year==1900>其他地区<#else>${yearDTO.year}</#if></li></a>
+                                    <a href="${buildUrl(-1, yearDTO.id, -1)}"><li <#if year==yearDTO.id>class="active"</#if>><#if yearDTO.year==1900>其他地区<#else>${yearDTO.year}</#if></li></a>
                                 </#list>
                             </ul>
                         </div>
@@ -36,9 +37,9 @@
                 <div class="pets-movie-list pets-movie-container">
                     <div class="view-filter">
                         <div class="filter-order">
-                            <a href="<@buildUrl toSortBy=1 />" class="order<#if sortBy==1> active</#if>"><span>按时间排序</span></a>
+                            <a href="${buildUrl(-1, -1, 1)}" class="order<#if sortBy==1> active</#if>"><span>按时间排序</span></a>
                             <span class="slash">|</span>
-                            <a href="<@buildUrl toSortBy=2 />" class="order<#if sortBy==2> active</#if>"><span>按名称排序</span></a>
+                            <a href="${buildUrl(-1, -1, 2)}" class="order<#if sortBy==2> active</#if>"><span>按名称排序</span></a>
                         </div>
                         <div class="filter-view-mode">
                             <a href="#">
@@ -77,14 +78,7 @@
                         </div>
                         </#if>
                         <#if hasRecords>
-                        <div class="pets-pages">
-                            <span class="disable"><< 上一页</span>
-                            <a href="#" class="PageLink">1</a>
-                            <a href="#" class="PageLink">2</a>
-                            <span>3</span>
-                            <a href="#" class="PageLink">...</a>
-                            <a href="#" class="NextPage">下一页 >></a>
-                        </div>
+                        <@pageNavigation movieModel.page movieModel.pageCount buildUrl(-1, -1, -1) />
                         <#else>
                         <div class="norecords-container">
                            <div class="norecords">
@@ -147,28 +141,31 @@
 </div>
 </body>
 </html>
-<#macro buildUrl toArea=-1 toYear=-1 toSortBy=-1>
-<#assign url = "/media/">
+<#function buildUrl toArea=-1 toYear=-1 toSortBy=-1>
+<#local url = "/media/">
 <#if toArea!=-1>
     <#if toArea!=0>
-        <#assign url = url + "r" + toArea>
+        <#local url = url + "r" + toArea>
     </#if>
 <#elseif area!=0>
-    <#assign url = url + "r" + area>
+    <#local url = url + "r" + area>
 </#if>
 <#if toYear!=-1>
     <#if toYear!=0>
-        <#assign url = url + "y" + toYear>
+        <#local url = url + "y" + toYear>
     </#if>
 <#elseif year!=0>
-    <#assign url = url + "y" + year>
+    <#local url = url + "y" + year>
 </#if>
 <#if toSortBy!=-1>
     <#if toSortBy==2>
-        <#assign url = url + "o2">
+        <#local url = url + "o2">
     </#if>
 <#elseif sortBy==2>
-    <#assign url = url + "o2">
+    <#local url = url + "o2">
 </#if>
-${url}
-</#macro>
+<#if url?ends_with("/")>
+    <#local url = url?substring(0, url?length - 1)>
+</#if>
+<#return url>
+</#function>
