@@ -56,6 +56,7 @@
                         <#assign hasEnd=false>
 						<#list movieModel.records as movie>
 						<#if movie_index%5==0>
+                        <#assign hasEnd=false>
                         <div class="pets-movie-row">
 						</#if>
                             <div class="pets-movie">
@@ -68,6 +69,7 @@
                                 </div>
                             </div>
 						<#if movie_index%5==4>
+                        <#assign hasEnd=true>
                         </div>
 						</#if>
 						</#list>
@@ -89,8 +91,8 @@
                                抱歉，没有找到满足当前条件的宠物电影。<br/>
                                建议您：<br/>
                                <ul>
-                                   <#if area!=0><li>查看其他地区的宠物电影。</li></#if>
-                                   <#if year!=0><li>查看其他年代的宠物电影。</li></#if>
+                                   <li>查看其他地区的宠物电影。</li>
+                                   <li>查看其他年代的宠物电影。</li>
                                </ul>
                            </div>
                         </div>
