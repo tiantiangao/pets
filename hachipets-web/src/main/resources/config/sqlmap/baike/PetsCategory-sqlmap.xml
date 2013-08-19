@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="PetsCategory">
+
+    <typeAlias alias="PetsCategory" type="com.gtt.pets.entity.baike.PetsCategory" />
+    
+    <resultMap id="PetsCategoryResult" class="PetsCategory">
+        <result property="id" column="id" />
+        <result property="parentId" column="parentId" />
+        <result property="name" column="name" />
+    </resultMap>
+
+    <select id="loadById" resultMap="PetsCategoryResult" parameterClass="map">
+        <![CDATA[
+		SELECT id, `parentId`, `name`
+		FROM Pets_Category
+		WHERE id = #id#
+        ]]>
+    </select>
+
+    <select id="findByParentId" resultMap="PetsCategoryResult" parameterClass="map">
+        <![CDATA[
+		SELECT id, `parentId`, `name`
+		FROM Pets_Category
+		WHERE parentId = #id#
+		ORDER BY ID
+        ]]>
+    </select>
+
+</sqlMap>

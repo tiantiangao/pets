@@ -1,3 +1,4 @@
+########### 全局表 ############
 CREATE TABLE `Pets_GlobalConfig` (
   `id` int(11) NOT NULL auto_increment COMMENT '自增主键',
   `name` varchar(50) NOT NULL COMMENT '配置名称',
@@ -7,6 +8,7 @@ CREATE TABLE `Pets_GlobalConfig` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 insert into `Pets_GlobalConfig` (`id`, `name`, `config`) values('1','projectName','Hachi宠物网');
 
+########### 宠物电影相关表 ############
 CREATE TABLE `Pets_Movie` (
   `id` int(11) NOT NULL auto_increment COMMENT '自增主键',
   `name` varchar(30) default NULL COMMENT '影片名称',
@@ -107,3 +109,71 @@ CREATE TABLE `Pets_Movie_Recommend` (
 INSERT INTO `Pets_Movie_Recommend` (`movieId`, `addTime`)
   VALUES (1, NOW());
 
+########### 宠物分类相关表 ############
+CREATE TABLE `Pets_Category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `parentId` int(11) DEFAULT '0' COMMENT '父分类名称',
+  `name` varchar(30) DEFAULT NULL COMMENT '分类名称',
+  `addTime` datetime DEFAULT NULL COMMENT '记录添加时间',
+  PRIMARY KEY (`id`),
+  KEY `IX_Name` (`name`),
+  KEY `IX_ParentID` (`parentId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `Pets_Category` (`id`, `parentCategoryId`, `name`, `addTime`)
+  VALUES
+  (1, 0, '狗狗', '2013-08-16 18:29:29'),
+  (2, 0, '猫咪', '2013-08-16 18:29:29'),
+  (3, 0, '宠物兔', '2013-08-16 18:29:29'),
+  (4, 0, '宠物鼠', '2013-08-16 18:29:29'),
+  (5, 0, '宠物鸟', '2013-08-16 18:29:29'),
+  (6, 0, '宠物鱼', '2013-08-16 18:29:29'),
+  (7, 0, '异宠', '2013-08-16 18:29:29'),
+  (8, 1, '小型犬', '2013-08-16 18:29:29'),
+  (9, 1, '中型犬', '2013-08-16 18:29:29'),
+  (10, 1, '大型犬', '2013-08-16 18:29:29'),
+  (11, 2, '长毛猫', '2013-08-16 18:29:29'),
+  (12, 2, '短毛猫', '2013-08-16 18:29:29'),
+  (13, 2, '无毛猫', '2013-08-16 18:29:29'),
+  (14, 3, '迷你兔', '2013-08-16 18:29:29'),
+  (15, 3, '小型兔', '2013-08-16 18:29:29'),
+  (16, 3, '中型兔', '2013-08-16 18:29:29'),
+  (17, 3, '大型兔', '2013-08-16 18:29:29'),
+  (18, 3, '巨型兔', '2013-08-16 18:29:29'),
+  (19, 4, '仓鼠', '2013-08-16 18:29:29'),
+  (20, 4, '豚鼠', '2013-08-16 18:29:29'),
+  (21, 4, '松鼠', '2013-08-16 18:29:29'),
+  (22, 4, '绒鼠', '2013-08-16 18:29:29'),
+  (23, 5, '鹦鹉', '2013-08-16 18:29:29'),
+  (24, 5, '鸽类', '2013-08-16 18:29:29'),
+  (25, 5, '鸣禽', '2013-08-16 18:29:29'),
+  (26, 5, '鸡类', '2013-08-16 18:29:29'),
+  (27, 6, '海水鱼', '2013-08-16 18:29:29'),
+  (28, 6, '淡水鱼', '2013-08-16 18:29:29'),
+  (29, 7, '宠物猪', '2013-08-16 18:29:29'),
+  (30, 7, '宠物马', '2013-08-16 18:29:29'),
+  (31, 7, '宠物猴', '2013-08-16 18:29:29'),
+  (32, 7, '刺猬', '2013-08-16 18:29:29'),
+  (33, 7, '羊驼', '2013-08-16 18:29:29'),
+  (34, 7, '蝾螈', '2013-08-16 18:29:29'),
+  (35, 7, '鲵', '2013-08-16 18:29:29'),
+  (36, 7, '蛇类', '2013-08-16 18:29:29'),
+  (37, 7, '龟类', '2013-08-16 18:29:29'),
+  (38, 7, '鳄鱼', '2013-08-16 18:29:29'),
+  (39, 7, '蜥蜴', '2013-08-16 18:29:29'),
+  (40, 7, '蟋蟀', '2013-08-16 18:29:29'),
+  (41, 7, '蜘蛛', '2013-08-16 18:29:29'),
+  (42, 7, '蝎子', '2013-08-16 18:29:29');
+
+CREATE TABLE `Pets_Info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `categoryId` int(11) DEFAULT NULL COMMENT '所属分类',
+  `name` varchar(30) DEFAULT NULL COMMENT '宠物名称',
+  `enName` varchar(30) DEFAULT NULL COMMENT '宠物英文名称',
+  `pic` varchar(100) DEFAULT NULL COMMENT '宠物图片',
+  `desc` varchar(500) DEFAULT NULL COMMENT '宠物描述',
+  `addTime` datetime DEFAULT NULL COMMENT '记录添加时间',
+  PRIMARY KEY (`id`),
+  KEY `IX_CategoryID` (`categoryId`),
+  KEY `IX_Name` (`name`),
+  KEY `IX_EnName` (`enName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
