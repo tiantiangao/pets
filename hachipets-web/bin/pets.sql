@@ -8,6 +8,109 @@ CREATE TABLE `Pets_GlobalConfig` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 insert into `Pets_GlobalConfig` (`id`, `name`, `config`) values('1','projectName','Hachi宠物网');
 
+CREATE TABLE `Pets_ProvinceList` (
+  `ProvinceID` tinyint(3) unsigned NOT NULL,
+  `AreaID` tinyint(3) unsigned NOT NULL,
+  `ProvinceName` varchar(4) NOT NULL,
+  `ProvinceOrderID` tinyint(3) unsigned NOT NULL,
+  PRIMARY KEY (`ProvinceID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `Pets_ProvinceList` (`ProvinceID`, `AreaID`, `ProvinceName`, `ProvinceOrderID`)
+  VALUES
+  (1,1,'北京',2),
+  (2,1,'天津',4),
+  (3,1,'河北',6),
+  (4,1,'山西',6),
+  (5,1,'内蒙古',6),
+  (6,2,'辽宁',6),
+  (7,2,'吉林',6),
+  (8,2,'黑龙江',6),
+  (9,3,'上海',1),
+  (10,3,'江苏',6),
+  (11,3,'浙江',6),
+  (12,3,'安徽',6),
+  (13,3,'福建',6),
+  (14,3,'江西',6),
+  (15,3,'山东',6),
+  (16,4,'河南',6),
+  (17,4,'湖北',6),
+  (18,4,'湖南',6),
+  (19,4,'广东',6),
+  (20,4,'广西',6),
+  (21,4,'海南',6),
+  (22,5,'重庆',3),
+  (23,5,'四川',6),
+  (24,5,'贵州',6),
+  (25,5,'云南',6),
+  (26,5,'西藏',6),
+  (27,6,'陕西',6),
+  (28,6,'甘肃',6),
+  (29,6,'青海',6),
+  (30,6,'宁夏',6),
+  (31,6,'新疆',6),
+  (32,7,'香港',5),
+  (33,7,'澳门',5),
+  (34,7,'台湾',5),
+  (100,100,'国外',7);
+
+CREATE TABLE `Pets_CityList` (
+  `CityID` smallint(6) NOT NULL AUTO_INCREMENT,
+  `CityName` varchar(20) NOT NULL,
+  `ProvinceID` tinyint(3) unsigned DEFAULT NULL,
+  `CityEnName` varchar(15) DEFAULT NULL,
+  `CityAreaCode` varchar(5) DEFAULT NULL,
+  `CityAbbrCode` varchar(3) DEFAULT NULL,
+  `CityLevel` tinyint(3) unsigned DEFAULT NULL,
+  PRIMARY KEY (`CityID`),
+  KEY `Index_ZS_CityList_CityAbbrCode` (`CityAbbrCode`),
+  KEY `Index_ZS_CityList_CityEnName` (`CityEnName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `Pets_CityList` (`CityName`, `ProvinceID`, `CityEnName`, `CityAreaCode`, `CityAbbrCode`, `CityLevel`)
+  VALUES
+  ('上海', 9, 'shanghai', '021', 'SH', 1),
+  ('北京', 1, 'beijing', '010', 'BJ', 1),
+  ('杭州', 11, 'hangzhou', '0571', 'HZ', 2),
+  ('广州', 19, 'guangzhou', '020', 'GZ', 2),
+  ('南京', 10, 'nanjing', '025', 'NJ', 2),
+  ('苏州', 10, 'suzhou', '0512', 'SUZ', 2),
+  ('深圳', 19, 'shenzhen', '0755', 'SZ', 2),
+  ('成都', 23, 'chengdu', '028', 'CD', 2),
+  ('重庆', 22, 'chongqing', '023', 'CQ', 2),
+  ('天津', 2, 'tianjin', '022', 'TJ', 2),
+  ('宁波', 11, 'ningbo', '0574', 'NB', 2),
+  ('扬州', 10, 'yangzhou', '0514', 'YZ', 3),
+  ('无锡', 10, 'wuxi', '0510', 'WX', 2),
+  ('福州', 13, 'fuzhou', '0591', 'FZ', 2),
+  ('厦门', 13, 'xiamen', '0592', 'XM', 2),
+  ('武汉', 17, 'wuhan', '027', 'WH', 2),
+  ('西安', 27, 'xian', '029', 'XA', 2),
+  ('沈阳', 6, 'shenyang', '024', 'SY', 2),
+  ('大连', 6, 'dalian', '0411', 'DL', 2),
+  ('青岛', 15, 'qingdao', '0532', 'QD', 3),
+  ('济南', 15, 'jinan', '0531', 'JN', 2),
+  ('海口', 21, 'haikou', '0898', 'HK', 3),
+  ('石家庄', 3, 'shijiazhuang', '0311', 'SJZ', 4),
+  ('太原', 4, 'taiyuan', '0351', 'TY', 4),
+  ('呼和浩特', 5, 'huhehaote', '0471', 'HH', 4),
+  ('长春', 7, 'changchun', '0431', 'CC', 2),
+  ('哈尔滨', 8, 'haerbin', '0451', 'HB', 3),
+  ('合肥', 12, 'hefei', '0551', 'HF', 3),
+  ('南昌', 14, 'nanchang', '0791', 'NC', 3),
+  ('郑州', 16, 'zhengzhou', '0371', 'ZZ', 3),
+  ('珠海', 19, 'zhuhai', '0756', 'ZH', 3),
+  ('佛山', 19, 'foshan', '0757', 'FS', 3),
+  ('东莞', 19, 'dongguan', '0769', 'DG', 4),
+  ('南宁', 20, 'nanning', '0771', 'NN', 4),
+  ('贵阳', 24, 'guiyang', '0851', 'GY', 4),
+  ('昆明', 25, 'kunming', '0871', 'KM', 3),
+  ('兰州', 28, 'lanzhou', '0931', 'LZ', 4),
+  ('西宁', 29, 'xining', '0971', 'XN', 4),
+  ('乌鲁木齐', 31, 'wulumuqi', '0991', 'WLM', 4),
+  ('香港', 32, 'hongkong', '00852', 'HK', 2),
+  ('长沙', 18, 'changsha', '0731', 'CS', 3);
+
 ########### 宠物电影相关表 ############
 CREATE TABLE `Pets_Movie` (
   `id` int(11) NOT NULL auto_increment COMMENT '自增主键',
