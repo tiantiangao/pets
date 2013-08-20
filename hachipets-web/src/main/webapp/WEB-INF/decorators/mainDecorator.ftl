@@ -39,9 +39,10 @@
             <ul class="nav pets-nav">
                 <li><a href="/" <#if channel=="index">class="active"</#if>>首页</a></li>
                 <li><a href="/baike" <#if channel=="baike">class="active"</#if>>宠物百科</a></li>
+                <li><a href="#">宠物商城</a></li>
                 <li><a href="/news" <#if channel=="news">class="active"</#if>>宠物新鲜事</a></li>
                 <li><a href="/show" <#if channel=="show">class="active"</#if>>宠物秀</a></li>
-                <li><a href="/transfer" <#if channel=="transfer">class="active"</#if>>宠物转让</a></li>
+                <li><a href="/transfer" <#if channel=="transfer">class="active"</#if>>宠物领养</a></li>
                 <li><a href="/hospital" <#if channel=="hospital">class="active"</#if>>宠物医院</a></li>
                 <li><a href="/beauty" <#if channel=="beauty">class="active"</#if>>宠物美容</a></li>
                 <li><a href="/media" <#if channel=="media">class="active"</#if>>宠物影视</a></li>
