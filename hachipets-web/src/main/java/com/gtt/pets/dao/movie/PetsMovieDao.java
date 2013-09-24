@@ -23,6 +23,11 @@ public interface PetsMovieDao extends GenericDao {
                             @DaoParam("sort") String sort, @DaoParam("asc") boolean asc, @DaoParam("page") int page,
                             @DaoParam("max") int max);
 
+	@DaoAction(action = DaoActionType.PAGE)
+	PageModel findMovieListBeforeYear(@DaoParam("region") String region, @DaoParam("year") int year,
+							@DaoParam("sort") String sort, @DaoParam("asc") boolean asc, @DaoParam("page") int page,
+							@DaoParam("max") int max);
+
     @DaoAction(action = DaoActionType.QUERY)
     List<PetsMovie> findByIdList(@DaoParam("idList") List<Integer> idList);
 

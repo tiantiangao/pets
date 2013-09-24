@@ -100,7 +100,12 @@ public class PetsMediaServiceImpl implements PetsMediaService {
         }
 
         try {
-            PageModel model = petsMovieDao.findMovieList(region, year, sortBy, asc, page, max);
+            PageModel model = null;
+			if(year == 1900){
+				model = petsMovieDao.findMovieListBeforeYear(region, 2003, sortBy, asc, page, max);
+			}else{
+				model = petsMovieDao.findMovieList(region, year, sortBy, asc, page, max);
+			}
             if (model == null || CollectionUtils.isEmpty(model.getRecords())) {
                 return new PageModel();
             }
