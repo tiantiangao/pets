@@ -2,6 +2,7 @@
 <head>
     <title>${movie.name}-宠物影视</title>
     <link href="/css/movie-detail.css" rel="stylesheet">
+    <script src="/js/petspic.js"></script>
 </head>
 <body>
 <div class="container">
@@ -12,7 +13,7 @@
         </div>
         <div class="pets-movie-desc">
             <div class="pets-movie-pic">
-                <img width="225" height="300" src="${(movie.pic)!''}">
+                <img width="225" height="317" data="${(movie.pic+"-media")!''}">
             </div>
             <div class="pets-movie-info">
                 <dl>
@@ -86,7 +87,7 @@
             <#if relatedMovieList??>
             <#list relatedMovieList as movie>
                 <div class="other-movie">
-                    <a href="/media/${movie.id}" target="_blank"><img src="${(movie.pic)!''}"></a>
+                    <a href="/media/${movie.id}" target="_blank"><img data="${(movie.pic+"-mpic")!''}"></a>
                     <a href="/media/${movie.id}" target="_blank" class="name">${movie.name}</a>
                 </div>
             </#list>
@@ -94,5 +95,24 @@
         </div>
     </div>
 </div>
+<script>
+$(function(){
+    $(".pets-movie-pic img").each(function(){
+        $(this).loadpic({
+            src: $(this).attr('data'),
+            mw: 225,
+            mh: 317
+        });
+    });
+
+    $(".pets-movie-other img").each(function(){
+        $(this).loadpic({
+            src: $(this).attr('data'),
+            mw: 150,
+            mh: 220
+        });
+    });
+});
+</script>
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
     <title>宠物影视</title>
     <link href="/css/movie.css" rel="stylesheet">
+    <script src="/js/petspic.js"></script>
 </head>
 <body>
 <div class="container">
@@ -28,7 +29,7 @@
                                 <span class="filter-name">年代：</span>
                                 <a href="${buildUrl(-1, 0, -1)}"><li <#if year==0>class="active"</#if>>全部</li></a>
                                 <#list yearList as yearDTO>
-                                    <a href="${buildUrl(-1, yearDTO.id, -1)}"><li <#if year==yearDTO.id>class="active"</#if>><#if yearDTO.year==1900>其他地区<#else>${yearDTO.year}</#if></li></a>
+                                    <a href="${buildUrl(-1, yearDTO.id, -1)}"><li <#if year==yearDTO.id>class="active"</#if>><#if yearDTO.year==1900>其他年代<#else>${yearDTO.year}</#if></li></a>
                                 </#list>
                             </ul>
                         </div>
@@ -61,7 +62,7 @@
                         <div class="pets-movie-row">
 						</#if>
                             <div class="pets-movie">
-                                <a href="/media/${movie.id}"><img style="width: 150px; height: 220px;" src="${(movie.pic)!''}"></a>
+                                <a href="/media/${movie.id}"><img width="150" height="220" data="${(movie.pic+"-mpic")!''}"></a>
                                 <div class="pets-movie-title">
                                     <a href="/media/${movie.id}">${movie.name}</a>
                                 </div>
@@ -101,7 +102,7 @@
                         <li class="nav-header"><h5>优秀宠物电影推荐</h5></li>
                         <li>
                             <div class="recommend-movie">
-                                <a href="/media/${recommendMovie.id}"><img style="width: 228px; height: 334;" src="${(recommendMovie.pic)!''}"></a>
+                                <a href="/media/${recommendMovie.id}"><img width="228" height="334" data="${(recommendMovie.pic+"-mpic")!''}"></a>
                                 <div class="recommend-movie-title">
                                     <a href="/media/${recommendMovie.id}">${recommendMovie.name}</a>
                                 </div>
@@ -139,6 +140,25 @@
         </div>
     </div>
 </div>
+<script>
+    $(function(){
+        $(".pets-movie-list img").each(function(){
+            $(this).loadpic({
+                src: $(this).attr('data'),
+                mw: 150,
+                mh: 220
+            });
+        });
+
+        $(".recommend-movie img").each(function(){
+            $(this).loadpic({
+                src: $(this).attr('data'),
+                mw: 228,
+                mh: 318
+            });
+        });
+    });
+</script>
 </body>
 </html>
 <#function buildUrl toArea=-1 toYear=-1 toSortBy=-1>
