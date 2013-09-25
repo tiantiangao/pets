@@ -9,7 +9,7 @@
     <div class="pets-movie-detail">
         <div class="pets-movie-return"><a href="<#if canReturnHistory>javascript:history.go(-1);<#else>/media</#if>">&lt;&lt; 返回上一页</a></div>
         <div class="pets-movie-title">
-            ${movie.name}<#if (movie.year)?? && movie.year gt 0><span>(${movie.year})</span></#if>
+            ${movie.name}<#if (movie.year)?? && movie.year gt 0> <span>(${movie.year})</span></#if>
         </div>
         <div class="pets-movie-desc">
             <div class="pets-movie-pic">
