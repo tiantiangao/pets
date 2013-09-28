@@ -12,6 +12,7 @@ import com.gtt.pets.bean.media.PetsMoviePlayDTO;
 import com.gtt.pets.bean.media.PetsMovieRegionDTO;
 import com.gtt.pets.dao.movie.*;
 import com.gtt.pets.entity.movie.*;
+import com.gtt.pets.service.GlobalService;
 import com.gtt.pets.service.media.PetsMediaService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -46,6 +47,8 @@ public class PetsMediaServiceImpl implements PetsMediaService {
     private PetsMovieYearDao petsMovieYearDao;
     @Autowired
     private CacheService cacheService;
+    @Autowired
+    private GlobalService globalService;
 
     @Override
     public PetsMovieDTO loadByMovieID(int movieId) {
@@ -101,11 +104,16 @@ public class PetsMediaServiceImpl implements PetsMediaService {
 
         try {
             PageModel model = null;
-			if(year == 1900){
-				model = petsMovieDao.findMovieListBeforeYear(region, 2003, sortBy, asc, page, max);
-			}else{
-				model = petsMovieDao.findMovieList(region, year, sortBy, asc, page, max);
-			}
+            if (year == 1900) {
+                int movieMinYear = 2003;
+                try {
+                    movieMinYear = Integer.parseInt(globalService.get("movieMinYear"));
+                } catch (Exception e) {
+                }
+                model = petsMovieDao.findMovieListBeforeYear(region, movieMinYear, sortBy, asc, page, max);
+            } else {
+                model = petsMovieDao.findMovieList(region, year, sortBy, asc, page, max);
+            }
             if (model == null || CollectionUtils.isEmpty(model.getRecords())) {
                 return new PageModel();
             }
