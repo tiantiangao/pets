@@ -43,6 +43,7 @@
                             <a href="${buildUrl(-1, -1, 2)}" class="order<#if sortBy==2> active</#if>"><span>按名称排序</span></a>
                         </div>
                         <div class="filter-view-mode">
+                            <!--
                             <a href="#">
                                 <i class="icon-th-large"></i>
                                 <span class="mode-text">列表模式</span>
@@ -51,6 +52,7 @@
                                 <i class="icon-th-list"></i>
                                 <span class="mode-text">图片模式</span>
                             </a>
+                            -->
                         </div>
                     </div>
                     <#assign hasRecords = (movieModel.records)?? && movieModel.records?size gt 0 >

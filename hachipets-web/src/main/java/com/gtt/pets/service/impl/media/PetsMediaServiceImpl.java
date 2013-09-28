@@ -104,16 +104,30 @@ public class PetsMediaServiceImpl implements PetsMediaService {
 
         try {
             PageModel model = null;
-            if (year == 1900) {
-                int movieMinYear = 2003;
-                try {
-                    movieMinYear = Integer.parseInt(globalService.get("movieMinYear"));
-                } catch (Exception e) {
+
+            // 确定查询条件之地区
+            String queryRegion = region;
+            List<String> queryNotInRegionList = null;
+            if (StringUtils.isNotBlank(region)) {
+                String movieOtherRegionName = globalService.get("movieOtherRegionName");
+                if (StringUtils.isNotBlank(movieOtherRegionName) && region.equals(movieOtherRegionName)) {
+                    queryRegion = null;
+                    queryNotInRegionList = fetchNotOtherRegionList(movieOtherRegionName);
                 }
-                model = petsMovieDao.findMovieListBeforeYear(region, movieMinYear, sortBy, asc, page, max);
-            } else {
-                model = petsMovieDao.findMovieList(region, year, sortBy, asc, page, max);
             }
+
+            // 确定查询条件之年份
+            int queryYear = year;
+            boolean queryAfterYear = false;
+            if (year == 1900) {
+                queryAfterYear = true;
+                try {
+                    queryYear = Integer.parseInt(globalService.get("movieMinYear"));
+                } catch (Exception e) {
+                    queryYear = 2003; // default
+                }
+            }
+            model = petsMovieDao.findMovieList(queryRegion, queryNotInRegionList, queryYear, queryAfterYear, sortBy, asc, page, max);
             if (model == null || CollectionUtils.isEmpty(model.getRecords())) {
                 return new PageModel();
             }
@@ -125,6 +139,23 @@ public class PetsMediaServiceImpl implements PetsMediaService {
             LOGGER.error("find movie list failed", e);
             return new PageModel();
         }
+    }
+
+    /**
+     * 获取非其他地区的所有地区列表
+     *
+     * @param movieOtherRegionName
+     * @return
+     */
+    private List<String> fetchNotOtherRegionList(String movieOtherRegionName) {
+        List<PetsMovieRegion> movieRegionList = petsMovieRegionDao.findMovieRegionList();
+        List<String> notOtherRegionList = new ArrayList<String>();
+        for (PetsMovieRegion petsMovieRegion : movieRegionList) {
+            if (!petsMovieRegion.getRegion().equals(movieOtherRegionName)) {
+                notOtherRegionList.add(petsMovieRegion.getRegion());
+            }
+        }
+        return notOtherRegionList;
     }
 
     @Override
@@ -168,7 +199,7 @@ public class PetsMediaServiceImpl implements PetsMediaService {
             }
 
             // no cache, load from db
-            PageModel pageModel = petsMovieDao.findMovieList(null, 0, "release", false, 1, 10);
+            PageModel pageModel = petsMovieDao.findMovieList(null, null, 0, false, "release", false, 1, 10);
             if (pageModel == null || CollectionUtils.isEmpty(pageModel.getRecords())) {
                 newMovieList = new ArrayList<PetsMovieDTO>();
             } else {

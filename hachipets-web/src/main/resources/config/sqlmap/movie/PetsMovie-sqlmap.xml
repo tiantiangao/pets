@@ -37,7 +37,7 @@
         </iterate>
     </select>
 
-	<select id="findMovieList" resultMap="PetsMovieResult" parameterClass="map">
+    <select id="findMovieList" resultMap="PetsMovieResult" parameterClass="map">
         <![CDATA[
 		SELECT id, `name`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `year`, `addTime`
 		FROM Pets_Movie
@@ -46,43 +46,23 @@
             <isNotEmpty property="region" prepend="and">
                 `region` = #region#
             </isNotEmpty>
-            <isGreaterThan property="year" compareValue="0" prepend="and">
-                `year` = #year#
-            </isGreaterThan>
-        </dynamic>
-        <isNotEmpty property="sort">
-        ORDER BY `$sort$`
-		<isEqual property="asc" compareValue="true"> asc</isEqual>
-		<isNotEqual property="asc" compareValue="true"> desc</isNotEqual>
-        </isNotEmpty>
-	</select>
-
-    <select id="findMovieList_COUNT" resultClass="java.lang.Integer" parameterClass="map">
-        SELECT count(1)
-        FROM Pets_Movie
-        <dynamic prepend="where">
-            <isNotEmpty property="region" prepend="and">
-                `region` = #region#
+            <isNotEmpty property="notInRegionList" prepend="and">
+                `region` NOT IN
+                <iterate property="notInRegionList" conjunction="," open="(" close=")">
+                    #notInRegionList[]#
+                </iterate>
             </isNotEmpty>
             <isGreaterThan property="year" compareValue="0" prepend="and">
-                `year` = #year#
-            </isGreaterThan>
-        </dynamic>
-    </select>
-
-    <select id="findMovieListBeforeYear" resultMap="PetsMovieResult" parameterClass="map">
-        <![CDATA[
-		SELECT id, `name`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `year`, `addTime`
-		FROM Pets_Movie
-        ]]>
-        <dynamic prepend="where">
-            <isNotEmpty property="region" prepend="and">
-                `region` = #region#
-            </isNotEmpty>
-            <isGreaterThan property="year" compareValue="0" prepend="and">
-            <![CDATA[
-                `year` < #year#
-            ]]>
+                <isEqual property="afterYear" compareValue="true">
+                    <![CDATA[
+                    `year` < #year#
+                    ]]>
+                </isEqual>
+                <isEqual property="afterYear" compareValue="false">
+                    <![CDATA[
+                    `year` = #year#
+                    ]]>
+                </isEqual>
             </isGreaterThan>
         </dynamic>
         <isNotEmpty property="sort">
@@ -92,17 +72,30 @@
         </isNotEmpty>
     </select>
 
-    <select id="findMovieListBeforeYear_COUNT" resultClass="java.lang.Integer" parameterClass="map">
+    <select id="findMovieList_COUNT" resultClass="java.lang.Integer" parameterClass="map">
         SELECT count(1)
         FROM Pets_Movie
         <dynamic prepend="where">
             <isNotEmpty property="region" prepend="and">
                 `region` = #region#
             </isNotEmpty>
+            <isNotEmpty property="notInRegionList" prepend="and">
+                `region` NOT IN
+                <iterate property="notInRegionList" conjunction="," open="(" close=")">
+                    #notInRegionList[]#
+                </iterate>
+            </isNotEmpty>
             <isGreaterThan property="year" compareValue="0" prepend="and">
-            <![CDATA[
-                `year` < #year#
-            ]]>
+                <isEqual property="afterYear" compareValue="true">
+                    <![CDATA[
+                    `year` < #year#
+                    ]]>
+                </isEqual>
+                <isEqual property="afterYear" compareValue="false">
+                    <![CDATA[
+                    `year` = #year#
+                    ]]>
+                </isEqual>
             </isGreaterThan>
         </dynamic>
     </select>
