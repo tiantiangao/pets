@@ -35,7 +35,7 @@
 <div class="container">
     <div class="navbar">
         <div class="navbar-inner">
-            <a class="brand pets-brand" href="#">全部宠物分类</a>
+            <#--<a class="brand pets-brand" href="#"></a>-->
             <ul class="nav pets-nav">
                 <li><a href="/" <#if channel=="index">class="active"</#if>>首页</a></li>
                 <li><a href="/baike" <#if channel=="baike">class="active"</#if>>宠物百科</a></li>
