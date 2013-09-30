@@ -1,6 +1,7 @@
 <html>
 <head>
-    <title>${movie.name}-宠物影视</title>
+    <title>${movie.name}<#if (movie.year)?? && movie.year gt 0>(${movie.year})</#if>-宠物影视</title>
+    <meta name="description" content="${movie.name}-${(movie.desc)!""}-${projectName!""}" />
     <link href="/css/movie-detail.css" rel="stylesheet">
     <script src="/js/petspic.js"></script>
 </head>
@@ -40,6 +41,12 @@
                     <dt>片&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;长：</dt>
                     <dd><#if (movie.length)?? && movie.length gt 0>${movie.length}分钟<#else>--</#if></dd>
                 </dl>
+                <#if movie.alias??>
+                <dl>
+                    <dt>别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</dt>
+                    <dd>${movie.alias}</dd>
+                </dl>
+                </#if>
                 <dl>
                     <dt>影片介绍：</dt>
                     <dd>

@@ -18,6 +18,10 @@ public class PetsMovie extends BaseEntity {
      */
     private String name;
     /**
+     * 影片别名
+     */
+    private String alias;
+    /**
      * 影片描述
      */
     private String desc;
@@ -45,10 +49,10 @@ public class PetsMovie extends BaseEntity {
      * 影片上映日期
      */
     private Date release;
-	/**
-	 * 所属年代
-	 */
-	private int year;
+    /**
+     * 所属年代
+     */
+    private int year;
 
     public String getName() {
         return name;
@@ -56,6 +60,14 @@ public class PetsMovie extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
     }
 
     public String getDesc() {
@@ -114,11 +126,11 @@ public class PetsMovie extends BaseEntity {
         this.release = release;
     }
 
-	public int getYear() {
-		return year;
-	}
+    public int getYear() {
+        return year;
+    }
 
-	public void setYear(int year) {
-		this.year = year;
-	}
+    public void setYear(int year) {
+        this.year = year;
+    }
 }

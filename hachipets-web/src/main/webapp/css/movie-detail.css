@@ -6,7 +6,7 @@
 	border-radius: 4px;
 }
 .pets-movie-detail {
-    padding: 10px;
+    padding: 10px 10px 20px;
     height: 390px;
 }
 .pets-movie-return {
@@ -87,7 +87,7 @@
 }
 .pets-movie-info .pets-movie-info-desc {
     line-height: 24px;
-    height: 118px;
+    height: 96px;
     overflow: hidden;
 }
 

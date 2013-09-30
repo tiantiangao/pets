@@ -1,8 +1,8 @@
 package com.gtt.pets.bean.media;
 
-import java.util.Date;
-
 import com.gtt.pets.bean.BaseDTO;
+
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA. User: gtt Date: 13-7-31 Time: 下午11:06 To change
@@ -10,124 +10,136 @@ import com.gtt.pets.bean.BaseDTO;
  */
 public class PetsMovieDTO extends BaseDTO {
 
-	/**
-	 * 电影ID
-	 */
-	private int id;
-	/**
-	 * 影片名称
-	 */
-	private String name;
-	/**
-	 * 影片描述
-	 */
-	private String desc;
-	/**
-	 * 影片图片
-	 */
-	private String pic;
-	/**
-	 * 影片导演
-	 */
-	private String director;
-	/**
-	 * 影片演员
-	 */
-	private String actor;
-	/**
-	 * 影片地区
-	 */
-	private String region;
-	/**
-	 * 影片片长
-	 */
-	private int length;
-	/**
-	 * 影片上映日期
-	 */
-	private Date release;
-	/**
-	 * 所属年代
-	 */
-	private int year;
+    /**
+     * 电影ID
+     */
+    private int id;
+    /**
+     * 影片名称
+     */
+    private String name;
+    /**
+     * 影片别名
+     */
+    private String alias;
+    /**
+     * 影片描述
+     */
+    private String desc;
+    /**
+     * 影片图片
+     */
+    private String pic;
+    /**
+     * 影片导演
+     */
+    private String director;
+    /**
+     * 影片演员
+     */
+    private String actor;
+    /**
+     * 影片地区
+     */
+    private String region;
+    /**
+     * 影片片长
+     */
+    private int length;
+    /**
+     * 影片上映日期
+     */
+    private Date release;
+    /**
+     * 所属年代
+     */
+    private int year;
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getDesc() {
-		return desc;
-	}
+    public String getAlias() {
+        return alias;
+    }
 
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
 
-	public String getPic() {
-		return pic;
-	}
+    public String getDesc() {
+        return desc;
+    }
 
-	public void setPic(String pic) {
-		this.pic = pic;
-	}
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 
-	public String getDirector() {
-		return director;
-	}
+    public String getPic() {
+        return pic;
+    }
 
-	public void setDirector(String director) {
-		this.director = director;
-	}
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
 
-	public String getActor() {
-		return actor;
-	}
+    public String getDirector() {
+        return director;
+    }
 
-	public void setActor(String actor) {
-		this.actor = actor;
-	}
+    public void setDirector(String director) {
+        this.director = director;
+    }
 
-	public String getRegion() {
-		return region;
-	}
+    public String getActor() {
+        return actor;
+    }
 
-	public void setRegion(String region) {
-		this.region = region;
-	}
+    public void setActor(String actor) {
+        this.actor = actor;
+    }
 
-	public int getLength() {
-		return length;
-	}
+    public String getRegion() {
+        return region;
+    }
 
-	public void setLength(int length) {
-		this.length = length;
-	}
+    public void setRegion(String region) {
+        this.region = region;
+    }
 
-	public Date getRelease() {
-		return release;
-	}
+    public int getLength() {
+        return length;
+    }
 
-	public void setRelease(Date release) {
-		this.release = release;
-	}
+    public void setLength(int length) {
+        this.length = length;
+    }
 
-	public int getYear() {
-		return year;
-	}
+    public Date getRelease() {
+        return release;
+    }
 
-	public void setYear(int year) {
-		this.year = year;
-	}
+    public void setRelease(Date release) {
+        this.release = release;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public int getYear() {
+        return year;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

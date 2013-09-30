@@ -7,6 +7,7 @@
     <resultMap id="PetsMovieResult" class="PetsMovie">
         <result property="id" column="id" />
         <result property="name" column="name" />
+        <result property="alias" column="alias" />
         <result property="desc" column="desc" />
         <result property="pic" column="pic" />
         <result property="director" column="director" />
@@ -20,7 +21,7 @@
 
     <select id="loadById" resultMap="PetsMovieResult" parameterClass="map">
         <![CDATA[
-		SELECT id, `name`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `year`, `addTime`
+		SELECT id, `name`, `alias`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `year`, `addTime`
 		FROM Pets_Movie
 		WHERE id = #id#
         ]]>
@@ -28,7 +29,7 @@
 
     <select id="findByIdList" resultMap="PetsMovieResult" parameterClass="map">
         <![CDATA[
-		SELECT id, `name`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `year`, `addTime`
+		SELECT id, `name`, `alias`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `year`, `addTime`
 		FROM Pets_Movie
 		WHERE id in
         ]]>
@@ -39,7 +40,7 @@
 
     <select id="findMovieList" resultMap="PetsMovieResult" parameterClass="map">
         <![CDATA[
-		SELECT id, `name`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `year`, `addTime`
+		SELECT id, `name`, `alias`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `year`, `addTime`
 		FROM Pets_Movie
         ]]>
         <dynamic prepend="where">
@@ -102,7 +103,7 @@
 
     <select id="findRandomMovieList" resultMap="PetsMovieResult" parameterClass="map">
         <![CDATA[
-		SELECT id, `name`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `year`, `addTime`
+		SELECT id, `name`, `alias`, `desc`,`pic`, `director`, `actor`, `region`, `length`, `release`, `year`, `addTime`
 		FROM Pets_Movie
 		WHERE id!=#id#
 		ORDER BY RAND()
