@@ -26,7 +26,7 @@
 }
 .baike-pic {
     position: absolute;
-    top: 36px;
+    top: 50px;
     right: 10px;
     z-index: -1000;
 }
