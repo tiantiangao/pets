@@ -45,3 +45,28 @@
 .pets-footer {
     padding: 25px 15px 35px;
 }
+
+.clear{
+    clear: both;
+}
+.rank{
+    display: block;
+    width: 120px;
+    height: 24px;
+    background: url("../img/star.png") no-repeat 0 0;
+}
+.rank-star10{
+    background-position: 0 -96px;
+}
+.rank-star20{
+    background-position: 0 -72px;
+}
+.rank-star30{
+    background-position: 0 -48px;
+}
+.rank-star40{
+    background-position: 0 -24px;
+}
+.rank-star50{
+    background-position: 0 0;
+}

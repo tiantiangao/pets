@@ -13,6 +13,10 @@
         <from>^/baike$</from>
         <to>/petsBaikeAction.action</to>
     </rule>
+    <rule>
+        <from>^/baike/(\d{1,})$</from>
+        <to>/petsBaikeDetailAction.action</to>
+    </rule>
 
     <!-- 宠物新鲜事 -->
     <rule>

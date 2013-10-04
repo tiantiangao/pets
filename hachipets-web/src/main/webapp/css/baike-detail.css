@@ -1,0 +1,123 @@
+.baike-container {
+	padding: 10px 5px;
+	border: 1px solid #ddd;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+    min-height: 800px;
+    position: relative;
+}
+.baike-nav{
+    padding-bottom: 20px;
+}
+.baike-nav .breadcrumb{
+    background-color: #fff;
+    margin-bottom: 0px!important;
+}
+.baike-nav a {
+    color: #6FAC6F;
+}
+.baike-nav a:hover{
+    text-decoration: none;
+    color: #e12160;
+}
+.baike-nav .active{
+    color: #000;
+}
+.baike-pic {
+    position: absolute;
+    top: 36px;
+    right: 10px;
+    z-index: -1000;
+}
+.baike-pic img {
+    /*max-width: 500px;*/
+}
+.baike-desc{
+    padding-left: 30px;
+    height: 480px;
+}
+.baike-title{
+    width: 600px;
+    text-align: center;
+    padding: 10px 0;
+}
+.baike-title h4{
+    color: #efc9a0;
+    font: 60px '微软雅黑', 'Microsoft YaHei', Helvetica, Tahoma, StSun, '宋体', SimSun, sans-serif;
+    letter-spacing: -1.5px;
+    text-shadow: #241209 0 0 5px;
+    margin: 0px!important;
+}
+.baike-story {
+    width: 600px;
+}
+.baike-story .baike-story-container{
+    color: #000;
+    font: normal 16px/30px Arial, Sans-serif;
+    margin: 26px 0 0 0;
+    padding-bottom: 20px;
+    text-indent: 32px;
+}
+.baike-story .baike-story-container p{
+    margin-bottom: 0px!important;
+}
+.baike-detail {
+    padding-left: 30px;
+}
+.baike-detail-row{
+    padding: 10px;
+}
+.baike-detail-title{
+    height: 40px;
+    line-height: 40px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #666;
+    border-bottom: 1px dotted #ddd;
+}
+.baike-detail-body dl{
+    display: inline-block;
+    float: left;
+    margin-bottom: 0px!important;
+    margin-top: 14px;
+}
+.baike-detail-body dt{
+    float: left;
+    width: 80px;
+    color: #888;
+    font-weight: normal;
+    height: 24px;
+    line-height: 24px;
+}
+.baike-detail-body dd{
+    float: left;
+    width: 450px;
+    height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+}
+.baike-detail-body dd.wide{
+    width: 900px;
+}
+.baike-characteristics .baike-detail-body{
+    padding-left: 20px;
+}
+.baike-detail-body .feature{
+    font-weight: 600;
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    margin: 10px 0;
+    /*color: #666;*/
+    font-size: 12px;
+}
+.baike-detail-body .info{
+    display: block;
+    margin-left: 24px;
+    font-size: 12px;
+}
+.baike-detail-body .comment{
+    display: block;
+    margin: 10px 0;
+}
