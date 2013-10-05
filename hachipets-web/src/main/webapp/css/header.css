@@ -76,19 +76,22 @@
     position: relative;
 }
 .error{
-    width: 600px;
+    width: 450px;
     margin: 150px auto 0;
-    padding: 10px 5px 5px 50px;
+    padding: 15px 5px 5px 80px;
     border: 1px solid #eed3d7;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
     color: #b94a48;
     line-height: 25px;
-    background: #f2dede url("../img/error.png") no-repeat 12px 8px;
+    background: #f2dede url("../img/error.png") no-repeat 40px 13px;
 }
 .error-title{
     font-weight: 600;
     font-size: 18px;
     padding-bottom: 5px;
+}
+.error li{
+    line-height: 24px;
 }
