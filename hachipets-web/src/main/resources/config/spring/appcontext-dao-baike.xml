@@ -16,4 +16,22 @@
 		</property>
 	</bean>
 
+    <bean id="petsFCIGroupDao" parent="parentDao">
+        <property name="proxyInterfaces" value="com.gtt.pets.dao.baike.PetsFCIGroupDao" />
+        <property name="target">
+            <bean parent="Kenshin.daoRealizeTarget">
+                <constructor-arg value="PetsFCIGroup" />
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="petsFCISectionDao" parent="parentDao">
+        <property name="proxyInterfaces" value="com.gtt.pets.dao.baike.PetsFCISectionDao" />
+        <property name="target">
+            <bean parent="Kenshin.daoRealizeTarget">
+                <constructor-arg value="PetsFCISection" />
+            </bean>
+        </property>
+    </bean>
+
 </beans>

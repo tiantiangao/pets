@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="PetsFCIGroup">
+
+    <typeAlias alias="PetsFCIGroup" type="com.gtt.pets.entity.baike.PetsFCIGroup" />
+    
+    <resultMap id="PetsFCIGroupResult" class="PetsFCIGroup">
+        <result property="groupId" column="GroupID" />
+        <result property="groupName" column="GroupName" />
+        <result property="groupEnName" column="GroupEnName" />
+    </resultMap>
+
+    <select id="loadById" resultMap="PetsFCIGroupResult" parameterClass="map">
+        <![CDATA[
+		SELECT GroupID, GroupName, GroupEnName
+		FROM Pets_Baike_FCI_Group
+		WHERE GroupID = #id#
+        ]]>
+    </select>
+
+    <select id="findAll" resultMap="PetsFCIGroupResult" parameterClass="map">
+        <![CDATA[
+		SELECT GroupID, GroupName, GroupEnName
+		FROM Pets_Baike_FCI_Group
+		ORDER BY GroupID
+        ]]>
+    </select>
+
+</sqlMap>

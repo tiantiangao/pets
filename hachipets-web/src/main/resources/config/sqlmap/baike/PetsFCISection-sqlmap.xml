@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="PetsFCISection">
+
+    <typeAlias alias="PetsFCISection" type="com.gtt.pets.entity.baike.PetsFCISection" />
+    
+    <resultMap id="PetsFCISectionResult" class="PetsFCISection">
+        <result property="groupId" column="GroupID" />
+        <result property="sectionId" column="SectionID" />
+        <result property="sectionName" column="SectionName" />
+        <result property="sectionEnName" column="SectionEnName" />
+    </resultMap>
+
+    <select id="loadById" resultMap="PetsFCISectionResult" parameterClass="map">
+        <![CDATA[
+		SELECT GroupID, SectionId, SectionName, SectionEnName
+		FROM Pets_Baike_FCI_Section
+		WHERE SectionId = #id#
+        ]]>
+    </select>
+
+    <select id="findAll" resultMap="PetsFCISectionResult" parameterClass="map">
+        <![CDATA[
+		SELECT GroupID, SectionId, SectionName, SectionEnName
+		FROM Pets_Baike_FCI_Section
+		ORDER BY SectionID
+        ]]>
+    </select>
+
+</sqlMap>
