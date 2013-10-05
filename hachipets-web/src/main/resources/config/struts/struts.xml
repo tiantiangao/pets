@@ -32,7 +32,7 @@
 	<package name="default" extends="avatar-json-default">
 		<default-interceptor-ref name="avatarStack" />
 		<global-results>
-			<result name="error"  type="freemarker">/WEB-INF/pages/util/error.ftl</result>
+			<result name="error"  type="freemarker">/WEB-INF/pages/error/error.ftl</result>
 		</global-results>
 		<global-exception-mappings>			
 			<exception-mapping result="error" exception="com.gtt.pets.web.exception.ProjectException" />

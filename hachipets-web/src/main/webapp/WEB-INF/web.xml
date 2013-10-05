@@ -126,6 +126,15 @@
 		<servlet-name>sitemesh-freemarker</servlet-name>
 		<url-pattern>*.ftl</url-pattern>
 	</servlet-mapping>
+    
+    <servlet>
+        <servlet-name>errorHandlerServlet</servlet-name>
+        <servlet-class>com.gtt.pets.web.exception.ErrorHandlerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>errorHandlerServlet</servlet-name>
+        <url-pattern>/errorHandlerServlet.xfc</url-pattern>
+    </servlet-mapping>
 
 	<listener>
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
@@ -138,6 +147,11 @@
 	<listener>
 		<listener-class>org.apache.struts2.dispatcher.ng.listener.StrutsListener</listener-class>
 	</listener>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/errorHandlerServlet.xfc</location>
+    </error-page>
 
 	<!-- Welcome file lists -->
 	<welcome-file-list>

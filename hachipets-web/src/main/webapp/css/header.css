@@ -95,3 +95,8 @@
 .error li{
     line-height: 24px;
 }
+.error-warning{
+    background: #fcf8e3 url("../img/warning.png") no-repeat 40px 13px;
+    border-color: #fbeed5;
+    color: #c09853;
+}
