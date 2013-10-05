@@ -53,7 +53,7 @@ public class PetsMediaDetailAction extends BaseAction {
     private boolean canReturnHistory = false;
 
     @Override
-    public String execute() throws Exception {
+    public String doExecute() throws Exception {
         setChannel(ChannelType.CHANNEL_MEDIA);
         if (movieId < 1) {
             return MOVIE_LIST;

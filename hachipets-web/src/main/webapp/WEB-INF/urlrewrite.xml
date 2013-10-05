@@ -17,6 +17,10 @@
         <from>^/baike/(\d{1,})$</from>
         <to>/petsBaikeDetailAction.action</to>
     </rule>
+    <rule>
+        <from>^/baike/fci$</from>
+        <to>/petsBaikeFCIAction.action</to>
+    </rule>
 
     <!-- 宠物新鲜事 -->
     <rule>

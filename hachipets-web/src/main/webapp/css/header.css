@@ -70,3 +70,25 @@
 .rank-star50{
     background-position: 0 0;
 }
+
+.error-container{
+    min-height: 500px;
+    position: relative;
+}
+.error{
+    width: 600px;
+    margin: 150px auto 0;
+    padding: 10px 5px 5px 50px;
+    border: 1px solid #eed3d7;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    color: #b94a48;
+    line-height: 25px;
+    background: #f2dede url("../img/error.png") no-repeat 12px 8px;
+}
+.error-title{
+    font-weight: 600;
+    font-size: 18px;
+    padding-bottom: 5px;
+}

@@ -11,6 +11,10 @@
         <action name="petsBaikeDetailAction" class="com.gtt.pets.web.action.baike.PetsBaikeDetailAction">
             <result name="success" type="freemarker">/WEB-INF/pages/baike/baikeDetail.ftl</result>
         </action>
-        
+
+        <action name="petsBaikeFCIAction" class="com.gtt.pets.web.action.baike.PetsBaikeFCIAction">
+            <result name="success" type="freemarker">/WEB-INF/pages/baike/baikeFCI.ftl</result>
+        </action>
+
     </package>
 </struts>

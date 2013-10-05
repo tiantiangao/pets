@@ -28,7 +28,7 @@ public class PetsHospitalAction extends BaseAction {
     private static final long serialVersionUID = 1L;
 
     @Override
-    public String execute() throws Exception {
+    public String doExecute() throws Exception {
         setChannel(ChannelType.CHANNEL_HOSPITAL);
         return SUCCESS;
     }

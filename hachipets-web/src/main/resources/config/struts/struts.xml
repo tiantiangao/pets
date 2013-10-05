@@ -31,13 +31,11 @@
 	<include file="config/struts/struts-*.xml" />
 	<package name="default" extends="avatar-json-default">
 		<default-interceptor-ref name="avatarStack" />
-		<!-- 
-		<global-results>		
-			<result name="error"  type="freemarker">/WEB-INF/pages/error.ftl</result>								
+		<global-results>
+			<result name="error"  type="freemarker">/WEB-INF/pages/util/error.ftl</result>
 		</global-results>
 		<global-exception-mappings>			
-			<exception-mapping result="error" exception="com.dianping.dpindexweb.exception.ProjectException" />
+			<exception-mapping result="error" exception="com.gtt.pets.web.exception.ProjectException" />
 		</global-exception-mappings>
-		 -->
 	</package>
 </struts>
