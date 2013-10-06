@@ -1,6 +1,9 @@
 .container {
     width: 1170px!important;
 }
+.navbar-inner{
+    padding-left: 150px!important;
+}
 .span9 {
     width: 870px!important;
 }
