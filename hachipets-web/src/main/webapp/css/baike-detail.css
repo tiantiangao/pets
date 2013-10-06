@@ -30,9 +30,6 @@
     right: 10px;
     z-index: -1000;
 }
-.baike-pic img {
-    /*max-width: 500px;*/
-}
 .baike-desc{
     padding-left: 30px;
     height: 480px;
@@ -51,6 +48,8 @@
 }
 .baike-story {
     width: 600px;
+    height: 380px;
+    overflow: hidden;
 }
 .baike-story .baike-story-container{
     color: #000;

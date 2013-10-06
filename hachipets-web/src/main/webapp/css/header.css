@@ -55,6 +55,9 @@
     height: 24px;
     background: url("../img/star.png") no-repeat 0 0;
 }
+.rank-star0{
+    background-position: 0 -120px;
+}
 .rank-star10{
     background-position: 0 -96px;
 }
