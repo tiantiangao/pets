@@ -69,7 +69,7 @@
                 <ul>
                 <#list sectionMap[group.groupId+""] as section>
                     <li>
-                        <a href="/baike/fci/section/${(section.sectionId)!0}">${(section.sectionName)!""}</a><span class="en">${(section.sectionEnName)!""}</span>
+                        <a href="/baike/FCI/section/${(section.sectionId)!0}">${(section.sectionName)!""}</a><span class="en">${(section.sectionEnName)!""}</span>
                     </li>
                 </#list>
                 </ul>

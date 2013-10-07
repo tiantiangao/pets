@@ -92,7 +92,7 @@ public class PetsBaikeFCIServiceImpl implements PetsBaikeFCIService {
             return dtoList;
         } catch (Exception e) {
             LOGGER.error("find all fci group failed", e);
-            return null;
+            return new ArrayList<PetsFCIGroupDTO>();
         }
     }
 
@@ -151,7 +151,7 @@ public class PetsBaikeFCIServiceImpl implements PetsBaikeFCIService {
             return dtoList;
         } catch (Exception e) {
             LOGGER.error("find all fci section failed", e);
-            return null;
+            return new ArrayList<PetsFCISectionDTO>();
         }
     }
 

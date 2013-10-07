@@ -70,9 +70,13 @@ public class CacheKeyHolder {
     /**
      * 宠物FCI分组列表
      */
-    public static final String BAIKE_FCI_GROUP_LIST  = "oBaikeFCIGroupList";
+    public static final String BAIKE_FCI_GROUP_LIST = "oBaikeFCIGroupList";
     /**
      * 宠物FCI分类列表
      */
     public static final String BAIKE_FCI_SECTION_LIST = "oBaikeFCISectionList";
+    /**
+     * CFA猫品种列表
+     */
+    public static final String BAIKE_CFA_CAT_LIST = "oBaikeCFACatList";
 }

@@ -187,22 +187,45 @@
             </span>
         </p>
         <p>
-        该服务的费用是：
-        每只猫10美元.
+            该服务的费用是： 每只猫10美元.
         </p>
         <p>
-        只有单只猫将被允许记录在CATS系统中。不能为整窝小猫使用标准整胎申请程序来申请记录。
+            只有单只猫将被允许记录在CATS系统中。不能为整窝小猫使用标准整胎申请程序来申请记录。
         </p>
         <p>
-        可以通过CFA办事处取得必要的CATS记录用表格。全部档案（血统等, 证明信，或进口文件，如果有的话）的影印件需要和申请一并提交，必须由申请人签字并注明日期。至少附一张彩色照片，这将成为这只猫的永久性档案并不能归还。
+            可以通过CFA办事处取得必要的CATS记录用表格。全部档案（血统等, 证明信，或进口文件，如果有的话）的影印件需要和申请一并提交，必须由申请人签字并注明日期。至少附一张彩色照片，这将成为这只猫的永久性档案并不能归还。
         </p>
         <p>
-        猫只从CATS转入CFA标准注册系统，每只20美元。
+            猫只从CATS转入CFA标准注册系统，每只20美元。
         </p>
         <p>
-        当猫只已经达到标准注册条件时，猫只并不会自动被转换到CFA的标准注册系统里。转换需要猫只的主人提出申请。申请应该以书面形式并且交回CATS证书并缴纳申请费用。
+            当猫只已经达到标准注册条件时，猫只并不会自动被转换到CFA的标准注册系统里。转换需要猫只的主人提出申请。申请应该以书面形式并且交回CATS证书并缴纳申请费用。
         </p>
         <p>
+    </div>
+
+    <h4 class="title">五、CFA认证的42种血统猫</h4>
+    <div class="content cfa">
+        <p>
+            国际爱猫联合会CFA认证的42种血统猫
+        </p>
+        <#list catList as cat>
+            <span>
+                <#if (cat.petId)?? && cat.petId gt 0>
+                    <a href="/baike/${(cat.petId)!0}" title="${(cat.name)!""}(${(cat.enName)!""})">${(cat.name)!""}(${(cat.enName)!""})</a>
+                <#else>
+                    ${(cat.name)!""}(${(cat.enName)!""})
+                </#if>
+                <#if (cat.cfaLink)??>
+                    <a class="memo src" href="${(cat.cfaLink)!""}" title="${(cat.name)!""}(${(cat.enName)!""})的CFA官方网站链接">CFA链接</a>
+                </#if>
+            </span>
+        </#list>
+        <div class="clear"></div>
+        <p>&nbsp;</p>
+        <p>
+            参考网址： <a class="memo" href="http://www.cfainc.org/Breeds.aspx">CFA官方网站</a>
+        </p>
     </div>
 </div>
 </div>

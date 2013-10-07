@@ -15,8 +15,13 @@
  */
 package com.gtt.pets.web.action.baike;
 
+import com.gtt.pets.bean.baike.PetsCFACatDTO;
 import com.gtt.pets.constants.ChannelType;
+import com.gtt.pets.service.baike.PetsBaikeCFAService;
 import com.gtt.pets.web.action.BaseAction;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 /**
  * 宠物百科
@@ -26,9 +31,19 @@ import com.gtt.pets.web.action.BaseAction;
 public class PetsBaikeCFAAction extends BaseAction {
     private static final long serialVersionUID = 1L;
 
+    @Autowired
+    private PetsBaikeCFAService petsBaikeCFAService;
+    private List<PetsCFACatDTO> catList;
+
     @Override
     protected String doExecute() throws Exception {
         setChannel(ChannelType.CHANNEL_BAIKE);
+
+        catList = petsBaikeCFAService.findAll();
         return SUCCESS;
+    }
+
+    public List<PetsCFACatDTO> getCatList() {
+        return catList;
     }
 }

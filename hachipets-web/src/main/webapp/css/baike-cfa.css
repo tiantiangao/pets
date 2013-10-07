@@ -58,3 +58,19 @@
 .baike-cfa strong{
     margin-right: 10px;
 }
+.baike-cfa .cfa span{
+    display: block;
+    width: 30%;
+    height: 25px;
+    line-height: 25px;
+    padding: 5px 0;
+    float: left;
+}
+.baike-cfa .cfa span a.src{
+    font-size: 12px;
+    margin-left: 15px;
+}
+.baike-cfa .cfa span a:hover{
+    text-decoration: none;
+    color: #e12160;
+}

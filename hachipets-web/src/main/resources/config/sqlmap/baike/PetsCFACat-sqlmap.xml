@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="PetsCFACat">
+
+    <typeAlias alias="PetsCFACat" type="com.gtt.pets.entity.baike.PetsCFACat" />
+    
+    <resultMap id="PetsCFACatResult" class="PetsCFACat">
+        <result property="name" column="Name" />
+        <result property="enName" column="EnName" />
+        <result property="cfaLink" column="CFALink" />
+        <result property="petId" column="PetId" />
+    </resultMap>
+
+    <select id="findAll" resultMap="PetsCFACatResult" parameterClass="map">
+        <![CDATA[
+		SELECT Name, EnName, CFALink, PetId
+		FROM Pets_Baike_CFA_List
+		ORDER BY ID
+        ]]>
+    </select>
+
+</sqlMap>
