@@ -8,7 +8,7 @@
 <div class="baike-container">
 <div class="baike-nav">
     <ul class="breadcrumb">
-        <li><a href="#">宠物百科</a><span class="divider">&gt;</span> </li>
+        <li><a href="/baike">宠物百科</a><span class="divider">&gt;</span> </li>
         <li class="active">国际爱猫联合会</li>
     </ul>
 </div>

@@ -8,7 +8,7 @@
     <div class="baike-container">
         <div class="baike-nav">
             <ul class="breadcrumb">
-                <li><a href="#">宠物百科</a><span class="divider">&gt;</span> </li>
+                <li><a href="/baike">宠物百科</a><span class="divider">&gt;</span> </li>
                 <li><a href="#">狗狗</a><span class="divider">&gt;</span></li>
                 <li><a href="#">大型狗</a><span class="divider">&gt;</span></li>
                 <li class="active">阿富汗猎犬</li>
@@ -16,7 +16,7 @@
         </div>
 
         <div class="baike-pic">
-            <div><img src="http://d.pcs.baidu.com/thumbnail/cbd565f026e8340018e8e9c41552fb1b?fid=504287070-250528-3427000207&time=1381116685&sign=FDTAR-DCb740ccc5511e5e8fedcff06b081203-pitalS13gTe3jmS9Cj3hvnt2GGY%3D&rt=sh&expires=8h&r=485021738&size=c850_u580&quality=100" ></div>
+            <div><img src="http://d.pcs.baidu.com/thumbnail/cbd565f026e8340018e8e9c41552fb1b?fid=504287070-250528-3427000207&time=1381145533&sign=FDTAR-DCb740ccc5511e5e8fedcff06b081203-UzBTbPEpank13tV3nPa3oq2wXQc%3D&rt=sh&expires=8h&r=164646822&size=c850_u580&quality=100" ></div>
         </div>
 
         <div class="baike-desc">

@@ -8,12 +8,12 @@
 <div class="baike-container">
 <div class="baike-nav">
     <ul class="breadcrumb">
-        <li><a href="#">宠物百科</a><span class="divider">&gt;</span> </li>
+        <li><a href="/baike">宠物百科</a><span class="divider">&gt;</span> </li>
         <li class="active">国际犬种FCI标准</li>
     </ul>
 </div>
 <div class="baike-fci">
-    <h4 class="title"><a href="/baike/FCI#G1"><< ${(group.groupName)!""}</a></h4>
+    <h4 class="title"><a href="/baike/FCI#G${(group.groupId)!0}"><< ${(group.groupName)!""}</a></h4>
     <h4 class="titleen">${(group.groupEnName)!""}</h4>
     <div class="subtitle">${(section.sectionName)!""}</div>
     <div class="subtitleen">${(section.sectionEnName)!""}</div>
