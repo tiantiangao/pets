@@ -2,6 +2,7 @@ package com.gtt.pets.service.baike;
 
 import com.gtt.pets.bean.baike.PetsFCIGroupDTO;
 import com.gtt.pets.bean.baike.PetsFCISectionDTO;
+import com.gtt.pets.bean.baike.PetsFCISectionDogDTO;
 import com.gtt.pets.entity.baike.PetsFCISection;
 
 import java.util.List;
@@ -22,5 +23,7 @@ public interface PetsBaikeFCIService {
     PetsFCISectionDTO loadSectionById(int sectionId);
 
     List<PetsFCISectionDTO> findAllSection();
+
+    List<PetsFCISectionDogDTO> findAllDogListBySectionId(int sectionId);
 
 }

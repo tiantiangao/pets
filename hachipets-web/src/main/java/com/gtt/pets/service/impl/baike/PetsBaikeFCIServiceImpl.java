@@ -7,10 +7,13 @@ import com.gtt.kenshin.log.KenshinLoggerFactory;
 import com.gtt.pets.bean.CacheKeyHolder;
 import com.gtt.pets.bean.baike.PetsFCIGroupDTO;
 import com.gtt.pets.bean.baike.PetsFCISectionDTO;
+import com.gtt.pets.bean.baike.PetsFCISectionDogDTO;
 import com.gtt.pets.dao.baike.PetsFCIGroupDao;
 import com.gtt.pets.dao.baike.PetsFCISectionDao;
+import com.gtt.pets.dao.baike.PetsFCISectionDogDao;
 import com.gtt.pets.entity.baike.PetsFCIGroup;
 import com.gtt.pets.entity.baike.PetsFCISection;
+import com.gtt.pets.entity.baike.PetsFCISectionDog;
 import com.gtt.pets.service.baike.PetsBaikeFCIService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +38,8 @@ public class PetsBaikeFCIServiceImpl implements PetsBaikeFCIService {
     private PetsFCIGroupDao petsFCIGroupDao;
     @Autowired
     private PetsFCISectionDao petsFCISectionDao;
+    @Autowired
+    private PetsFCISectionDogDao petsFCISectionDogDao;
     @Autowired
     private CacheService cacheService;
 
@@ -155,6 +160,34 @@ public class PetsBaikeFCIServiceImpl implements PetsBaikeFCIService {
         }
     }
 
+    @Override
+    public List<PetsFCISectionDogDTO> findAllDogListBySectionId(int sectionId) {
+        try {
+            // load from cache
+            CacheKey cacheKey = new CacheKey(CacheKeyHolder.BAIKE_FCI_SECTION_DOG_LIST);
+            List<PetsFCISectionDogDTO> dtoList = cacheService.get(cacheKey);
+            if (dtoList != null) {
+                return dtoList;
+            }
+
+            // no cache, load from db
+            List<PetsFCISectionDog> dogList = petsFCISectionDogDao.findBySectionId(sectionId);
+            if (CollectionUtils.isEmpty(dogList)) {
+                dtoList = new ArrayList<PetsFCISectionDogDTO>();
+            } else {
+                dtoList = toSectionDogDTOList(dogList);
+            }
+
+            // add cache
+            cacheService.add(cacheKey, dtoList);
+
+            return dtoList;
+        } catch (Exception e) {
+            LOGGER.error("find all fci section dog list failed", e);
+            return new ArrayList<PetsFCISectionDogDTO>();
+        }
+    }
+
     private PetsFCIGroupDTO toGroupDTO(PetsFCIGroup group) {
         PetsFCIGroupDTO dto = new PetsFCIGroupDTO();
         BeanUtils.copyProperties(group, dto);
@@ -182,6 +215,16 @@ public class PetsBaikeFCIServiceImpl implements PetsBaikeFCIService {
         for (PetsFCISection section : sectionList) {
             PetsFCISectionDTO dto = new PetsFCISectionDTO();
             BeanUtils.copyProperties(section, dto);
+            result.add(dto);
+        }
+        return result;
+    }
+
+    private List<PetsFCISectionDogDTO> toSectionDogDTOList(List<PetsFCISectionDog> dogList) {
+        List<PetsFCISectionDogDTO> result = new ArrayList<PetsFCISectionDogDTO>();
+        for (PetsFCISectionDog dog : dogList) {
+            PetsFCISectionDogDTO dto = new PetsFCISectionDogDTO();
+            BeanUtils.copyProperties(dog, dto);
             result.add(dto);
         }
         return result;

@@ -22,6 +22,10 @@
         <to>/petsBaikeFCIAction.action</to>
     </rule>
     <rule>
+        <from>^/baike/fci/section/(\d{1,})$</from>
+        <to>/petsBaikeFCISectionAction.action?sectionId=$1</to>
+    </rule>
+    <rule>
         <from>^/baike/cfa$</from>
         <to>/petsBaikeCFAAction.action</to>
     </rule>

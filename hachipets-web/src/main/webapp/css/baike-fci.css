@@ -72,3 +72,67 @@
     color: #aaa;
     padding-left: 10px;
 }
+.baike-fci a:hover{
+    text-decoration: none;
+    color: #e12160;
+}
+
+.baike-fci .titleen{
+    color: #e0e0e0;
+    margin: 0 0 0 25px;
+}
+.baike-fci .subtitle{
+    margin-top: 10px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+}
+.baike-fci .subtitleen{
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #e0e0e0;
+    font-size: 16px;
+    font-weight: 700;
+}
+.baike-fci table{
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+}
+.baike-fci tr.odd td{
+    background: #F5FAFA;
+    color: #797268;
+}
+.baike-fci th {
+    color: #4f6b72;
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    border-top: 1px solid #C1DAD7;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 6px 6px 6px 12px;
+    background: #CAE8EA;
+    text-align: center;
+}
+.baike-fci td {
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    background: #fff;
+    font-size:11px;
+    padding: 6px 6px 6px 12px;
+    color: #4f6b72;
+}
+.baike-fci td.first {
+    border-left: 1px solid #C1DAD7;
+}
+.baike-fci td.center {
+    text-align: center;
+    padding: 6px!important;
+}
+.baike-fci td.center {
+    height: 50px;
+}

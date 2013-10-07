@@ -15,6 +15,10 @@
         <action name="petsBaikeFCIAction" class="com.gtt.pets.web.action.baike.PetsBaikeFCIAction">
             <result name="success" type="freemarker">/WEB-INF/pages/baike/baikeFCI.ftl</result>
         </action>
+        <action name="petsBaikeFCISectionAction" class="com.gtt.pets.web.action.baike.PetsBaikeFCISectionAction">
+            <result name="FCI" type="freemarker">/WEB-INF/pages/baike/baikeFCI.ftl</result>
+            <result name="success" type="freemarker">/WEB-INF/pages/baike/baikeFCISection.ftl</result>
+        </action>
         <action name="petsBaikeCFAAction" class="com.gtt.pets.web.action.baike.PetsBaikeCFAAction">
             <result name="success" type="freemarker">/WEB-INF/pages/baike/baikeCFA.ftl</result>
         </action>
