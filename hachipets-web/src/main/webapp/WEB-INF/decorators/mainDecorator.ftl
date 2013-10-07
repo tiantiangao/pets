@@ -6,6 +6,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.js"></script>
+    <script src="/js/common.js"></script>
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/header.css" rel="stylesheet">
     ${head}
