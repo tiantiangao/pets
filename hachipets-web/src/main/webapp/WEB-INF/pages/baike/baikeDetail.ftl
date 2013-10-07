@@ -16,7 +16,7 @@
         </div>
 
         <div class="baike-pic">
-            <div><img src="http://d.pcs.baidu.com/thumbnail/cbd565f026e8340018e8e9c41552fb1b?fid=504287070-250528-3427000207&time=1380903083&sign=FDTAR-DCb740ccc5511e5e8fedcff06b081203-PUnRH%2FD1IlVUKXfa4ZMA%2BL%2Fl1Tg%3D&rt=sh&expires=8h&r=677359851&size=c850_u580&quality=100" ></div>
+            <div><img src="http://d.pcs.baidu.com/thumbnail/cbd565f026e8340018e8e9c41552fb1b?fid=504287070-250528-3427000207&time=1381116685&sign=FDTAR-DCb740ccc5511e5e8fedcff06b081203-pitalS13gTe3jmS9Cj3hvnt2GGY%3D&rt=sh&expires=8h&r=485021738&size=c850_u580&quality=100" ></div>
         </div>
 
         <div class="baike-desc">
@@ -168,7 +168,7 @@
                 </div>
             </div>
             <div class="baike-detail-row baike-characteristics">
-                <div class="baike-detail-title">外形特征</div>
+                <div class="baike-detail-title">其他信息</div>
                 <div class="baike-detail-body">
                     <span class="feature">
                         [头部]

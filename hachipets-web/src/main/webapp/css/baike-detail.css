@@ -100,7 +100,7 @@
     width: 900px;
 }
 .baike-characteristics .baike-detail-body{
-    padding-left: 20px;
+    /*padding-left: 20px;*/
 }
 .baike-detail-body .feature{
     font-weight: 600;
