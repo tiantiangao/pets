@@ -64,6 +64,13 @@
 .baike-detail {
     padding-left: 30px;
 }
+.baike-detail a{
+    text-decoration: none;
+}
+.baike-detail a:hover{
+    text-decoration: none;
+    color: #e12160;
+}
 .baike-detail-row{
     padding: 10px;
 }
