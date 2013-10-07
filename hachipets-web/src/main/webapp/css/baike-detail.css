@@ -71,6 +71,17 @@
     text-decoration: none;
     color: #e12160;
 }
+.baike-detail .memo{
+    font-size: 12px;
+    margin-left: 10px;
+}
+.baike-detail .memo a{
+    color: #999;
+    text-decoration: underline;
+}
+.baike-detail .memo a:hover{
+    text-decoration: none;
+}
 .baike-detail-row{
     padding: 10px;
 }

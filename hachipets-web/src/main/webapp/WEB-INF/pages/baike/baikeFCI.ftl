@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>FCI标准-宠物百科-Hachi宠物网</title>
+    <title>国际犬种FCI标准-宠物百科</title>
     <link href="/css/baike-fci.css" rel="stylesheet">
 </head>
 <body>
@@ -61,7 +61,7 @@
     <h4 class="title">三、FCI的10组犬只介绍：</h4>
     <div class="content">
         <#list groupList as group>
-        <div class="baike-fci-row">
+        <div class="baike-fci-row" id="G${group.groupId}" name="G${group.groupId}">
             <div class="baike-fci-title">${(group.groupName)!""}</div>
             <div class="baike-fci-title-en">${(group.groupEnName)!""}</div>
             <div class="baike-fci-body">
@@ -81,5 +81,4 @@
 </div>
 </div>
 </div>
-<div class="returnTop" title="返回顶部"><span class="l"></span><span class="s"></span><span class="b"></span></div>
 </body>

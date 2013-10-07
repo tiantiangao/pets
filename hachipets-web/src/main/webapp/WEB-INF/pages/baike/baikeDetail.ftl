@@ -80,11 +80,16 @@
                     <div class="clear"></div>
                     <dl>
                         <dt>FCI&nbsp;&nbsp;组别:</dt>
-                        <dd>第10组 视觉型猎犬</dd>
+                        <dd><a href="/baike/FCI#G1">第10组 视觉型猎犬</a></dd>
                     </dl>
                     <dl>
                         <dt>FCI&nbsp;&nbsp;类别:</dt>
-                        <dd>第1类 长毛或流苏状视觉型猎犬</dd>
+                        <dd><a href="/baike/FCI/section/1">第1类 长毛或流苏状视觉型猎犬</a></dd>
+                    </dl>
+                    <div class="clear"></div>
+                    <dl>
+                        <dt>CFA&nbsp;&nbsp;链接:</dt>
+                        <dd><a href="http://www.cfainc.org/Breeds/BreedsAB/Abyssinian.aspx">CFA Abyssinian</a><span class="memo"><a href="/baike/CFA">什么是CFA?</a></span></dd>
                     </dl>
                     <div class="clear"></div>
                     <dl>
@@ -261,5 +266,4 @@
         </div>
     </div>
 </div>
-<div class="returnTop" title="返回顶部"><span class="l"></span><span class="s"></span><span class="b"></span></div>
 </body>
