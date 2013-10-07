@@ -13,10 +13,36 @@
     </ul>
 </div>
 <div class="baike-fci">
-    <h4 class="title"><a href="/baike/FCI#G${(group.groupId)!0}"><< ${(group.groupName)!""}</a></h4>
+    <h4 class="title"><a href="/baike/FCI#G${(group.groupId)!0}">${(group.groupName)!""}</a></h4>
     <h4 class="titleen">${(group.groupEnName)!""}</h4>
-    <div class="subtitle">${(section.sectionName)!""}</div>
-    <div class="subtitleen">${(section.sectionEnName)!""}</div>
+    <div class="sub">
+        <#if prevSection??>
+        <#if prevGroup??>
+            <#assign prevTitle = prevGroup.groupName + "(" + prevSection.sectionName + ")">
+        <#else>
+            <#assign prevTitle = prevSection.sectionName>
+        </#if>
+        <a href="/baike/FCI/section/${prevSection.sectionId}" title="${prevTitle}">
+            <div class="arrow left">
+                <div class="subtitleen">上一组</div>
+            </div>
+        </a>
+        </#if>
+        <div class="subtitle">${(section.sectionName)!""}</div>
+        <div class="subtitleen">${(section.sectionEnName)!""}</div>
+        <#if nextSection??>
+            <#if nextGroup??>
+                <#assign nextTitle = nextGroup.groupName + "(" + nextSection.sectionName + ")">
+            <#else>
+                <#assign nextTitle = nextSection.sectionName>
+            </#if>
+        <a href="/baike/FCI/section/${nextSection.sectionId}" title="${nextTitle}">
+            <div class="arrow right">
+                <div class="subtitleen">下一组</div>
+            </div>
+        </a>
+        </#if>
+    </div>
     <div class="content">
         <table cellspacing="0">
             <colgroup>

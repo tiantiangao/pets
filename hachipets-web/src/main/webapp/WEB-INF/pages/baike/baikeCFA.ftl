@@ -25,28 +25,26 @@
 
      <h4 class="title">二、CFA的宗旨：</h4>
      <div class="content">
-        <p>
-            <ul>
-                <li>
-                    提高所有猫咪的福利；
-                </li>
-                <li>
-                    推动及改良CFA认可的猫种；
-                </li>
-                <li>
-                    为猫咪作登录；
-                </li>
-                <li>
-                    制定并颁布猫展规则；
-                </li>
-                <li>
-                    签发以CFA规则进行的猫展；
-                </li>
-                <li>
-                    提高繁殖者及参赛猫只的福利；
-                </li>
-            </ul>
-        </p>
+        <ul>
+            <li>
+                提高所有猫咪的福利；
+            </li>
+            <li>
+                推动及改良CFA认可的猫种；
+            </li>
+            <li>
+                为猫咪作登录；
+            </li>
+            <li>
+                制定并颁布猫展规则；
+            </li>
+            <li>
+                签发以CFA规则进行的猫展；
+            </li>
+            <li>
+                提高繁殖者及参赛猫只的福利；
+            </li>
+        </ul>
     </div>
 
     <h4 class="title">三、赛制规则：</h4>
@@ -74,7 +72,6 @@
                 <strong>家猫组(Household Pet):</strong> 非CFA注册的猫儿，包括幼猫及成猫，最低参赛年龄为四个月；而八个月或以上的家猫必须已绝育，方可参赛。 家猫组的比赛最为简单，没有特定的外观标准，因此不同品种会一起比赛。
             </li>
         </ul>
-        <p>&nbsp;</p>
         <p>
             在成猫组及绝育猫组中，猫只会再被分为公开组(Open Class)，冠军组(Champion/Premier)和超级冠军组(Grand Champion/Grand Premier)进行比赛：
             <ul>

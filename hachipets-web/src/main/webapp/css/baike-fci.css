@@ -79,14 +79,14 @@
 
 .baike-fci .titleen{
     color: #e0e0e0;
-    margin: 0 0 0 25px;
+    margin: 0;
 }
 .baike-fci .subtitle{
     margin-top: 10px;
     height: 30px;
     line-height: 30px;
     text-align: center;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
 }
 .baike-fci .subtitleen{
@@ -135,4 +135,38 @@
 }
 .baike-fci td.center {
     height: 50px;
+}
+.baike-fci .sub{
+    position: relative;
+}
+.baike-fci .arrow{
+    position: absolute;
+    top: 0;
+    width: 100;
+    height: 55px;
+}
+.baike-fci .left{
+    left: 40px;
+    padding-left: 16px;
+    background: url("../img/left-arrow.jpg") no-repeat left 19px;
+}
+.baike-fci .right{
+    right: 40px;
+    padding-right: 16px;
+    background: url("../img/right-arrow.jpg") no-repeat right 19px;
+}
+.baike-fci .arrow .subtitleen{
+    margin-top: 0!important;
+    height: 55px;
+    line-height: 55px;
+    color: #e0e0e0;
+}
+.baike-fci .arrow:hover > .subtitleen{
+    color: #999;
+}
+.baike-fci .left:hover{
+    background: url("../img/left-arrow-hover.png") no-repeat left 19px;
+}
+.baike-fci .right:hover{
+    background: url("../img/right-arrow-hover.png") no-repeat right 19px;
 }

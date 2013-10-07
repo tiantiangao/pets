@@ -43,6 +43,13 @@ public class PetsBaikeFCISectionAction extends BaseAction {
     // 输出
     private PetsFCIGroupDTO group;
     private PetsFCISectionDTO section;
+
+    private PetsFCIGroupDTO prevGroup;
+    private PetsFCISectionDTO prevSection;
+
+    private PetsFCIGroupDTO nextGroup;
+    private PetsFCISectionDTO nextSection;
+
     private List<PetsFCISectionDogDTO> dogList;
 
     @Override
@@ -66,6 +73,20 @@ public class PetsBaikeFCISectionAction extends BaseAction {
             return RESULT_FCI;
         }
 
+        // load prev section info
+        int prevSectionId = sectionId - 1;
+        prevSection = petsBaikeFCIService.loadSectionById(prevSectionId);
+        if (prevSection != null && section.getGroupId() != prevSection.getGroupId()) {
+            prevGroup = petsBaikeFCIService.loadGroupById(prevSection.getGroupId());
+        }
+
+        // load next section info
+        int nextSectionId = sectionId + 1;
+        nextSection = petsBaikeFCIService.loadSectionById(nextSectionId);
+        if (nextSection != null && section.getGroupId() != nextSection.getGroupId()) {
+            nextGroup = petsBaikeFCIService.loadGroupById(nextSection.getGroupId());
+        }
+
         // load dog list
         dogList = petsBaikeFCIService.findAllDogListBySectionId(sectionId);
 
@@ -86,5 +107,21 @@ public class PetsBaikeFCISectionAction extends BaseAction {
 
     public List<PetsFCISectionDogDTO> getDogList() {
         return dogList;
+    }
+
+    public PetsFCISectionDTO getPrevSection() {
+        return prevSection;
+    }
+
+    public PetsFCISectionDTO getNextSection() {
+        return nextSection;
+    }
+
+    public PetsFCIGroupDTO getPrevGroup() {
+        return prevGroup;
+    }
+
+    public PetsFCIGroupDTO getNextGroup() {
+        return nextGroup;
     }
 }
