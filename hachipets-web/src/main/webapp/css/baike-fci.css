@@ -148,12 +148,12 @@
 .baike-fci .left{
     left: 40px;
     padding-left: 16px;
-    background: url("../img/left-arrow.jpg") no-repeat left 19px;
+    background: url("../img/left-arrow.jpg") no-repeat left 20px;
 }
 .baike-fci .right{
     right: 40px;
     padding-right: 16px;
-    background: url("../img/right-arrow.jpg") no-repeat right 19px;
+    background: url("../img/right-arrow.jpg") no-repeat right 20px;
 }
 .baike-fci .arrow .subtitleen{
     margin-top: 0!important;
@@ -165,8 +165,8 @@
     color: #999;
 }
 .baike-fci .left:hover{
-    background: url("../img/left-arrow-hover.png") no-repeat left 19px;
+    background: url("../img/left-arrow-hover.png") no-repeat left 20px;
 }
 .baike-fci .right:hover{
-    background: url("../img/right-arrow-hover.png") no-repeat right 19px;
+    background: url("../img/right-arrow-hover.png") no-repeat right 20px;
 }
