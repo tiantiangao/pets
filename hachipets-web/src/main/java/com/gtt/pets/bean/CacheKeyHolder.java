@@ -52,14 +52,6 @@ public class CacheKeyHolder {
      */
     public static final String MOVIE_YEAR = "oMovieYear";
     /**
-     * 宠物分类
-     */
-    public static final String CATEGORY = "oCategory";
-    /**
-     * 宠物分类列表
-     */
-    public static final String CATEGORY_LIST = "oCategoryList";
-    /**
      * 宠物FCI分组
      */
     public static final String BAIKE_FCI_GROUP = "oBaikeFCIGroup";
