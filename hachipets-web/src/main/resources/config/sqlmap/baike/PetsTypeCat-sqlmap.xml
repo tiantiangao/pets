@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="PetsTypeCat">
+
+    <typeAlias alias="PetsTypeCat" type="com.gtt.pets.entity.baike.PetsTypeCat" />
+    
+    <resultMap id="PetsTypeCatResult" class="PetsTypeCat">
+        <result property="id" column="ID" />
+        <result property="typeId" column="TypeID" />
+        <result property="bodyType" column="BodyType" />
+        <result property="weight" column="Weight" />
+        <result property="cfa" column="CFAID" />
+        <result property="featureStick" column="FeatureStick" />
+        <result property="featureFeed" column="FeatureFeed" />
+        <result property="featureBark" column="FeatureBark" />
+        <result property="featureFallHair" column="FeatureFallHair" />
+        <result property="featureOdor" column="FeatureOdor" />
+        <result property="featureBeauty" column="FeatureBeauty" />
+        <result property="featureChildFriendly" column="FeatureChildFriendly" />
+        <result property="featureStrangerFriendly" column="FeatureStrangerFriendly" />
+        <result property="featureAnimalFriendly" column="FeatureAnimalFriendly" />
+        <result property="featureSport" column="FeatureSport" />
+        <result property="featureTrained" column="FeatureTrained" />
+        <result property="featureDrool" column="FeatureDrool" />
+        <result property="featureCold" column="FeatureCold" />
+        <result property="featureHot" column="FeatureHot" />
+        <result property="featureCity" column="FeatureCity" />
+        <result property="other" column="Desc" />
+    </resultMap>
+
+    <select id="findByTypeID" resultMap="PetsTypeCatResult" parameterClass="map">
+        <![CDATA[
+		SELECT `ID`, `TypeID`,BodyType, Weight, CFAID, FeatureStick, FeatureFeed, FeatureBark, FeatureFallHair, FeatureOdor,
+		         FeatureBeauty, FeatureChildFriendly, FeatureStrangerFriendly, FeatureAnimalFriendly, FeatureSport, FeatureTrained,
+		         FeatureDrool, FeatureCold, FeatureHot, FeatureCity, `Desc`
+		FROM Pets_TypeCat
+		WHERE TypeID = #typeId#
+        ]]>
+    </select>
+
+</sqlMap>

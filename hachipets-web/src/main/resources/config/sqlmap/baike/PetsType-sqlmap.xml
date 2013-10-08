@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="PetsType">
+
+    <typeAlias alias="PetsType" type="com.gtt.pets.entity.baike.PetsType" />
+    
+    <resultMap id="PetsTypeResult" class="PetsType">
+        <result property="id" column="ID" />
+        <result property="rootCategoryId" column="RootCategoryId" />
+        <result property="categoryId" column="CategoryId" />
+        <result property="name" column="Name" />
+        <result property="enName" column="EnName" />
+        <result property="alias" column="Alias" />
+        <result property="desc" column="Desc" />
+        <result property="origin" column="Origin" />
+        <result property="picUrl" column="PicUrl" />
+        <result property="thumbPicUrl" column="ThumbPicUrl" />
+    </resultMap>
+
+    <select id="loadByID" resultMap="PetsTypeResult" parameterClass="map">
+        <![CDATA[
+		SELECT `ID`, `CategoryID`, `RootCategoryID`, `Name`, `Desc`, `EnName`, `Alias`, `Origin`, `PicUrl`, `ThumbPicUrl`
+		FROM Pets_Type
+		WHERE ID = #id#
+        ]]>
+    </select>
+
+</sqlMap>

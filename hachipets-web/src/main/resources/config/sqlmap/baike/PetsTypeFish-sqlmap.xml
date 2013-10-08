@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="PetsTypeFish">
+
+    <typeAlias alias="PetsTypeFish" type="com.gtt.pets.entity.baike.PetsTypeFish" />
+    
+    <resultMap id="PetsTypeFishResult" class="PetsTypeFish">
+        <result property="id" column="ID" />
+        <result property="typeId" column="TypeID" />
+        <result property="climaticZone" column="ClimaticZone" />
+        <result property="temperature" column="Temperature" />
+        <result property="waterPH" column="waterPH" />
+        <result property="other" column="Desc" />
+    </resultMap>
+
+    <select id="findByTypeID" resultMap="PetsTypeFishResult" parameterClass="map">
+        <![CDATA[
+		SELECT `ID`, `TypeID`, ClimaticZone, Temperature, waterPH, `Desc`
+		FROM Pets_TypeFish
+		WHERE TypeID = #typeId#
+        ]]>
+    </select>
+
+</sqlMap>

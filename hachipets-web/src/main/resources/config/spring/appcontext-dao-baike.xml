@@ -16,6 +16,60 @@
 		</property>
 	</bean>
 
+    <bean id="petsTypeDao" parent="parentDao">
+        <property name="proxyInterfaces" value="com.gtt.pets.dao.baike.PetsTypeDao" />
+        <property name="target">
+            <bean parent="Kenshin.daoRealizeTarget">
+                <constructor-arg value="PetsType" />
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="petsTypeCommonDao" parent="parentDao">
+        <property name="proxyInterfaces" value="com.gtt.pets.dao.baike.PetsTypeCommonDao" />
+        <property name="target">
+            <bean parent="Kenshin.daoRealizeTarget">
+                <constructor-arg value="PetsTypeCommon" />
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="petsTypeDogDao" parent="parentDao">
+        <property name="proxyInterfaces" value="com.gtt.pets.dao.baike.PetsTypeDogDao" />
+        <property name="target">
+            <bean parent="Kenshin.daoRealizeTarget">
+                <constructor-arg value="PetsTypeDog" />
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="petsTypeCatDao" parent="parentDao">
+        <property name="proxyInterfaces" value="com.gtt.pets.dao.baike.PetsTypeCatDao" />
+        <property name="target">
+            <bean parent="Kenshin.daoRealizeTarget">
+                <constructor-arg value="PetsTypeCat" />
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="petsTypeFishDao" parent="parentDao">
+        <property name="proxyInterfaces" value="com.gtt.pets.dao.baike.PetsTypeFishDao" />
+        <property name="target">
+            <bean parent="Kenshin.daoRealizeTarget">
+                <constructor-arg value="PetsTypeFish" />
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="petsTypeRabbitDao" parent="parentDao">
+        <property name="proxyInterfaces" value="com.gtt.pets.dao.baike.PetsTypeRabbitDao" />
+        <property name="target">
+            <bean parent="Kenshin.daoRealizeTarget">
+                <constructor-arg value="PetsTypeRabbit" />
+            </bean>
+        </property>
+    </bean>
+
     <bean id="petsFCIGroupDao" parent="parentDao">
         <property name="proxyInterfaces" value="com.gtt.pets.dao.baike.PetsFCIGroupDao" />
         <property name="target">

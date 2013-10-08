@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="PetsTypeRabbit">
+
+    <typeAlias alias="PetsTypeRabbit" type="com.gtt.pets.entity.baike.PetsTypeRabbit" />
+    
+    <resultMap id="PetsTypeRabbitResult" class="PetsTypeRabbit">
+        <result property="id" column="ID" />
+        <result property="typeId" column="TypeID" />
+        <result property="weight" column="Weight" />
+        <result property="bodyType" column="BodyType" />
+        <result property="eatPattern" column="EatPattern" />
+        <result property="other" column="Desc" />
+    </resultMap>
+
+    <select id="findByTypeID" resultMap="PetsTypeRabbitResult" parameterClass="map">
+        <![CDATA[
+		SELECT `ID`, `TypeID`, Weight, BodyType, EatPattern, `Desc`
+		FROM Pets_TypeRabbit
+		WHERE TypeID = #typeId#
+        ]]>
+    </select>
+
+</sqlMap>

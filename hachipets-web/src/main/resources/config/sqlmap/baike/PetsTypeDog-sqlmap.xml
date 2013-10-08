@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="PetsTypeDog">
+
+    <typeAlias alias="PetsTypeDog" type="com.gtt.pets.entity.baike.PetsTypeDog" />
+    
+    <resultMap id="PetsTypeDogResult" class="PetsTypeDog">
+        <result property="id" column="ID" />
+        <result property="typeId" column="TypeID" />
+        <result property="function" column="Function" />
+        <result property="hairLength" column="HairLength" />
+        <result property="height" column="Height" />
+        <result property="weight" column="Weight" />
+        <result property="life" column="Life" />
+        <result property="color" column="Color" />
+        <result property="fciGroup" column="FCIGroup" />
+        <result property="fciSection" column="FCISection" />
+        <result property="featureStick" column="FeatureStick" />
+        <result property="featureFeed" column="FeatureFeed" />
+        <result property="featureBark" column="FeatureBark" />
+        <result property="featureFallHair" column="FeatureFallHair" />
+        <result property="featureOdor" column="FeatureOdor" />
+        <result property="featureBeauty" column="FeatureBeauty" />
+        <result property="featureChildFriendly" column="FeatureChildFriendly" />
+        <result property="featureStrangerFriendly" column="FeatureStrangerFriendly" />
+        <result property="featureAnimalFriendly" column="FeatureAnimalFriendly" />
+        <result property="featureSport" column="FeatureSport" />
+        <result property="featureTrained" column="FeatureTrained" />
+        <result property="featureDrool" column="FeatureDrool" />
+        <result property="featureCold" column="FeatureCold" />
+        <result property="featureHot" column="FeatureHot" />
+        <result property="featureCity" column="FeatureCity" />
+        <result property="other" column="Desc" />
+    </resultMap>
+
+    <select id="findByTypeID" resultMap="PetsTypeDogResult" parameterClass="map">
+        <![CDATA[
+		SELECT `ID`, `TypeID`,Function, HairLength, Height, Weight, Life, Color, FCIGroup, FCISection, FeatureStick,
+		         FeatureFeed, FeatureBark, FeatureFallHair, FeatureOdor, FeatureBeauty, FeatureChildFriendly,
+		         FeatureStrangerFriendly, FeatureAnimalFriendly, FeatureSport, FeatureTrained,
+		         FeatureDrool, FeatureCold, FeatureHot, FeatureCity, `Desc`
+		FROM Pets_TypeDog
+		WHERE TypeID = #typeId#
+        ]]>
+    </select>
+
+</sqlMap>
