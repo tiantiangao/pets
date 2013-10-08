@@ -1,18 +1,15 @@
 package com.gtt.pets.service.impl.baike;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import com.gtt.kenshin.cache.CacheKey;
-import com.gtt.kenshin.cache.CacheService;
 import com.gtt.kenshin.log.KenshinLogger;
 import com.gtt.kenshin.log.KenshinLoggerFactory;
-import com.gtt.pets.bean.CacheKeyHolder;
 import com.gtt.pets.bean.baike.PetsCategoryDTO;
 import com.gtt.pets.dao.baike.PetsCategoryDao;
 import com.gtt.pets.entity.baike.PetsCategory;
@@ -28,8 +25,30 @@ public class PetsCategoryServiceImpl implements PetsCategoryService {
 	private static final KenshinLogger LOGGER = KenshinLoggerFactory.getLogger(PetsCategoryServiceImpl.class);
 	@Autowired
 	private PetsCategoryDao petsCategoryDao;
-	@Autowired
-	private CacheService cacheService;
+	/**
+	 * 分类ID与对象映射表
+	 */
+	private ConcurrentHashMap<Integer, PetsCategoryDTO> categoryMap;
+	/**
+	 * 分类ID与其完整父路径上各分类ID(正序, 包含当前分类本身)的映射表
+	 */
+	private ConcurrentHashMap<Integer, List<Integer>> parentPathMap;
+	/**
+	 * 分类ID与其所有子分类ID的映射表
+	 */
+	private ConcurrentHashMap<Integer, List<Integer>> childrenMap;
+	/**
+	 * 根分类列表
+	 */
+	private List<PetsCategoryDTO> rootCategoryList;
+	/**
+	 * 缓存是否已初始化标志
+	 */
+	private boolean initialized = false;
+	/**
+	 * 缓存初始化时的同步锁
+	 */
+	private Object lock = new Object();
 
 	@Override
 	public PetsCategoryDTO loadById(int id) {
@@ -38,24 +57,10 @@ public class PetsCategoryServiceImpl implements PetsCategoryService {
 		}
 
 		try {
-			// load from cache
-			CacheKey categoryCacheKey = new CacheKey(CacheKeyHolder.CATEGORY, id);
-			PetsCategoryDTO categoryDTO = cacheService.get(categoryCacheKey);
-			if (categoryDTO != null) {
-				return categoryDTO;
-			}
 
-			// no cache, load from db
-			PetsCategory petsCategory = petsCategoryDao.loadById(id);
-			if (petsCategory == null) {
-				return null;
-			}
-			categoryDTO = toDTO(petsCategory);
+			initCache();
 
-			// add cache
-			cacheService.add(categoryCacheKey, categoryDTO);
-
-			return categoryDTO;
+			return categoryMap.get(id);
 		} catch (Exception e) {
 			LOGGER.error("load category by id failed", e);
 			return null;
@@ -75,27 +80,142 @@ public class PetsCategoryServiceImpl implements PetsCategoryService {
 		}
 
 		try {
-			// load from cache
-			CacheKey categoryListCacheKey = new CacheKey(CacheKeyHolder.CATEGORY_LIST, parentId);
-			List<PetsCategoryDTO> dtoList = cacheService.get(categoryListCacheKey);
-			if (dtoList != null) {
-				return dtoList;
+
+			initCache();
+
+			List<Integer> childrenIDList = childrenMap.get(parentId);
+			if (CollectionUtils.isEmpty(childrenIDList)) {
+				return new ArrayList<PetsCategoryDTO>();
 			}
 
-			// no cache, load from db
-			List<PetsCategory> categoryList = petsCategoryDao.findByParentId(parentId);
-			if (CollectionUtils.isEmpty(categoryList)) {
-				dtoList = new ArrayList<PetsCategoryDTO>();
-			} else {
-				dtoList = toDTOList(categoryList);
+			List<PetsCategoryDTO> result = new ArrayList<PetsCategoryDTO>();
+			for (Integer childID : childrenIDList) {
+				PetsCategoryDTO dto = categoryMap.get(childID);
+				if (dto != null) {
+					result.add((PetsCategoryDTO) dto.clone());
+				}
 			}
 
-			// add cache
-			cacheService.add(categoryListCacheKey, dtoList);
-			return dtoList;
+			return result;
 		} catch (Exception e) {
 			LOGGER.error("load category list by parentId failed: " + parentId, e);
-			return null;
+			return new ArrayList<PetsCategoryDTO>();
+		}
+	}
+
+	@Override
+	public List<PetsCategoryDTO> findPathByCategoryId(int categoryId) {
+		if (categoryId < 1) {
+			return new ArrayList<PetsCategoryDTO>();
+		}
+
+		try {
+
+			initCache();
+
+			List<Integer> parentPathIDList = parentPathMap.get(categoryId);
+			if (CollectionUtils.isEmpty(parentPathIDList)) {
+				ArrayList<PetsCategoryDTO> result = new ArrayList<PetsCategoryDTO>();
+				if (categoryMap.containsKey(categoryId)) {
+					result.add(categoryMap.get(categoryId));
+				}
+				return result;
+			}
+
+			List<PetsCategoryDTO> result = new ArrayList<PetsCategoryDTO>();
+			for (Integer childID : parentPathIDList) {
+				PetsCategoryDTO dto = categoryMap.get(childID);
+				if (dto != null) {
+					result.add((PetsCategoryDTO) dto.clone());
+				}
+			}
+
+			return result;
+		} catch (Exception e) {
+			LOGGER.error("load parent category path by categoryId failed: " + categoryId, e);
+			return new ArrayList<PetsCategoryDTO>();
+		}
+	}
+
+	@Override
+	public List<PetsCategoryDTO> findRootCategories() {
+		initCache();
+
+		List<PetsCategoryDTO> result = new ArrayList<PetsCategoryDTO>();
+		if (CollectionUtils.isEmpty(rootCategoryList)) {
+			return result;
+		}
+
+		for (PetsCategoryDTO petsCategoryDTO : rootCategoryList) {
+			result.add((PetsCategoryDTO) petsCategoryDTO.clone());
+		}
+
+		return result;
+	}
+
+	private void initCache() {
+		// 检查是否已初始化
+		if (initialized) {
+			return;
+		}
+
+		synchronized (lock) {
+			// 避免初次初始化时，执行多次，再判断一次是否已初始化
+			if (initialized) {
+				return;
+			}
+
+			long start = System.currentTimeMillis();
+
+			categoryMap = new ConcurrentHashMap<Integer, PetsCategoryDTO>();
+			parentPathMap = new ConcurrentHashMap<Integer, List<Integer>>();
+			childrenMap = new ConcurrentHashMap<Integer, List<Integer>>();
+			rootCategoryList = new ArrayList<PetsCategoryDTO>();
+			Map<Integer, Integer> tempParentIDMap = new HashMap<Integer, Integer>();
+
+			List<PetsCategory> categoryList = petsCategoryDao.findAll();
+			List<PetsCategoryDTO> categoryDTOList = toDTOList(categoryList);
+			for (PetsCategoryDTO categoryDTO : categoryDTOList) {
+				// add to category map
+				categoryMap.put(categoryDTO.getId(), categoryDTO);
+
+				int parentId = categoryDTO.getParentId();
+				if (parentId == 0) {
+					// add to root category list
+					rootCategoryList.add(categoryDTO);
+					continue;
+				}
+
+				// add to parent category's children category id list
+				if (!childrenMap.containsKey(parentId)) {
+					childrenMap.put(parentId, new ArrayList<Integer>());
+				}
+				childrenMap.get(parentId).add((categoryDTO.getId()));
+
+				// add to temp parent map
+				tempParentIDMap.put(categoryDTO.getId(), parentId);
+			}
+
+			for (PetsCategoryDTO categoryDTO : categoryDTOList) {
+				if (categoryDTO.getParentId() != 0) {
+					ArrayList<Integer> parentPathIdList = new ArrayList<Integer>();
+					fillParentCategory(categoryDTO.getId(), parentPathIdList, tempParentIDMap);
+					Collections.reverse(parentPathIdList);
+					parentPathMap.put(categoryDTO.getId(), parentPathIdList);
+				}
+			}
+
+			LOGGER.info("init category data..." + (System.currentTimeMillis() - start) + "ms");
+
+			// 设置为已初始化
+			this.initialized = true;
+		}
+	}
+
+	private void fillParentCategory(Integer currentId, List<Integer> idList, Map<Integer, Integer> parentIDMap) {
+		idList.add(currentId);
+		if (parentIDMap.containsKey(currentId)) {
+			fillParentCategory(parentIDMap.get(currentId), idList, parentIDMap);
 		}
 	}
 

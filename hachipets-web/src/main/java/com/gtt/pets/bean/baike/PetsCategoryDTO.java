@@ -7,7 +7,7 @@ import com.gtt.pets.bean.BaseDTO;
  * 
  * @author tiantiangao
  */
-public class PetsCategoryDTO extends BaseDTO {
+public class PetsCategoryDTO extends BaseDTO implements Cloneable {
 
 	/**
 	 * 分类ID

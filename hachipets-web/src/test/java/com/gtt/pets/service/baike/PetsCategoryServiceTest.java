@@ -1,66 +1,59 @@
 package com.gtt.pets.service.baike;
 
+import java.util.List;
+
 import junit.framework.Assert;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.powermock.modules.junit4.PowerMockRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.gtt.kenshin.cache.CacheKey;
-import com.gtt.kenshin.cache.CacheService;
 import com.gtt.pets.bean.baike.PetsCategoryDTO;
-import com.gtt.pets.dao.baike.PetsCategoryDao;
-import com.gtt.pets.entity.baike.PetsCategory;
 import com.gtt.pets.service.impl.baike.PetsCategoryServiceImpl;
 
 /**
  * Created with IntelliJ IDEA. User: gtt Date: 13-8-1 Time: 上午7:23 To change
  * this template use File | Settings | File Templates.
  */
-@RunWith(PowerMockRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath*:config/spring/appcontext-*.xml" })
 public class PetsCategoryServiceTest {
 
-	@InjectMocks
-	private PetsCategoryServiceImpl petsCategoryService = new PetsCategoryServiceImpl();
-	@Mock
-	private PetsCategoryDao petsCategoryDao;
-	@Mock
-	private CacheService cacheService;
+	@Autowired
+	private PetsCategoryServiceImpl petsCategoryService;
 
 	@Test
-	public void testLoadById() {
+	public void test() {
 		PetsCategoryDTO category = petsCategoryService.loadById(0);
 		Assert.assertNull(category);
 
-		PetsCategoryDTO dto = Mockito.mock(PetsCategoryDTO.class);
-		Mockito.when(cacheService.get(Mockito.any(CacheKey.class))).thenReturn(dto);
-		category = petsCategoryService.loadById(1);
+		category = petsCategoryService.loadById(10);
 		Assert.assertNotNull(category);
-		Assert.assertEquals(dto, category);
 
-		Mockito.when(cacheService.get(Mockito.any(CacheKey.class))).thenReturn(null);
-		Mockito.when(petsCategoryDao.loadById(Mockito.anyInt())).thenReturn(null);
-		category = petsCategoryService.loadById(1);
-		Assert.assertNull(category);
+		List<PetsCategoryDTO> rootCategories = petsCategoryService.findRootCategories();
+		for (PetsCategoryDTO rootCategory : rootCategories) {
+			print(rootCategory);
+			List<PetsCategoryDTO> children = petsCategoryService.findByParentId(rootCategory.getId());
+			for (PetsCategoryDTO child : children) {
+				print(child);
+				List<PetsCategoryDTO> nextChildren = petsCategoryService.findByParentId(child.getId());
+				for (PetsCategoryDTO nextChild : nextChildren) {
+					print(nextChild);
+				}
+			}
+		}
 
-		int id = 1;
-		int parentId = 0;
-		String name = "狗狗";
+	}
 
-		PetsCategory mockEntity = new PetsCategory();
-		mockEntity.setId(id);
-		mockEntity.setParentId(parentId);
-		mockEntity.setName(name);
-		Mockito.when(petsCategoryDao.loadById(Mockito.anyInt())).thenReturn(mockEntity);
-
-		category = petsCategoryService.loadById(1);
-		Assert.assertNotNull(category);
-		Assert.assertEquals(id, category.getId());
-		Assert.assertEquals(parentId, category.getParentId());
-		Assert.assertEquals(name, category.getName());
+	private void print(PetsCategoryDTO dto) {
+		System.out.print(dto.getId() + "/" + dto.getParentId() + "/" + dto.getName() + "  ");
+		List<PetsCategoryDTO> paths = petsCategoryService.findPathByCategoryId(dto.getId());
+		for (PetsCategoryDTO path : paths) {
+			System.out.print(" > " + path.getId());
+		}
+		System.out.println("");
 	}
 
 }

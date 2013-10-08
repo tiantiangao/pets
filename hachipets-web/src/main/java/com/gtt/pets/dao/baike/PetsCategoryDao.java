@@ -20,4 +20,7 @@ public interface PetsCategoryDao extends GenericDao {
 	@DaoAction(action = DaoActionType.QUERY)
 	List<PetsCategory> findByParentId(@DaoParam("id") int parentId);
 
+	@DaoAction(action = DaoActionType.QUERY)
+	List<PetsCategory> findAll();
+
 }

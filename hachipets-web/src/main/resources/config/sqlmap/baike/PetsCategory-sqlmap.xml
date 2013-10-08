@@ -27,4 +27,12 @@
         ]]>
     </select>
 
+    <select id="findAll" resultMap="PetsCategoryResult" parameterClass="map">
+        <![CDATA[
+		SELECT id, `parentId`, `name`
+		FROM Pets_Category
+		ORDER BY ID
+        ]]>
+    </select>
+
 </sqlMap>

@@ -1,8 +1,8 @@
 package com.gtt.pets.service.baike;
 
-import com.gtt.pets.bean.baike.PetsCategoryDTO;
-
 import java.util.List;
+
+import com.gtt.pets.bean.baike.PetsCategoryDTO;
 
 /**
  * Created with IntelliJ IDEA. User: gtt Date: 13-7-28 Time: 下午3:19 To change
@@ -26,4 +26,18 @@ public interface PetsCategoryService {
 	 */
 	List<PetsCategoryDTO> findByParentId(int parentId);
 
+	/**
+	 * 获取指定分类的完整父路径
+	 * 
+	 * @param categoryId
+	 * @return
+	 */
+	List<PetsCategoryDTO> findPathByCategoryId(int categoryId);
+
+	/**
+	 * 获取所有根分类
+	 * 
+	 * @return
+	 */
+	List<PetsCategoryDTO> findRootCategories();
 }

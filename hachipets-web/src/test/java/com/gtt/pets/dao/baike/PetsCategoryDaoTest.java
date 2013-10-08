@@ -39,6 +39,21 @@ public class PetsCategoryDaoTest extends AbstractTest {
 		}
 	}
 
+	@Test
+	public void testFindAll() {
+		List<PetsCategory> categoryList = petsCategoryDao.findAll();
+		notNull(categoryList);
+		for (PetsCategory category : categoryList) {
+			print(category);
+		}
+
+		categoryList = petsCategoryDao.findByParentId(1);
+		notNull(categoryList);
+		for (PetsCategory category : categoryList) {
+			print(category);
+		}
+	}
+
 	private void print(PetsCategory category) {
 		System.out.println(category.getId() + "/" + category.getName() + "/" + category.getParentId());
 	}
