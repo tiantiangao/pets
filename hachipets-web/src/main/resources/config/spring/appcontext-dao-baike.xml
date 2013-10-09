@@ -70,6 +70,15 @@
         </property>
     </bean>
 
+    <bean id="petsTypeAttrNameDao" parent="parentDao">
+        <property name="proxyInterfaces" value="com.gtt.pets.dao.baike.PetsTypeAttrNameDao" />
+        <property name="target">
+            <bean parent="Kenshin.daoRealizeTarget">
+                <constructor-arg value="PetsTypeAttrName" />
+            </bean>
+        </property>
+    </bean>
+
     <bean id="petsFCIGroupDao" parent="parentDao">
         <property name="proxyInterfaces" value="com.gtt.pets.dao.baike.PetsFCIGroupDao" />
         <property name="target">

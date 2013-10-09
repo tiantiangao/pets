@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="PetsTypeAttrName">
+
+    <typeAlias alias="PetsTypeAttrName" type="com.gtt.pets.entity.baike.PetsTypeAttrName" />
+    
+    <resultMap id="PetsTypeAttrNameResult" class="PetsTypeAttrName">
+        <result property="id" column="ID" />
+        <result property="group" column="Group" />
+        <result property="attrName" column="AttrName" />
+        <result property="showName" column="ShowName" />
+    </resultMap>
+
+    <select id="findAll" resultMap="PetsTypeAttrNameResult" parameterClass="map">
+        <![CDATA[
+		SELECT `ID`, `Group`, `AttrName`, `ShowName`
+		FROM Pets_TypeAttrName
+		ORDER BY `ID`
+        ]]>
+    </select>
+
+</sqlMap>
