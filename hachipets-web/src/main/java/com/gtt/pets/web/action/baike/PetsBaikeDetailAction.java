@@ -40,6 +40,12 @@ public class PetsBaikeDetailAction extends BaseAction {
 	@Override
 	public String doExecute() throws Exception {
 		setChannel(ChannelType.CHANNEL_BAIKE);
+
+
 		return SUCCESS;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
