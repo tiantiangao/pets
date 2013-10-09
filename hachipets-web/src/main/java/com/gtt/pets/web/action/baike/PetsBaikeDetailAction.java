@@ -16,20 +16,30 @@
 package com.gtt.pets.web.action.baike;
 
 import com.gtt.pets.constants.ChannelType;
+import com.gtt.pets.service.baike.PetsCategoryService;
 import com.gtt.pets.web.action.BaseAction;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * 宠物百科
- *
+ * 
  * @author tiantiangao
  */
 
 public class PetsBaikeDetailAction extends BaseAction {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Override
-    public String doExecute() throws Exception {
-        setChannel(ChannelType.CHANNEL_BAIKE);
-        return SUCCESS;
-    }
+	@Autowired
+	private PetsCategoryService petsCategoryService;
+
+	// 输入
+	private int id;
+
+	// 输出
+
+	@Override
+	public String doExecute() throws Exception {
+		setChannel(ChannelType.CHANNEL_BAIKE);
+		return SUCCESS;
+	}
 }
