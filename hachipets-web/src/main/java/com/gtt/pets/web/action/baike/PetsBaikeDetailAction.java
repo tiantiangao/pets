@@ -15,37 +15,151 @@
  */
 package com.gtt.pets.web.action.baike;
 
+import com.gtt.pets.bean.baike.*;
+import com.gtt.pets.constants.CategoryType;
 import com.gtt.pets.constants.ChannelType;
 import com.gtt.pets.service.baike.PetsCategoryService;
+import com.gtt.pets.service.baike.PetsTypeService;
 import com.gtt.pets.web.action.BaseAction;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 /**
  * 宠物百科
- * 
+ *
  * @author tiantiangao
  */
-
 public class PetsBaikeDetailAction extends BaseAction {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
+    private static final String INDEX = "baike";
 
-	@Autowired
-	private PetsCategoryService petsCategoryService;
+    @Autowired
+    private PetsCategoryService petsCategoryService;
+    @Autowired
+    private PetsTypeService petsTypeService;
 
-	// 输入
-	private int id;
+    // 输入
+    private int id;
 
-	// 输出
+    // 输出
+    private PetsTypeDTO type;
+    private List<PetsCategoryDTO> categoryPath;
+    private List<PetsTypeAttrVO> attrList;
+    private List<PetsTypeFeatureVO> featureList;
 
-	@Override
-	public String doExecute() throws Exception {
-		setChannel(ChannelType.CHANNEL_BAIKE);
+    @Override
+    public String doExecute() throws Exception {
+        setChannel(ChannelType.CHANNEL_BAIKE);
 
+        if (id < 1) {
+            return INDEX;
+        }
 
-		return SUCCESS;
-	}
+        // 读取类型信息
+        type = petsTypeService.loadTypeByID(id);
+        if (type == null) {
+            return INDEX;
+        }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+        // 读取分类路径信息
+        categoryPath = petsCategoryService.findPathByCategoryId(type.getCategoryId());
+
+        // 读取属性名映射表
+        Map<String, PetsTypeAttrNameDTO> attrNameMap = petsTypeService.loadTypeAttrNameMapByGroup(type.getRootCategoryId());
+        attrNameMap.putAll(petsTypeService.loadTypeAttrNameMapByGroup(0));
+
+        attrList = new ArrayList<PetsTypeAttrVO>();
+        initBasicAttr(attrNameMap);
+        initExtraAttr(attrNameMap);
+
+        return SUCCESS;
+    }
+
+    /**
+     * 初始化扩展信息
+     *
+     * @param attrNameMap
+     */
+    private void initExtraAttr(Map<String, PetsTypeAttrNameDTO> attrNameMap) {
+        switch (type.getRootCategoryId()) {
+            case CategoryType.CATEGORY_DOG:
+                initDogAttr(attrNameMap);
+                break;
+            case CategoryType.CATEGORY_CAT:
+                break;
+            case CategoryType.CATEGORY_FISH:
+                break;
+            case CategoryType.CATEGORY_RABBIT:
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * 初始化宠物狗扩展信息
+     *
+     * @param attrNameMap
+     */
+    private void initDogAttr(Map<String, PetsTypeAttrNameDTO> attrNameMap) {
+        PetsTypeDogDTO dog = petsTypeService.loadTypeDogByID(type.getId());
+        addAttr("dogFunction", dog.getFunction(), attrNameMap);
+        addAttr("dogHairLength", dog.getHairLength(), attrNameMap);
+        addAttr("dogHeight", dog.getHeight(), attrNameMap);
+        addAttr("dogWeight", dog.getWeight(), attrNameMap);
+        addAttr("dogLife", dog.getLife(), attrNameMap);
+        addAttr("dogColor", dog.getColor(), attrNameMap);
+    }
+
+    /**
+     * 初始化公共的基本信息
+     *
+     * @param attrNameMap
+     */
+    private void initBasicAttr(Map<String, PetsTypeAttrNameDTO> attrNameMap) {
+        addAttr("name", type.getName(), attrNameMap);
+        addAttr("enName", type.getEnName(), attrNameMap);
+        addAttr("alias", type.getAlias(), attrNameMap);
+        addAttr("origin", type.getOrigin(), attrNameMap);
+        addAttr("type", categoryPath.get(categoryPath.size() - 1).getName(), attrNameMap);
+    }
+
+    /**
+     * 添加属性至属性列表
+     *
+     * @param name
+     * @param value
+     * @param attrNameMap
+     */
+    private void addAttr(String name, String value, Map<String, PetsTypeAttrNameDTO> attrNameMap) {
+        PetsTypeAttrVO attrVO = new PetsTypeAttrVO();
+        PetsTypeAttrNameDTO attrNameDTO = attrNameMap.get(name);
+        attrVO.setName(attrNameDTO.getShowName());
+        attrVO.setValue(value);
+        attrVO.setSingleLine(attrNameDTO.getSingleLine() == 1);
+        attrList.add(attrVO);
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public PetsTypeDTO getType() {
+        return type;
+    }
+
+    public List<PetsCategoryDTO> getCategoryPath() {
+        return categoryPath;
+    }
+
+    public List<PetsTypeAttrVO> getAttrList() {
+        return attrList;
+    }
+
+    public List<PetsTypeFeatureVO> getFeatureList() {
+        return featureList;
+    }
 }

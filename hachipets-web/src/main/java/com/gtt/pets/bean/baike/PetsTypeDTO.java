@@ -42,7 +42,7 @@ public class PetsTypeDTO extends BaseDTO {
     /**
      * 图片地址
      */
-    private String picUril;
+    private String picUrl;
     /**
      * 缩略图地址
      */
@@ -104,12 +104,12 @@ public class PetsTypeDTO extends BaseDTO {
         this.origin = origin;
     }
 
-    public String getPicUril() {
-        return picUril;
+    public String getPicUrl() {
+        return picUrl;
     }
 
-    public void setPicUril(String picUril) {
-        this.picUril = picUril;
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
     }
 
     public String getThumbPicUrl() {

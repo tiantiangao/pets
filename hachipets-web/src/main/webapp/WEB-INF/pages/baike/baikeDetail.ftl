@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Hachi宠物网</title>
+    <title>${(type.name)!""}-宠物百科</title>
     <link href="/css/baike-detail.css" rel="stylesheet">
 </head>
 <body>
@@ -9,22 +9,27 @@
         <div class="baike-nav">
             <ul class="breadcrumb">
                 <li><a href="/baike">宠物百科</a><span class="divider">&gt;</span> </li>
-                <li><a href="#">狗狗</a><span class="divider">&gt;</span></li>
-                <li><a href="#">大型狗</a><span class="divider">&gt;</span></li>
-                <li class="active">阿富汗猎犬</li>
+                <#list categoryPath as category>
+                    <#if !category_has_next>
+                        <#assign currentCategory = category>
+                    </#if>
+                    <li><a href="#">${(category.name)!""}</a><span class="divider">&gt;</span></li>
+                </#list>
+                <li class="active">${(type.name)!""}</li>
             </ul>
         </div>
 
+        <#if (type.picUrl)??>
         <div class="baike-pic">
-            <div><img src="http://img0.ph.126.net/OdY0LnFJxwzgkfjTnJrMJA==/679762068856457355.jpg" ></div>
+            <div><img src="${type.picUrl}" ></div>
         </div>
+        </#if>
 
         <div class="baike-desc">
-            <div class="baike-title"><h4>阿富汗猎犬</h4></div>
+            <div class="baike-title"><h4>${(type.name)!""}</h4></div>
             <div class="baike-story">
                 <div class="baike-story-container">
-                    <p>阿富汗猎犬又名喀布尔犬，属古老犬种。4000年前阿富汗的绘画中即有该犬的画像，此犬原产中东地区,后来沿着通商路线传到阿富汗，被用来狩猎瞪羚、狼、雪豹等动物。</p>
-                    <p>阿富汗犬种于1886年首次登陆英国，成为英国皇室猎犬。1926年英国将此犬种介绍给美国后，美国经过半世纪的改良使阿富汗猎犬有其高雅威武的外观，以其美丽的姿容而形成独特的风格，在任何恶劣的环境中都能有较强的忍耐力，惊人的敏捷和强壮的体魄，并且具有了极高的观赏性，随后此犬种再次传入欧洲使之风靡全世界。阿富汗有其高雅、威武的外观，以其美丽的姿容而形成独特的风格。在任何恶劣的环境中都能有较强的忍耐力，惊人的敏捷和强壮的体魄。身体强壮，独立性强，对人温和，但有时也有神经质一面。尽管体格强壮，生活方面一旦发生变故，身体会日渐消瘦。人们曾评论该犬具有不可信赖的气质。现在品种经过改良，除保持原有的活泼性外，训练和饲养比以前顺从和容易多了。</p>
+                    ${type.desc}
                 </div>
             </div>
         </div>
@@ -33,46 +38,33 @@
             <div class="baike-detail-row baike-basic">
                 <div class="baike-detail-title">基本信息</div>
                 <div class="baike-detail-body">
+                    <#list attrList as attr>
                     <dl>
-                        <dt>全&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</dt>
-                        <dd>阿富汗猎犬</dd>
+                        <dt>${attr.name}:</dt>
+                        <dd>${attr.value}</dd>
                     </dl>
-                    <dl>
-                        <dt>英&nbsp;&nbsp;文&nbsp;&nbsp;名:</dt>
-                        <dd>Afghan Hound</dd>
-                    </dl>
+                    <#if attr.singleLine>
                     <div class="clear"></div>
-                    <dl>
-                        <dt>别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</dt>
-                        <dd>俾路支猎犬,喀布尔犬</dd>
-                    </dl>
-                    <dl>
-                        <dt>产&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地:</dt>
-                        <dd>阿富汗</dd>
-                    </dl>
-                    <div class="clear"></div>
-                    <dl>
-                        <dt>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型:</dt>
-                        <dd>大型犬</dd>
-                    </dl>
+                    </#if>
+                    </#list>
                     <dl>
                         <dt>功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;能:</dt>
                         <dd>伴侣犬 / 狩望猎犬 / 工作犬</dd>
                     </dl>
-                    <div class="clear"></div>
                     <dl>
                         <dt>毛&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;长:</dt>
                         <dd>长毛</dd>
                     </dl>
+                    <div class="clear"></div>
                     <dl>
                         <dt>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高:</dt>
                         <dd>雄性: 64-74cm 雌性: 61-73cm</dd>
                     </dl>
-                    <div class="clear"></div>
                     <dl>
                         <dt>寿&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;命:</dt>
                         <dd>12-15年</dd>
                     </dl>
+                    <div class="clear"></div>
                     <dl>
                         <dt>体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重:</dt>
                         <dd>雄性: 23-27kg 雌性: 20-25kg</dd>

@@ -10,6 +10,7 @@
         </action>
         <action name="petsBaikeDetailAction" class="com.gtt.pets.web.action.baike.PetsBaikeDetailAction">
             <result name="success" type="freemarker">/WEB-INF/pages/baike/baikeDetail.ftl</result>
+            <result name="baike" type="redirect">/baike</result>
         </action>
 
         <action name="petsBaikeFCIAction" class="com.gtt.pets.web.action.baike.PetsBaikeFCIAction">
