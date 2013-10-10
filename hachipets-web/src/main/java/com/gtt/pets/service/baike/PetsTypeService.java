@@ -1,5 +1,7 @@
 package com.gtt.pets.service.baike;
 
+import java.util.Map;
+
 import com.gtt.pets.bean.baike.*;
 
 /**
@@ -20,5 +22,7 @@ public interface PetsTypeService {
 	PetsTypeFishDTO loadTypeFishByID(int typeId);
 
 	PetsTypeRabbitDTO loadTypeRabbitByID(int typeId);
+
+	Map<String, PetsTypeAttrNameDTO> loadTypeAttrNameMapByGroup(int group);
 
 }

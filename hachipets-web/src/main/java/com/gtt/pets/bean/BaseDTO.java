@@ -7,7 +7,7 @@ import java.util.Date;
  * Created with IntelliJ IDEA. User: gtt Date: 13-7-31 Time: 下午11:06 To change
  * this template use File | Settings | File Templates.
  */
-public abstract class BaseDTO implements Serializable {
+public abstract class BaseDTO implements Serializable, Cloneable {
 
 	protected static final long serialVersionUID = 1L;
 	/**

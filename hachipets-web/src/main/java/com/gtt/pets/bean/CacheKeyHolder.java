@@ -79,4 +79,24 @@ public class CacheKeyHolder {
 	 * 宠物类型
 	 */
 	public static final String BAIKE_TYPE = "oBaikeType";
+	/**
+	 * 宠物类型扩展信息之通用数据
+	 */
+	public static final String BAIKE_TYPE_COMMON = "oBaikeTypeCommon";
+	/**
+	 * 宠物类型扩展信息之狗狗
+	 */
+	public static final String BAIKE_TYPE_DOG = "oBaikeTypeDog";
+	/**
+	 * 宠物类型扩展信息之猫咪
+	 */
+	public static final String BAIKE_TYPE_CAT = "oBaikeTypeCat";
+	/**
+	 * 宠物类型扩展信息之宠物鱼
+	 */
+	public static final String BAIKE_TYPE_FISH = "oBaikeTypeFish";
+	/**
+	 * 宠物类型扩展信息之宠物兔
+	 */
+	public static final String BAIKE_TYPE_RABBIT = "oBaikeTypeRabbit";
 }
