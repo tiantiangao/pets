@@ -35,6 +35,7 @@ public class PetsTypeAttrNameDaoTest extends AbstractTest {
 			result.add(name.getGroup() + "");
 			result.add(name.getAttrName() + "");
 			result.add(name.getShowName() + "");
+			result.add(name.getSingleLine() + "");
 			String info = StringUtils.join(result, "---");
 			System.out.println(info);
 		}

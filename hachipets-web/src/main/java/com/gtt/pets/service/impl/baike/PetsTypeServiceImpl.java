@@ -9,6 +9,9 @@ import com.gtt.pets.service.baike.PetsTypeService;
  * @author tiantiangao
  */
 public class PetsTypeServiceImpl implements PetsTypeService {
+
+
+
 	@Override
 	public PetsTypeDTO loadTypeByID(int typeId) {
 		return null;

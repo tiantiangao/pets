@@ -9,11 +9,12 @@
         <result property="group" column="Group" />
         <result property="attrName" column="AttrName" />
         <result property="showName" column="ShowName" />
+        <result property="singleLine" column="SingleLine" />
     </resultMap>
 
     <select id="findAll" resultMap="PetsTypeAttrNameResult" parameterClass="map">
         <![CDATA[
-		SELECT `ID`, `Group`, `AttrName`, `ShowName`
+		SELECT `ID`, `Group`, `AttrName`, `ShowName`, `SingleLine`
 		FROM Pets_TypeAttrName
 		ORDER BY `ID`
         ]]>

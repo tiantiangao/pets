@@ -20,6 +20,10 @@ public class PetsTypeAttrName extends BaseEntity {
 	 * 显示名称(html)
 	 */
 	private String showName;
+	/**
+	 * 是否用单行显示
+	 */
+	private int singleLine;
 
 	public int getGroup() {
 		return group;
@@ -43,5 +47,13 @@ public class PetsTypeAttrName extends BaseEntity {
 
 	public void setShowName(String showName) {
 		this.showName = showName;
+	}
+
+	public int getSingleLine() {
+		return singleLine;
+	}
+
+	public void setSingleLine(int singleLine) {
+		this.singleLine = singleLine;
 	}
 }
