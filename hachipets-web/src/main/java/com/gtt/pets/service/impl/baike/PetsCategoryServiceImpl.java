@@ -8,21 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import com.gtt.kenshin.log.KenshinLogger;
-import com.gtt.kenshin.log.KenshinLoggerFactory;
 import com.gtt.pets.bean.baike.PetsCategoryDTO;
 import com.gtt.pets.dao.baike.PetsCategoryDao;
 import com.gtt.pets.entity.baike.PetsCategory;
 import com.gtt.pets.service.baike.PetsCategoryService;
+import com.gtt.pets.service.impl.BaseService;
+import com.gtt.pets.util.DTOUtils;
 
 /**
  * Created with IntelliJ IDEA. User: gtt Date: 13-7-28 Time: 下午3:19 To change
  * this template use File | Settings | File Templates.
  */
 @Service
-public class PetsCategoryServiceImpl implements PetsCategoryService {
+public class PetsCategoryServiceImpl extends BaseService implements PetsCategoryService {
 
-	private static final KenshinLogger LOGGER = KenshinLoggerFactory.getLogger(PetsCategoryServiceImpl.class);
 	@Autowired
 	private PetsCategoryDao petsCategoryDao;
 	/**
@@ -174,7 +173,7 @@ public class PetsCategoryServiceImpl implements PetsCategoryService {
 			Map<Integer, Integer> tempParentIDMap = new HashMap<Integer, Integer>();
 
 			List<PetsCategory> categoryList = petsCategoryDao.findAll();
-			List<PetsCategoryDTO> categoryDTOList = toDTOList(categoryList);
+			List<PetsCategoryDTO> categoryDTOList = DTOUtils.toDTOList(PetsCategoryDTO.class, categoryList);
 			for (PetsCategoryDTO categoryDTO : categoryDTOList) {
 				// add to category map
 				categoryMap.put(categoryDTO.getId(), categoryDTO);
@@ -219,12 +218,4 @@ public class PetsCategoryServiceImpl implements PetsCategoryService {
 		}
 	}
 
-	private List<PetsCategoryDTO> toDTOList(List<PetsCategory> categoryList) {
-		List<PetsCategoryDTO> dtoList = new ArrayList<PetsCategoryDTO>();
-		for (PetsCategory category : categoryList) {
-			dtoList.add(toDTO(category));
-		}
-
-		return dtoList;
-	}
 }
