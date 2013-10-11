@@ -147,7 +147,7 @@ public class PetsBaikeDetailAction extends BaseAction {
 
 		// fill attr info
 		addAttr("fishClimaticZone", show(fish.getClimaticZone()), attrNameMap);
-		addAttr("fishTemperatur", show(fish.getTemperature()), attrNameMap);
+		addAttr("fishTemperature", show(fish.getTemperature()), attrNameMap);
 		addAttr("fishWaterPH", show(fish.getWaterPH()), attrNameMap);
 
 		// fill other desc
