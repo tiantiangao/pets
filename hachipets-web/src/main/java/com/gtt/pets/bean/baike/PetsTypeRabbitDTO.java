@@ -29,7 +29,7 @@ public class PetsTypeRabbitDTO extends BaseDTO {
     /**
      * 食性
      */
-    private String eastPattern;
+    private String eatPattern;
 
     /**
      * 其他信息
@@ -60,15 +60,15 @@ public class PetsTypeRabbitDTO extends BaseDTO {
         this.bodyType = bodyType;
     }
 
-    public String getEastPattern() {
-        return eastPattern;
-    }
+	public String getEatPattern() {
+		return eatPattern;
+	}
 
-    public void setEastPattern(String eastPattern) {
-        this.eastPattern = eastPattern;
-    }
+	public void setEatPattern(String eatPattern) {
+		this.eatPattern = eatPattern;
+	}
 
-    public String getOther() {
+	public String getOther() {
         return other;
     }
 

@@ -103,12 +103,55 @@ public class PetsBaikeDetailAction extends BaseAction {
 			initCatAttr(attrNameMap);
 			break;
 		case CategoryType.CATEGORY_FISH:
+			initFishAttr(attrNameMap);
 			break;
 		case CategoryType.CATEGORY_RABBIT:
+			initRabbitAttr(attrNameMap);
 			break;
 		default:
+			initCommonAttr(attrNameMap);
 			break;
 		}
+	}
+
+	private void initCommonAttr(Map<String, PetsTypeAttrNameDTO> attrNameMap) {
+		PetsTypeCommonDTO common = petsTypeService.loadTypeCommonByID(type.getId());
+		if (common == null) {
+			return;
+		}
+
+		// fill other desc
+		desc = common.getOther();
+	}
+
+	private void initRabbitAttr(Map<String, PetsTypeAttrNameDTO> attrNameMap) {
+		PetsTypeRabbitDTO rabbit = petsTypeService.loadTypeRabbitByID(type.getId());
+		if (rabbit == null) {
+			return;
+		}
+
+		// fill attr info
+		addAttr("rabbitWeight", show(rabbit.getWeight()), attrNameMap);
+		addAttr("rabbitBodyType", show(rabbit.getBodyType()), attrNameMap);
+		addAttr("rabbitEatPattern", show(rabbit.getEatPattern()), attrNameMap);
+
+		// fill other desc
+		desc = rabbit.getOther();
+	}
+
+	private void initFishAttr(Map<String, PetsTypeAttrNameDTO> attrNameMap) {
+		PetsTypeFishDTO fish = petsTypeService.loadTypeFishByID(type.getId());
+		if (fish == null) {
+			return;
+		}
+
+		// fill attr info
+		addAttr("fishClimaticZone", show(fish.getClimaticZone()), attrNameMap);
+		addAttr("fishTemperatur", show(fish.getTemperature()), attrNameMap);
+		addAttr("fishWaterPH", show(fish.getWaterPH()), attrNameMap);
+
+		// fill other desc
+		desc = fish.getOther();
 	}
 
 	private void initCatAttr(Map<String, PetsTypeAttrNameDTO> attrNameMap) {
