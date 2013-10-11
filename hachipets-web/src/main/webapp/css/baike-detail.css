@@ -114,6 +114,9 @@
     line-height: 24px;
     overflow: hidden;
 }
+.baike-detail-body dd.single{
+    width: 1000px!important;
+}
 .baike-detail-body dd.wide{
     width: 900px;
 }

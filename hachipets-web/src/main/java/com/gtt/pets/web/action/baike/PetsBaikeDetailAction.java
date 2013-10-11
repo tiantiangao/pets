@@ -48,6 +48,7 @@ public class PetsBaikeDetailAction extends BaseAction {
 	private List<PetsCategoryDTO> categoryPath;
 	private List<PetsTypeAttrVO> attrList;
 	private List<PetsTypeFeatureVO> featureList;
+	private String desc;
 
 	@Override
 	public String doExecute() throws Exception {
@@ -72,6 +73,7 @@ public class PetsBaikeDetailAction extends BaseAction {
 		attrNameMap.putAll(petsTypeService.loadTypeAttrNameMapByGroup(0));
 
 		attrList = new ArrayList<PetsTypeAttrVO>();
+		featureList = new ArrayList<PetsTypeFeatureVO>();
 		initBasicAttr(attrNameMap);
 		initExtraAttr(attrNameMap);
 
@@ -109,12 +111,50 @@ public class PetsBaikeDetailAction extends BaseAction {
 		if (dog == null) {
 			return;
 		}
+
+		// fill attr info
 		addAttr("dogFunction", show(dog.getFunction()), attrNameMap);
 		addAttr("dogHairLength", show(dog.getHairLength()), attrNameMap);
 		addAttr("dogHeight", show(dog.getHeight()), attrNameMap);
 		addAttr("dogWeight", show(dog.getWeight()), attrNameMap);
 		addAttr("dogLife", show(dog.getLife()), attrNameMap);
 		addAttr("dogColor", show(dog.getColor()), attrNameMap);
+		addAttr("dogFCIGroup", String.valueOf(dog.getFciGroup()), attrNameMap);
+		addAttr("dogFCISection", String.valueOf(dog.getFciSection()), attrNameMap);
+
+		// fill feature info
+		addFeature("dogFeatureStick", dog.getFeatureStick(), attrNameMap);
+		addFeature("dogFeatureFeed", dog.getFeatureFeed(), attrNameMap);
+		addFeature("dogFeatureBark", dog.getFeatureBark(), attrNameMap);
+		addFeature("dogFeatureFallHair", dog.getFeatureFallHair(), attrNameMap);
+		addFeature("dogFeatureOdor", dog.getFeatureOdor(), attrNameMap);
+		addFeature("dogFeatureBeauty", dog.getFeatureBeauty(), attrNameMap);
+		addFeature("dogFeatureChildFriendly", dog.getFeatureChildFriendly(), attrNameMap);
+		addFeature("dogFeatureStrangerFriendly", dog.getFeatureStrangerFriendly(), attrNameMap);
+		addFeature("dogFeatureAnimalFriendly", dog.getFeatureAnimalFriendly(), attrNameMap);
+		addFeature("dogFeatureSport", dog.getFeatureSport(), attrNameMap);
+		addFeature("dogFeatureTrained", dog.getFeatureTrained(), attrNameMap);
+		addFeature("dogFeatureDrool", dog.getFeatureDrool(), attrNameMap);
+		addFeature("dogFeatureCold", dog.getFeatureCold(), attrNameMap);
+		addFeature("dogFeatureHot", dog.getFeatureHot(), attrNameMap);
+		addFeature("dogFeatureCity", dog.getFeatureCity(), attrNameMap);
+
+		// fill other desc
+		desc = dog.getOther();
+	}
+
+	/**
+	 * 添加特征信息
+	 * 
+	 * @param name
+	 * @param value
+	 * @param attrNameMap
+	 */
+	private void addFeature(String name, int value, Map<String, PetsTypeAttrNameDTO> attrNameMap) {
+		PetsTypeFeatureVO featureVO = new PetsTypeFeatureVO();
+		featureVO.setName(attrNameMap.get(name).getShowName());
+		featureVO.setValue(value);
+		featureList.add(featureVO);
 	}
 
 	private String show(String value) {
@@ -168,5 +208,9 @@ public class PetsBaikeDetailAction extends BaseAction {
 
 	public List<PetsTypeFeatureVO> getFeatureList() {
 		return featureList;
+	}
+
+	public String getDesc() {
+		return desc;
 	}
 }
