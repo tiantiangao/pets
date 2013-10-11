@@ -42,9 +42,11 @@
                     <dl <#if attr.singleLine>class="single"</#if>>
                         <dt>${attr.name}:</dt>
 						<#if attr.attrName=="dogFCIGroup">
-                            <dd><a href="/baike/FCI#G${extraInfo['dogFCIGroupID']}">${attr.value}</a></dd>
+                            <dd><a href="/baike/FCI#G${extraInfo['dogFCIGroupID']!1}">${attr.value}</a></dd>
 						<#elseif attr.attrName=="dogFCISection">
-                            <dd><a href="/baike/FCI/section/${extraInfo['dogFCISectionID']}">${attr.value}</a></dd>
+                            <dd><a href="/baike/FCI/section/${extraInfo['dogFCISectionID']!1}">${attr.value}</a></dd>
+						<#elseif attr.attrName="catCFA">
+                            <dd><a href="${extraInfo['catCFALink']!''}">CFA ${extraInfo['catCFAEnName']}</a><span class="memo"><a href="/baike/CFA">什么是CFA?</a></span></dd>
 						<#else>
                             <dd>${attr.value}</dd>
 						</#if>
