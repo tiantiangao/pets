@@ -16,6 +16,7 @@
 package com.gtt.pets.web.action.baike;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.gtt.pets.bean.baike.*;
 import com.gtt.pets.constants.CategoryType;
 import com.gtt.pets.constants.ChannelType;
+import com.gtt.pets.service.baike.PetsBaikeFCIService;
 import com.gtt.pets.service.baike.PetsCategoryService;
 import com.gtt.pets.service.baike.PetsTypeService;
 import com.gtt.pets.web.action.BaseAction;
@@ -40,6 +42,8 @@ public class PetsBaikeDetailAction extends BaseAction {
 	@Autowired
 	private PetsCategoryService petsCategoryService;
 	@Autowired
+	private PetsBaikeFCIService petsBaikeFCIService;
+	@Autowired
 	private PetsTypeService petsTypeService;
 	// 输入
 	private int id;
@@ -49,6 +53,7 @@ public class PetsBaikeDetailAction extends BaseAction {
 	private List<PetsTypeAttrVO> attrList;
 	private List<PetsTypeFeatureVO> featureList;
 	private String desc;
+	private Map<String, Object> extraInfo;
 
 	@Override
 	public String doExecute() throws Exception {
@@ -74,6 +79,7 @@ public class PetsBaikeDetailAction extends BaseAction {
 
 		attrList = new ArrayList<PetsTypeAttrVO>();
 		featureList = new ArrayList<PetsTypeFeatureVO>();
+		extraInfo = new HashMap<String, Object>();
 		initBasicAttr(attrNameMap);
 		initExtraAttr(attrNameMap);
 
@@ -119,8 +125,20 @@ public class PetsBaikeDetailAction extends BaseAction {
 		addAttr("dogWeight", show(dog.getWeight()), attrNameMap);
 		addAttr("dogLife", show(dog.getLife()), attrNameMap);
 		addAttr("dogColor", show(dog.getColor()), attrNameMap);
-		addAttr("dogFCIGroup", String.valueOf(dog.getFciGroup()), attrNameMap);
-		addAttr("dogFCISection", String.valueOf(dog.getFciSection()), attrNameMap);
+
+		int fciGroupID = dog.getFciGroup();
+		PetsFCIGroupDTO fciGroupDTO = petsBaikeFCIService.loadGroupById(fciGroupID);
+		if (fciGroupDTO != null) {
+			addAttr("dogFCIGroup", fciGroupDTO.getGroupName(), attrNameMap);
+			extraInfo.put("dogFCIGroupID", fciGroupID);
+		}
+
+		int fciSectionID = dog.getFciSection();
+		PetsFCISectionDTO fciSectionDTO = petsBaikeFCIService.loadSectionById(fciSectionID);
+		if (fciSectionDTO != null) {
+			addAttr("dogFCISection", fciSectionDTO.getSectionName(), attrNameMap);
+			extraInfo.put("dogFCISectionID", fciSectionID);
+		}
 
 		// fill feature info
 		addFeature("dogFeatureStick", dog.getFeatureStick(), attrNameMap);
@@ -184,6 +202,7 @@ public class PetsBaikeDetailAction extends BaseAction {
 	private void addAttr(String name, String value, Map<String, PetsTypeAttrNameDTO> attrNameMap) {
 		PetsTypeAttrVO attrVO = new PetsTypeAttrVO();
 		PetsTypeAttrNameDTO attrNameDTO = attrNameMap.get(name);
+		attrVO.setAttrName(name);
 		attrVO.setName(attrNameDTO.getShowName());
 		attrVO.setValue(value);
 		attrVO.setSingleLine(attrNameDTO.getSingleLine() == 1);
@@ -212,5 +231,9 @@ public class PetsBaikeDetailAction extends BaseAction {
 
 	public String getDesc() {
 		return desc;
+	}
+
+	public Map<String, Object> getExtraInfo() {
+		return extraInfo;
 	}
 }

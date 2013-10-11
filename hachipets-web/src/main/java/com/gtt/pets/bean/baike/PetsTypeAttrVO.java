@@ -9,11 +9,20 @@ package com.gtt.pets.bean.baike;
  */
 public class PetsTypeAttrVO {
 
+	private String attrName;
     private String name;
     private String value;
     private boolean singleLine;
 
-    public String getName() {
+	public String getAttrName() {
+		return attrName;
+	}
+
+	public void setAttrName(String attrName) {
+		this.attrName = attrName;
+	}
+
+	public String getName() {
         return name;
     }
 

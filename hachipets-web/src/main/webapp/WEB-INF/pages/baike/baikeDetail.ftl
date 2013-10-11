@@ -39,9 +39,15 @@
                 <div class="baike-detail-title">基本信息</div>
                 <div class="baike-detail-body">
                     <#list attrList as attr>
-                    <dl>
+                    <dl <#if attr.singleLine>class="single"</#if>>
                         <dt>${attr.name}:</dt>
-                        <dd <#if attr.singleLine>class="single"</#if>>${attr.value}</dd>
+						<#if attr.attrName=="dogFCIGroup">
+                            <dd><a href="/baike/FCI#G${extraInfo['dogFCIGroupID']}">${attr.value}</a></dd>
+						<#elseif attr.attrName=="dogFCISection">
+                            <dd><a href="/baike/FCI/section/${extraInfo['dogFCISectionID']}">${attr.value}</a></dd>
+						<#else>
+                            <dd>${attr.value}</dd>
+						</#if>
                     </dl>
 					<#if attr.singleLine>
                     <div class="clear"></div>
