@@ -72,6 +72,10 @@ public class CacheKeyHolder {
 	 */
 	public static final String BAIKE_FCI_SECTION_DOG_LIST = "oBaikeFCISectionDogList";
 	/**
+	 * CFA猫品种
+	 */
+	public static final String BAIKE_CFA_CAT = "oBaikeCFACat";
+	/**
 	 * CFA猫品种列表
 	 */
 	public static final String BAIKE_CFA_CAT_LIST = "oBaikeCFACatList";

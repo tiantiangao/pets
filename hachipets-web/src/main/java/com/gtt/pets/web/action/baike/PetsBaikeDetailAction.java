@@ -26,6 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.gtt.pets.bean.baike.*;
 import com.gtt.pets.constants.CategoryType;
 import com.gtt.pets.constants.ChannelType;
+import com.gtt.pets.service.baike.PetsBaikeCFAService;
 import com.gtt.pets.service.baike.PetsBaikeFCIService;
 import com.gtt.pets.service.baike.PetsCategoryService;
 import com.gtt.pets.service.baike.PetsTypeService;
@@ -43,6 +44,8 @@ public class PetsBaikeDetailAction extends BaseAction {
 	private PetsCategoryService petsCategoryService;
 	@Autowired
 	private PetsBaikeFCIService petsBaikeFCIService;
+	@Autowired
+	private PetsBaikeCFAService petsBaikeCFAService;
 	@Autowired
 	private PetsTypeService petsTypeService;
 	// 输入
@@ -97,6 +100,7 @@ public class PetsBaikeDetailAction extends BaseAction {
 			initDogAttr(attrNameMap);
 			break;
 		case CategoryType.CATEGORY_CAT:
+			initCatAttr(attrNameMap);
 			break;
 		case CategoryType.CATEGORY_FISH:
 			break;
@@ -105,6 +109,44 @@ public class PetsBaikeDetailAction extends BaseAction {
 		default:
 			break;
 		}
+	}
+
+	private void initCatAttr(Map<String, PetsTypeAttrNameDTO> attrNameMap) {
+		PetsTypeCatDTO cat = petsTypeService.loadTypeCatByID(type.getId());
+		if (cat == null) {
+			return;
+		}
+
+		// fill attr info
+		addAttr("catBodyType", show(cat.getBodyType()), attrNameMap);
+		addAttr("catWeight", show(cat.getWeight()), attrNameMap);
+
+		int cfaId = cat.getCfa();
+		PetsCFACatDTO cfaCatDTO = petsBaikeCFAService.loadById(cfaId);
+		if (cfaCatDTO != null) {
+			addAttr("catCFA", cfaCatDTO.getEnName(), attrNameMap);
+			extraInfo.put("catCFALink", cfaCatDTO.getCfaLink());
+		}
+
+		// fill feature info
+		addFeature("catFeatureStick", cat.getFeatureStick(), attrNameMap);
+		addFeature("catFeatureFeed", cat.getFeatureFeed(), attrNameMap);
+		addFeature("catFeatureBark", cat.getFeatureBark(), attrNameMap);
+		addFeature("catFeatureFallHair", cat.getFeatureFallHair(), attrNameMap);
+		addFeature("catFeatureOdor", cat.getFeatureOdor(), attrNameMap);
+		addFeature("catFeatureBeauty", cat.getFeatureBeauty(), attrNameMap);
+		addFeature("catFeatureChildFriendly", cat.getFeatureChildFriendly(), attrNameMap);
+		addFeature("catFeatureStrangerFriendly", cat.getFeatureStrangerFriendly(), attrNameMap);
+		addFeature("catFeatureAnimalFriendly", cat.getFeatureAnimalFriendly(), attrNameMap);
+		addFeature("catFeatureSport", cat.getFeatureSport(), attrNameMap);
+		addFeature("catFeatureTrained", cat.getFeatureTrained(), attrNameMap);
+		addFeature("catFeatureDrool", cat.getFeatureDrool(), attrNameMap);
+		addFeature("catFeatureCold", cat.getFeatureCold(), attrNameMap);
+		addFeature("catFeatureHot", cat.getFeatureHot(), attrNameMap);
+		addFeature("catFeatureCity", cat.getFeatureCity(), attrNameMap);
+
+		// fill other desc
+		desc = cat.getOther();
 	}
 
 	/**

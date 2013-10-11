@@ -19,4 +19,13 @@
         ]]>
     </select>
 
+    <select id="loadById" resultMap="PetsCFACatResult" parameterClass="map">
+        <![CDATA[
+		SELECT Name, EnName, CFALink, PetId
+		FROM Pets_Baike_CFA_List
+		WHERE ID = #id#
+        ]]>
+    </select>
+
+
 </sqlMap>

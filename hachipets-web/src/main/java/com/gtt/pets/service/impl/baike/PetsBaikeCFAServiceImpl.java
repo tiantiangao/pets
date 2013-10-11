@@ -57,4 +57,30 @@ public class PetsBaikeCFAServiceImpl extends BaseService implements PetsBaikeCFA
 		}
 	}
 
+	@Override
+	public PetsCFACatDTO loadById(int cfaId) {
+		try {
+			// load from cache
+			CacheKey cacheKey = new CacheKey(CacheKeyHolder.BAIKE_CFA_CAT);
+			PetsCFACatDTO dto = cacheService.get(cacheKey);
+			if (dto != null) {
+				return dto;
+			}
+
+			// no cache, load from db
+			PetsCFACat cat = petsCFACatDao.loadById(cfaId);
+			if (cat == null) {
+				return null;
+			}
+			dto = DTOUtils.toDTO(PetsCFACatDTO.class, cat);
+
+			// add cache
+			cacheService.add(cacheKey, dto);
+
+			return dto;
+		} catch (Exception e) {
+			LOGGER.error("load cfa cat by id failed", e);
+			return null;
+		}
+	}
 }

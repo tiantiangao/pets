@@ -46,7 +46,7 @@
 						<#elseif attr.attrName=="dogFCISection">
                             <dd><a href="/baike/FCI/section/${extraInfo['dogFCISectionID']!1}">${attr.value}</a></dd>
 						<#elseif attr.attrName="catCFA">
-                            <dd><a href="${extraInfo['catCFALink']!''}">CFA ${extraInfo['catCFAEnName']}</a><span class="memo"><a href="/baike/CFA">什么是CFA?</a></span></dd>
+                            <dd><a href="${extraInfo['catCFALink']!''}">CFA ${attr.value}</a><span class="memo"><a href="/baike/CFA">什么是CFA?</a></span></dd>
 						<#else>
                             <dd>${attr.value}</dd>
 						</#if>
@@ -58,6 +58,7 @@
                     <div class="clear"></div>
                 </div>
             </div>
+			<#if featureList?? && featureList?size gt 0 >
             <div class="baike-detail-row baike-feature">
                 <div class="baike-detail-title">特征标准</div>
                 <div class="baike-detail-body">
@@ -70,6 +71,7 @@
                     <div class="clear"></div>
                 </div>
             </div>
+			</#if>
             <div class="baike-detail-row baike-characteristics">
                 <div class="baike-detail-title">其他信息</div>
                 <div class="baike-detail-body">
