@@ -76,9 +76,17 @@ public class PetsBaikeDetailAction extends BaseAction {
 		categoryPath = petsCategoryService.findPathByCategoryId(type.getCategoryId());
 
 		// 读取属性名映射表
-		Map<String, PetsTypeAttrNameDTO> attrNameMap = petsTypeService.loadTypeAttrNameMapByGroup(type
+		Map<String, PetsTypeAttrNameDTO> attrNameMap = new HashMap<String, PetsTypeAttrNameDTO>();
+		Map<String, PetsTypeAttrNameDTO> commonAttrNameMap = petsTypeService.loadTypeAttrNameMapByGroup(0);
+		if (commonAttrNameMap != null) {
+			attrNameMap.putAll(commonAttrNameMap);
+		}
+
+		Map<String, PetsTypeAttrNameDTO> extraAttrNameMap = petsTypeService.loadTypeAttrNameMapByGroup(type
 				.getRootCategoryId());
-		attrNameMap.putAll(petsTypeService.loadTypeAttrNameMapByGroup(0));
+		if (extraAttrNameMap != null) {
+			attrNameMap.putAll(extraAttrNameMap);
+		}
 
 		attrList = new ArrayList<PetsTypeAttrVO>();
 		featureList = new ArrayList<PetsTypeFeatureVO>();
