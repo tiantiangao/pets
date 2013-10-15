@@ -1,0 +1,67 @@
+.baike-container {
+	padding: 10px 5px;
+	border: 1px solid #ddd;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+    min-height: 800px;
+    position: relative;
+}
+.baike-filter {
+    padding: 10px 5px;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    position: relative;
+}
+.baike-filter .group{
+    margin: 5px 10px;
+    border-bottom: 1px solid #dadada;
+}
+.baike-filter .group-last{
+    border-bottom: none;
+}
+.baike-filter .filter-name {
+    font-weight: bold;
+    padding: 0px;
+    width: 45px;
+    color: #909090;
+}
+.baike-filter .group li {
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    padding: 2px 10px;
+}
+.baike-filter .group a {
+    display: inline-block;
+    color: #333;
+    text-decoration: none;
+}
+.baike-filter .group li:hover {
+    background-color: #eee;
+    color: #e12160;
+    cursor: pointer;
+}
+.baike-filter .group .active {
+    background-color: #eee;
+    cursor: default;
+    color: #e12160;
+}
+.baike-filter .group .active:hover {
+    cursor: default;
+}
+.baike-filter .group .active:hover > a {
+    cursor: default;
+}
+
+.baike-content {
+    margin-top: 10px;
+    padding: 10px 5px;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    position: relative;
+}
