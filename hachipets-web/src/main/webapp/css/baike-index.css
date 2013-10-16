@@ -16,26 +16,40 @@
     position: relative;
 }
 .baike-filter .group{
-    margin: 5px 10px;
+    padding: 10px 10px;
     border-bottom: 1px solid #dadada;
 }
 .baike-filter .group-last{
     border-bottom: none;
 }
 .baike-filter .filter-name {
+    display: block;
+    float: left;
+    width: 80px;
+    height: 25px;
+    line-height: 25px;
+    padding: 5px 0;
     font-weight: bold;
-    padding: 0px;
-    width: 45px;
     color: #909090;
+    font-size: 16px;
+}
+.baike-filter .filter-list {
+    float: right;
+    width: 1058px;
+}
+.baike-filter .group ul {
+    margin: 0!important;
 }
 .baike-filter .group li {
     height: 25px;
+    width: 130px;
     line-height: 25px;
     text-align: center;
-    padding: 2px 10px;
+    padding: 5px 0;
 }
 .baike-filter .group a {
     display: inline-block;
+    margin: 2px 5px;
     color: #333;
     text-decoration: none;
 }
@@ -47,7 +61,7 @@
 .baike-filter .group .active {
     background-color: #eee;
     cursor: default;
-    color: #e12160;
+    color: #6FAC6F;
 }
 .baike-filter .group .active:hover {
     cursor: default;
