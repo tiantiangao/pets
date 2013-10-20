@@ -1,29 +1,89 @@
 body{
- /*background: #f8f8f7;*/
+    background: #f8f8f7;
 }
 .container {
     width: 1170px!important;
 }
-.navbar-inner{
-    padding-left: 150px!important;
+.header{
+    height: 60px;
+    line-height: 60px;
 }
+.header-logo {
+    float: left;
+    top: 0;
+    left: 0;
+}
+.header-info a {
+    color: #12937c;
+    text-decoration: none;
+}
+.header-info a:hover {
+    text-decoration: underline;
+    color: #ed585c;
+}
+.header-info {
+    float: right;
+    top: 0;
+    right: 0;
+    height: 60px;
+    line-height: 60px;
+}
+.header-nav{
+    width: 100%!important;
+    height: 60px;
+    background-color: #daeae8;
+    margin-bottom: 15px;
+}
+.header-navbar{
+    width: 1170px;
+    margin: 0 auto;
+}
+.header-navbar ul{
+    list-style: none;
+    height: 60px;
+    line-height: 60px;
+    margin: 0;
+    padding: 0;
+}
+.header-navbar li{
+    list-style: none;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    padding: 15px 0;
+    float: left;
+}
+.header-navbar li a{
+    display: block;
+    padding: 0 14px;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: baseline;
+    background: transparent;
+    color: #12937c;
+    text-decoration: none;
+    /*font-weight: bold;*/
+}
+.header-navbar li a:hover{
+    background-color: #12937c;
+    color: #ffffff;
+}
+.header-navbar li a.active{
+    font-weight: bold;
+    color: #16a085;
+}
+.header-navbar li a.active:hover{
+    color: #ffffff;
+    /*background-color: #daeae8;*/
+    /*color: #16a085;*/
+    /*cursor: default;*/
+}
+
 .span9 {
     width: 870px!important;
 }
 .span3 {
     width: 270px!important;
-}
-.navbar .nav > li > a {
-    color: #000!important;
-}
-.navbar .brand {
-    color: #000!important;
-}
-.nav-list > li > a {
-    color: #555555!important;
-}
-.nav-list > li > a:hover {
-    color: #e12160!important;
 }
 .pets-header a{
     color: #61646e!important;

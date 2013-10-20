@@ -15,6 +15,7 @@
 }
 .pets-movie-return a{
     text-decoration: none;
+    color: #12937c;
 }
 .pets-movie-return a:hover{
     color: #e12160;
