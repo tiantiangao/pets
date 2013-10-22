@@ -6,12 +6,14 @@
 	border-radius: 4px;
 }
 .pets-movie-detail {
-    padding: 10px 10px 20px;
+    padding: 10px 10px 20px 0;
     height: 390px;
+    background-color: #fff;
+    margin: 0 0 15px 10px;
 }
 .pets-movie-return {
     float: right;
-    margin: 5px 10px 0 0;
+    margin: 5px 0 0 0;
 }
 .pets-movie-return a{
     text-decoration: none;
@@ -25,7 +27,9 @@
     font-size: 25px;
     color: #494949;
     line-height: 30px;
-    padding: 5px 0 20px;
+    padding: 5px 0 5px 0;
+    margin: 0 0 15px 10px;
+    border-bottom: 1px dotted #ddd;
 }
 .pets-movie-title span {
     color: #aaa;
@@ -39,11 +43,12 @@
     padding: 5px;
     border: 1px solid #eee;
     float: left;
+    margin-left: 10px;
 }
 .pets-movie-info {
     float: left;
     padding-left: 15px;
-    width: 890px;
+    width: 885px;
 }
 .pets-movie-info dl {
     height: 24px;
@@ -94,9 +99,10 @@
 
 .pets-movie-play {
     height: 87px;
-    border: 1px solid #eee;
+    border: 1px solid #f8f8f7;
     margin-left: 10px;
     padding: 10px;
+    background-color: #fff;
 }
 .pets-movie-play .tips {
     height: 35px;
@@ -157,8 +163,9 @@
 
 .pets-movie-other {
     margin: 15px 0 0 10px;
-    border: 1px solid #eee;
+    border: 1px solid #f8f8f7;
     padding: 10px;
+    background-color: #ffffff;
 }
 .pets-movie-other .tips {
      height: 35px;
