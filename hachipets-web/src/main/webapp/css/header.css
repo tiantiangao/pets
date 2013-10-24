@@ -1,5 +1,6 @@
 body{
     background: #f8f8f7;
+    overflow-y:scroll;
 }
 .container {
     width: 1170px!important;
@@ -28,6 +29,15 @@ body{
     height: 60px;
     line-height: 60px;
 }
+.header-info span {
+    display: inline-block;
+}
+.header-info .divider{
+    height: 16px;
+    vertical-align: text-bottom;
+    border-right: 1px solid #ccc;
+    margin: 0 3px;
+}
 .header-nav{
     width: 100%!important;
     height: 60px;
@@ -49,41 +59,49 @@ body{
     list-style: none;
     height: 30px;
     line-height: 30px;
-    margin: 0;
+    margin: 0 1px;
     padding: 15px 0;
     float: left;
 }
+.header-navbar li.first{
+    margin-left: -60px;
+}
 .header-navbar li a{
     display: block;
-    padding: 0 14px;
+    padding: 0 12px;
     height: 30px;
     line-height: 30px;
     vertical-align: baseline;
     background: transparent;
     color: #12937c;
     text-decoration: none;
-    /*font-weight: bold;*/
+    width: 75px;
+    text-align: center;
 }
 .header-navbar li a:hover{
     background-color: #12937c;
     color: #ffffff;
 }
 .header-navbar li a.active{
-    font-weight: bold;
-    color: #16a085;
+    /*font-weight: bold;*/
+    /*color: #16a085;*/
+    background-color: #12937c;
+    color: #ffffff;
 }
 .header-navbar li a.active:hover{
     color: #ffffff;
-    /*background-color: #daeae8;*/
-    /*color: #16a085;*/
-    /*cursor: default;*/
 }
 
+.row{
+    margin-left: 0!important;
+}
 .span9 {
     width: 870px!important;
+    margin-left: 0px!important;
 }
 .span3 {
     width: 270px!important;
+    margin-left: 30px!important;
 }
 .pets-header a{
     color: #61646e!important;

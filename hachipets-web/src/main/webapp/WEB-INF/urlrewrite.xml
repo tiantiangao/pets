@@ -30,6 +30,12 @@
         <to>/petsBaikeCFAAction.action</to>
     </rule>
 
+    <!-- 宠物商城 -->
+    <rule>
+        <from>^/mall$</from>
+        <to>/petsMallAction.action</to>
+    </rule>
+
     <!-- 宠物新鲜事 -->
     <rule>
         <from>^/news$</from>

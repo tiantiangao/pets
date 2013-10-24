@@ -17,6 +17,10 @@ public interface ChannelType {
      */
     public static final String CHANNEL_BAIKE = "baike";
     /**
+     * 频道-宠物商城
+     */
+    public static final String CHANNEL_MALL = "mall";
+    /**
      * 频道-宠物新鲜事
      */
     public static final String CHANNEL_NEWS = "news";

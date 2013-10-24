@@ -119,7 +119,7 @@
                 <#if hotMovieList?? && hotMovieList?size gt 0>
                 <div class="pets-movie-hot pets-movie-container">
                     <ul class="nav nav-list">
-                        <li class="nav-header"><h5>热门宠物电影排行</h5></li>
+                        <li class="nav-header"><h5>热门宠物电影排行</h5><span class="line"></span></li>
                         <#list hotMovieList as movie>
                             <#assign index = movie_index +1/>
                             <li><a href="/media/${movie.id}"><em><#if index lt 10>0${index}<#else>${index}</#if>.</em> ${movie.name}</a></li>
@@ -130,7 +130,7 @@
                 <#if newMovieList?? && newMovieList?size gt 0>
                 <div class="pets-movie-new pets-movie-container">
                     <ul class="nav nav-list">
-                        <li class="nav-header"><h5>最新宠物电影排行</h5></li>
+                        <li class="nav-header"><h5>最新宠物电影排行</h5><span class="line"></span></li>
                         <#list newMovieList as movie>
                             <#assign index = movie_index +1/>
                             <li><a href="/media/${movie.id}"><em><#if index lt 10>0${index}<#else>${index}</#if>.</em> ${movie.name}</a></li>

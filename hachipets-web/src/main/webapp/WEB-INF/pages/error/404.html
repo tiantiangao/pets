@@ -10,32 +10,28 @@
     <link href="/css/header.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <div class="row-fluid pets-header">
-        <div class="span4">
-            <span class="pets-header-tips">爱生活，爱宠物！</span>
-            <!--<a href="/login">请登录</a>-->
-            <!--<a href="/reg">快速注册</a>-->
-        </div>
-        <div class="span4 offset4 text-right">
-            <a href="/help">我的宠物</a>
-            <span class="pets-divider-vertical">|</span>
-            <a href="/help">收藏Hachi宠物网</a>
-        </div>
-    </div>
-</div>
-<div class="container">
+<div class="container header">
     <div class="row-fluid">
-        <img src="/img/logo.png">
+        <div class="header-logo">
+            <img src="/img/logo.png">
+        </div>
+        <div class="header-info">
+            <span><a href="/login" title="登录">登录</a></span>
+            <span class="divider"></span>
+            <span><a href="/reg" title="注册">注册</a></span>
+            <span class="divider"></span>
+            <span><a href="/member/myinfo/pets" title="我的宠物">我的宠物</a></span>
+        </div>
     </div>
 </div>
-<div class="container">
-    <div class="navbar">
-        <div class="navbar-inner">
-            <ul class="nav pets-nav">
-                <li><a href="/">首页</a></li>
+<!-- 导航栏 -->
+<div class="container header-nav">
+    <div class="header-navbar">
+        <div class="header-navbar-inner">
+            <ul class="header-nav header-pets-nav">
+                <li class="first"><a href="/">首页</a></li>
                 <li><a href="/baike">宠物百科</a></li>
-                <li><a href="#">宠物商城</a></li>
+                <li><a href="/mall">宠物商城</a></li>
                 <li><a href="/news">宠物新鲜事</a></li>
                 <li><a href="/show">宠物秀</a></li>
                 <li><a href="/transfer">宠物领养</a></li>
@@ -43,6 +39,7 @@
                 <li><a href="/beauty">宠物美容</a></li>
                 <li><a href="/media">宠物影视</a></li>
                 <li><a href="/bbs">宠物社区</a></li>
+                <div class="clear"></div>
             </ul>
         </div>
     </div>

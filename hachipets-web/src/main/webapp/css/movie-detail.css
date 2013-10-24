@@ -1,15 +1,8 @@
-.pets-movie-container {
-	padding: 10px 5px; 
-	border: 1px solid #ddd; 
-	-webkit-border-radius: 4px; 
-	-moz-border-radius: 4px; 
-	border-radius: 4px;
-}
 .pets-movie-detail {
     padding: 10px 10px 20px 0;
     height: 390px;
     background-color: #fff;
-    margin: 0 0 15px 10px;
+    margin: 0 0 15px 0px;
 }
 .pets-movie-return {
     float: right;
