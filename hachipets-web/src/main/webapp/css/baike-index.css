@@ -77,8 +77,8 @@
 .baike-content .baike-list li{
     float: left;
     width: 210px;
-    margin: 0 3px 5px;
-    padding: 0 5px 5px;
+    margin: 2px 3px 6px;
+    padding: 0 4px 2px;
     border: 1px solid #fff;
 }
 .baike-content .baike-list li:hover{
@@ -109,12 +109,11 @@
 }
 .baike-content .baike-list li .p-name a:hover{
     color: #ed585c;
-    /*text-decoration: underline;*/
 }
 .baike-content .hdivider {
     float: left;
     width: 100%;
-    border-top: 1px dotted #ccc;
+    border-top: 1px solid #ccc;
     margin-bottom: 10px;
 }
 
@@ -124,7 +123,6 @@
     text-align: center;
     margin-top: 10px;
     padding: 15px 0 5px;
-    border-top: 1px dotted #ccc;
 }
 .baike-pages a{
     display: inline-block;
