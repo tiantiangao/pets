@@ -7,102 +7,21 @@
 <body>
 <div class="container">
 	<div class="baike-filter">
+		<#list categoryGroupList as group>
 		<div class="group">
 			<ul class="inline">
-				<span class="filter-name">宠&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;物：</span>
-
+				<span class="filter-name">${(group.title)!""}：</span>
 				<div class="filter-list">
-					<a href="#">
-						<li class="active">狗狗</li>
+					<#list group.categoryList as category>
+					<a href="/baike/list/${category.category.id}">
+						<li<#if category.checked?? && category.checked==true> class="active"</#if>>${category.category.name}</li>
 					</a>
-					<a href="#">
-						<li>猫咪</li>
-					</a>
-					<a href="#">
-						<li>宠物兔</li>
-					</a>
-					<a href="#">
-						<li>宠物鼠</li>
-					</a>
-					<a href="#">
-						<li>宠物鸟</li>
-					</a>
-					<a href="#">
-						<li>宠物鱼</li>
-					</a>
-					<a href="#">
-						<li>异宠</li>
-					</a>
+					</#list>
 				</div>
 				<div class="clear"></div>
 			</ul>
 		</div>
-		<div class="group">
-			<ul class="inline">
-				<span class="filter-name">类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</span>
-
-				<div class="filter-list">
-					<a href="#">
-						<li class="active">全部</li>
-					</a>
-					<a href="#">
-						<li>猫咪</li>
-					</a>
-					<a href="#">
-						<li>宠物兔</li>
-					</a>
-					<a href="#">
-						<li>宠物鼠</li>
-					</a>
-					<a href="#">
-						<li>异宠</li>
-					</a>
-					<a href="#">
-						<li>猫咪</li>
-					</a>
-					<a href="#">
-						<li>宠物兔</li>
-					</a>
-				</div>
-				<div class="clear"></div>
-			</ul>
-		</div>
-		<div class="group group-last">
-			<ul class="inline">
-				<span class="filter-name">分类分类：</span>
-
-				<div class="filter-list">
-					<a href="#">
-						<li class="active">全部</li>
-					</a>
-					<a href="#">
-						<li>非运动(18)</li>
-					</a>
-					<a href="#">
-						<li>不爬楼梯(46)</li>
-					</a>
-					<a href="#">
-						<li>宠物兔</li>
-					</a>
-					<a href="#">
-						<li>宠物鼠</li>
-					</a>
-					<a href="#">
-						<li>宠物鱼</li>
-					</a>
-					<a href="#">
-						<li>金色白(39)</li>
-					</a>
-					<a href="#">
-						<li>宠物兔</li>
-					</a>
-					<a href="#">
-						<li>宠物鼠</li>
-					</a>
-				</div>
-				<div class="clear"></div>
-			</ul>
-		</div>
+		</#list>
 	</div>
 	<div class="baike-content">
 		<ul class="baike-list">

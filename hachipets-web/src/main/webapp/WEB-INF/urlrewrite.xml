@@ -14,6 +14,10 @@
         <to>/petsBaikeAction.action</to>
     </rule>
     <rule>
+        <from>^/baike/list/(\d{1,})$</from>
+        <to>/petsBaikeAction.action?categoryId=$1</to>
+    </rule>
+    <rule>
         <from>^/baike/(\d{1,})$</from>
         <to>/petsBaikeDetailAction.action?id=$1</to>
     </rule>
