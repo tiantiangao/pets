@@ -34,6 +34,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.gtt</groupId>
+            <artifactId>kenshin-web</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-spring-plugin</artifactId>
             <version>${struts.version}</version>

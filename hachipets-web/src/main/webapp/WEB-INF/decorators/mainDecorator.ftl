@@ -1,21 +1,22 @@
+<#assign pets=JspTaglibs["/WEB-INF/tld/pets-tags.tld"]>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset='utf-8'>
     <title>${title}-${projectName}</title>
-    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
-    <script src="/js/jquery.js"></script>
-    <script src="/js/bootstrap.js"></script>
-    <script src="/js/common.js"></script>
-    <link href="/css/bootstrap.css" rel="stylesheet">
-    <link href="/css/header.css" rel="stylesheet">
+    <link rel="shortcut icon" href="<@pets.staticResource resource='/img/favicon.ico'/>" type="image/x-icon">
+    <@pets.staticResource resource='/js/jquery.js' decorate='true'/>
+	<@pets.staticResource resource='/js/bootstrap.js' decorate='true'/>
+	<@pets.staticResource resource='/js/common.js' decorate='true'/>
+	<@pets.staticResource resource='/css/bootstrap.css' decorate='true'/>
+	<@pets.staticResource resource='/css/header.css' decorate='true'/>
     ${head}
 </head>
 <body>
 <div class="container header">
     <div class="row-fluid">
         <div class="header-logo">
-            <a href="/"><img src="/img/logo.png"></a>
+            <a href="/"><@pets.staticResource resource='/img/logo.png' decorate='true'/></a>
         </div>
         <div class="header-info">
             <span><a href="/login" title="登录">登录</a></span>
@@ -51,7 +52,7 @@ ${body}
 <!-- 页脚 -->
 <div class="container pets-footer">
     <div class="row-fluid text-center">
-        <div class="copyright">©2013-2023 hachipets.com All Rights Reserved. ${projectName} 版权所有</div>
+        <div class="copyright">©2014 hachipets.com All Rights Reserved. ${projectName} 版权所有</div>
     </div>
 </div>
 <div class="returnTop" title="返回顶部"><span class="l"></span><span class="s"></span><span class="b"></span></div>

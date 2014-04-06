@@ -1,9 +1,10 @@
+<#assign pets=JspTaglibs["/WEB-INF/tld/pets-tags.tld"]>
 <html>
 <head>
     <title>${movie.name}<#if (movie.year)?? && movie.year gt 0>(${movie.year})</#if>-宠物影视</title>
     <meta name="description" content="${movie.name}-${(movie.desc)!""}-${projectName!""}" />
-    <link href="/css/movie-detail.css" rel="stylesheet">
-    <script src="/js/petspic.js"></script>
+	<@pets.staticResource resource='/css/movie-detail.css' decorate='true'/>
+	<@pets.staticResource resource='/js/petspic.js' decorate='true'/>
 </head>
 <body>
 <div class="container">

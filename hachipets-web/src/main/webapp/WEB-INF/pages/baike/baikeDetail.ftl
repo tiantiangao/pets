@@ -1,7 +1,8 @@
+<#assign pets=JspTaglibs["/WEB-INF/tld/pets-tags.tld"]>
 <html>
 <head>
-    <title>${(type.name)!""}-宠物百科</title>
-    <link href="/css/baike-detail.css" rel="stylesheet">
+	<title>${(type.name)!""}-宠物百科</title>
+	<@pets.staticResource resource='/css/baike-detail.css' decorate='true'/>
 </head>
 <body>
 <div class="container">

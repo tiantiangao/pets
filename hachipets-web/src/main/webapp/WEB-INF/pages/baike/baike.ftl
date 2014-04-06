@@ -1,8 +1,9 @@
+<#assign pets=JspTaglibs["/WEB-INF/tld/pets-tags.tld"]>
 <html>
 <head>
     <title>宠物百科</title>
-    <link href="/css/baike-index.css" rel="stylesheet">
-    <script src="/js/petspic.js"></script>
+	<@pets.staticResource resource='/css/baike-index.css' decorate='true'/>
+	<@pets.staticResource resource='/js/petspic.js' decorate='true'/>
 </head>
 <body>
 <div class="container">

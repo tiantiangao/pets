@@ -1,9 +1,11 @@
 <#include "/WEB-INF/pages/util/page.ftl">
+<#assign pets=JspTaglibs["/WEB-INF/tld/pets-tags.tld"]>
 <html>
 <head>
     <title>宠物影视</title>
-    <link href="/css/movie.css" rel="stylesheet">
-    <script src="/js/petspic.js"></script>
+    <link href="" rel="stylesheet">
+	<@pets.staticResource resource='/css/movie.css' decorate='true'/>
+	<@pets.staticResource resource='/js/petspic.js' decorate='true'/>
 </head>
 <body>
 <div class="container">

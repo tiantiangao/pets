@@ -1,18 +1,17 @@
 package com.gtt.pets.service.impl;
 
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.gtt.kenshin.cache.CacheKey;
 import com.gtt.kenshin.cache.CacheService;
 import com.gtt.pets.bean.CacheKeyHolder;
 import com.gtt.pets.dao.GlobalConfigDao;
 import com.gtt.pets.service.GlobalService;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * 全局配置服务
- * 
+ *
  * @author tiantiangao
  */
 @Service
@@ -39,8 +38,12 @@ public class GlobalServiceImpl extends BaseService implements GlobalService {
 		// no cache, load from db
 		config = globalConfigDao.get(name);
 
+		if (StringUtils.isBlank(config)) {
+			config = "";
+		}
+
 		// add cache
-		cacheService.add(cacheKey, null == config ? "" : config);
+		cacheService.add(cacheKey, config);
 
 		return config;
 	}

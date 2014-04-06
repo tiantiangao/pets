@@ -1,7 +1,8 @@
+<#assign pets=JspTaglibs["/WEB-INF/tld/pets-tags.tld"]>
 <html>
 <head>
     <title>国际犬种FCI标准-宠物百科</title>
-    <link href="/css/baike-fci.css" rel="stylesheet">
+	<@pets.staticResource resource='/css/baike-fci.css' decorate='true'/>
 </head>
 <body>
 <div class="container">
