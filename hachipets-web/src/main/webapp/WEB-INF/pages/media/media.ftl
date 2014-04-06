@@ -3,7 +3,6 @@
 <html>
 <head>
     <title>宠物影视</title>
-    <link href="" rel="stylesheet">
 	<@pets.staticResource resource='/css/movie.css' decorate='true'/>
 	<@pets.staticResource resource='/js/petspic.js' decorate='true'/>
 </head>

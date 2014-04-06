@@ -1,12 +1,13 @@
 package com.gtt.pets.service.baike;
 
-import java.util.Map;
-
+import com.gtt.kenshin.dao.model.PageModel;
 import com.gtt.pets.bean.baike.*;
+
+import java.util.Map;
 
 /**
  * 宠物类型服务
- * 
+ *
  * @author tiantiangao
  */
 public interface PetsTypeService {
@@ -24,5 +25,7 @@ public interface PetsTypeService {
 	PetsTypeRabbitDTO loadTypeRabbitByID(int typeId);
 
 	Map<String, PetsTypeAttrNameDTO> loadTypeAttrNameMapByGroup(int group);
+
+	PageModel<PetsTypeDTO> findTypeByCategory(int category, int page, int max);
 
 }

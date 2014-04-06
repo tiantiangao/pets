@@ -1,16 +1,9 @@
 package com.gtt.pets.service.impl.media;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
-
 import com.gtt.kenshin.cache.CacheKey;
 import com.gtt.kenshin.cache.CacheService;
 import com.gtt.kenshin.dao.model.PageModel;
+import com.gtt.kenshin.dao.util.PageModelUtil;
 import com.gtt.pets.bean.CacheKeyHolder;
 import com.gtt.pets.bean.media.PetsMovieDTO;
 import com.gtt.pets.bean.media.PetsMovieInfoDTO;
@@ -22,6 +15,13 @@ import com.gtt.pets.service.GlobalService;
 import com.gtt.pets.service.impl.BaseService;
 import com.gtt.pets.service.media.PetsMediaService;
 import com.gtt.pets.util.DTOUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA. User: gtt Date: 13-7-28 Time: 下午3:19 To change
@@ -96,13 +96,13 @@ public class PetsMediaServiceImpl extends BaseService implements PetsMediaServic
 	}
 
 	@Override
-	public PageModel findMovieList(String region, int year, String sortBy, boolean asc, int page, int max) {
+	public PageModel<PetsMovieDTO> findMovieList(String region, int year, String sortBy, boolean asc, int page,
+												 int max) {
 		if (page < 1 || max < 1) {
-			return new PageModel();
+			return new PageModel<PetsMovieDTO>();
 		}
 
 		try {
-			PageModel model = null;
 
 			// 确定查询条件之地区
 			String queryRegion = region;
@@ -126,26 +126,24 @@ public class PetsMediaServiceImpl extends BaseService implements PetsMediaServic
 					queryYear = 2003; // default
 				}
 			}
-			model = petsMovieDao.findMovieList(queryRegion, queryNotInRegionList, queryYear, queryAfterYear, sortBy,
-					asc, page, max);
-			if (model == null || CollectionUtils.isEmpty(model.getRecords())) {
-				return new PageModel();
+			PageModel<PetsMovie> movieModel = petsMovieDao
+					.findMovieList(queryRegion, queryNotInRegionList, queryYear, queryAfterYear, sortBy, asc, page,
+							max);
+			if (movieModel == null || CollectionUtils.isEmpty(movieModel.getRecords())) {
+				return new PageModel<PetsMovieDTO>();
 			}
 
-			List<PetsMovie> records = (List<PetsMovie>) model.getRecords();
-			model.setRecords(DTOUtils.toDTOList(PetsMovieDTO.class, records));
+			PageModel<PetsMovieDTO> model = PageModelUtil.transfer(movieModel);
+			model.setRecords(DTOUtils.toDTOList(PetsMovieDTO.class, movieModel.getRecords()));
 			return model;
 		} catch (Exception e) {
 			LOGGER.error("find movie list failed", e);
-			return new PageModel();
+			return new PageModel<PetsMovieDTO>();
 		}
 	}
 
 	/**
 	 * 获取非其他地区的所有地区列表
-	 * 
-	 * @param movieOtherRegionName
-	 * @return
 	 */
 	private List<String> fetchNotOtherRegionList(String movieOtherRegionName) {
 		List<PetsMovieRegion> movieRegionList = petsMovieRegionDao.findMovieRegionList();
@@ -199,11 +197,11 @@ public class PetsMediaServiceImpl extends BaseService implements PetsMediaServic
 			}
 
 			// no cache, load from db
-			PageModel pageModel = petsMovieDao.findMovieList(null, null, 0, false, "release", false, 1, 10);
+			PageModel<PetsMovie> pageModel = petsMovieDao.findMovieList(null, null, 0, false, "release", false, 1, 10);
 			if (pageModel == null || CollectionUtils.isEmpty(pageModel.getRecords())) {
 				newMovieList = new ArrayList<PetsMovieDTO>();
 			} else {
-				List<PetsMovie> records = (List<PetsMovie>) pageModel.getRecords();
+				List<PetsMovie> records = pageModel.getRecords();
 				newMovieList = DTOUtils.toDTOList(PetsMovieDTO.class, records);
 			}
 

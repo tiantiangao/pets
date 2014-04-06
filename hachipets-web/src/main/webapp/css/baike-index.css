@@ -89,7 +89,7 @@
     background-color: #daeae8;
 }
 .baike-content .baike-list li:hover > .p-name a{
-    /*color: #ed585c;*/
+    color: #ed585c;
 }
 .baike-content .baike-list li .p-img{
     height: 220px;
@@ -103,12 +103,14 @@
     cursor: pointer;
     margin-bottom: 5px;
 }
+.baike-content .baike-list li .p-name-alias{
+    color: #c0c0c0;
+    font-size: 12px;
+    cursor: default;
+}
 .baike-content .baike-list li .p-name a{
     text-decoration: none;
     color: #000;
-}
-.baike-content .baike-list li .p-name a:hover{
-    color: #ed585c;
 }
 .baike-content .hdivider {
     float: left;
@@ -156,4 +158,9 @@
     text-decoration: none;
     margin: 0 5px;
     font-weight: 700;
+}
+
+.norecords{
+    width: 280px;
+    margin: 130px auto;
 }

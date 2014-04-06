@@ -19,7 +19,7 @@ public interface PetsMovieDao extends GenericDao {
     PetsMovie loadById(@DaoParam("id") int id);
 
     @DaoAction(action = DaoActionType.PAGE)
-    PageModel findMovieList(@DaoParam("region") String region, @DaoParam("notInRegionList") List<String> notInRegionList,
+    PageModel<PetsMovie> findMovieList(@DaoParam("region") String region, @DaoParam("notInRegionList") List<String> notInRegionList,
                             @DaoParam("year") int year, @DaoParam("afterYear") boolean afterYear,
                             @DaoParam("sort") String sort, @DaoParam("asc") boolean asc,
                             @DaoParam("page") int page, @DaoParam("max") int max);

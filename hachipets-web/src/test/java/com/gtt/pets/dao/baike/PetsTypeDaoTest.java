@@ -1,13 +1,12 @@
 package com.gtt.pets.dao.baike;
 
+import com.gtt.kenshin.dao.model.PageModel;
 import com.gtt.pets.dao.AbstractTest;
 import com.gtt.pets.entity.baike.PetsType;
-import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
-import java.util.List;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,32 +17,22 @@ import java.util.List;
  */
 public class PetsTypeDaoTest extends AbstractTest {
 
-    @Autowired
-    private PetsTypeDao petsTypeDao;
+	@Autowired
+	private PetsTypeDao petsTypeDao;
 
-    @Test
-    public void test() {
-        PetsType petsType = petsTypeDao.loadByID(1);
-        print(petsType);
-    }
+	@Test
+	public void test() {
+		PetsType petsType = petsTypeDao.loadByID(1);
+		assertThat(petsType).isNotNull();
 
-    private void print(PetsType type) {
-        if (type == null) {
-            return;
-        }
-        List<String> list = new ArrayList<String>();
-        list.add(type.getId() + "");
-        list.add(type.getName());
-        list.add(type.getCategoryId() + "");
-        list.add(type.getRootCategoryId() + "");
-        list.add(type.getEnName());
-        list.add(type.getAlias());
-        list.add(type.getOrigin());
-        list.add(type.getPicUrl());
-        list.add(type.getThumbPicUrl());
-        list.add(type.getDesc());
-        String info = StringUtils.join(list, "---");
-        System.out.println(info);
-    }
+		PageModel<PetsType> model = petsTypeDao.findByRootCategory(10, 1, 20);
+		assertThat(model).isNotNull();
+		assertThat(model.getRecordCount()).isGreaterThan(0);
+
+		model = petsTypeDao.findByCategory(103, 1, 20);
+		assertThat(model).isNotNull();
+		assertThat(model.getRecordCount()).isGreaterThan(0);
+	}
+
 
 }

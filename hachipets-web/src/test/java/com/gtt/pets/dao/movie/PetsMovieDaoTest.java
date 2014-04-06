@@ -22,9 +22,9 @@ public class PetsMovieDaoTest extends AbstractTest {
     public void test() {
         notNull(petsMovieDao);
 
-        PageModel model = petsMovieDao.findMovieList("美国", null, 2009, true, "addTime", true, 1, 2);
+        PageModel<PetsMovie> model = petsMovieDao.findMovieList("美国", null, 2009, true, "addTime", true, 1, 2);
         notNull(model);
-        List<PetsMovie> records = (List<PetsMovie>) model.getRecords();
+        List<PetsMovie> records = model.getRecords();
         int id = 0;
         if (records != null) {
             for (PetsMovie movie : records) {

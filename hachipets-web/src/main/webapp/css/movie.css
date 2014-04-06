@@ -289,14 +289,14 @@
 }
 
 .pets-movie-list .norecords-container {
-    height: 105px;
+    height: 300px;
     padding-top: 43px;
     border-top: 1px solid #ddd;
     margin-top: 10px;
 }
 .pets-movie-list .norecords {
     width: 280px;
-    margin: 0 auto;
+    margin: 100px auto;
 }
 
 .nav-list a{

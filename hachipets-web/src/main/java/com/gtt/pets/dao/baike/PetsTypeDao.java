@@ -4,6 +4,7 @@ import com.gtt.kenshin.dao.GenericDao;
 import com.gtt.kenshin.dao.annotation.DaoAction;
 import com.gtt.kenshin.dao.annotation.DaoActionType;
 import com.gtt.kenshin.dao.annotation.DaoParam;
+import com.gtt.kenshin.dao.model.PageModel;
 import com.gtt.pets.entity.baike.PetsType;
 
 /**
@@ -15,7 +16,14 @@ import com.gtt.pets.entity.baike.PetsType;
  */
 public interface PetsTypeDao extends GenericDao {
 
-    @DaoAction(action = DaoActionType.LOAD)
-    PetsType loadByID(@DaoParam("id") int id);
+	@DaoAction(action = DaoActionType.LOAD)
+	PetsType loadByID(@DaoParam("id") int id);
 
+	@DaoAction(action = DaoActionType.PAGE)
+	PageModel<PetsType> findByRootCategory(@DaoParam("category") int category, @DaoParam("page") int page,
+										   @DaoParam("max") int max);
+
+	@DaoAction(action = DaoActionType.PAGE)
+	PageModel<PetsType> findByCategory(@DaoParam("category") int category, @DaoParam("page") int page,
+									   @DaoParam("max") int max);
 }

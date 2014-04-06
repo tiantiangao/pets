@@ -1,25 +1,28 @@
 package com.gtt.pets.service.impl.baike;
 
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
+import com.google.common.base.Preconditions;
 import com.gtt.kenshin.cache.CacheKey;
 import com.gtt.kenshin.cache.CacheService;
+import com.gtt.kenshin.dao.model.PageModel;
+import com.gtt.kenshin.dao.util.PageModelUtil;
 import com.gtt.pets.bean.CacheKeyHolder;
 import com.gtt.pets.bean.baike.*;
 import com.gtt.pets.dao.baike.*;
 import com.gtt.pets.entity.baike.*;
+import com.gtt.pets.service.baike.PetsCategoryService;
 import com.gtt.pets.service.baike.PetsTypeService;
 import com.gtt.pets.service.impl.BaseService;
 import com.gtt.pets.util.DTOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 宠物类型服务实现
- * 
+ *
  * @author tiantiangao
  */
 @Service
@@ -43,6 +46,8 @@ public class PetsTypeServiceImpl extends BaseService implements PetsTypeService 
 	private PetsTypeAttrNameDao petsTypeAttrNameDao;
 	@Autowired
 	private CacheService cacheService;
+	@Autowired
+	private PetsCategoryService petsCategoryService;
 
 	@Override
 	public PetsTypeDTO loadTypeByID(int typeId) {
@@ -240,6 +245,33 @@ public class PetsTypeServiceImpl extends BaseService implements PetsTypeService 
 		return typeAttrNameMap.get(group);
 	}
 
+	@Override
+	public PageModel<PetsTypeDTO> findTypeByCategory(int category, int page, int max) {
+		try {
+			Preconditions.checkArgument(category > 0);
+
+			PetsCategoryDTO categoryDTO = petsCategoryService.loadById(category);
+			if (categoryDTO == null) {
+				return new PageModel<PetsTypeDTO>();
+			}
+			PageModel<PetsType> typeModel = null;
+
+			if (categoryDTO.getParentId() == 0) {
+				// root category
+				typeModel = petsTypeDao.findByRootCategory(category, page, max);
+			} else {
+				typeModel = petsTypeDao.findByCategory(category, page, max);
+			}
+
+			PageModel<PetsTypeDTO> model = PageModelUtil.transfer(typeModel);
+			model.setRecords(DTOUtils.toDTOList(PetsTypeDTO.class, typeModel.getRecords()));
+			return model;
+		} catch (Exception e) {
+			LOGGER.error("findTypeByCategory: category = [" + category + "]", e);
+			return new PageModel<PetsTypeDTO>();
+		}
+	}
+
 	private void initCacheMap() {
 		if (typeAttrNameMap == null) {
 			synchronized (lock) {
@@ -253,8 +285,8 @@ public class PetsTypeServiceImpl extends BaseService implements PetsTypeService 
 							typeAttrNameMap.put(group, new ConcurrentHashMap<String, PetsTypeAttrNameDTO>());
 						}
 
-						typeAttrNameMap.get(group).put(attrName.getAttrName(),
-								DTOUtils.toDTO(PetsTypeAttrNameDTO.class, attrName));
+						typeAttrNameMap.get(group)
+								.put(attrName.getAttrName(), DTOUtils.toDTO(PetsTypeAttrNameDTO.class, attrName));
 					}
 				}
 			}

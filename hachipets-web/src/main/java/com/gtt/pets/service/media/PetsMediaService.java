@@ -42,7 +42,7 @@ public interface PetsMediaService {
      * @param max
      * @return
      */
-    PageModel findMovieList(String region, int year, String sortBy, boolean asc, int page, int max);
+    PageModel<PetsMovieDTO> findMovieList(String region, int year, String sortBy, boolean asc, int page, int max);
 
     /**
      * 查找热门电影列表

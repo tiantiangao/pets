@@ -15,35 +15,44 @@
  */
 package com.gtt.pets.web.action.baike;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
+import com.google.common.collect.Lists;
+import com.gtt.kenshin.dao.model.PageModel;
 import com.gtt.pets.bean.baike.PetsCategoryDTO;
+import com.gtt.pets.bean.baike.PetsTypeDTO;
 import com.gtt.pets.constants.ChannelType;
 import com.gtt.pets.service.baike.PetsCategoryService;
+import com.gtt.pets.service.baike.PetsTypeService;
 import com.gtt.pets.web.action.BaseAction;
 import com.gtt.pets.web.vo.PetsBaikeIndexCategoryGroupVO;
 import com.gtt.pets.web.vo.PetsBaikeIndexCategoryVO;
-import org.springframework.util.CollectionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 /**
  * 宠物百科
- * 
+ *
  * @author tiantiangao
  */
 
 public class PetsBaikeAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
+
+	private static final int PAGE_SIZE = 20;
 	private static final String BAIKE_INDEX_RESULT = "baikeIndex";
+
 	@Autowired
 	private PetsCategoryService petsCategoryService;
+	@Autowired
+	private PetsTypeService petsTypeService;
+
 	// 输入
 	private int categoryId = 10;// 默认为狗狗分类
+	private int page = 1;
 	// 输出
 	private List<PetsCategoryDTO> rootCategories;
 	private List<PetsBaikeIndexCategoryGroupVO> categoryGroupList;
+	private PageModel<PetsTypeDTO> typeModel;
 
 	@Override
 	public String doExecute() throws Exception {
@@ -58,19 +67,22 @@ public class PetsBaikeAction extends BaseAction {
 			return BAIKE_INDEX_RESULT;
 		}
 
-		List<PetsCategoryDTO> path = new ArrayList<PetsCategoryDTO>();
+		List<PetsCategoryDTO> path = Lists.newArrayList();
 		if (category.getParentId() == 0) {
 			path.add(category);
 		} else {
 			path = petsCategoryService.findPathByCategoryId(categoryId);
 		}
 		preparePageCategoryData(path);
+
+		typeModel = petsTypeService.findTypeByCategory(categoryId, page, PAGE_SIZE);
+
 		return SUCCESS;
 	}
 
 	private void preparePageCategoryData(List<PetsCategoryDTO> path) {
 		rootCategories = petsCategoryService.findRootCategories();
-		categoryGroupList = new ArrayList<PetsBaikeIndexCategoryGroupVO>();
+		categoryGroupList = Lists.newArrayList();
 
 		// first level category list
 		int firstCategoryId = path.get(0).getId();
@@ -83,27 +95,28 @@ public class PetsBaikeAction extends BaseAction {
 				.add(generateCategoryGroupVO(secondCategoryList, secondCategoryId, "类型", true, firstCategoryId));
 
 		// third level category List
-		List<PetsCategoryDTO> thirdCategoryList;
-		if (secondCategoryId != 0) {
-			thirdCategoryList = petsCategoryService.findByParentId(secondCategoryId);
-		} else {
-			thirdCategoryList = new ArrayList<PetsCategoryDTO>();
-			for (PetsCategoryDTO secondCategory : secondCategoryList) {
-				thirdCategoryList.addAll(petsCategoryService.findByParentId(secondCategory.getId()));
-			}
-		}
-		if(CollectionUtils.isEmpty(thirdCategoryList)){
-			return;
-		}
-		int thirdCategoryId = path.size() > 2 ? path.get(2).getId() : 0;
-		categoryGroupList
-				.add(generateCategoryGroupVO(thirdCategoryList, thirdCategoryId, "分类", true, secondCategoryId));
+//		List<PetsCategoryDTO> thirdCategoryList;
+//		if (secondCategoryId != 0) {
+//			thirdCategoryList = petsCategoryService.findByParentId(secondCategoryId);
+//		} else {
+//			thirdCategoryList = Lists.newArrayList();
+//			for (PetsCategoryDTO secondCategory : secondCategoryList) {
+//				thirdCategoryList.addAll(petsCategoryService.findByParentId(secondCategory.getId()));
+//			}
+//		}
+//		if(CollectionUtils.isEmpty(thirdCategoryList)){
+//			return;
+//		}
+//		int thirdCategoryId = path.size() > 2 ? path.get(2).getId() : 0;
+//		categoryGroupList
+//				.add(generateCategoryGroupVO(thirdCategoryList, thirdCategoryId, "分类", true, secondCategoryId));
 	}
 
 	private PetsBaikeIndexCategoryGroupVO generateCategoryGroupVO(List<PetsCategoryDTO> categoryList,
-			int checkedCategoryId, String title, boolean withAllTag, int allTagParentCategoryId) {
+																  int checkedCategoryId, String title,
+																  boolean withAllTag, int allTagParentCategoryId) {
 		PetsBaikeIndexCategoryGroupVO categoryGroupVO = new PetsBaikeIndexCategoryGroupVO();
-		List<PetsBaikeIndexCategoryVO> categoryVOList = new ArrayList<PetsBaikeIndexCategoryVO>();
+		List<PetsBaikeIndexCategoryVO> categoryVOList = Lists.newArrayList();
 		if (withAllTag) {
 			PetsBaikeIndexCategoryVO categoryVO = new PetsBaikeIndexCategoryVO();
 			PetsCategoryDTO allTagCategory = new PetsCategoryDTO();
@@ -130,5 +143,17 @@ public class PetsBaikeAction extends BaseAction {
 
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
+	}
+
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public PageModel<PetsTypeDTO> getTypeModel() {
+		return typeModel;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
 	}
 }

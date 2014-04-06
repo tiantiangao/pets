@@ -25,4 +25,28 @@
         ]]>
     </select>
 
+    <select id="findByRootCategory" resultMap="PetsTypeResult" parameterClass="map">
+		SELECT `ID`, `CategoryID`, `RootCategoryID`, `Name`, `Desc`, `EnName`, `Alias`, `Origin`, `PicUrl`, `ThumbPicUrl`
+		FROM Pets_Type
+		WHERE RootCategoryID=#category#
+    </select>
+
+    <select id="findByRootCategory_COUNT" resultClass="int" parameterClass="map">
+		SELECT count(`ID`)
+		FROM Pets_Type
+		WHERE RootCategoryID=#category#
+    </select>
+
+    <select id="findByCategory" resultMap="PetsTypeResult" parameterClass="map">
+        SELECT `ID`, `CategoryID`, `RootCategoryID`, `Name`, `Desc`, `EnName`, `Alias`, `Origin`, `PicUrl`, `ThumbPicUrl`
+        FROM Pets_Type
+        WHERE CategoryID=#category#
+    </select>
+
+    <select id="findByCategory_COUNT" resultClass="int" parameterClass="map">
+        SELECT count(`ID`)
+        FROM Pets_Type
+        WHERE CategoryID=#category#
+    </select>
+
 </sqlMap>
