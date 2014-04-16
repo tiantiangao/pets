@@ -20,3 +20,11 @@ $(function(){
         });
     }
 });
+
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?e6ff7b0aa7a41f565187ad33c7471503";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
