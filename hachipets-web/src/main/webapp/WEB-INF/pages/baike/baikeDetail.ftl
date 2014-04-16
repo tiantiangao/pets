@@ -14,7 +14,7 @@
                     <#if !category_has_next>
                         <#assign currentCategory = category>
                     </#if>
-                    <li><a href="#">${(category.name)!""}</a><span class="divider">&gt;</span></li>
+                    <li><a href="/baike/list/${category.id}">${(category.name)!""}</a><span class="divider">&gt;</span></li>
                 </#list>
                 <li class="active">${(type.name)!""}</li>
             </ul>
