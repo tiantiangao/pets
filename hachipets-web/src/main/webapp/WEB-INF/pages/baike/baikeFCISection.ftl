@@ -81,7 +81,7 @@
                 <td class="center">
                     <#if (dog.picUrl)??>
                         <#if (dog.petId)??>
-                            <a href="/baike/1"><img src="${dog.picUrl}" width="120" height="98"></a>
+                            <a href="/baike/${dog.petId}"><img src="${dog.picUrl}" width="120" height="98"></a>
                         <#else>
                             <img src="${dog.picUrl}" width="120" height="98">
                         </#if>
