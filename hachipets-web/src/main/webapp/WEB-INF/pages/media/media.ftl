@@ -65,7 +65,7 @@
                         <div class="pets-movie-row">
 						</#if>
                             <div class="pets-movie">
-                                <a href="/media/${movie.id}"><img width="150" height="220" data="${(movie.pic+"-mpic")!''}"></a>
+                                <a href="/media/${movie.id}"><img width="150" height="220" data="${(movie.pic+"-mpic.jpg")!''}"></a>
                                 <div class="pets-movie-title">
                                     <a href="/media/${movie.id}">${movie.name}</a>
                                 </div>
@@ -105,7 +105,7 @@
                         <li class="nav-header"><h5>优秀宠物电影推荐</h5></li>
                         <li>
                             <div class="recommend-movie">
-                                <a href="/media/${recommendMovie.id}"><img width="228" height="334" data="${(recommendMovie.pic+"-mpic")!''}"></a>
+                                <a href="/media/${recommendMovie.id}"><img width="228" height="334" data="${(recommendMovie.pic+"-mpic.jpg")!''}"></a>
                                 <div class="recommend-movie-title">
                                     <a href="/media/${recommendMovie.id}">${recommendMovie.name}</a>
                                 </div>

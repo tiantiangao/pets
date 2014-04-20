@@ -15,7 +15,7 @@
         </div>
         <div class="pets-movie-desc">
             <div class="pets-movie-pic">
-                <img width="225" height="317" data="${(movie.pic+"-media")!''}">
+                <img width="225" height="317" data="${(movie.pic+"-media.jpg")!''}">
             </div>
             <div class="pets-movie-info">
                 <dl>
@@ -95,7 +95,7 @@
             <#if relatedMovieList??>
             <#list relatedMovieList as movie>
                 <div class="other-movie">
-                    <a href="/media/${movie.id}" target="_blank"><img data="${(movie.pic+"-mpic")!''}"></a>
+                    <a href="/media/${movie.id}" target="_blank"><img data="${(movie.pic+"-mpic.jpg")!''}"></a>
                     <a href="/media/${movie.id}" target="_blank" class="name">${movie.name}</a>
                 </div>
             </#list>
