@@ -215,7 +215,7 @@
                     ${(cat.name)!""}(${(cat.enName)!""})
                 </#if>
                 <#if (cat.cfaLink)??>
-                    <a class="memo src" href="${(cat.cfaLink)!""}" title="${(cat.name)!""}(${(cat.enName)!""})的CFA官方网站链接">CFA链接</a>
+                    <a class="memo src" href="${(cat.cfaLink)!""}" rel="nofollow" target="_blank" title="${(cat.name)!""}(${(cat.enName)!""})的CFA官方网站链接">CFA链接</a>
                 </#if>
             </span>
         </#list>

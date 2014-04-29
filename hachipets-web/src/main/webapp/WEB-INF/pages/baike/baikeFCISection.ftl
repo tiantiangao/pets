@@ -61,7 +61,7 @@
                 <th scope="col">图片</th>
             </tr>
             <#list dogList as dog>
-            <tr<#if dog_index%2 != 0> class="odd"</#if>>
+            <tr<#if dog_index%2 != 0> class="odd"</#if><#if (dog.petId)??> id="${dog.petId}"</#if>>
                 <td class="first">
                     <#if (dog.petId)??>
                         <a href="/baike/${dog.petId}">${(dog.name)!""}</a>
