@@ -2,7 +2,7 @@
 <#assign pets=JspTaglibs["/WEB-INF/tld/pets-tags.tld"]>
 <html>
 <head>
-    <title>宠物影视</title>
+    <title><#if region?? && region!="">${region}-</#if><#if yearValue?? && yearValue gt 0><#if yearValue==1900>其他年代<#else>${yearValue}年</#if>-</#if>宠物影视</title>
 	<@pets.staticResource resource='/css/movie.css' decorate='true'/>
 	<@pets.staticResource resource='/js/petspic.js' decorate='true'/>
 </head>

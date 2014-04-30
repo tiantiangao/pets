@@ -54,10 +54,10 @@
                         <#if movieInfoList?? && movieInfoList?size gt 0>
                         <#list movieInfoList as info>
                             <#if info.infoType ==1 >
-                                <a href="http://movie.douban.com/subject/${info.refer}" target="_blank" class="douban">豆瓣链接</a>
+                                <a href="http://movie.douban.com/subject/${info.refer}" target="_blank" rel="nofollow" class="douban">豆瓣链接</a>
                             </#if>
                             <#if info.infoType ==2 >
-                                <a href="http://movie.mtime.com/${info.refer}" target="_blank" class="mtime">Mtime链接</a>
+                                <a href="http://movie.mtime.com/${info.refer}" target="_blank" rel="nofollow" class="mtime">Mtime链接</a>
                             </#if>
                         </#list>
                         <#else>
@@ -77,12 +77,12 @@
         <div class="play-list">
             <#if moviePlayList?? && moviePlayList?size gt 0>
                 <#list moviePlayList as play>
-                <#if play?? && play.playType==1><a href="${play.address}" target="_blank" class="play"><i class="youku"></i>优酷</a></#if>
-                <#if play?? && play.playType==2><a href="${play.address}" target="_blank" class="play"><i class="tudou"></i>土豆</a></#if>
-                <#if play?? && play.playType==3><a href="${play.address}" target="_blank" class="play"><i class="iqiyi"></i>爱奇艺</a></#if>
-                <#if play?? && play.playType==4><a href="${play.address}" target="_blank" class="play"><i class="qq"></i>腾讯</a></#if>
-                <#if play?? && play.playType==5><a href="${play.address}" target="_blank" class="play"><i class="pptv"></i>PPTV</a></#if>
-                <#if play?? && play.playType==6><a href="${play.address}" target="_blank" class="play"><i class="le"></i>乐视</a></#if>
+                <#if play?? && play.playType==1><a href="${play.address}" target="_blank" rel="nofollow" class="play"><i class="youku"></i>优酷</a></#if>
+                <#if play?? && play.playType==2><a href="${play.address}" target="_blank" rel="nofollow" class="play"><i class="tudou"></i>土豆</a></#if>
+                <#if play?? && play.playType==3><a href="${play.address}" target="_blank" rel="nofollow" class="play"><i class="iqiyi"></i>爱奇艺</a></#if>
+                <#if play?? && play.playType==4><a href="${play.address}" target="_blank" rel="nofollow" class="play"><i class="qq"></i>腾讯</a></#if>
+                <#if play?? && play.playType==5><a href="${play.address}" target="_blank" rel="nofollow" class="play"><i class="pptv"></i>PPTV</a></#if>
+                <#if play?? && play.playType==6><a href="${play.address}" target="_blank" rel="nofollow" class="play"><i class="le"></i>乐视</a></#if>
                 </#list>
             <#else>
                 暂无播放信息

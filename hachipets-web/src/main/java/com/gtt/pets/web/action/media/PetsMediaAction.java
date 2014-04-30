@@ -54,12 +54,13 @@ public class PetsMediaAction extends BaseAction {
     private PetsMovieDTO recommendMovie;
     private List<PetsMovieDTO> hotMovieList;
     private List<PetsMovieDTO> newMovieList;
+	private String region;
+	private int yearValue;
 
     @Override
     public String doExecute() throws Exception {
         setChannel(ChannelType.CHANNEL_MEDIA);
 
-        String region = null;
         if (area > 0) {
             region = petsMediaService.findMovieRegionByRegionID(area);
             if (StringUtils.isBlank(region)) {
@@ -71,7 +72,6 @@ public class PetsMediaAction extends BaseAction {
             area = 0;
         }
 
-        int yearValue = 0;
         if (year > 0) {
             yearValue = petsMediaService.findMovieYearByYearID(this.year);
             if (yearValue <= 0) {
@@ -167,4 +167,12 @@ public class PetsMediaAction extends BaseAction {
     public void setPage(int page) {
         this.page = page;
     }
+
+	public String getRegion() {
+		return region;
+	}
+
+	public int getYearValue() {
+		return yearValue;
+	}
 }
