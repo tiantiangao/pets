@@ -53,6 +53,7 @@ ${body}
 <div class="container pets-footer">
     <div class="row-fluid text-center">
         <div class="copyright">©2014 hachipets.com All Rights Reserved. ${projectName} 版权所有</div>
+        <div class="copyright"><a href="http://www.miitbeian.gov.cn" rel="nofollow" class="G" target="_blank">沪ICP备14014481号</a></div>
     </div>
 </div>
 <div class="returnTop" title="返回顶部"><span class="l"></span><span class="s"></span><span class="b"></span></div>

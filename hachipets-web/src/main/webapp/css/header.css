@@ -231,3 +231,13 @@ body{
 .returnTop:hover {
     background-color: #9b9b9b;
 }
+.copyright a{
+    color:#999;
+    text-decoration: none;
+    font-size: 12px;
+}
+.copyright a:hover, a:active{
+    color:#fff;
+    background-color: #999;
+    text-decoration: none;
+}

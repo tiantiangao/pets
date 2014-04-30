@@ -222,7 +222,7 @@
         <div class="clear"></div>
         <p>&nbsp;</p>
         <p>
-            参考网址： <a class="memo" href="http://www.cfainc.org/Breeds.aspx">CFA官方网站</a>
+            参考网址： <a class="memo" href="http://www.cfainc.org/Breeds.aspx" target="_blank" rel="nofollow">CFA官方网站</a>
         </p>
     </div>
 </div>
