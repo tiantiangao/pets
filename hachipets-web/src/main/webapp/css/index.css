@@ -1,0 +1,137 @@
+.index-container {
+	padding: 10px 5px;
+    position: relative;
+    background-color: #fff;
+}
+.index-menu {
+    float: left;
+    width: 100%;
+}
+.index-mt {
+    height: 25px;
+    line-height: 25px;
+    padding: 12px 0;
+    border-bottom: 2px solid #daeae8;
+    font-size: 16px!important;
+    font-weight: bold;
+    font: 14px/150% Arial,Verdana,"\5b8b\4f53";
+    color: #666;
+}
+.index-mt-label {
+    display: block;
+    width: 100px;
+    height: 32px;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+.index-mt-icon {
+    width: 32px;
+    height: 32px;
+    float: left;
+}
+.index-mc {
+    margin-top: 10px;
+}
+.icon-baike {
+    background: url("../img/baike.png") no-repeat;
+}
+.icon-media {
+    background: url("../img/media.png") no-repeat;
+}
+.container-baike ul {
+    list-style: none;
+    margin: 0 0 0 20px;
+}
+.container-baike li {
+    float: left;
+    width: 210px;
+    margin: 2px 3px 6px;
+    padding: 0 4px 2px;
+    border: 1px solid #fff;
+}
+.container-baike li:hover {
+    border: 1px solid #18c2c8;
+    box-shadow: 0 1px 3px rgba(34,25,25,0.2);
+    -moz-box-shadow: 0 1px 2px rgba(34,25,25,0.2);
+    -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.2);
+    background-color: #daeae8;
+}
+.container-baike li:hover > .p-name a{
+    color: #ed585c;
+}
+.container-baike .p-img {
+    height: 220px;
+    padding: 5px 0;
+}
+.container-baike .p-name {
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+.container-baike .p-name a {
+    text-decoration: none;
+    color: #000;
+}
+.container-baike .p-name-alias {
+    color: #c0c0c0;
+    font-size: 12px;
+    cursor: default;
+    text-align: left;
+    height: 80px;
+    overflow: hidden;
+}
+
+.container-media {
+    margin-top: 30px;
+}
+.container-media ul {
+    list-style: none;
+    margin: 0;
+}
+.container-media .pets-movie-row {
+    margin-bottom: 10px;
+    padding-top: 10px;
+    margin-left: 10px;
+    float: left;
+    min-width: 840px;
+}
+.container-media .pets-movie {
+    float: left;
+    padding: 8px;
+    border: 1px solid #fff;
+    margin: 0 30px;
+}
+.container-media .pets-movie:hover{
+    border: 1px solid #18c2c8;
+    box-shadow: 0 1px 3px rgba(34,25,25,0.2);
+    -moz-box-shadow: 0 1px 2px rgba(34,25,25,0.2);
+    -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.2);
+    background-color: #daeae8;
+}
+.container-media .pets-movie:hover > .pets-movie-title a{
+    color: #ed585c;
+}
+.pets-movie-title {
+    width: 150px;
+    padding: 5px 0;
+    text-align: center;
+}
+.pets-movie-title  a{
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.pets-movie-desc {
+    width: 150px;
+    height: 50px;
+    line-height: 18px;
+    font-size: 12px;
+    word-wrap: break-word;
+    word-break: break-all;
+    color: #999;
+    overflow: hidden;
+}

@@ -205,6 +205,7 @@
 .pets-movie-list .pets-movie-row .pets-movie-title{
     width: 150px;
     padding: 5px 0;
+    text-align: center;
 }
 .pets-movie-list .pets-movie-row .pets-movie-title a{
     color: #000000;
