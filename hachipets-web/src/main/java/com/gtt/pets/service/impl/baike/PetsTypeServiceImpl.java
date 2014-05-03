@@ -1,6 +1,7 @@
 package com.gtt.pets.service.impl.baike;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
 import com.gtt.kenshin.cache.CacheKey;
 import com.gtt.kenshin.cache.CacheService;
 import com.gtt.kenshin.dao.model.PageModel;
@@ -15,6 +16,7 @@ import com.gtt.pets.service.impl.BaseService;
 import com.gtt.pets.util.DTOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -270,6 +272,23 @@ public class PetsTypeServiceImpl extends BaseService implements PetsTypeService 
 			LOGGER.error("findTypeByCategory: category = [" + category + "]", e);
 			return new PageModel<PetsTypeDTO>();
 		}
+	}
+
+	@Override
+	public List<PetsTypeDTO> findByTypeIDList(List<Integer> typeIdList) {
+		List<PetsTypeDTO> result = Lists.newArrayList();
+		if (CollectionUtils.isEmpty(typeIdList)) {
+			return result;
+		}
+
+		for (Integer typeId : typeIdList) {
+			PetsTypeDTO petsTypeDTO = loadTypeByID(typeId);
+			if (petsTypeDTO != null) {
+				result.add(petsTypeDTO);
+			}
+		}
+
+		return result;
 	}
 
 	private void initCacheMap() {

@@ -4,7 +4,6 @@
     <title>${movie.name}<#if (movie.year)?? && movie.year gt 0>(${movie.year})</#if>-宠物影视</title>
     <meta name="description" content="${movie.name}-${(movie.desc)!""}-${projectName!""}" />
 	<@pets.staticResource resource='/css/movie-detail.css' decorate='true'/>
-	<@pets.staticResource resource='/js/petspic.js' decorate='true'/>
 </head>
 <body>
 <div class="container">
@@ -103,6 +102,7 @@
         </div>
     </div>
 </div>
+<@pets.staticResource resource='/js/petspic.js' decorate='true'/>
 <script>
 $(function(){
     $(".pets-movie-pic img").each(function(){

@@ -19,10 +19,13 @@ import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ParameterAware;
 import org.apache.struts2.interceptor.RequestAware;
+import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gtt.kenshin.log.KenshinLogger;
@@ -37,11 +40,14 @@ import com.opensymphony.xwork2.Preparable;
  * 
  * @author tiantiangao
  */
-public abstract class BaseAction extends ActionSupport implements RequestAware, ParameterAware, Preparable {
+public abstract class BaseAction extends ActionSupport implements RequestAware, ParameterAware, Preparable,
+		ServletRequestAware, ServletResponseAware {
 
 	private static final long serialVersionUID = 1L;
 	private final KenshinLogger LOGGER = KenshinLoggerFactory.getLogger(getClass());
 	protected Map<String, Object> request;
+	protected HttpServletRequest req;
+	protected HttpServletResponse resp;
 	protected Map<String, String[]> parameters;
 	@Autowired
 	private GlobalService globalService;
@@ -127,4 +133,13 @@ public abstract class BaseAction extends ActionSupport implements RequestAware, 
 		return null;
 	}
 
+	@Override
+	public void setServletResponse(HttpServletResponse response) {
+		this.resp = response;
+	}
+
+	@Override
+	public void setServletRequest(HttpServletRequest request) {
+		this.req = request;
+	}
 }

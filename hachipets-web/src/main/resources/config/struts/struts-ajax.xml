@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="hospitalAjax" namespace="/ajax" extends="default">
+    
+        <action name="switchCityCheckAction" class="com.gtt.pets.web.action.hospital.ajax.PetsSwitchCityCheckAction">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="switchCityAction" class="com.gtt.pets.web.action.hospital.ajax.PetsSwitchCityAction">
+            <result name="success" type="json"/>
+        </action>
+
+    </package>
+</struts>

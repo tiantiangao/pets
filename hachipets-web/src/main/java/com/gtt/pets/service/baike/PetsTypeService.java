@@ -3,6 +3,7 @@ package com.gtt.pets.service.baike;
 import com.gtt.kenshin.dao.model.PageModel;
 import com.gtt.pets.bean.baike.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,4 +29,5 @@ public interface PetsTypeService {
 
 	PageModel<PetsTypeDTO> findTypeByCategory(int category, int page, int max);
 
+	List<PetsTypeDTO> findByTypeIDList(List<Integer> typeIdList);
 }

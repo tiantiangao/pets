@@ -1,0 +1,78 @@
+.map-container {
+    border: 1px solid #CAD2DD;
+}
+
+#mapLeft {
+    width: 329px;
+    min-width: 329px;
+    _width: 329px;
+    border-right: 1px solid #CAD2DD;
+    overflow: hidden;
+    float: left;
+}
+
+#mapLeftContainer {
+    height: 660px;
+    overflow: hidden;
+    padding: 0px;
+    width: 329px;
+    background-color: #fff;
+    position: relative;
+}
+#mapLeftContainer .logo{
+    width: 300px;
+    border-top: 1px solid #ddd;
+    position: absolute;
+    bottom: 0px;
+    left: 15px;
+    height: 36px;
+}
+#mapLeftContainer .dianping{
+    position: absolute;
+    bottom: 0px;
+    left: 144px;
+    height: 30px;
+    width: 85px;
+    background: url("../img/dp.png");
+    background-size: 85px 30px;
+    opacity:0.6;
+    filter:alpha(opacity=60);
+}
+#mapLeftContainer .dianping span{
+    margin-left: -167px;
+    line-height: 30px;
+    height: 30px;
+}
+
+#mapRight {
+    position: relative;
+    margin-left: 331px;
+}
+
+#mapTool {
+    height: 36px;
+    border-bottom: 1px solid #CAD2DD;
+    box-shadow: 1px 2px 3px 0 #828E9A;
+    background: #fff;
+    position: relative;
+    z-index: 201;
+}
+
+#mapCity {
+    border: 1px solid #fff;
+    margin-top: 5px;
+    padding: 4px 6px;
+    border-radius: 2px;
+    float: left;
+}
+
+#mapDiv {
+}
+.autoCity {
+    border: 1px solid #fff;
+    margin-top: 5px;
+    padding: 4px 6px;
+    border-radius: 2px;
+    position: absolute;
+    left: 270px;
+}

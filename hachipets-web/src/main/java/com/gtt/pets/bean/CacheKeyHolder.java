@@ -103,4 +103,8 @@ public class CacheKeyHolder {
 	 * 宠物类型扩展信息之宠物兔
 	 */
 	public static final String BAIKE_TYPE_RABBIT = "oBaikeTypeRabbit";
+	/**
+	 * 高德城市信息
+	 */
+	public static final String CITY_GAODE = "oCityGaode";
 }

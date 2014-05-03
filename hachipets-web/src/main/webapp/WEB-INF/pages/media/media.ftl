@@ -4,7 +4,6 @@
 <head>
     <title><#if region?? && region!="">${region}-</#if><#if yearValue?? && yearValue gt 0><#if yearValue==1900>其他年代<#else>${yearValue}年</#if>-</#if>宠物影视</title>
 	<@pets.staticResource resource='/css/movie.css' decorate='true'/>
-	<@pets.staticResource resource='/js/petspic.js' decorate='true'/>
 </head>
 <body>
 <div class="container">
@@ -143,6 +142,7 @@
         </div>
     </div>
 </div>
+<@pets.staticResource resource='/js/petspic.js' decorate='true'/>
 <script>
     $(function(){
         $(".pets-movie-list img").each(function(){

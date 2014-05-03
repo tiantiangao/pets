@@ -13,12 +13,10 @@
  * accordance with the terms of the license agreement you entered into
  * with dianping.com.
  */
-package com.gtt.pets.web.action.hospital;
+package com.gtt.pets.web.action.hospital.ajax;
 
 import com.gtt.pets.bean.city.CityGaodeDTO;
-import com.gtt.pets.constants.ChannelType;
 import com.gtt.pets.constants.Cookies;
-import com.gtt.pets.service.GlobalService;
 import com.gtt.pets.service.city.CityGaodeService;
 import com.gtt.pets.util.WebUtils;
 import com.gtt.pets.web.action.BaseAction;
@@ -27,7 +25,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.Cookie;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 /**
@@ -35,51 +32,36 @@ import java.net.URLEncoder;
  *
  * @author tiantiangao
  */
-public class PetsHospitalAction extends BaseAction {
+public class PetsSwitchCityAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 
-	@Autowired
-	private GlobalService globalService;
+	private String city;
+
 	@Autowired
 	private CityGaodeService cityGaodeService;
-	private CityGaodeDTO hospitalCity;
+
+	private int code = 500;
 
 	@Override
 	public String doExecute() throws Exception {
-		setChannel(ChannelType.CHANNEL_HOSPITAL);
 
-		checkCity();
+		if (StringUtils.isBlank(city)) {
+			return SUCCESS;
+		}
+
+		CityGaodeDTO cityGaode = cityGaodeService.loadByCityName(city);
+		if (cityGaode != null) {
+			updateCookie(cityGaode);
+			code = 200;
+		}
 
 		return SUCCESS;
 	}
 
-	private void checkCity() {
-		String city = getCookieValue(Cookies.Hospital_City);
-		try {
-			if (StringUtils.isNotBlank(city)) {
-				city = URLDecoder.decode(city, "UTF-8");
-			}
-		} catch (UnsupportedEncodingException e) {
-		}
-
-		// 优先从cookie中解析上一次所在城市
-		if (StringUtils.isNotBlank(city)) {
-			hospitalCity = cityGaodeService.loadByCityName(city);
-		}
-
-		// cookie无数据或数据异常, 加载默认城市
-		if (hospitalCity == null) {
-			city = globalService.get("HospitalDefaultCity");
-			hospitalCity = cityGaodeService.loadByCityName(city);
-		}
-
-//		updateCookie();
-	}
-
-	private void updateCookie() {
+	private void updateCookie(CityGaodeDTO city) {
 		String cookieValue = "";
 		try {
-			cookieValue = URLEncoder.encode(hospitalCity.getCityName(), "UTF-8");
+			cookieValue = URLEncoder.encode(city.getCityName(), "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 		}
 		Cookie cookie = new Cookie(Cookies.Hospital_City, cookieValue);
@@ -89,7 +71,11 @@ public class PetsHospitalAction extends BaseAction {
 		resp.addCookie(cookie);
 	}
 
-	public CityGaodeDTO getHospitalCity() {
-		return hospitalCity;
+	public int getCode() {
+		return code;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 }

@@ -63,6 +63,14 @@
         <from>^/hospital$</from>
         <to>/petsHospitalAction.action</to>
     </rule>
+    <rule>
+        <from>^/ajax/city/hospital/switchCheck$</from>
+        <to>/ajax/switchCityCheckAction</to>
+    </rule>
+    <rule>
+        <from>^/ajax/city/hospital/switch$</from>
+        <to>/ajax/switchCityAction</to>
+    </rule>
 
     <!-- 宠物美容 -->
     <rule>

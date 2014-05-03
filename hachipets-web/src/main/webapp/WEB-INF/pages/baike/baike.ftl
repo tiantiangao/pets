@@ -4,7 +4,6 @@
 <head>
     <title>宠物百科</title>
 	<@pets.staticResource resource='/css/baike-index.css' decorate='true'/>
-	<@pets.staticResource resource='/js/petspic.js' decorate='true'/>
 </head>
 <body>
 <div class="container">
@@ -61,6 +60,7 @@
 		</#if>
 	</div>
 </div>
+<@pets.staticResource resource='/js/petspic.js' decorate='true'/>
 <script>
     $(function(){
         $(".baike-list img").each(function(){

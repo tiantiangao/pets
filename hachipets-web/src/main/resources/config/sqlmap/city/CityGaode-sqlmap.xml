@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="CityGaode">
+
+    <typeAlias alias="CityGaode" type="com.gtt.pets.entity.city.CityGaode" />
+    
+    <resultMap id="CityGaodeResult" class="CityGaode">
+        <result property="id" column="ID" />
+        <result property="cityName" column="CityName" />
+        <result property="lat" column="Lat" />
+        <result property="lng" column="Lng" />
+        <result property="level" column="Level" />
+    </resultMap>
+
+    <select id="loadByCityName" resultMap="CityGaodeResult" parameterClass="map">
+        <![CDATA[
+		SELECT id, `CityName`, `Lat`, `Lng`, `Level`
+		FROM Pets_City_Gaode
+		WHERE cityName = #cityName#
+        ]]>
+    </select>
+
+</sqlMap>

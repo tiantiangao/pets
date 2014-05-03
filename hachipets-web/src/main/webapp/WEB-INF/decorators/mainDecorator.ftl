@@ -5,11 +5,11 @@
     <meta charset='utf-8'>
     <title>${title}-${projectName}</title>
     <link rel="shortcut icon" href="<@pets.staticResource resource='/img/favicon.ico'/>" type="image/x-icon">
-    <@pets.staticResource resource='/js/jquery.js' decorate='true'/>
-	<@pets.staticResource resource='/js/bootstrap.js' decorate='true'/>
-	<@pets.staticResource resource='/js/common.js' decorate='true'/>
 	<@pets.staticResource resource='/css/bootstrap.css' decorate='true'/>
 	<@pets.staticResource resource='/css/header.css' decorate='true'/>
+	<@pets.staticResource resource='/js/jquery.js' decorate='true'/>
+	<@pets.staticResource resource='/js/bootstrap.js' decorate='true'/>
+	<@pets.staticResource resource='/js/common.js' decorate='true'/>
     ${head}
 </head>
 <body>
@@ -19,11 +19,11 @@
             <a href="/"><@pets.staticResource resource='/img/logo.png' decorate='true'/></a>
         </div>
         <div class="header-info">
-            <span><a href="/login" title="登录">登录</a></span>
+            <span><a href="#" title="登录">登录</a></span>
             <span class="divider"></span>
-            <span><a href="/reg" title="注册">注册</a></span>
+            <span><a href="#" title="注册">注册</a></span>
             <span class="divider"></span>
-            <span><a href="/member/myinfo/pets" title="我的宠物">我的宠物</a></span>
+            <span><a href="#" title="我的宠物">我的宠物</a></span>
         </div>
     </div>
 </div>
@@ -35,12 +35,12 @@
                 <li class="first"><a href="/" <#if channel=="index">class="active"</#if>>首页</a></li>
                 <li><a href="/baike" <#if channel=="baike">class="active"</#if>>宠物百科</a></li>
                 <li><a href="/media" <#if channel=="media">class="active"</#if>>宠物影视</a></li>
+                <li><a href="/hospital" <#if channel=="hospital">class="active"</#if>>宠物医院</a></li>
                 <li><a href="/mall" <#if channel=="mall">class="active"</#if>>宠物商城</a></li>
                 <li><a href="/news" <#if channel=="news">class="active"</#if>>宠物新鲜事</a></li>
                 <li><a href="/show" <#if channel=="show">class="active"</#if>>宠物秀</a></li>
                 <li><a href="/transfer" <#if channel=="transfer">class="active"</#if>>宠物领养</a></li>
-                <li><a href="/hospital" <#if channel=="hospital">class="active"</#if>>宠物医院</a></li>
-                <li><a href="/beauty" <#if channel=="beauty">class="active"</#if>>宠物美容</a></li>
+                <#--<li><a href="/beauty" <#if channel=="beauty">class="active"</#if>>宠物美容</a></li>-->
                 <li><a href="/bbs" <#if channel=="bbs">class="active"</#if>>宠物社区</a></li>
                 <div class="clear"></div>
             </ul>
@@ -57,5 +57,14 @@ ${body}
     </div>
 </div>
 <div class="returnTop" title="返回顶部"><span class="l"></span><span class="s"></span><span class="b"></span></div>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-50565641-1', 'hachipets.com');
+    ga('send', 'pageview');
+</script>
 </body>
 </html>
