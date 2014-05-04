@@ -13,5 +13,9 @@
             <result name="success" type="json"/>
         </action>
 
+        <action name="cityHospitalSearch" class="com.gtt.pets.web.action.hospital.ajax.PetsCityHospitalSearchAction">
+            <result name="success" type="json"/>
+        </action>
+
     </package>
 </struts>

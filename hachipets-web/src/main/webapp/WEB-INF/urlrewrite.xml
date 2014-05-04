@@ -71,6 +71,10 @@
         <from>^/ajax/city/hospital/switch$</from>
         <to>/ajax/switchCityAction</to>
     </rule>
+    <rule>
+        <from>^/ajax/city/hospital/search$</from>
+        <to>/ajax/cityHospitalSearch</to>
+    </rule>
 
     <!-- 宠物美容 -->
     <rule>

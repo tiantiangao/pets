@@ -8,7 +8,9 @@
 <div class="container text-center map-container">
 	<div id="mapLeft">
         <div id="mapLeftContainer">
-			<div class="shopList"></div>
+			<div id="shopListTitle">宠物医院列表</div>
+			<div id="shopList" class="shopList text-left">
+			</div>
 			<div class="logo">
                 <div class="dianping"><span>数据来源于</span></div>
 			</div>

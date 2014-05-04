@@ -1,5 +1,8 @@
 package com.gtt.pets.service.hospital;
 
+import com.gtt.kenshin.dao.model.PageModel;
+import com.gtt.pets.bean.hospital.HospitalDTO;
+
 /**
  * Created with IntelliJ IDEA.
  * User: gtt
@@ -8,4 +11,8 @@ package com.gtt.pets.service.hospital;
  * To change this template use File | Settings | File Templates.
  */
 public interface PetsHospitalService {
+
+	PageModel<HospitalDTO> findHospitalByCityAndBounds(String cityName, double southWestLat, double southWestLng,
+													   double northEastLat, double northEastLng, int page);
+
 }

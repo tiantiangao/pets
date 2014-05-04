@@ -10,11 +10,14 @@
         <result property="lat" column="Lat" />
         <result property="lng" column="Lng" />
         <result property="level" column="Level" />
+        <result property="dpCityName" column="DPCityName" />
+        <result property="dpCityId" column="DPCityID" />
+        <result property="dpCategoryId" column="DPCategoryID" />
     </resultMap>
 
     <select id="loadByCityName" resultMap="CityGaodeResult" parameterClass="map">
         <![CDATA[
-		SELECT id, `CityName`, `Lat`, `Lng`, `Level`
+		SELECT id, `CityName`, `Lat`, `Lng`, `Level`, `DPCityName`, `DPCityID`, `DPCategoryID`
 		FROM Pets_City_Gaode
 		WHERE cityName = #cityName#
         ]]>

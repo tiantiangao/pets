@@ -73,7 +73,7 @@ public class PetsHospitalAction extends BaseAction {
 			hospitalCity = cityGaodeService.loadByCityName(city);
 		}
 
-//		updateCookie();
+		updateCookie();
 	}
 
 	private void updateCookie() {

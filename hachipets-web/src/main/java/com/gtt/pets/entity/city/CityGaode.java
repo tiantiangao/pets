@@ -13,6 +13,9 @@ public class CityGaode extends BaseEntity {
 	private double lat;
 	private double lng;
 	private int level;
+	private String dpCityName;
+	private int dpCityId;
+	private int dpCategoryId;
 
 	public String getCityName() {
 		return cityName;
@@ -44,5 +47,29 @@ public class CityGaode extends BaseEntity {
 
 	public void setLevel(int level) {
 		this.level = level;
+	}
+
+	public String getDpCityName() {
+		return dpCityName;
+	}
+
+	public void setDpCityName(String dpCityName) {
+		this.dpCityName = dpCityName;
+	}
+
+	public int getDpCityId() {
+		return dpCityId;
+	}
+
+	public void setDpCityId(int dpCityId) {
+		this.dpCityId = dpCityId;
+	}
+
+	public int getDpCategoryId() {
+		return dpCategoryId;
+	}
+
+	public void setDpCategoryId(int dpCategoryId) {
+		this.dpCategoryId = dpCategoryId;
 	}
 }
