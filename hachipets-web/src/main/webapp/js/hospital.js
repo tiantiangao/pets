@@ -142,8 +142,11 @@ function renderResult(data){
         address.append(label);
 
         var addressValue = $("<span></span>");
+        addressValue.addClass("address-value");
         addressValue.text(this.address);
         address.append(addressValue);
+
+        address.append($("<div class='clear'></div>"));
 
         var phone = $("<div></div>");
         phone.addClass("address");
@@ -155,8 +158,11 @@ function renderResult(data){
         phone.append(phone_label);
 
         var phoneValue = $("<span></span>");
+        phoneValue.addClass("address-value");
         phoneValue.text(this.telephone);
         phone.append(phoneValue);
+
+        phone.append($("<div class='clear'></div>"));
 
         addMarker(this.lng, this.lat, index+1);
     });

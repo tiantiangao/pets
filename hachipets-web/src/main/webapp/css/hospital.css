@@ -194,6 +194,11 @@
 }
 #shopList .address .address-label {
     color: #999;
-    padding-right: 2px;
+    padding-right: 10px;
+    float: left;
+}
+#shopList .address .address-value{
+    float: left;
+    width: 265px;
 }
 
