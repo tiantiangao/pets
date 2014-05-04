@@ -6,6 +6,7 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.SimpleHttpConnectionManager;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.params.HttpMethodParams;
 import org.apache.commons.io.IOUtils;
 
 import java.io.BufferedReader;
@@ -46,6 +47,8 @@ public class HttpUtils {
 			}
 			method = new GetMethod(sb.toString());
 			method.getParams().setContentCharset("UTF-8");
+			method.getParams().setParameter(HttpMethodParams.USER_AGENT,
+					"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36");
 
 			// 发送请求
 			httpClient.executeMethod(method);
