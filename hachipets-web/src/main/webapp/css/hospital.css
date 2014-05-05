@@ -93,25 +93,28 @@
     overflow-y: auto;
 }
 
-#shopList em {
+.shopContainer em {
     font-style: normal;
 }
 
-#shopList ul {
+.shopContainer ul {
     list-style: none outside;
     margin: 0;
     padding: 0;
 }
-#shopList li{
+.shopContainer li{
     border-top: 1px dotted #f8cfa5;
     padding: 15px 10px 15px 15px;
     margin-top: -1px;
     zoom: 1;
 }
-#shopList li:hover {
+.shopContainer li:hover {
     background-color:#fff9f1;
 }
-#shopList h6{
+.shopContainer li.selected {
+    background-color:#fff9f1;
+}
+.shopContainer h6{
     margin: 0;
     padding: 0;
     border: 0;
@@ -119,7 +122,7 @@
     display: block;
     font-weight: bold;
 }
-#shopList h6 .igroup{
+.shopContainer h6 .igroup{
     background-image: url(http://si1.s1.dpfile.com/s/c/app/search/i/search/search.29325882b4c2175492d3fad1a6648d57.png);
     background-repeat: no-repeat;
     background-position: -66px -80px;
@@ -132,7 +135,7 @@
     font-size: 0;
     zoom: 1;
 }
-#shopList li .order {
+.shopContainer .order {
     background-color: #f90;
     color: #fff;
     width: 18px;
@@ -147,58 +150,119 @@
     -webkit-border-radius: 4px;
     border-radius: 4px;
 }
-#shopList li .name {
+.shopContainer .name {
     margin-right: 10px;
     font-size: 14px;
     color: #66c;
     font-weight: bold;
     text-decoration: none;
 }
-#shopList li .name:hover {
+.shopContainer .name:hover {
     background-color: #66c;
     color: #fff;
     text-decoration: none;
 }
-#shopList li .remark {
+.shopContainer .remark {
     padding-top: 4px;
     zoom: 1;
     font-size: 12px;
 }
-#shopList .remark .star {
+.shopContainer .remark .star {
     margin: -1px 10px 0 0;
 }
-#shopList .remark .star img {
+.shopContainer .remark .star img {
     width: 64px;
     height: 12px;
 }
-#shopList .remark .sep {
+.shopContainer .remark .sep {
     color: #999;
     padding: 0 10px 0 0;
 }
-#shopList .remark .price {
+.shopContainer .remark .price {
     color: #999;
 }
-#shopList label {
+.shopContainer label {
     display: inline;
     font-size: 12px;
 }
-#shopList .remark .avg {
+.shopContainer .remark .avg {
     color: #c00;
     font-family: Verdana,Geneva,sans-serif;
     padding-left: 5px;
 }
-#shopList .address {
+.shopContainer .address {
     padding-top: 2px;
     font-size: 12px;
     color: #333;
 }
-#shopList .address .address-label {
+.shopContainer .address .address-label {
     color: #999;
     padding-right: 10px;
     float: left;
 }
-#shopList .address .address-value{
+.shopContainer .address .address-value{
     float: left;
     width: 265px;
 }
+.shopContainer .review a {
+    font-size: 12px;
+}
+.parentContainer {
+    width: 260px;
+}
+.infoContainer {
+    width: 240px;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #BCBCBC;
+    box-shadow: 0 0 10px #B7B6B6;
+    z-index: 100;
+    position: relative;
+}
+.infoContainer .address .address-value {
+    width: 200px;
+}
+.infoContainer .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition-duration: 0.25s;
+    border: none;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+}
+.info-bottom {
+    height: 0;
+    width: 100%;
+    text-align: center;
+    margin-top: -1px;
+}
+.info-bottom img {
+    z-index: 104;
+    position: relative;
+}
 
+.shopContainer .list_page {
+    padding: 10px 16px;
+    font-size: 12px;
+}
+.shopContainer .list_page .page_detail {
+    float: left;
+}
+.shopContainer .list_page .control{
+    float: right;
+}
+.shopContainer .list_page .page_btn {
+    color: #000;
+    background: -webkit-gradient(linear,0 0,0 100%,from(#FAFAFA),to(#F2F2F2));
+    background: -moz-linear-gradient(top,#FAFAFA,#F2F2F2);
+    background: linear-gradient(to bottom,#FAFAFA,#F2F2F2);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FAFAFA, endColorstr=#F2F2F2, grandientType=1);
+    border: 1px solid #C6C6C6;
+    width: 50px;
+    height: 22px;
+    line-height: 22px;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+}

@@ -4,6 +4,7 @@
     <meta name="baidu-site-verification" content="OngVwAYyF8" />
     <meta name="google-site-verification" content="JPZLPomYLrdNJ88JQ-DYTxaoXB5X7rmG-RlujK5llIk" />
     <meta name="360-site-verification" content="08e09397d1ff642354112ff729c0580d" />
+    <meta property="qc:admins" content="225262027660130105436375" />
     <title>首页</title>
 	<@pets.staticResource resource='/css/index.css' decorate='true'/>
 </head>

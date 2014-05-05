@@ -40,10 +40,10 @@ function init() {
 
     autoCityInfo();
 
-    research(map);
+    research(map, 1);
 }
 
-function research(map){
+function research(map, page){
     var bounds = map.getBounds();
     $.ajax({
         url: "/ajax/city/hospital/search",
@@ -52,7 +52,8 @@ function research(map){
             "southWestLat": bounds.getSouthWest().getLat(),
             "southWestLng": bounds.getSouthWest().getLng(),
             "northEastLat": bounds.getNorthEast().getLat(),
-            "northEastLng": bounds.getNorthEast().getLng()
+            "northEastLng": bounds.getNorthEast().getLng(),
+            "page": page
         },
         success: function(data){
             if(data.code==200){
@@ -69,7 +70,6 @@ function shoErrTips(){
 }
 
 function renderResult(data){
-    console.log(data);
     map.clearMap();
     $("#shopList").empty();
     var ul = $("<ul></ul>");
@@ -87,7 +87,6 @@ function renderResult(data){
 
         var shopName = $("<a></a>");
         shopName.attr({"href":this.dpShopUrl, "target": "_blank", "class": "name"});
-//        var shopNameValue = this.shopName.replace("(这是一条测试商户数据，仅用于测试开发，开发完成后请申请正式数据...)", "");
         var shopNameValue = this.shopName;
         shopName.text(shopNameValue);
         title.append(shopName);
@@ -112,25 +111,27 @@ function renderResult(data){
         img.attr("src", this.ratingUrl);
         star.append(img);
 
-        if(this.avgPrice>-1){
-            var split = $("<em></em>");
-            remark.append(split);
-            split.addClass("sep");
-            split.text("|");
+        var split = $("<em></em>");
+        remark.append(split);
+        split.addClass("sep");
+        split.text("|");
 
-            var priceContainer = $("<span></span>");
-            priceContainer.addClass("price");
-            remark.append(priceContainer);
+        var priceContainer = $("<span></span>");
+        priceContainer.addClass("price");
+        remark.append(priceContainer);
 
-            var label = $("<span>人均</span>");
-            priceContainer.append(label);
+        var label = $("<span>人均</span>");
+        priceContainer.append(label);
 
-            var price = $("<em></em>");
-            price.addClass("avg")
+        var price = $("<em></em>");
+        price.addClass("avg")
+        if(this.avgPrice>0){
             price.text("￥"+this.avgPrice);
-            priceContainer.append(price);
-
+        }else{
+            price.text("-");
         }
+        priceContainer.append(price);
+
 
         var address = $("<div></div>");
         address.addClass("address");
@@ -164,19 +165,169 @@ function renderResult(data){
 
         phone.append($("<div class='clear'></div>"));
 
-        addMarker(this.lng, this.lat, index+1);
+        if(this.reviewCount>0){
+            var review = $("<div></div>");
+            shop.append(review);
+            review.addClass("review");
+
+            var reviewLink = $("<a></a>");
+            reviewLink.attr({"target": "_blank", "href":this.dpShopUrl});
+            reviewLink.text(this.reviewCount+"条评论");
+            review.append(reviewLink);
+        }
+
+        // 添加地图标记
+        var marker = addMarker(this.lng, this.lat, index+1);
+
+        shop.bind("mouseenter", function(){
+            marker.setContent(getIcon(index+1, true));
+        });
+        shop.bind("mouseleave", function(){
+            marker.setContent(getIcon(index+1, false));
+        });
+
+        // 添加标记对应的弹出信息框
+        var info = [];
+        info.push("<div class='parentContainer'>");
+        info.push("<div class='shopContainer text-left infoContainer'>");
+
+        info.push("<img class='close' src='http://webapi.amap.com/images/close2.gif'>");
+
+        info.push("<h6>");
+        info.push("<i class='order'>" + (index+1) + "</i>")
+        info.push("<a target='_blank' class='name' href='" + this.dpShopUrl + "'>"+ this.shopName +"</a>");
+        if(this.hasDeal){
+            info.push("<a class='igroup' target='_blank' href='"+ this.dealList[0].dealUrl + "'></a>");
+        }
+        info.push("</h6>");
+
+        info.push("<div class='remark'>");
+        info.push("<span class='star'><img src='" + this.ratingUrl + "'></span>");
+        info.push("<em class='sep'>|</em>");
+        info.push("<span class='price'><span>人均</span><em class='avg'>");
+        if(this.avgPrice>0){
+            info.push("￥"+this.avgPrice);
+        }else{
+            info.push("-");
+        }
+        info.push("</em></span>");
+        info.push("</div>");
+
+        info.push("<div class='address'>");
+        info.push("<span class='address-label'>地址: </span><span class='address-value'>" + this.address + "</span><div class='clear'></div>");
+        info.push("</div>");
+
+        info.push("<div class='address'>");
+        info.push("<span class='address-label'>电话: </span><span class='address-value'>" + this.telephone + "</span><div class='clear'></div>");
+        info.push("</div>");
+
+        info.push("</div>");
+
+        info.push("<div class='info-bottom'><img src='http://webapi.amap.com/images/sharp.png'></div>");
+        info.push("</div>");
+
+        var lng = this.lng;
+        var lat = this.lat;
+        var infoWindow = new AMap.InfoWindow({
+            isCustom: true,
+            autoMove: false,
+            content: info.join(""),
+            offset: new AMap.Pixel(65,-65)
+        });
+
+        shop.bind("click", function(){
+            $("#shopList .selected").removeClass("selected");
+            shop.addClass("selected");
+            AMap.event.addListener(infoWindow, "open", function(){
+                $(".infoContainer .close").on("click", function(){
+                    infoWindow.close();
+                });
+            });
+            infoWindow.open(map, new AMap.LngLat(lng, lat));
+        });
+
+        AMap.event.addListener(marker, "click", function(){
+            $("#shopList .selected").removeClass("selected");
+            shop.addClass("selected");
+            AMap.event.addListener(infoWindow, "open", function(){
+                $(".infoContainer .close").on("click", function(){
+                    infoWindow.close();
+                });
+            });
+            infoWindow.open(map, new AMap.LngLat(lng, lat));
+        });
     });
 
+    renderPage(data);
+    $("#shopList").animate({ scrollTop: 0 }, "slow");
+}
+
+function renderPage(data){
+    if(data.pageCount<=1){
+        return;
+    }
+
+    if(data.page==0){
+        data.page=1;
+    }
+
+    var page = $("<div class='list_page'></div>");
+    var pageDetail = $("<div class='page_detail'></div>");
+    pageDetail.text("第"+data.page+"页/共"+data.pageCount+"页");
+    page.append(pageDetail);
+
+    var control = $("<div class='control'></div>");
+    page.append(control);
+
+    if(data.page>1){
+        var prePage = $("<a></a>");
+        prePage.attr({"class":"page_btn", "href":"javascript:void();"});
+        prePage.text("上一页");
+        prePage.bind("click", function(){
+            research(map, data.page-1);
+        });
+        control.append(prePage);
+    }
+
+    if(data.pageCount>data.page){
+        var nextPage= $("<a></a>");
+        nextPage.attr({"class":"page_btn", "href":"javascript:void();"});
+        nextPage.text("下一页");
+        nextPage.bind("click", function(){
+            research(map, data.page+1);
+        });
+        control.append(nextPage);
+    }
+
+    var clear = $("<div class='clear'></div>");
+    page.append(clear);
+
+    $("#shopList").append(page);
 }
 
 //实例化点标记
 function addMarker(lng, lat, index){
-    marker=new AMap.Marker({
+    var marker=new AMap.Marker({
         icon:"http://webapi.amap.com/images/marker_sprite.png",
-//        content: index+"",
+        content: getIcon(index, false),
         position:new AMap.LngLat(lng, lat)
     });
     marker.setMap(map);  //在地图上添加点
+    AMap.event.addListener(marker, "mouseover", function(e){
+        marker.setContent(getIcon(index, true));
+    });
+    AMap.event.addListener(marker, "mouseout", function(e){
+        marker.setContent(getIcon(index, false));
+    });
+    return marker;
+}
+
+function getIcon(index, hover){
+    var hoverImg = "";
+    if(hover){
+        hoverImg = "-hover";
+    }
+    return "<div style='background-image: url(http://i2.dpfile.com/s/img/map/fancy/"+index+hoverImg+".png); width: 24px; height: 34px; position: absolute; left: 28px; top: -7px; background-repeat: no-repeat no-repeat; cursor: pointer;'></div>";
 }
 
 function autoCityInfo() {
@@ -218,6 +369,6 @@ function changeCity(city){
 function loadMap() {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src = "http://webapi.amap.com/maps?v=2.0&key=7b0661249c0b7a6c9062ae10ada2d0e3&callback=init";
+    script.src = "http://webapi.amap.com/maps?v=1.2&key=7b0661249c0b7a6c9062ae10ada2d0e3&callback=init";
     document.body.appendChild(script);
 }

@@ -9,7 +9,7 @@
 	<div id="mapLeft">
         <div id="mapLeftContainer">
 			<div id="shopListTitle">宠物医院列表</div>
-			<div id="shopList" class="shopList text-left">
+			<div id="shopList" class="shopContainer text-left">
 			</div>
 			<div class="logo">
                 <div class="dianping"><span>数据来源于</span></div>
