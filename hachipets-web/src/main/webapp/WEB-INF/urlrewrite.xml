@@ -8,6 +8,16 @@
 		<to>/petsIndexAction.action</to>
 	</rule>
 
+    <!-- 登录 -->
+    <rule>
+        <from>^/authLogin$</from>
+        <to>/oAuthLoginAction</to>
+    </rule>
+    <rule>
+        <from>^/tLogin$</from>
+        <to>/tLoginAction</to>
+    </rule>
+
     <!-- 宠物百科 -->
     <rule>
         <from>^/baike$</from>

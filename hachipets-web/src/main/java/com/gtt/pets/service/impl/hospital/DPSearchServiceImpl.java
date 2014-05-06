@@ -135,7 +135,7 @@ public class DPSearchServiceImpl implements DPSearchService {
 		params.put("cityId", String.valueOf(dpCityId));
 		params.put("shopType", String.valueOf(80));
 		params.put("categoryId", String.valueOf(dpCategoryId));
-		params.put("shopSortItem", String.valueOf(3));
+		params.put("shopSortItem", String.valueOf(1));
 		params.put("sortMode", String.valueOf(2));
 		params.put("glong1", String.valueOf(southWestLng));
 		params.put("glat1", String.valueOf(southWestLat));

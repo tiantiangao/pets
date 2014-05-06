@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <!-- 声明OAuthClient -->
+    <bean id="oAuthClient" class="com.gtt.kenshin.oauth.impl.OAuthClientDefaultImpl">
+        <property name="providerList">
+            <list>
+                <ref bean="oAuthProviderQQ"/>
+                <ref bean="oAuthProviderSina"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 声明腾讯QQ的OAuth -->
+    <bean id="oAuthProviderQQ" class="com.gtt.kenshin.oauth.impl.provider.impl.OAuthProviderQQ">
+        <property name="oAuthProviderApp" ref="oAuthProviderAppConfigQQ"/>
+    </bean>
+
+    <bean id="oAuthProviderAppConfigQQ" class="com.gtt.kenshin.oauth.impl.provider.impl.OAuthProviderAppConfig">
+        <property name="clientID" value="${oauth.qq.appid}"/>
+        <property name="clientSecret" value="${oauth.qq.appsecret}" />
+    </bean>
+
+    <!-- 声明新浪微博的OAuth -->
+    <bean id="oAuthProviderSina" class="com.gtt.kenshin.oauth.impl.provider.impl.OAuthProviderSina">
+        <property name="oAuthProviderApp" ref="oAuthProviderAppConfigSina"/>
+    </bean>
+
+    <bean id="oAuthProviderAppConfigSina" class="com.gtt.kenshin.oauth.impl.provider.impl.OAuthProviderAppConfig">
+        <property name="clientID" value="${oauth.sina.appid}"/>
+        <property name="clientSecret" value="${oauth.sina.appsecret}" />
+    </bean>
+
+</beans>
