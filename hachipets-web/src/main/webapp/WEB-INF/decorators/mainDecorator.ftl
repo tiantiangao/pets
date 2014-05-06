@@ -22,7 +22,7 @@
             <span id="qqLoginBtn">
 				<a href="/authLogin?type=qq"><img src="http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/img/Connect_logo_7.png" alt="QQ登录" border="0"></a>
             </span>
-			&nbsp;&<nbsp></nbsp>;
+			&nbsp;&nbsp;
             <span id="sinaLoginBtn">
 				<a href="/authLogin?type=sina"><img src="<@pets.staticResource resource='/img/sina.png'/>" alt="微博登录" border="0"></a>
             </span>
