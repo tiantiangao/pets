@@ -30,7 +30,7 @@
 
     <update id="updateToken" parameterClass="map">
         UPDATE Account_ThirdUser
-        SET Token = #token#
+        SET Token = #token#, UpdateTime = NOW()
         WHERE AccountID = #accountId# AND ThirdType = #thirdType# AND ThirdID = #thirdId#
     </update>
 
