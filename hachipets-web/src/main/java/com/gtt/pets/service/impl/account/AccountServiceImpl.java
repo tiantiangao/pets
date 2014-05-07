@@ -126,4 +126,20 @@ public class AccountServiceImpl implements AccountService {
 			return null;
 		}
 	}
+
+	@Override
+	public void updateToken(int accountId, int thirdType, String thirdUserId, String accessToken) {
+		try {
+			int updateRow = thirdUserDao.updateToken(accountId, thirdType, thirdUserId, accessToken);
+			LOGGER.info("updateToken " + (updateRow > 0 ? "success" : "fail") + ": accountId = [" + accountId +
+							"], thirdType = [" + thirdType + "], thirdUserId = [" +
+							thirdUserId + "], accessToken = [" + accessToken + "]"
+			);
+		} catch (Exception e) {
+			LOGGER.error(
+					"updateToken: accountId = [" + accountId + "], thirdType = [" + thirdType + "], thirdUserId = [" +
+							thirdUserId + "], accessToken = [" + accessToken + "]", e
+			);
+		}
+	}
 }

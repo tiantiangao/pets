@@ -22,4 +22,8 @@ public interface ThirdUserDao extends GenericDao {
 
 	@DaoAction(action = DaoActionType.LOAD)
 	ThirdUserEntity loadByAccountID(@DaoParam("thirdType") int thirdType, @DaoParam("accountId") int accountId);
+
+	@DaoAction(action = DaoActionType.UPDATE)
+	int updateToken(@DaoParam("accountId") int accountId, @DaoParam("thirdType") int thirdType,
+			   @DaoParam("thirdId") String thirdUserId, @DaoParam("token") String accessToken);
 }

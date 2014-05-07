@@ -28,4 +28,10 @@
         ]]>
     </select>
 
+    <update id="updateToken" parameterClass="map">
+        UPDATE Account_ThirdUser
+        SET Token = #token#
+        WHERE AccountID = #accountId# AND ThirdType = #thirdType# AND ThirdID = #thirdId#
+    </update>
+
 </sqlMap>

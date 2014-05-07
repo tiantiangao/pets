@@ -56,4 +56,13 @@ public interface AccountService {
 	 */
 	ThirdUserDTO loadByAccountID(int accountId, int thirdType);
 
+	/**
+	 * 更新第三方Token
+	 *
+	 * @param accountId
+	 * @param thirdType
+	 * @param thirdUserId
+	 * @param accessToken
+	 */
+	void updateToken(int accountId, int thirdType, String thirdUserId, String accessToken);
 }

@@ -3,7 +3,9 @@ package com.gtt.pets.web.action.oauth;
 import com.google.common.base.Preconditions;
 import com.gtt.kenshin.oauth.OAuthClient;
 import com.gtt.kenshin.oauth.ThirdUserInfo;
+import com.gtt.kenshin.web.util.EncryptionUtils;
 import com.gtt.pets.bean.account.AccountDTO;
+import com.gtt.pets.bean.account.ThirdUserDTO;
 import com.gtt.pets.service.GlobalService;
 import com.gtt.pets.service.account.AccountService;
 import com.gtt.pets.util.IPUtils;
@@ -53,6 +55,13 @@ public class TLoginAction extends BaseAction {
 				AccountDTO accountDTO =
 						accountService.loadByThirdId(ThirdType.getThirdValue(type), thirdUserInfo.getThirdUserId());
 				if (accountDTO != null) {
+					ThirdUserDTO thirdUserDTO =
+							accountService.loadByAccountID(accountDTO.getAccountId(), ThirdType.getThirdValue(type));
+
+					if (!thirdUserDTO.getToken().equals(thirdUserInfo.getAccessToken())) {
+						updateToken(accountDTO.getAccountId(), ThirdType.getThirdValue(type),
+								thirdUserInfo.getThirdUserId(), thirdUserInfo.getAccessToken());
+					}
 					return signon(accountDTO.getAccountId());
 				} else {
 					// get nickname
@@ -71,25 +80,48 @@ public class TLoginAction extends BaseAction {
 						// exist, to reg page
 						err = "nickname_exist";
 					}
-					uid = thirdUserInfo.getThirdUserId();
-					token = thirdUserInfo.getAccessToken();
+					uid = EncryptionUtils.encrypt(thirdUserInfo.getThirdUserId());
+					token = EncryptionUtils.encrypt(thirdUserInfo.getAccessToken());
 				}
 
 				return SUCCESS;
 			} else {
 
-				// check third id
-				AccountDTO accountDTO = accountService.loadByThirdId(ThirdType.getThirdValue(type), uid);
-
-				if (accountDTO != null) {
-					return signon(accountDTO.getAccountId());
-				}
-
 				if (StringUtils.isBlank(userNickname)) {
 					err = "nickname_empty";
 					return SUCCESS;
 				}
+
+				String decryptUid = EncryptionUtils.decrypt(uid);
+				String decryptToken = EncryptionUtils.decrypt(token);
+
+				if (StringUtils.isBlank(decryptUid) || StringUtils.isBlank(decryptToken)) {
+					err = "system_err";
+					return SUCCESS;
+				}
+
+				// check third id
+				AccountDTO accountDTO = accountService.loadByThirdId(ThirdType.getThirdValue(type), decryptUid);
+
+				if (accountDTO != null) {
+					// check uid and token
+					ThirdUserDTO thirdUserDTO =
+							accountService.loadByAccountID(accountDTO.getAccountId(), ThirdType.getThirdValue(type));
+					if (thirdUserDTO == null || !thirdUserDTO.getThirdId().equals(decryptUid)) {
+						err = "system_err";
+						return SUCCESS;
+					} else {
+						// update token
+						if (!thirdUserDTO.getToken().equals(decryptToken)) {
+							updateToken(accountDTO.getAccountId(), ThirdType.getThirdValue(type), decryptUid,
+									decryptToken);
+						}
+						return signon(accountDTO.getAccountId());
+					}
+				}
+
 				accountDTO = accountService.loadByNickname(userNickname);
+
 				if (accountDTO != null) {
 					err = "nickname_exist";
 					return SUCCESS;
@@ -100,7 +132,7 @@ public class TLoginAction extends BaseAction {
 				}
 
 				int accountId = accountService
-						.addAccount(userNickname, email, ThirdType.getThirdValue(type), uid, token,
+						.addAccount(userNickname, email, ThirdType.getThirdValue(type), decryptUid, decryptToken,
 								IPUtils.getUserIP(req));
 				if (accountId > 0) {
 					return signon(accountId);
@@ -112,6 +144,10 @@ public class TLoginAction extends BaseAction {
 		} catch (Exception e) {
 			return "fail";
 		}
+	}
+
+	private void updateToken(int accountId, int thirdType, String thirdUserId, String accessToken) {
+		accountService.updateToken(accountId, thirdType, thirdUserId, accessToken);
 	}
 
 	private String signon(int accountId) {
