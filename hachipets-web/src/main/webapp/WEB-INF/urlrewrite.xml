@@ -17,6 +17,10 @@
         <from>^/tLogin$</from>
         <to>/tLoginAction</to>
     </rule>
+    <rule>
+        <from>^/logout$</from>
+        <to>/logoutAction</to>
+    </rule>
 
     <!-- 宠物百科 -->
     <rule>

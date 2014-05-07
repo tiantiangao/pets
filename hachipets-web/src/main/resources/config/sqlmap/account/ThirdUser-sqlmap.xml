@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="ThirdUser">
+    
+    <typeAlias alias="thirdUser" type="com.gtt.pets.entity.account.ThirdUserEntity"/>
+    
+    <insert id="addThirdUser" parameterClass="map">
+        INSERT INTO Account_ThirdUser (AccountID, ThirdType, ThirdID, Token, AddTime, UpdateTime)
+        VALUES (#accountId#, #thirdType#, #thirdId#, #token#, NOW(), NOW())
+        <selectKey resultClass="java.lang.Integer" keyProperty="id" >
+            SELECT @@IDENTITY AS id
+        </selectKey>
+    </insert>
+
+    <select id="loadByThirdID" parameterClass="map" resultClass="thirdUser">
+        <![CDATA[
+            SELECT ID, AccountID, ThirdType, ThirdID, Token, AddTime, UpdateTime
+            FROM Account_ThirdUser
+            WHERE ThirdType=#thirdType# AND ThirdID=#thirdId#
+        ]]>
+    </select>
+
+    <select id="loadByAccountID" parameterClass="map" resultClass="thirdUser">
+        <![CDATA[
+            SELECT ID, AccountID, ThirdType, ThirdID, Token, AddTime, UpdateTime
+            FROM Account_ThirdUser
+            WHERE AccountID = #accountId# AND ThirdType=#thirdType#
+        ]]>
+    </select>
+
+</sqlMap>

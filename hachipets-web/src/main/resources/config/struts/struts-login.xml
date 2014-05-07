@@ -11,6 +11,12 @@
         </action>
 
         <action name="tLoginAction" class="com.gtt.pets.web.action.oauth.TLoginAction">
+            <result name="success" type="freemarker">/WEB-INF/pages/oauth/reg.ftl</result>
+            <result name="fail" type="freemarker">/WEB-INF/pages/oauth/fail.ftl</result>
+            <result name="index" type="redirect">/</result>
+        </action>
+
+        <action name="logoutAction" class="com.gtt.pets.web.action.oauth.LogoutAction">
             <result name="success" type="redirect">/</result>
         </action>
 

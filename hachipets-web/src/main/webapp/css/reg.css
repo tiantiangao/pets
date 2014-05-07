@@ -1,0 +1,86 @@
+.container-reg {
+    background-color: #fff;
+    height: 400px;
+}
+.bind-cont {
+    width: 50%;
+    margin: 50px auto 0;
+}
+
+.bind-cont .title {
+    border: 1px solid #f3e6de;
+    background-color: #fff9f1;
+    padding: 10px 25px;
+}
+
+.bind-cont h2 {
+    /*color: #cb0000;*/
+    padding-bottom: 10px;
+    font-weight: normal;
+    font-size: 100%;
+}
+.container-reg h3 {
+    width: 420px;
+    margin: 160px auto 0;
+}
+
+.bind-cont .title strong {
+    font-size: 14px;
+    color: #111;
+}
+
+.bind-cont .title p {
+    font-size: 12px;
+    color: #999;
+}
+
+.main-cont .block {
+    padding: 30px 0;
+}
+
+.main-cont .row label {
+    display: block;
+    float: left;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    text-align: right;
+}
+.main-cont .row .text {
+    float: left;
+    width: 280px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+}
+.main-cont .btnRow{
+    padding: 30px 0 0 100px;
+}
+.btn-type-o .btn-submit {
+    border: 0;
+    height: 36px;
+    line-height: 34px;
+    color: #fff;
+    font-weight: bold;
+    width: 90px;
+    background-position: -110px 0;
+    background-color: #fe9a01;
+    cursor: pointer;
+}
+.btn-type-o .btn-submit:hover {
+    background-color: #f68805;
+}
+.bind-cont .errmsg {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 10px;
+    padding: 0 10px;
+    display: inline-block;
+    background-color: #fbebeb;
+    border: 1px solid #e2866d;
+    color: #c00;
+    font-size: 12px;
+}

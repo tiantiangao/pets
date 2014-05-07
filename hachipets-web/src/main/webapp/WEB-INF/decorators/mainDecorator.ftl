@@ -19,15 +19,19 @@
             <a href="/"><@pets.staticResource resource='/img/logo.png' decorate='true'/></a>
         </div>
         <div class="header-info">
-            <span id="qqLoginBtn">
+			<#if account??>
+			<span>您好，<a href="#">${account.nickname}</a></span>
+			<span class="divider"></span>
+			<span><a href="/logout" title="退出" rel="nofollow">退出</a></span>
+			<#else>
+			<span id="qqLoginBtn">
 				<a href="/authLogin?type=qq"><img src="http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/img/Connect_logo_7.png" alt="QQ登录" border="0"></a>
             </span>
-			&nbsp;&nbsp;
+                &nbsp;&nbsp;
             <span id="sinaLoginBtn">
 				<a href="/authLogin?type=sina"><img src="<@pets.staticResource resource='/img/sina.png'/>" alt="微博登录" border="0"></a>
             </span>
-            <#--<span class="divider"></span>-->
-            <#--<span><a href="#" title="我的宠物">我的宠物</a></span>-->
+			</#if>
         </div>
     </div>
 </div>
