@@ -30,7 +30,7 @@ public class AccountServiceImpl implements AccountService {
 	private ThirdUserDao thirdUserDao;
 
 	@Override
-	public int addAccount(String nickname, int thirdType, String thirdId, String token, String userIP) {
+	public int addAccount(String nickname, String email, int thirdType, String thirdId, String token, String userIP) {
 		try {
 			// check arguments
 			Preconditions.checkArgument(isNotBlank(nickname));
@@ -40,7 +40,7 @@ public class AccountServiceImpl implements AccountService {
 			Preconditions.checkArgument(isNotBlank(userIP));
 
 			// add account
-			int accountId = accountDao.addAccount(nickname, userIP);
+			int accountId = accountDao.addAccount(nickname, email, userIP);
 			Preconditions.checkArgument(accountId > 0);
 
 			// add third user

@@ -62,9 +62,8 @@ public class TLoginAction extends BaseAction {
 					accountDTO = accountService.loadByNickname(userNickname);
 					if (accountDTO == null) {
 						// not exit, auto reg
-						int accountId = accountService
-								.addAccount(userNickname, ThirdType.getThirdValue(type), thirdUserInfo.getThirdUserId(),
-										thirdUserInfo.getAccessToken(), IPUtils.getUserIP(req));
+						int accountId = accountService.addAccount(userNickname, null, ThirdType.getThirdValue(type),
+								thirdUserInfo.getThirdUserId(), thirdUserInfo.getAccessToken(), IPUtils.getUserIP(req));
 						if (accountId > 0) {
 							return signon(accountId);
 						}
@@ -101,7 +100,8 @@ public class TLoginAction extends BaseAction {
 				}
 
 				int accountId = accountService
-						.addAccount(userNickname, ThirdType.getThirdValue(type), uid, token, IPUtils.getUserIP(req));
+						.addAccount(userNickname, email, ThirdType.getThirdValue(type), uid, token,
+								IPUtils.getUserIP(req));
 				if (accountId > 0) {
 					return signon(accountId);
 				} else {

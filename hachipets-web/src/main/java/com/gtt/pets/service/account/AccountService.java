@@ -20,7 +20,7 @@ public interface AccountService {
 	 * @param userIP
 	 * @return
 	 */
-	int addAccount(String nickname, int thirdType, String thirdId, String token, String userIP);
+	int addAccount(String nickname, String email, int thirdType, String thirdId, String token, String userIP);
 
 	/**
 	 * 根据账号ID获取

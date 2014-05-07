@@ -14,7 +14,8 @@ import com.gtt.pets.entity.account.AccountEntity;
 public interface AccountDao extends GenericDao {
 
 	@DaoAction(action = DaoActionType.INSERT)
-	int addAccount(@DaoParam("nickname") String nickname, @DaoParam("userIP") String userIP);
+	int addAccount(@DaoParam("nickname") String nickname, @DaoParam("email") String email,
+				   @DaoParam("userIP") String userIP);
 
 	@DaoAction(action = DaoActionType.LOAD)
 	AccountEntity loadById(@DaoParam("accountId") int accountId);

@@ -11,11 +11,13 @@ public class IPUtils {
 
 	private static final String UNKNOWN = "unknown";
 	private static final String DEFAULT_IP = "0.0.0.0";
+	private static final String X_FORWARDED_FOR = "X-Forwarded-For";
 
 	public static String getUserIP(HttpServletRequest request) {
-		String userIP = null;
+		String userIP = request.getHeader(X_FORWARDED_FOR);
 		if (StringUtils.isBlank(userIP) || UNKNOWN.equalsIgnoreCase(userIP)) {
 			userIP = request.getRemoteAddr();
+			System.out.println(">>>>>>>>>>>>>>> " + userIP);
 		}
 		if (StringUtils.isBlank(userIP) || UNKNOWN.equalsIgnoreCase(userIP)) {
 			return DEFAULT_IP;

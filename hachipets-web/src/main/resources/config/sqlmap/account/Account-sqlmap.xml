@@ -5,8 +5,8 @@
     <typeAlias alias="account" type="com.gtt.pets.entity.account.AccountEntity" />
 
     <insert id="addAccount" parameterClass="map">
-        INSERT INTO Account_Account (Nickname, UserIP, AddTime, UpdateTime)
-        VALUES (#nickname#, #userIP#, NOW(), NOW())
+        INSERT INTO Account_Account (Nickname, Email, UserIP, AddTime, UpdateTime)
+        VALUES (#nickname#, #email#, #userIP#, NOW(), NOW())
         <selectKey resultClass="java.lang.Integer" keyProperty="id" >
             SELECT @@IDENTITY AS id
         </selectKey>
@@ -14,7 +14,7 @@
 
     <select id="loadById" parameterClass="map" resultClass="account" >
         <![CDATA[
-            SELECT AccountID, Nickname, AddTime, UpdateTime
+            SELECT AccountID, Nickname, Email, AddTime, UpdateTime
             FROM Account_Account
             WHERE AccountID=#accountId#
         ]]>
@@ -22,7 +22,7 @@
 
     <select id="loadByNickname" parameterClass="map" resultClass="account" >
         <![CDATA[
-            SELECT AccountID, Nickname, AddTime, UpdateTime
+            SELECT AccountID, Nickname, Email, AddTime, UpdateTime
             FROM Account_Account
             WHERE Nickname=#nickname#
         ]]>
