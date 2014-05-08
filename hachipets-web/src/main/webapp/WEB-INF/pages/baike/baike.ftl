@@ -2,7 +2,7 @@
 <#assign pets=JspTaglibs["/WEB-INF/tld/pets-tags.tld"]>
 <html>
 <head>
-    <title>宠物百科</title>
+    <title><#if path?? && path?size gt 0><#list path as category>${category.name}-</#list></#if>宠物百科</title>
 	<@pets.staticResource resource='/css/baike-index.css' decorate='true'/>
 </head>
 <body>

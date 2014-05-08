@@ -27,6 +27,7 @@ import com.gtt.pets.web.vo.PetsBaikeIndexCategoryGroupVO;
 import com.gtt.pets.web.vo.PetsBaikeIndexCategoryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,6 +54,7 @@ public class PetsBaikeAction extends BaseAction {
 	private List<PetsCategoryDTO> rootCategories;
 	private List<PetsBaikeIndexCategoryGroupVO> categoryGroupList;
 	private PageModel<PetsTypeDTO> typeModel;
+	private List<PetsCategoryDTO> path;
 
 	@Override
 	public String doExecute() throws Exception {
@@ -67,7 +69,7 @@ public class PetsBaikeAction extends BaseAction {
 			return BAIKE_INDEX_RESULT;
 		}
 
-		List<PetsCategoryDTO> path = Lists.newArrayList();
+		path = Lists.newArrayList();
 		if (category.getParentId() == 0) {
 			path.add(category);
 		} else {
@@ -135,6 +137,10 @@ public class PetsBaikeAction extends BaseAction {
 		categoryGroupVO.setCategoryList(categoryVOList);
 		categoryGroupVO.setTitle(title);
 		return categoryGroupVO;
+	}
+
+	public List<PetsCategoryDTO> getPath() {
+		return path;
 	}
 
 	public List<PetsBaikeIndexCategoryGroupVO> getCategoryGroupList() {
