@@ -15,8 +15,8 @@
     <packaging>war</packaging>
 
     <properties>
-        <env>aliyun</env>
-        <struts.version>2.3.15.1</struts.version>
+        <env>dev</env>
+        <struts.version>2.3.16.3</struts.version>
     </properties>
 
     <dependencies>

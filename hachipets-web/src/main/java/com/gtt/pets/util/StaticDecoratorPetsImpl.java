@@ -1,9 +1,20 @@
 package com.gtt.pets.util;
 
+import com.google.common.collect.Maps;
+import com.gtt.kenshin.cache.CacheKey;
+import com.gtt.kenshin.cache.CacheService;
 import com.gtt.kenshin.web.util.StaticDecoratorImpl;
+import com.gtt.kenshin.web.util.StaticFile;
+import com.gtt.pets.bean.CacheKeyHolder;
+import com.gtt.pets.dao.common.StaticFileDao;
+import com.gtt.pets.entity.common.StaticFileEntity;
 import com.gtt.pets.service.GlobalService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author tiantiangao
@@ -28,6 +39,46 @@ public class StaticDecoratorPetsImpl extends StaticDecoratorImpl {
 
 	@Autowired
 	private GlobalService globalService;
+	@Autowired
+	private CacheService cacheService;
+	@Autowired
+	private StaticFileDao staticFileDao;
+
+	@Override
+	protected String fillFullPath(String resource) {
+		return super.fillFullPath(fillMD5(resource));
+	}
+
+	private String fillMD5(String url) {
+		String md5Enable = globalService.get("StaticFileMD5Enable");
+		if (!md5Enable.equals("true")) {
+			return url;
+		}
+
+		Map<String, String> staticFileMap = getStaticFileMap();
+		if (!staticFileMap.containsKey(url.toLowerCase())) {
+			return url;
+		}
+
+		String fileMD5 = staticFileMap.get(url.toLowerCase());
+
+		if (StringUtils.isBlank(fileMD5)) {
+			return url;
+		}
+
+		return addFileMD5ToUrl(url, fileMD5);
+	}
+
+	private String addFileMD5ToUrl(String url, String fileMD5) {
+		String[] urlSplit = url.split("\\.");
+		if (urlSplit != null && urlSplit.length > 0) {
+			int length = urlSplit.length;
+			urlSplit[length - 1] = fileMD5 + "." + urlSplit[length - 1];
+			return StringUtils.join(urlSplit, ".");
+		}
+
+		return url.toLowerCase();
+	}
 
 	@Override
 	protected String getStaticServer(String resource) {
@@ -73,4 +124,26 @@ public class StaticDecoratorPetsImpl extends StaticDecoratorImpl {
 	private boolean isFileType(String resource, String suffix) {
 		return StringUtils.isNotBlank(resource) && resource.endsWith(suffix);
 	}
+
+	private Map<String, String> getStaticFileMap() {
+		CacheKey cacheKeyMD5 = new CacheKey(CacheKeyHolder.STATIC_FILE);
+		Map<String, String> staticFileMap = cacheService.get(cacheKeyMD5);
+		if (staticFileMap == null) {
+			synchronized (StaticFile.class) {
+				staticFileMap = cacheService.get(cacheKeyMD5);
+				if (staticFileMap == null) {
+					staticFileMap = Maps.newHashMap();
+					List<StaticFileEntity> staticFileList = staticFileDao.findStaticFileMD5();
+					if (!CollectionUtils.isEmpty(staticFileList)) {
+						for (StaticFileEntity staticFile : staticFileList) {
+							staticFileMap.put(staticFile.getUrl().toLowerCase(), staticFile.getMd5());
+						}
+					}
+					cacheService.add(cacheKeyMD5, staticFileMap);
+				}
+			}
+		}
+		return staticFileMap;
+	}
+
 }

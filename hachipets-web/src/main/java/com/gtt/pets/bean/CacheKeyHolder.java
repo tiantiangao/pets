@@ -107,4 +107,9 @@ public class CacheKeyHolder {
 	 * 高德城市信息
 	 */
 	public static final String CITY_GAODE = "oCityGaode";
+	/**
+	 * 静态文件
+	 */
+	public static final String STATIC_FILE = "oStaticFile";
+
 }
