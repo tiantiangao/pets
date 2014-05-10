@@ -1,88 +1,108 @@
 .baike-container {
-	padding: 10px 5px;
+    padding: 10px 5px;
     min-height: 800px;
     position: relative;
     background-color: #fff;
-    margin-left: 0px!important;
+    margin-left: 0px !important;
 }
-.baike-nav{
+
+.baike-nav {
     padding-bottom: 20px;
 }
-.baike-nav .breadcrumb{
+
+.baike-nav .breadcrumb {
     background-color: #fff;
-    margin-bottom: 0px!important;
+    margin-bottom: 0px !important;
 }
+
 .baike-nav a {
     color: #12937c;
 }
-.baike-nav a:hover{
+
+.baike-nav a:hover {
     text-decoration: none;
     color: #e12160;
 }
-.baike-nav .active{
+
+.baike-nav .active {
     color: #000;
 }
+
 .baike-pic {
     position: absolute;
     top: 50px;
     right: 10px;
 }
-.baike-desc{
+
+.baike-desc {
     padding-left: 30px;
     height: 480px;
 }
-.baike-title{
+
+.baike-title {
     width: 600px;
     text-align: center;
     padding: 10px 0;
 }
-.baike-title h4{
+
+.baike-title h4 {
     color: #efc9a0;
     font: 60px '微软雅黑', 'Microsoft YaHei', Helvetica, Tahoma, StSun, '宋体', SimSun, sans-serif;
     letter-spacing: -1.5px;
     text-shadow: #241209 0 0 5px;
-    margin: 0px!important;
+    margin: 0px !important;
 }
+
 .baike-story {
     width: 600px;
     height: 380px;
     overflow: hidden;
 }
-.baike-story .baike-story-container{
+
+.baike-story .baike-story-container {
     color: #000;
     font: normal 16px/30px Arial, Sans-serif;
     margin: 26px 0 0 0;
     padding-bottom: 20px;
     text-indent: 32px;
 }
-.baike-story .baike-story-container p{
-    margin-bottom: 0px!important;
+
+.baike-story .baike-story-container p {
+    margin-bottom: 0px !important;
 }
+
 .baike-detail {
     padding-left: 30px;
 }
-.baike-detail a{
+
+.baike-detail a {
     text-decoration: none;
 }
-.baike-detail a:hover{
+
+.baike-detail a:hover {
     text-decoration: none;
     color: #e12160;
 }
-.baike-detail .memo{
+
+.baike-detail .memo {
     font-size: 12px;
     margin-left: 10px;
 }
-.baike-detail .memo a{
+
+.baike-detail .memo a {
     color: #999;
     text-decoration: underline;
 }
-.baike-detail .memo a:hover{
+
+.baike-detail .memo a:hover {
     text-decoration: none;
 }
-.baike-detail-row{
+
+.baike-detail-row {
     padding: 10px;
 }
-.baike-detail-title{
+
+.baike-detail-title {
     height: 40px;
     line-height: 40px;
     font-weight: 600;
@@ -90,13 +110,36 @@
     color: #666;
     border-bottom: 1px dotted #ddd;
 }
-.baike-detail-body dl{
+
+.baike-detail-body {
+    position: relative;
+}
+
+.baike-detail-body .goods-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 160px;
+    height: 200px;
+    padding: 56px 40px;
+}
+
+.baike-detail-body .goods-box .goods-title {
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+}
+.baike-detail-body .goods-box .goods-dt-img {
+    text-align: center;
+}
+.baike-detail-body dl {
     display: inline-block;
     float: left;
-    margin-bottom: 0px!important;
+    margin-bottom: 0px !important;
     margin-top: 14px;
 }
-.baike-detail-body dt{
+
+.baike-detail-body dt {
     float: left;
     width: 80px;
     color: #888;
@@ -104,23 +147,28 @@
     height: 24px;
     line-height: 24px;
 }
-.baike-detail-body dd{
+
+.baike-detail-body dd {
     float: left;
     width: 450px;
     height: 24px;
     line-height: 24px;
     overflow: hidden;
 }
-.baike-detail-body dd.single{
-    width: 1000px!important;
+
+.baike-detail-body dd.single {
+    width: 1000px !important;
 }
-.baike-detail-body dd.wide{
+
+.baike-detail-body dd.wide {
     width: 900px;
 }
-.baike-characteristics .baike-detail-body{
+
+.baike-characteristics .baike-detail-body {
     /*padding-left: 20px;*/
 }
-.baike-detail-body .feature{
+
+.baike-detail-body .feature {
     font-weight: 600;
     display: block;
     height: 20px;
@@ -129,12 +177,14 @@
     /*color: #666;*/
     font-size: 12px;
 }
-.baike-detail-body .info{
+
+.baike-detail-body .info {
     display: block;
     margin-left: 24px;
     font-size: 12px;
 }
-.baike-detail-body .comment{
+
+.baike-detail-body .comment {
     display: block;
     margin: 10px 0;
 }

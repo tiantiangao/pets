@@ -57,6 +57,16 @@
 					</#if>
                     </#list>
                     <div class="clear"></div>
+					<div class="goods-box">
+						<div class="goods-main">
+							<div class="goods-dt-img">
+								<img src="http://img01.taobaocdn.com/bao/uploaded/i1/T1WG05Xb4FXXbILY2a_120329.jpg_160x160.jpg">
+							</div>
+							<h2 class="goods-title">
+								<a href="#" target="_blank">萨摩专用狗粮</a>
+							</h2>
+						</div>
+					</div>
                 </div>
             </div>
 			<#if featureList?? && featureList?size gt 0 >
