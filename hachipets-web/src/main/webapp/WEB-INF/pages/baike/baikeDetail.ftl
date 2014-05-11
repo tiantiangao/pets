@@ -57,16 +57,20 @@
 					</#if>
                     </#list>
                     <div class="clear"></div>
+                    <#if foodAD??>
 					<div class="goods-box">
 						<div class="goods-main">
+                            <a href="${foodAD.adwordsUrl}" target="_blank">
 							<div class="goods-dt-img">
-								<img src="http://img01.taobaocdn.com/bao/uploaded/i1/T1WG05Xb4FXXbILY2a_120329.jpg_160x160.jpg">
+								<img src="${foodAD.picUrl}">
 							</div>
+                            </a>
 							<h2 class="goods-title">
-								<a href="#" target="_blank">萨摩专用狗粮</a>
+								<a href="${foodAD.adwordsUrl}" target="_blank">${foodAD.adwordsTitle}</a>
 							</h2>
 						</div>
 					</div>
+                    </#if>
                 </div>
             </div>
 			<#if featureList?? && featureList?size gt 0 >
@@ -80,6 +84,20 @@
 					</dl>
 					</#list>
                     <div class="clear"></div>
+                        <#if otherAD??>
+                        <div class="goods-box">
+                            <div class="goods-main">
+                                <a href="${otherAD.adwordsUrl}" target="_blank">
+                                    <div class="goods-dt-img">
+                                        <img src="${otherAD.picUrl}">
+                                    </div>
+                                </a>
+                                <h2 class="goods-title">
+                                    <a href="${otherAD.adwordsUrl}" target="_blank">${otherAD.adwordsTitle}</a>
+                                </h2>
+                            </div>
+                        </div>
+                        </#if>
                 </div>
             </div>
 			</#if>
