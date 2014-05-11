@@ -18,57 +18,57 @@ import java.io.IOException;
  */
 public class AccountFilter implements Filter {
 
-	private static final KenshinLogger LOGGER = KenshinLoggerFactory.getLogger(AccountFilter.class);
+    private static final KenshinLogger LOGGER = KenshinLoggerFactory.getLogger(AccountFilter.class);
 
-	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
 
-		// 解析用户cookie
-		setUserInfo(request, response);
+        // 解析用户cookie
+        setUserInfo(request, response);
 
-		// 检查登录用户是否在黑名单
-		//		if (isInBlackList(request)) {
-		//			logout(request, response);
-		//			return;
-		//		}
+        // 检查登录用户是否在黑名单
+        //		if (isInBlackList(request)) {
+        //			logout(request, response);
+        //			return;
+        //		}
 
-		chain.doFilter(request, response);
-	}
+        chain.doFilter(request, response);
+    }
 
-	/**
-	 * set user id in cookie
-	 *
-	 * @param request
-	 * @param response
-	 * @throws IOException
-	 */
-	private void setUserInfo(ServletRequest request, ServletResponse response) throws IOException {
-		String encryptUserInfoString = "";
-		Cookie[] cookies = ((HttpServletRequest) request).getCookies();
-		if (cookies != null) {
-			for (Cookie cookie : cookies) {
-				if (cookie != null) {
-					if (Cookies.Account.equals(cookie.getName())) {
-						encryptUserInfoString = cookie.getValue();
-						break;
-					}
-				}
-			}
-		}
+    /**
+     * set user id in cookie
+     *
+     * @param request
+     * @param response
+     * @throws IOException
+     */
+    private void setUserInfo(ServletRequest request, ServletResponse response) throws IOException {
+        String encryptUserInfoString = getCookie((HttpServletRequest) request, Cookies.Account);
 
-		if (StringUtils.isEmpty(encryptUserInfoString)) {
-			return;
-		}
+        if (StringUtils.isEmpty(encryptUserInfoString)) {
+            return;
+        }
 
-		try {
-			int userId = LoginUtils.parseUserId(encryptUserInfoString);
-			request.setAttribute(Constants.CONTEXT_USER_ID, userId);
-		} catch (Exception e) {
-			// may be invalid token
-			LoginUtils.signout((HttpServletRequest) request, (HttpServletResponse) response);
-		}
-	}
+        try {
+            int userId = LoginUtils.parseUserId(encryptUserInfoString);
+            request.setAttribute(Constants.CONTEXT_USER_ID, userId);
+        } catch (Exception e) {
+            // may be invalid token
+            LoginUtils.signout((HttpServletRequest) request, (HttpServletResponse) response);
+        }
+    }
+
+    private String getCookie(HttpServletRequest request, String name) {
+        Cookie cookies[] = request.getCookies();
+        if (cookies == null) return null;
+        for (Cookie cookie : cookies) {
+            if (name.equals(cookie.getName())) {
+                return cookie != null ? cookie.getValue() : null;
+            }
+        }
+        return null;
+    }
 
 //	private boolean isInBlackList(ServletRequest request) {
 //		int userId = Integer.parseInt((String) request.getAttribute(Constants.CONTEXT_USER_ID));
@@ -99,24 +99,24 @@ public class AccountFilter implements Filter {
 //		return userBlackListService.isInBlackList(userID);
 //	}
 
-	/**
-	 * 强制退出
-	 *
-	 * @param request
-	 * @param response
-	 * @throws IOException
-	 */
-	private void logout(ServletRequest request, ServletResponse response) throws IOException {
-		HttpServletResponse httpResponse = (HttpServletResponse) response;
-		httpResponse.sendRedirect(httpResponse.encodeRedirectURL("/logout"));
-	}
+    /**
+     * 强制退出
+     *
+     * @param request
+     * @param response
+     * @throws IOException
+     */
+    private void logout(ServletRequest request, ServletResponse response) throws IOException {
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
+        httpResponse.sendRedirect(httpResponse.encodeRedirectURL("/logout"));
+    }
 
-	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {
-	}
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+    }
 
-	@Override
-	public void destroy() {
-	}
+    @Override
+    public void destroy() {
+    }
 
 }

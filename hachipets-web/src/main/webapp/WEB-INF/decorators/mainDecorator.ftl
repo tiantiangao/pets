@@ -1,6 +1,6 @@
 <#assign pets=JspTaglibs["/WEB-INF/tld/pets-tags.tld"]>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset='utf-8'>
     <title>${title}-${projectName}</title>
@@ -14,45 +14,38 @@
 </head>
 <body>
 <div class="container header">
-    <div class="row-fluid">
-        <div class="header-logo">
-            <a href="/"><@pets.staticResource resource='/img/logo.png' decorate='true'/></a>
-        </div>
-        <div class="header-info">
-			<#if account??>
-			<span>您好，<a href="#">${account.nickname}</a></span>
-			<span class="divider"></span>
-			<span><a href="/logout" title="退出" rel="nofollow">退出</a></span>
-			<#else>
-			<span id="qqLoginBtn">
-				<a href="/authLogin?type=qq" rel="nofollow"><img src="<@pets.staticResource resource='/img/qq-login.png'/>" alt="QQ登录" border="0"></a>
-            </span>
-                &nbsp;&nbsp;
-            <span id="sinaLoginBtn">
-				<a href="/authLogin?type=sina" rel="nofollow"><img src="<@pets.staticResource resource='/img/sina-login.png'/>" alt="微博登录" border="0"></a>
-            </span>
-			</#if>
-        </div>
+    <div class="header-logo">
+        <a href="/"><@pets.staticResource resource='/img/logo.png' decorate='true'/></a>
     </div>
+    <div class="header-info">
+        <#if account??>
+        <span>您好，<a href="#">${account.nickname}</a></span>
+        <span class="divider"></span>
+        <span><a href="/logout" title="退出" rel="nofollow">退出</a></span>
+        <#else>
+        <span id="qqLoginBtn">
+            <a href="/authLogin?type=qq" rel="nofollow"><img src="<@pets.staticResource resource='/img/qq-login.png'/>" alt="QQ登录" border="0"></a>
+        </span>
+            &nbsp;&nbsp;
+        <span id="sinaLoginBtn">
+            <a href="/authLogin?type=sina" rel="nofollow"><img src="<@pets.staticResource resource='/img/sina-login.png'/>" alt="微博登录" border="0"></a>
+        </span>
+        </#if>
+    </div>
+    <div class="clear"></div>
 </div>
 <!-- 导航栏 -->
-<div class="container header-nav">
-    <div class="header-navbar">
-        <div class="header-navbar-inner">
-            <ul class="header-nav header-pets-nav">
-                <li class="first"><a href="/" <#if channel=="index">class="active"</#if>>首页</a></li>
-                <li><a href="/baike" <#if channel=="baike">class="active"</#if>>宠物百科</a></li>
-                <li><a href="/media" <#if channel=="media">class="active"</#if>>宠物影视</a></li>
-                <li><a href="/hospital" <#if channel=="hospital">class="active"</#if>>宠物医院</a></li>
-                <li><a href="/mall" <#if channel=="mall">class="active"</#if>>宠物商城</a></li>
-                <li><a href="/news" <#if channel=="news">class="active"</#if>>宠物新鲜事</a></li>
-                <li><a href="/show" <#if channel=="show">class="active"</#if>>宠物秀</a></li>
-                <li><a href="/transfer" <#if channel=="transfer">class="active"</#if>>宠物领养</a></li>
-                <#--<li><a href="/beauty" <#if channel=="beauty">class="active"</#if>>宠物美容</a></li>-->
-                <li><a href="/bbs" <#if channel=="bbs">class="active"</#if>>宠物社区</a></li>
-                <div class="clear"></div>
-            </ul>
-        </div>
+<div class="header-navbar">
+    <div class="header-navbar-inner">
+        <div class="nav-item"><a href="/" <#if channel=="index">class="active"</#if>>首页</a></div>
+        <div class="nav-item"><a href="/baike" <#if channel=="baike">class="active"</#if>>宠物百科</a></div>
+        <div class="nav-item"><a href="/media" <#if channel=="media">class="active"</#if>>宠物影视</a></div>
+        <div class="nav-item"><a href="/hospital" <#if channel=="hospital">class="active"</#if>>宠物医院</a></div>
+        <div class="nav-item"><a href="/mall" <#if channel=="mall">class="active"</#if>>宠物商城</a></div>
+        <div class="nav-item"><a href="/news" <#if channel=="news">class="active"</#if>>宠物新鲜事</a></div>
+        <div class="nav-item"><a href="/show" <#if channel=="show">class="active"</#if>>宠物秀</a></div>
+        <div class="nav-item"><a href="/transfer" <#if channel=="transfer">class="active"</#if>>宠物领养</a></div>
+        <div class="nav-item"><a href="/bbs" <#if channel=="bbs">class="active"</#if>>宠物社区</a></div>
     </div>
 </div>
 <!-- 主体 -->

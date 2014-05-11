@@ -31,10 +31,10 @@
     float: right;
     width: 1045px;
 }
-.baike-filter .group ul {
+.baike-filter .group .group-filter {
     margin: 0!important;
 }
-.baike-filter .group li {
+.baike-filter .group .item {
     height: 20px;
     width: 100px;
     line-height: 20px;
@@ -48,7 +48,7 @@
     color: #333;
     text-decoration: none;
 }
-.baike-filter .group li:hover {
+.baike-filter .group .item:hover {
     background-color: #daeae8;
     color: #12937c;
     cursor: pointer;

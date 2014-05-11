@@ -16,22 +16,22 @@
                     </div>
                     <div class="nav-filter-list">
                         <div class="nav-filter">
-                            <ul class="inline">
+                            <div class="inline">
                                 <span class="filter-name">地区：</span>
-                                <a href="${buildUrl(0, -1, -1)}"><li <#if area==0>class="active"</#if>>全部</li></a>
+                                <a href="${buildUrl(0, -1, -1)}"><div <#if area==0>class="active item"<#else>class="item"</#if>>全部</div></a>
                                 <#list regionList as regionDTO>
-                                    <a href="${buildUrl(regionDTO.id, -1, -1)}"><li <#if area==regionDTO.id>class="active"</#if>>${regionDTO.region}</li></a>
+                                    <a href="${buildUrl(regionDTO.id, -1, -1)}"><div <#if area==regionDTO.id>class="active item"<#else>class="item"</#if>>${regionDTO.region}</div></a>
                                 </#list>
-                            </ul>
+                            </div>
                         </div>
                         <div class="nav-filter last">
-                            <ul class="inline">
+                            <div class="inline">
                                 <span class="filter-name">年代：</span>
-                                <a href="${buildUrl(-1, 0, -1)}"><li <#if year==0>class="active"</#if>>全部</li></a>
+                                <a href="${buildUrl(-1, 0, -1)}"><div <#if year==0>class="active item"<#else>class="item"</#if>>全部</div></a>
                                 <#list yearList as yearDTO>
-                                    <a href="${buildUrl(-1, yearDTO.id, -1)}"><li <#if year==yearDTO.id>class="active"</#if>><#if yearDTO.year==1900>其他年代<#else>${yearDTO.year}</#if></li></a>
+                                    <a href="${buildUrl(-1, yearDTO.id, -1)}"><div <#if year==yearDTO.id>class="active item"<#else>class="item"</#if>><#if yearDTO.year==1900>其他年代<#else>${yearDTO.year}</#if></div></a>
                                 </#list>
-                            </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
