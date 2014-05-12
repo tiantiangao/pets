@@ -26,22 +26,14 @@
     bottom: 0px;
     left: 15px;
     height: 36px;
-}
-#mapLeftContainer .dianping{
-    position: absolute;
-    bottom: 0px;
-    left: 144px;
-    height: 30px;
-    width: 85px;
-    background: url("../img/dp.png");
-    background-size: 85px 30px;
+    padding-top: 6px;
     opacity:0.6;
     filter:alpha(opacity=60);
 }
-#mapLeftContainer .dianping span{
-    margin-left: -167px;
-    line-height: 30px;
-    height: 30px;
+#mapLeftContainer .logo div{
+    display: inline-block;
+    *display:inline;
+    zoom: 1;
 }
 
 #mapRight {
@@ -104,7 +96,7 @@
 }
 .shopContainer li{
     border-top: 1px dotted #f8cfa5;
-    padding: 15px 10px 15px 15px;
+    padding: 18px 10px 18px 15px;
     margin-top: -1px;
     zoom: 1;
 }
@@ -202,7 +194,7 @@
 }
 .shopContainer .address .address-value{
     float: left;
-    width: 265px;
+    width: 250px;
 }
 .shopContainer .review a {
     font-size: 12px;
@@ -265,4 +257,5 @@
     float: left;
     text-align: center;
     cursor: pointer;
+    margin-left: 10px;
 }

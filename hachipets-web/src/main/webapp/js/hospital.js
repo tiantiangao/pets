@@ -11,7 +11,7 @@ function setDefaultMap(lng, lat, level){
 }
 
 function init() {
-    map = new AMap.Map(mapDiv, {
+    map = new AMap.Map("mapDiv", {
         center: new AMap.LngLat(lng, lat),
         level: level
     });
@@ -165,16 +165,18 @@ function renderResult(data){
 
         phone.append($("<div class='clear'></div>"));
 
-        if(this.reviewCount>0){
-            var review = $("<div></div>");
-            shop.append(review);
-            review.addClass("review");
+        var review = $("<div></div>");
+        shop.append(review);
+        review.addClass("review");
 
-            var reviewLink = $("<a></a>");
-            reviewLink.attr({"target": "_blank", "href":this.dpShopUrl});
+        var reviewLink = $("<a></a>");
+        reviewLink.attr({"target": "_blank", "href":this.dpShopUrl});
+        if(this.reviewCount>0){
             reviewLink.text(this.reviewCount+"条评论");
-            review.append(reviewLink);
+        }else{
+            reviewLink.text("暂无评论");
         }
+        review.append(reviewLink);
 
         // 添加地图标记
         var marker = addMarker(this.lng, this.lat, index+1);

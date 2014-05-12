@@ -10,17 +10,17 @@
 	<div class="baike-filter">
 		<#list categoryGroupList as group>
 		<div class="group">
-			<ul class="inline">
+			<div class="group-filter">
 				<span class="filter-name">${(group.title)!""}：</span>
 				<div class="filter-list">
 					<#list group.categoryList as category>
 					<a href="/baike/list/${category.category.id}">
-						<li<#if category.checked?? && category.checked==true> class="active"</#if>>${category.category.name}</li>
+						<div <#if category.checked?? && category.checked==true>class="active item"<#else>class="item"</#if>>${category.category.name}</div>
 					</a>
 					</#list>
 				</div>
 				<div class="clear"></div>
-			</ul>
+			</div>
 		</div>
 		</#list>
 	</div>

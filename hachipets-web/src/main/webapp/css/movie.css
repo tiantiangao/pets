@@ -26,25 +26,26 @@
 .pets-movie-nav .nav-filter-list .nav-filter {
 	border-bottom: 1px dotted #eee;
 }
-.pets-movie-nav .nav-filter-list .nav-filter ul {
-	margin-top: 10px;
+.pets-movie-nav .nav-filter-list .nav-filter .inline {
+    margin: 10px 10px 15px 0;
 }
-.pets-movie-nav .nav-filter-list .nav-filter li {
+.pets-movie-nav .nav-filter-list .nav-filter .item {
 	height: 25px;
 	line-height: 25px;
 	text-align: center;
 	padding: 2px 10px;
+    margin-left: 2px;
 }
 .pets-movie-nav .nav-filter-list .nav-filter a {
     display: inline-block;
     color: #333;
     text-decoration: none;
 }
-.pets-movie-nav .nav-filter-list .nav-filter li:hover {
+.pets-movie-nav .nav-filter-list .nav-filter .item:hover {
 	background-color: #eee;
 	cursor: pointer;
 }
-.pets-movie-nav .nav-filter-list .nav-filter li:hover {
+.pets-movie-nav .nav-filter-list .nav-filter .item:hover {
     color: #e12160;
 }
 .pets-movie-nav .nav-filter-list .nav-filter .filter-name{
@@ -70,7 +71,7 @@
 .pets-movie-nav .nav-filter-list .last {
 	border-bottom: none;
 }
-.pets-movie-nav .nav-filter-list .last ul {
+.pets-movie-nav .nav-filter-list .last .inline {
 	margin-bottom: 0px;
 }
 

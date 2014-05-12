@@ -111,5 +111,8 @@ public class CacheKeyHolder {
 	 * 静态文件
 	 */
 	public static final String STATIC_FILE = "oStaticFile";
-
+    /**
+     * 广告
+     */
+    public static final String ADWORDS = "oAdwords";
 }

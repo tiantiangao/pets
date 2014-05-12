@@ -113,6 +113,7 @@
 
 .baike-detail-body {
     position: relative;
+    zoom: 1;
 }
 
 .baike-detail-body .goods-box {

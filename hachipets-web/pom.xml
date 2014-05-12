@@ -17,6 +17,7 @@
     <properties>
         <env>dev</env>
         <struts.version>2.3.16.3</struts.version>
+
     </properties>
 
     <dependencies>
@@ -66,7 +67,7 @@
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
-            <version>1.9.12.1</version>
+            <version>1.9.13</version>
         </dependency>
 
         <dependency>

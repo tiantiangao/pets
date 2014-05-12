@@ -12,7 +12,8 @@
 			<div id="shopList" class="shopContainer text-left">
 			</div>
 			<div class="logo">
-                <div class="dianping"><span>数据来源于</span></div>
+                <div>数据来源于</div>
+                <div><@pets.staticResource resource='/img/dp.png' decorate='true'/></div>
 			</div>
 		</div>
 	</div>
