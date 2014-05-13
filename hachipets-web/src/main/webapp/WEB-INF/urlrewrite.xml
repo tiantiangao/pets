@@ -115,5 +115,15 @@
         <from>^/bbs$</from>
         <to>/petsBBSAction.action</to>
     </rule>
+
+    <!-- common -->
+    <rule>
+        <from>^/404$</from>
+        <to>/notFoundAction.action</to>
+    </rule>
+    <rule>
+        <from>^/sitemap.xml$</from>
+        <to>/sitemapAction.action</to>
+    </rule>
 </urlrewrite>
   

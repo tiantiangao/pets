@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Sitemap">
+
+    <typeAlias alias="sitemap" type="com.gtt.pets.entity.common.SitemapEntity" />
+
+    <select id="pageSiteMap" resultClass="sitemap" parameterClass="map">
+        <![CDATA[
+		SELECT ID, URL, AddTime, UpdateTime
+		FROM Pets_Sitemap
+		ORDER by ID
+        ]]>
+    </select>
+
+    <select id="pageSiteMap_COUNT" resultClass="int" parameterClass="map">
+        <![CDATA[
+		SELECT count(ID)
+		FROM Pets_Sitemap
+        ]]>
+    </select>
+
+</sqlMap>

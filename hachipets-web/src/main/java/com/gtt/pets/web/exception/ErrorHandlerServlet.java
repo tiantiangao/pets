@@ -18,28 +18,11 @@ import java.io.InputStream;
  */
 public class ErrorHandlerServlet extends HttpServlet {
 
-    private static final String errorPage = "/WEB-INF/pages/error/404.html";
-
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html; charset=UTF-8");
-        resp.getWriter().print(getErrorPage());
+		resp.sendRedirect(resp.encodeRedirectURL("/404"));
     }
 
-    private String getErrorPage() {
-        InputStream is = getServletContext().getResourceAsStream(errorPage);
-        try {
-            return IOUtils.toString(is, "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "";
-        } finally {
-            try {
-                IOUtils.closeQuietly(is);
-            } catch (Exception e) {
-            }
-        }
-    }
 }
