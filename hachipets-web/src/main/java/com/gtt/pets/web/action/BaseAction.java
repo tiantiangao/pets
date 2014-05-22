@@ -58,6 +58,7 @@ public abstract class BaseAction extends ActionSupport
 	@Override
 	public void prepare() throws Exception {
 		request.put("projectName", globalService.get("projectName"));
+		request.put("rootDomain", globalService.get("rootDomain"));
 		request.put("channel", "");
 
 		int userId = getUserId();

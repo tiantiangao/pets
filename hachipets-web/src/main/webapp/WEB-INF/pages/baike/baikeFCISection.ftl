@@ -1,7 +1,7 @@
 <#assign pets=JspTaglibs["/WEB-INF/tld/pets-tags.tld"]>
 <html>
 <head>
-    <title>FCI分组之${(section.sectionName)!""}(${(section.sectionEnName)!""})-国际犬种FCI标准-宠物百科</title>
+    <title>FCI分组之${(section.sectionName)!""}(${(section.sectionEnName)!""}),国际犬种FCI标准,宠物百科</title>
 	<@pets.staticResource resource='/css/baike-fci.css' decorate='true'/>
 </head>
 <body>

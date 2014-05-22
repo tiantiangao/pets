@@ -162,4 +162,8 @@ public class PetsBaikeAction extends BaseAction {
 	public void setPage(int page) {
 		this.page = page;
 	}
+
+	public int getPage() {
+		return page;
+	}
 }

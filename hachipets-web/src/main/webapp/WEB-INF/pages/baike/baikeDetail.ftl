@@ -1,7 +1,7 @@
 <#assign pets=JspTaglibs["/WEB-INF/tld/pets-tags.tld"]>
 <html>
 <head>
-	<title>${(type.name)!""}-宠物百科</title>
+	<title>${(type.name)!""},宠物百科</title>
 	<@pets.staticResource resource='/css/baike-detail.css' decorate='true'/>
 </head>
 <body>

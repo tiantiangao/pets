@@ -1,7 +1,7 @@
 <#assign pets=JspTaglibs["/WEB-INF/tld/pets-tags.tld"]>
 <html>
 <head>
-    <title>国际爱猫联合会(CFA)-宠物百科</title>
+    <title>国际爱猫联合会(CFA),宠物百科</title>
 	<@pets.staticResource resource='/css/baike-cfa.css' decorate='true'/>
 </head>
 <body>
